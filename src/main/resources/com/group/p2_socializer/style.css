@@ -1,0 +1,20 @@
+.trendingButtonColor:hover{
+    -fx-border-color: #660099;
+    -fx-border-width: 0px 0px 3px 0px;
+}
+.calendarButtonColor:hover{
+    -fx-border-color: #67F3FF;
+    -fx-border-width: 0px 0px 3px 0px;
+}
+.groupsButtonColor:hover{
+    -fx-border-color: #FF4038;
+    -fx-border-width: 0px 0px 3px 0px;
+}
+.createButtonColor:hover{
+    -fx-border-color: #EFFF39;
+    -fx-border-width: 0px 0px 3px 0px;
+}
+.profileButtonColor:hover{
+    -fx-border-color: #28FF06;
+    -fx-border-width: 0px 0px 3px 0px;
+}
