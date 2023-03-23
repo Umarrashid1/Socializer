@@ -1,4 +1,4 @@
-package com.group.p2_socializer.Calendar;
+package com.group.p2_socializer;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.FadeTransition;

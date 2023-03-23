@@ -1,4 +1,4 @@
-package com.group.p2_socializer.Calendar;
+package com.group.p2_socializer;
 
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
