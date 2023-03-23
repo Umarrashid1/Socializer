@@ -14,6 +14,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import static com.group.p2_socializer.CalendarController.getCalendarActivitiesMonth;
+
 public class CreateEventController {
 
     @FXML
@@ -36,8 +38,6 @@ public class CreateEventController {
     @FXML
     private TextArea eventDescriptionTextArea;
 
-    private CalendarManager calendarManager;
-
 
     private CalendarController calendarController;
 
@@ -45,11 +45,7 @@ public class CreateEventController {
         this.calendarController = calendarController;
     }
 
-    @FXML
-    private void initialize() {
-        calendarManager = new CalendarManager();
 
-    }
 
     @FXML
     private void handleCreateEvent() {
@@ -67,7 +63,7 @@ public class CreateEventController {
         CalendarActivity newEvent = new CalendarActivity(zonedDateTime, eventName, eventDescription, eventCity, eventCountry, eventOrganiser);
 
         // Get the calendar map from the calendar manager
-        Map<Integer, List<CalendarActivity>> calendarMap = CalendarManager.getCalendarActivitiesMonth(ZonedDateTime.now());
+        Map<Integer, List<CalendarActivity>> calendarMap = getCalendarActivitiesMonth(ZonedDateTime.now());
 
         // Get the day of the new event
         int dayOfMonth = newEvent.getDate().getDayOfMonth();

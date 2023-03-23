@@ -62,9 +62,6 @@ public class CalendarController implements Initializable {
     }
 
 
-
-
-
     ZonedDateTime dateFocus;
     ZonedDateTime today;
 
@@ -81,7 +78,7 @@ public class CalendarController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         dateFocus = ZonedDateTime.now();
         today = ZonedDateTime.now();
-        Map<Integer, List<CalendarActivity>> calendarData = CalendarManager.getCalendarActivitiesMonth(dateFocus);
+        Map<Integer, List<CalendarActivity>> calendarData = getCalendarActivitiesMonth(dateFocus);
         drawCalendar(calendarData);
     }
 
@@ -89,16 +86,16 @@ public class CalendarController implements Initializable {
     void backOneMonth(ActionEvent event) {
         dateFocus = dateFocus.minusMonths(1);
         calendar.getChildren().clear();
-        Map<Integer, List<CalendarActivity>> calendarData = CalendarManager.getCalendarActivitiesMonth(dateFocus);
-        drawCalendar (calendarData);
+        Map<Integer, List<CalendarActivity>> calendarData = getCalendarActivitiesMonth(dateFocus);
+        drawCalendar(calendarData);
     }
 
     @FXML
     void forwardOneMonth(ActionEvent event) {
         dateFocus = dateFocus.plusMonths(1);
         calendar.getChildren().clear();
-        Map<Integer, List<CalendarActivity>> calendarData = CalendarManager.getCalendarActivitiesMonth(dateFocus);
-        drawCalendar (calendarData);
+        Map<Integer, List<CalendarActivity>> calendarData = getCalendarActivitiesMonth(dateFocus);
+        drawCalendar(calendarData);
     }
 
     public void drawCalendar(Map<Integer, List<CalendarActivity>> calendarData) {
@@ -112,10 +109,10 @@ public class CalendarController implements Initializable {
         double spacingV = calendar.getVgap();
 
         int monthMaxDate = dateFocus.getMonth().maxLength();
-        if(dateFocus.getYear() % 4 != 0 && monthMaxDate == 29){
+        if (dateFocus.getYear() % 4 != 0 && monthMaxDate == 29) {
             monthMaxDate = 28;
         }
-        int dateOffset = ZonedDateTime.of(dateFocus.getYear(), dateFocus.getMonthValue(), 1,0,0,0,0,dateFocus.getZone()).getDayOfWeek().getValue();
+        int dateOffset = ZonedDateTime.of(dateFocus.getYear(), dateFocus.getMonthValue(), 1, 0, 0, 0, 0, dateFocus.getZone()).getDayOfWeek().getValue();
 
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
@@ -125,9 +122,9 @@ public class CalendarController implements Initializable {
                 rectangle.setFill(Color.TRANSPARENT);
                 rectangle.setStroke(Color.GREY);
                 rectangle.setStrokeWidth(strokeWidth);
-                double rectangleWidth = (calendarWidth/7) - strokeWidth - spacingH;
+                double rectangleWidth = (calendarWidth / 7) - strokeWidth - spacingH;
                 rectangle.setWidth(rectangleWidth);
-                double rectangleHeight = (calendarHeight/6) - strokeWidth - spacingV;
+                double rectangleHeight = (calendarHeight / 6) - strokeWidth - spacingV;
                 rectangle.setHeight(rectangleHeight);
                 stackPane.getChildren().add(rectangle);
                 rectangle.toFront();
@@ -150,12 +147,12 @@ public class CalendarController implements Initializable {
                     ft.play();
                 });
 
-                int calculatedDate = (j+1)+(7*i);
-                if(calculatedDate > dateOffset){
+                int calculatedDate = (j + 1) + (7 * i);
+                if (calculatedDate > dateOffset) {
                     int currentDate = calculatedDate - dateOffset;
-                    if(currentDate <= monthMaxDate){
+                    if (currentDate <= monthMaxDate) {
                         Text date = new Text(String.valueOf(currentDate));
-                        double textTranslationY = - (rectangleHeight / 2) * 0.75;
+                        double textTranslationY = -(rectangleHeight / 2) * 0.75;
                         date.setTranslateY(textTranslationY);
                         stackPane.getChildren().add(date);
 
@@ -164,7 +161,7 @@ public class CalendarController implements Initializable {
                             createCalendarActivity(activities, rectangleHeight, rectangleWidth, stackPane, rectangle);
                         }
                     }
-                    if(today.getYear() == dateFocus.getYear() && today.getMonth() == dateFocus.getMonth() && today.getDayOfMonth() == currentDate){
+                    if (today.getYear() == dateFocus.getYear() && today.getMonth() == dateFocus.getMonth() && today.getDayOfMonth() == currentDate) {
                         rectangle.setStrokeWidth(2);
                         rectangle.setStroke(Color.RED);
                     }
@@ -178,7 +175,7 @@ public class CalendarController implements Initializable {
     void createCalendarActivity(List<CalendarActivity> calendarActivities, double rectangleHeight, double rectangleWidth, StackPane stackPane, Rectangle rectangle) {
         VBox calendarActivityBox = new VBox();
         for (int k = 0; k < calendarActivities.size(); k++) {
-            if(k >= 2) {
+            if (k >= 2) {
                 Text moreActivities = new Text("...");
                 calendarActivityBox.getChildren().add(moreActivities);
                 moreActivities.setOnMouseClicked(mouseEvent -> {
@@ -220,7 +217,7 @@ public class CalendarController implements Initializable {
                         Label eventDescriptionLabel = new Label(item.getEventDescription());
 
                         Label eventLocationTitle = new Label("Location:");
-                        Label eventLocationLabel = new Label(item.getEventCountry()+ ", " + item.getEventCity());
+                        Label eventLocationLabel = new Label(item.getEventCountry() + ", " + item.getEventCity());
 
                         Label eventOrganiserTitle = new Label("Organiser:");
                         Label eventOrganiserLabel = new Label(item.getEventOrganiser());
@@ -231,15 +228,14 @@ public class CalendarController implements Initializable {
                             // Check if the index is even, which means it's every other label
                             if (i % 2 == 0) {
                                 labels[i].setFont(Font.font("Eras Bold ITC", 17));
-                            }
-                            else {
+                            } else {
                                 //labels[i].setStyle("-fx-border-style: solid; -fx-border-width: 1px; -fx-border-color: black;");
                                 labels[i].setFont(Font.font("Eras Medium ITC", 12));
                             }
                         }
 
                         // Add the text boxes to the VBox
-                        vbox.getChildren().addAll(eventNameTitle,eventNameLabel, eventDateTitle, eventDateLabel, eventDescriptionTitle, eventDescriptionLabel, eventLocationTitle, eventLocationLabel,eventOrganiserTitle,eventOrganiserLabel);
+                        vbox.getChildren().addAll(eventNameTitle, eventNameLabel, eventDateTitle, eventDateLabel, eventDescriptionTitle, eventDescriptionLabel, eventLocationTitle, eventLocationLabel, eventOrganiserTitle, eventOrganiserLabel);
                         BorderPane borderPane = new BorderPane();
 
 // Set the VBox as the center of the BorderPane
@@ -261,7 +257,7 @@ public class CalendarController implements Initializable {
         });
 
 
-    Stop[] stops = new Stop[] {
+        Stop[] stops = new Stop[]{
                 new Stop(0, Color.web("#ECFF79")),
                 new Stop(1, Color.web("#ECFF79", 0.5))
         };
@@ -279,7 +275,26 @@ public class CalendarController implements Initializable {
 
     }
 
-    /*public Map<Integer, List<CalendarActivity>> createCalendarMap(List<CalendarActivity> calendarActivities) {
+    public static Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) {
+        if (dateFocus == null) {
+            throw new IllegalArgumentException("dateFocus cannot be null");
+        }
+        List<CalendarActivity> calendarActivities = new ArrayList<>();
+        int year = dateFocus.getYear();
+        int month = dateFocus.getMonth().getValue();
+
+        /*Random random = new Random();
+        for (int i = 0; i < 50; i++) {
+            ZonedDateTime time = ZonedDateTime.of(year, month, random.nextInt(27) + 1, 16, 0, 0, 0, dateFocus.getZone());
+            calendarActivities.add(new CalendarActivity(time, "Event 1.0", "Mega Awesome Event", "Nørreport", "AAU"));
+        } */
+        ZonedDateTime time = ZonedDateTime.of(year,month,17, 12,0,0,0,dateFocus.getZone());
+        calendarActivities.add(new CalendarActivity(time,"FREDAGS-BAR","This event is gonna be so neat i promise","Copenhagen","Denmark","AAU"));
+        return createCalendarMap(calendarActivities);
+
+    }
+
+    public static Map<Integer, List<CalendarActivity>> createCalendarMap(List<CalendarActivity> calendarActivities) {
         Map<Integer, List<CalendarActivity>> calendarActivityMap = new HashMap<>();
 
         for (CalendarActivity activity: calendarActivities) {
@@ -295,20 +310,5 @@ public class CalendarController implements Initializable {
             }
         }
         return  calendarActivityMap;
-    } */
-
-   /* private Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) {
-        List<CalendarActivity> calendarActivities = new ArrayList<>();
-        int year = dateFocus.getYear();
-        int month = dateFocus.getMonth().getValue();
-
-        /*Random random = new Random();
-        for (int i = 0; i < 50; i++) {
-            ZonedDateTime time = ZonedDateTime.of(year, month, random.nextInt(27) + 1, 16, 0, 0, 0, dateFocus.getZone());
-            calendarActivities.add(new CalendarActivity(time, "Event 1.0", "Mega Awesome Event", "Nørreport", "AAU"));
-        }
-        ZonedDateTime time = ZonedDateTime.of(year,month,17, 12,0,0,0,dateFocus.getZone());
-        calendarActivities.add(new CalendarActivity(time,"FREDAGS-BAR","This event is gonna be so neat i promise","Nørreport","AAU"));
-        return createCalendarMap(calendarActivities);
-*/
+    }
 }
