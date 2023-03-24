@@ -1,5 +1,7 @@
 package com.group.p2_socializer.Calendar;
 
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -52,7 +54,7 @@ public class CreateEventController {
     }
 
     @FXML
-    private void handleCreateEvent() {
+    private void handleCreateEvent() throws SQLException {
         String eventName = eventNameTextField.getText();
         LocalDate eventDate = eventDatePicker.getValue();
         LocalTime eventTime = LocalTime.parse(eventTimeTextField.getText());
@@ -64,6 +66,10 @@ public class CreateEventController {
         LocalDateTime localDateTime = LocalDateTime.of(eventDate, eventTime);
         ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.systemDefault());
 
+        ZoneId zoneId = ZoneId.systemDefault();
+        String timeZone = zoneId.toString();
+
+        calendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
         CalendarActivity newEvent = new CalendarActivity(zonedDateTime, eventName, eventDescription, eventCity, eventCountry, eventOrganiser);
 
         // Get the calendar map from the calendar manager

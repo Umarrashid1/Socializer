@@ -20,13 +20,4 @@ public class Socializer extends Application {
     public static void main(String[] args) {
         launch();
     }
-
-    public static void splash() throws IOException{
-        Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(Socializer.class.getResource("calendar-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Socializer");
-        stage.setScene(scene);
-        stage.show();
-    }
 }

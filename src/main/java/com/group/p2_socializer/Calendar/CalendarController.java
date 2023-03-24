@@ -52,7 +52,6 @@ public class CalendarController implements Initializable {
 
         // Access the primary stage from the CalendarManager class
         Stage primaryStage = (Stage) calendar.getScene().getWindow();
-
         // Set the position of the new stage relative to the primary stage
         stage.setX(primaryStage.getX() + primaryStage.getWidth() / 2 - stage.getWidth() / 2);
         stage.setY(primaryStage.getY() + primaryStage.getHeight() / 2 - stage.getHeight() / 2);

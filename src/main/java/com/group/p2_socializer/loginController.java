@@ -20,12 +20,12 @@ public class loginController {
     @FXML
     private PasswordField password;
     @FXML
-    protected void onLoginButtonClick() throws SQLException, ClassNotFoundException, IOException {
+    protected void onLoginButtonClick() throws SQLException, IOException {
         String currentUser = username.getText();
         String currentPass = password.getText();
-
-        User user = db.authLogin(currentUser,currentPass);
-
+        //Get user input from login form
+        User user = loginDB.authLogin(currentUser,currentPass);
+        // Call database to authenticate login, returns null value if auth fails.
         if(user != null){
             Scene scene = result.getScene();
             Window window = scene.getWindow();
@@ -35,6 +35,7 @@ public class loginController {
             stage.setTitle("Socializer");
             stage.setScene(scene);
             stage.show();
+            //change scene if method returns non-null value
         }else{
             result.setText("Wrong username or password");
         }
@@ -44,12 +45,12 @@ public class loginController {
         String currentUser = username.getText();
         String currentPass = password.getText();
 
-        if( db.registerUser(currentUser,currentPass)){
+        if( loginDB.registerUser(currentUser,currentPass)){
             result.setText("User registered");
         }else{
             result.setText("Username already taken");
         }
-
+        // Call registerUser method, returns null if username taken
 
 
     }

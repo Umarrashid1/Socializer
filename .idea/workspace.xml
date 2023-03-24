@@ -5,27 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9925c17b-5e21-4a39-9642-ac6074097831" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/mssql-jdbc-10.2.1.jre11.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/db.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/loginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/login_page.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/calendarDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/80d95b82-3828-45bf-80ba-8d417e42f06f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/80d95b82-3828-45bf-80ba-8d417e42f06f.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/CalendarActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/CalendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/CalendarManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/CreateEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CreateEventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Socializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/calendar-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/calendar-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create-event-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create-event-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CreateEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CreateEventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Socializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Socializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/db.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/loginDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/loginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/loginController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="SYNC" />
@@ -48,35 +48,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/umarrashid/IdeaProjects/p2_socializer/Socializer&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.3615196&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "import_schema_mapping": "<schema-mapping>\n  <databases>\n    <list>\n      <schema-mapping-item>\n        <source-data-source-id>80d95b82-3828-45bf-80ba-8d417e42f06f</source-data-source-id>\n        <source-path>schema/&quot;socializer&quot;</source-path>\n        <target-data-source-id>80d95b82-3828-45bf-80ba-8d417e42f06f</target-data-source-id>\n        <target-path>schema/&quot;events&quot;</target-path>\n      </schema-mapping-item>\n    </list>\n  </databases>\n</schema-mapping>",
+    "last_opened_file_path": "/Users/umarrashid/IdeaProjects/p2_socializer/Socializer",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.3615196",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/group/p2_socializer" />
@@ -133,7 +134,8 @@
       <workItem from="1679570517361" duration="1402000" />
       <workItem from="1679571971911" duration="2392000" />
       <workItem from="1679586342073" duration="3212000" />
-      <workItem from="1679611815119" duration="2651000" />
+      <workItem from="1679611815119" duration="7568000" />
+      <workItem from="1679666498605" duration="6646000" />
     </task>
     <servers />
   </component>
