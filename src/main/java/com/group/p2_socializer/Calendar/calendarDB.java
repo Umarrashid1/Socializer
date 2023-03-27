@@ -7,6 +7,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class calendarDB {
     public static void storeEvent(String eventName, String eventDescription, String eventCity, String eventCountry, String eventOrganiser, LocalDateTime localDateTime, String timeZone) throws SQLException {
@@ -27,19 +29,21 @@ public class calendarDB {
         statement.executeUpdate();
         connection.close();
     }
-    public static CalendarActivity getEvent(Date date) throws SQLException {
+    public static List getEvent(int month, int year) throws SQLException {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
-        String sql = "SELECT * FROM events WHERE DATE(localdatetime) = ? ";
+        String sql = "SELECT * FROM events WHERE EXTRACT(YEAR FROM localdatetime) = ? AND EXTRACT(MONTH FROM localdatetime) = ?";
         Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setDate(1, date);
+        statement.setInt(1, year);
+        statement.setInt(2, month);
 
         // Connect to database and issue command
         ResultSet result = statement.executeQuery();
+        List<CalendarActivity> calendarActivities = new ArrayList<>();
         CalendarActivity newActivity = null;
-        if(result.next()){
+        while(result.next()){
             newActivity = new CalendarActivity();
             newActivity.localDateTime = (LocalDateTime) result.getObject("localdatetime");
             newActivity.timeZone = ZoneId.of(result.getString("timezone"));
@@ -50,8 +54,9 @@ public class calendarDB {
             newActivity.eventCountry = result.getString("eventcountry");
             newActivity.eventOrganiser = result.getString("eventorganiser");
             newActivity.date = ((LocalDateTime) result.getObject("localdatetime")).atZone(ZoneId.of(result.getString("timezone")));
+            calendarActivities.add(newActivity);
         }
-        return newActivity;
+        return calendarActivities;
     }
 }
 

@@ -16,18 +16,12 @@ public class CalendarManager {
         if (dateFocus == null) {
             throw new IllegalArgumentException("dateFocus cannot be null");
         }
-        List<CalendarActivity> calendarActivities = new ArrayList<>();
+        List<CalendarActivity> calendarActivities;
         int year = dateFocus.getYear();
         int month = dateFocus.getMonth().getValue();
-        YearMonth yearMonth = YearMonth.of(year, month);
-        int daysInMonth = yearMonth.lengthOfMonth();
-        for (int i = 1; i < daysInMonth; i++ ){
-            LocalDate date = LocalDate.of(year, month, i);
-            CalendarActivity calendarActivity = calendarDB.getEvent(Date.valueOf(date));
-            if (calendarActivity != null){
-                calendarActivities.add(calendarActivity);
-            }
-        }
+        calendarActivities = calendarDB.getEvent(month, year);
+
+
 
         return createCalendarMap(calendarActivities);
     }
