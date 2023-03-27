@@ -1,5 +1,9 @@
 package com.group.p2_socializer.Calendar;
 
+import java.sql.Date;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.YearMonth;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,23 +12,24 @@ import java.util.Map;
 
 
 public class CalendarManager {
-    public static Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) {
+    public static Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) throws SQLException {
         if (dateFocus == null) {
             throw new IllegalArgumentException("dateFocus cannot be null");
         }
         List<CalendarActivity> calendarActivities = new ArrayList<>();
         int year = dateFocus.getYear();
         int month = dateFocus.getMonth().getValue();
+        YearMonth yearMonth = YearMonth.of(year, month);
+        int daysInMonth = yearMonth.lengthOfMonth();
+        for (int i = 1; i < daysInMonth; i++ ){
+            LocalDate date = LocalDate.of(year, month, i);
+            CalendarActivity calendarActivity = calendarDB.getEvent(Date.valueOf(date));
+            if (calendarActivity != null){
+                calendarActivities.add(calendarActivity);
+            }
+        }
 
-        /*Random random = new Random();
-        for (int i = 0; i < 50; i++) {
-            ZonedDateTime time = ZonedDateTime.of(year, month, random.nextInt(27) + 1, 16, 0, 0, 0, dateFocus.getZone());
-            calendarActivities.add(new CalendarActivity(time, "Event 1.0", "Mega Awesome Event", "Nørreport", "AAU"));
-        }*/
-        ZonedDateTime time = ZonedDateTime.of(year,month,17, 12,0,0,0,dateFocus.getZone());
-        calendarActivities.add(new CalendarActivity(time,"FREDAGS-BAR","This event is gonna be so neat i promise","Copenhagen","Denmark","AAU"));
         return createCalendarMap(calendarActivities);
-
     }
 
     public static Map<Integer, List<CalendarActivity>> createCalendarMap(List<CalendarActivity> calendarActivities) {
@@ -36,7 +41,6 @@ public class CalendarManager {
                 calendarActivityMap.put(activityDate, List.of(activity));
             } else {
                 List<CalendarActivity> OldListByDate = calendarActivityMap.get(activityDate);
-
                 List<CalendarActivity> newList = new ArrayList<>(OldListByDate);
                 newList.add(activity);
                 calendarActivityMap.put(activityDate, newList);

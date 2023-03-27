@@ -1,23 +1,21 @@
 package com.group.p2_socializer.Calendar;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 public class CalendarActivity {
-    private ZonedDateTime date;
-    private String eventName;
-    private String eventDescription;
-    private String eventCity;
-    private String eventCountry;
-    private String eventOrganiser;
+    public LocalDateTime localDateTime;
+    public ZoneId timeZone;
 
-    public CalendarActivity(ZonedDateTime date, String eventName, String eventDescription,String eventCity, String eventCountry, String eventOrganiser) {
-        this.date = date;
-        this.eventName = eventName;
-        this.eventDescription = eventDescription;
-        this.eventCity = eventCity;
-        this.eventCountry = eventCountry;
-        this.eventOrganiser = eventOrganiser;
-    }
+    public ZonedDateTime date;
+    public String eventName;
+    public String eventDescription;
+    public String eventCity;
+    public String eventCountry;
+    public String eventOrganiser;
+
+
 
     public ZonedDateTime getDate() {
         return date;

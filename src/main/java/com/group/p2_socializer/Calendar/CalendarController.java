@@ -1,5 +1,6 @@
 package com.group.p2_socializer.Calendar;
 
+import com.group.p2_socializer.Socializer;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
@@ -30,6 +31,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.ZonedDateTime;
 import java.util.*;
 
@@ -41,27 +43,13 @@ public class CalendarController implements Initializable {
 
     @FXML
     void handleCreateEventButton(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("create-event-view.fxml"));
-        Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root);
+        FXMLLoader fxmlLoader = new FXMLLoader(Socializer.class.getResource("create-event-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
         Stage stage = new Stage();
+        stage.setTitle("Socializer");
         stage.setScene(scene);
-
-        CreateEventController createEventController = new CreateEventController();
-        fxmlLoader.setController(createEventController);
-
-        // Access the primary stage from the CalendarManager class
-        Stage primaryStage = (Stage) calendar.getScene().getWindow();
-        // Set the position of the new stage relative to the primary stage
-        stage.setX(primaryStage.getX() + primaryStage.getWidth() / 2 - stage.getWidth() / 2);
-        stage.setY(primaryStage.getY() + primaryStage.getHeight() / 2 - stage.getHeight() / 2);
-
-        // Show the new stage
         stage.show();
     }
-
-
-
 
 
     ZonedDateTime dateFocus;
@@ -78,14 +66,22 @@ public class CalendarController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            updateCalendar();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void updateCalendar() throws SQLException {
         dateFocus = ZonedDateTime.now();
         today = ZonedDateTime.now();
-        Map<Integer, List<CalendarActivity>> calendarData = CalendarManager.getCalendarActivitiesMonth(dateFocus);
+        Map<Integer, List<CalendarActivity>> calendarData = null;
+        calendarData = CalendarManager.getCalendarActivitiesMonth(dateFocus);
         drawCalendar(calendarData);
     }
 
     @FXML
-    void backOneMonth(ActionEvent event) {
+    void backOneMonth() throws SQLException {
         dateFocus = dateFocus.minusMonths(1);
         calendar.getChildren().clear();
         Map<Integer, List<CalendarActivity>> calendarData = CalendarManager.getCalendarActivitiesMonth(dateFocus);
@@ -93,7 +89,7 @@ public class CalendarController implements Initializable {
     }
 
     @FXML
-    void forwardOneMonth(ActionEvent event) {
+    void forwardOneMonth(ActionEvent event) throws SQLException {
         dateFocus = dateFocus.plusMonths(1);
         calendar.getChildren().clear();
         Map<Integer, List<CalendarActivity>> calendarData = CalendarManager.getCalendarActivitiesMonth(dateFocus);
