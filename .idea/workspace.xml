@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9925c17b-5e21-4a39-9642-ac6074097831" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/80d95b82-3828-45bf-80ba-8d417e42f06f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/80d95b82-3828-45bf-80ba-8d417e42f06f.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CreateEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CreateEventController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/calendarDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/calendarDB.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,9 +63,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.3615196",
+    "project.structure.side.proportion": "0.32786888",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   },
@@ -130,12 +132,24 @@
       <workItem from="1679571971911" duration="2392000" />
       <workItem from="1679586342073" duration="3212000" />
       <workItem from="1679611815119" duration="7568000" />
-      <workItem from="1679666498605" duration="25980000" />
+      <workItem from="1679666498605" duration="32402000" />
+      <workItem from="1680000188259" duration="3941000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

@@ -33,6 +33,7 @@ public class CreateEventController {
 
     public void setCalendarController(CalendarController calendarController) {
         this.calendarController = calendarController;
+
     }
 
     @FXML
@@ -41,7 +42,7 @@ public class CreateEventController {
     }
 
     @FXML
-    private void handleCreateEvent() throws SQLException {
+    public void handleCreateEvent() throws SQLException {
         String eventName = eventNameTextField.getText();
         LocalDate eventDate = eventDatePicker.getValue();
         LocalTime eventTime = LocalTime.parse(eventTimeTextField.getText());
@@ -54,6 +55,7 @@ public class CreateEventController {
         ZoneId zoneId = ZoneId.systemDefault();
         String timeZone = zoneId.toString();
         calendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
+
 
         Scene scene = eventCityTextField.getScene();
         Window window = scene.getWindow();

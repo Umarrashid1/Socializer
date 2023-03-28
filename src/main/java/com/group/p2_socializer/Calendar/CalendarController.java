@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -39,9 +38,6 @@ public class CalendarController implements Initializable {
 
     public JFXButton eventCalendarButton;
     @FXML
-    private JFXButton createEventButton;
-
-    @FXML
     void handleCreateEventButton(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Socializer.class.getResource("create-event-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
@@ -50,7 +46,6 @@ public class CalendarController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
 
     ZonedDateTime dateFocus;
     ZonedDateTime today;
@@ -66,20 +61,17 @@ public class CalendarController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        dateFocus = ZonedDateTime.now();
+        today = ZonedDateTime.now();
+        Map<Integer, List<CalendarActivity>> calendarData;
         try {
-            updateCalendar();
+            calendarData = CalendarManager.getCalendarActivitiesMonth(dateFocus);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-    public void updateCalendar() throws SQLException {
-        dateFocus = ZonedDateTime.now();
-        today = ZonedDateTime.now();
-        Map<Integer, List<CalendarActivity>> calendarData = null;
-        calendarData = CalendarManager.getCalendarActivitiesMonth(dateFocus);
         drawCalendar(calendarData);
     }
-
+    
     @FXML
     void backOneMonth() throws SQLException {
         dateFocus = dateFocus.minusMonths(1);
@@ -95,7 +87,7 @@ public class CalendarController implements Initializable {
         Map<Integer, List<CalendarActivity>> calendarData = CalendarManager.getCalendarActivitiesMonth(dateFocus);
         drawCalendar (calendarData);
     }
-
+    @FXML
     public void drawCalendar(Map<Integer, List<CalendarActivity>> calendarData) {
         year.setText(String.valueOf(dateFocus.getYear()));
         month.setText(String.valueOf(dateFocus.getMonth()));

@@ -834,34 +834,34 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Engine>InnoDB</Engine>
       <CollationName>latin1_swedish_ci</CollationName>
     </table>
-    <column id="236" parent="234" name="eventname">
-      <DasType>varchar(128)|0s</DasType>
+    <column id="236" parent="234" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="237" parent="234" name="eventdescription">
+    <column id="237" parent="234" name="eventname">
       <DasType>varchar(128)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="238" parent="234" name="eventcity">
+    <column id="238" parent="234" name="eventdescription">
       <DasType>varchar(128)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="239" parent="234" name="eventcountry">
+    <column id="239" parent="234" name="eventcity">
       <DasType>varchar(128)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="240" parent="234" name="eventorganiser">
+    <column id="240" parent="234" name="eventcountry">
       <DasType>varchar(128)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="241" parent="234" name="id">
-      <AutoIncrement>1</AutoIncrement>
-      <DasType>int(11)|0s</DasType>
+    <column id="241" parent="234" name="eventorganiser">
+      <DasType>varchar(128)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>

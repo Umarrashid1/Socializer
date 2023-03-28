@@ -29,6 +29,7 @@ public class calendarDB {
         statement.executeUpdate();
         connection.close();
     }
+
     public static List getEvent(int month, int year) throws SQLException {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
@@ -43,19 +44,20 @@ public class calendarDB {
         ResultSet result = statement.executeQuery();
         List<CalendarActivity> calendarActivities = new ArrayList<>();
         CalendarActivity newActivity = null;
-        while(result.next()){
+        while (result.next()) {
             newActivity = new CalendarActivity();
             newActivity.localDateTime = (LocalDateTime) result.getObject("localdatetime");
             newActivity.timeZone = ZoneId.of(result.getString("timezone"));
-            newActivity.eventName = result.getString("timezone");
             newActivity.eventName = result.getString("eventname");
             newActivity.eventDescription = result.getString("eventdescription");
             newActivity.eventCity = result.getString("eventcity");
             newActivity.eventCountry = result.getString("eventcountry");
             newActivity.eventOrganiser = result.getString("eventorganiser");
             newActivity.date = ((LocalDateTime) result.getObject("localdatetime")).atZone(ZoneId.of(result.getString("timezone")));
+            // Convert localda
             calendarActivities.add(newActivity);
         }
+
         return calendarActivities;
     }
 }

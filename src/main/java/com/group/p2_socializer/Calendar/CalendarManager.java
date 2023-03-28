@@ -1,9 +1,5 @@
 package com.group.p2_socializer.Calendar;
-
-import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.YearMonth;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,9 +15,8 @@ public class CalendarManager {
         List<CalendarActivity> calendarActivities;
         int year = dateFocus.getYear();
         int month = dateFocus.getMonth().getValue();
+
         calendarActivities = calendarDB.getEvent(month, year);
-
-
 
         return createCalendarMap(calendarActivities);
     }
