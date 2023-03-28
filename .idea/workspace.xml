@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9925c17b-5e21-4a39-9642-ac6074097831" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/80d95b82-3828-45bf-80ba-8d417e42f06f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/80d95b82-3828-45bf-80ba-8d417e42f06f.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CreateEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CreateEventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/calendarDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/calendarDB.java" afterDir="false" />
-    </list>
+    <list default="true" id="9925c17b-5e21-4a39-9642-ac6074097831" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -87,20 +80,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.group.p2_socializer.Socializer" />
-      <module name="p2_socializer" />
-      <option name="VM_PARAMETERS" value="--add-modules javafx.controls,javafx.fxml --add-opens java.base/java.lang.reflect=ALL-UNNAMED --add-opens java.base/java.lang.reflect=com.jfoenix" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.group.p2_socializer.Calendar.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Socializer" />
       <method v="2">
@@ -133,7 +112,7 @@
       <workItem from="1679586342073" duration="3212000" />
       <workItem from="1679611815119" duration="7568000" />
       <workItem from="1679666498605" duration="32402000" />
-      <workItem from="1680000188259" duration="3941000" />
+      <workItem from="1680000188259" duration="4407000" />
     </task>
     <servers />
   </component>
