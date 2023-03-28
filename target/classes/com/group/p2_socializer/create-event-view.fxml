@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="674.0" prefWidth="609.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Calendar.CreateEventController">
+   <children>
+      <BorderPane prefHeight="674.0" prefWidth="609.0">
+         <top>
+            <AnchorPane prefHeight="91.0" prefWidth="609.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="14.0" prefHeight="81.0" prefWidth="243.0" text="Create Event">
+                     <font>
+                        <Font name="Eras Bold ITC" size="34.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Event name:" />
+                  <JFXTextField fx:id="eventNameTextField" prefHeight="25.0" prefWidth="432.0" promptText="eg. Board game night!">
+                     <VBox.margin>
+                        <Insets right="90.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <HBox prefHeight="15.0" prefWidth="409.0">
+                     <children>
+                        <Label text="Date:" />
+                        <Label text="Time:">
+                           <HBox.margin>
+                              <Insets left="215.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="27.0" prefWidth="409.0">
+                     <children>
+                        <DatePicker fx:id="eventDatePicker" />
+                        <JFXTextField fx:id="eventTimeTextField">
+                           <HBox.margin>
+                              <Insets left="70.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                     </children></HBox>
+                  <HBox prefHeight="16.0" prefWidth="409.0">
+                     <children>
+                        <Label prefHeight="30.0" prefWidth="138.0" text="City:" />
+                        <Label prefHeight="27.0" prefWidth="86.0" text="Country:">
+                           <HBox.margin>
+                              <Insets left="110.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="27.0" prefWidth="409.0">
+                     <children>
+                        <JFXTextField fx:id="eventCityTextField" promptText="City" text="eg. Copenhagen" />
+                        <JFXTextField fx:id="eventCountryTextField" promptText="Country" text="eg. Denmark">
+                           <HBox.margin>
+                              <Insets left="110.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                     </children>
+                  </HBox>
+                  <Label prefHeight="24.0" prefWidth="100.0" text="Event description:">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXTextArea fx:id="eventDescriptionTextArea" prefHeight="135.0" prefWidth="409.0" promptText="eg. lots of text in here." />
+                  <HBox prefHeight="47.0" prefWidth="409.0">
+                     <children>
+                        <JFXCheckBox prefHeight="44.0" prefWidth="104.0" text="I am the organiser of this event" />
+                        <JFXTextField fx:id="eventOrganiserTextField" promptText="Organiser">
+                           <HBox.margin>
+                              <Insets left="60.0" top="8.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="99.0" prefWidth="409.0">
+                     <children>
+                        <JFXButton fx:id="createNewEventButton" onAction="#handleCreateEvent" prefHeight="61.0" prefWidth="138.0" text="Create Event" />
+                     </children>
+                  </HBox>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <BorderPane.margin>
+                  <Insets left="100.0" right="100.0" />
+               </BorderPane.margin>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
