@@ -20,7 +20,6 @@
       <BorderPane prefHeight="643.0" prefWidth="747.0">
          <center>
             <AnchorPane prefHeight="642.0" prefWidth="744.0" style="-fx-background-color: #f2fafc;">
-                
                 <FlowPane fx:id="calendar" hgap="10.0" layoutX="14.0" layoutY="116.0" prefHeight="498.0" prefWidth="716.0" vgap="5.0" />
                 <HBox alignment="CENTER" layoutX="163.0" layoutY="34.0" prefHeight="44.0" prefWidth="419.0" spacing="5.0">
                     <children>
@@ -129,7 +128,7 @@
                         <Font name="Eras Light ITC" size="12.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="eventCalendarButton" prefHeight="46.0" prefWidth="107.0" styleClass="calendarButtonColor" stylesheets="@style.css" text="Event com.group.p2_socializer.Calendar" wrapText="true">
+                  <JFXButton fx:id="eventCalendarButton" prefHeight="46.0" prefWidth="107.0" styleClass="calendarButtonColor" stylesheets="@style.css" text="Event Calendar" wrapText="true">
                      <graphic>
                         <FontAwesomeIconView glyphName="CALENDAR" size="20" />
                      </graphic>

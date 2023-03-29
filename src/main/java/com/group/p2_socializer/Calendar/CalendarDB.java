@@ -1,16 +1,12 @@
 package com.group.p2_socializer.Calendar;
 
-import com.group.p2_socializer.User;
-
 import java.sql.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class calendarDB {
+public class CalendarDB {
     public static void storeEvent(String eventName, String eventDescription, String eventCity, String eventCountry, String eventOrganiser, LocalDateTime localDateTime, String timeZone) throws SQLException {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";

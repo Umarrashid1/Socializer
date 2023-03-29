@@ -1,6 +1,6 @@
 package com.group.p2_socializer;
 import java.sql.*;
-public class loginDB {
+public class LoginDB {
     public static boolean checkUser(String username) throws SQLException {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";

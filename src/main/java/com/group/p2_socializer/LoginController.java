@@ -12,7 +12,7 @@ import javafx.stage.Window;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class loginController {
+public class LoginController {
     @FXML
     private Label result;
     @FXML
@@ -24,7 +24,7 @@ public class loginController {
         String currentUser = username.getText();
         String currentPass = password.getText();
         //Get user input from login form
-        User user = loginDB.authLogin(currentUser,currentPass);
+        User user = LoginDB.authLogin(currentUser,currentPass);
         // Call database to authenticate login, returns null value if auth fails.
         if(user != null){
             Scene scene = result.getScene();
@@ -45,7 +45,7 @@ public class loginController {
         String currentUser = username.getText();
         String currentPass = password.getText();
 
-        if( loginDB.registerUser(currentUser,currentPass)){
+        if( LoginDB.registerUser(currentUser,currentPass)){
             result.setText("User registered");
         }else{
             result.setText("Username already taken");

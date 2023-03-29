@@ -54,7 +54,7 @@ public class CreateEventController {
         ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.systemDefault());
         ZoneId zoneId = ZoneId.systemDefault();
         String timeZone = zoneId.toString();
-        calendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
+        CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
 
 
         Scene scene = eventCityTextField.getScene();
