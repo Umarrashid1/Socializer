@@ -25,6 +25,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 
 
 
@@ -36,7 +38,8 @@ import java.util.*;
 
 public class CalendarController implements Initializable {
 
-    public JFXButton eventCalendarButton;
+    //public JFXButton eventCalendarButton;
+    public Tab eventCalendarButton;
     @FXML
     void handleCreateEventButton(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Socializer.class.getResource("create-event-view.fxml"));

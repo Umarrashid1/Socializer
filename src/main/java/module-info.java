@@ -8,6 +8,7 @@ module com.group.p2_socializer{
 
     exports com.group.p2_socializer;
     opens com.group.p2_socializer to javafx.fxml;
+
     exports com.group.p2_socializer.Calendar;
     opens com.group.p2_socializer.Calendar to javafx.fxml;
 }

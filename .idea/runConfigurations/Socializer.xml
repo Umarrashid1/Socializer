@@ -2,7 +2,7 @@
   <configuration default="false" name="Socializer" type="Application" factoryName="Application" nameIsGenerated="true">
     <option name="MAIN_CLASS_NAME" value="com.group.p2_socializer.Socializer" />
     <module name="p2_socializer" />
-    <option name="VM_PARAMETERS" value="--add-modules javafx.controls,javafx.fxml --add-opens java.base/java.lang.reflect=ALL-UNNAMED --add-opens java.base/java.lang.reflect=com.jfoenix" />
+    <option name="VM_PARAMETERS" value="--add-modules javafx.controls,javafx.fxml --add-opens java.base/java.lang.reflect=ALL-UNNAMED --add-opens java.base/java.lang.reflect=com.jfoenix --add-exports javafx.controls/com.sun.javafx.scene.control.behavior=com.jfoenix" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="com.group.p2_socializer.Calendar.*" />

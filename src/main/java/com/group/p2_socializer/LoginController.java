@@ -30,7 +30,7 @@ public class LoginController {
             Scene scene = result.getScene();
             Window window = scene.getWindow();
             Stage stage = (Stage) window;
-            FXMLLoader fxmlLoader = new FXMLLoader(Socializer.class.getResource("calendar-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Socializer.class.getResource("main.fxml"));
             scene = new Scene(fxmlLoader.load());
             stage.setTitle("Socializer");
             stage.setScene(scene);

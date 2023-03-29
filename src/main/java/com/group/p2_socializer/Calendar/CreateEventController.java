@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tab;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
