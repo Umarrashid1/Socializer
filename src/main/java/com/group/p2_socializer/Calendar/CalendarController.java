@@ -42,7 +42,7 @@ public class CalendarController implements Initializable {
     public Tab eventCalendarButton;
     @FXML
     void handleCreateEventButton(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Socializer.class.getResource("create-event-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Socializer.class.getResource("main.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = new Stage();
         stage.setTitle("Socializer");
