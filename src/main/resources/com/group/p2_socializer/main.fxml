@@ -21,7 +21,6 @@
         <BorderPane prefHeight="643.0" prefWidth="747.0">
             <center>
                 <AnchorPane prefHeight="611.0" prefWidth="749.0" style="-fx-background-color: #f2fafc;">
-                    <FlowPane fx:id="calendar" hgap="10.0" layoutX="14.0" layoutY="116.0" prefHeight="498.0" prefWidth="716.0" vgap="5.0" />
                <HBox alignment="CENTER" layoutX="173.0" layoutY="44.0" prefHeight="44.0" prefWidth="419.0" spacing="5.0">
                   <children>
                      <JFXButton mnemonicParsing="false" onAction="#backOneMonth" text="&lt;" />
@@ -139,11 +138,16 @@
                               </Tab>
                               <Tab fx:id="eventCalendarButton" text="Event Calendar">
                                  <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                    <AnchorPane maxHeight="300.0" maxWidth="-Infinity" minHeight="300.0" minWidth="0.0" prefHeight="300.0" prefWidth="749.0" StackPane.alignment="CENTER">
+                                       <children>
+                                               <FlowPane fx:id="calendar" hgap="10.0" layoutX="26.0" layoutY="137.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="716.0" vgap="5.0" />
+                                       </children>
+                                    </AnchorPane>
                                  </content>
                                  <graphic>
                                             <FontAwesomeIconView glyphName="CALENDAR" size="20" />
                                  </graphic>
+                                 <content />
                               </Tab>
                               <Tab fx:id="createEventButton" text="Create Event">
                                  <content>

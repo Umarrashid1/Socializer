@@ -5,20 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9925c17b-5e21-4a39-9642-ac6074097831" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/80d95b82-3828-45bf-80ba-8d417e42f06f.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Socializer.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Socializer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Socializer.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CreateEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CreateEventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Calendar/CalendarController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Calendar/CalendarController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Calendar/CalendarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Calendar/CalendarController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Calendar/CreateEventController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Calendar/CreateEventController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/calendar-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/calendar-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/loginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/loginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/main.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +113,7 @@
       <workItem from="1679666498605" duration="32402000" />
       <workItem from="1680000188259" duration="4701000" />
       <workItem from="1680107595589" duration="3710000" />
-      <workItem from="1680114060628" duration="11055000" />
+      <workItem from="1680114060628" duration="13581000" />
     </task>
     <servers />
   </component>
