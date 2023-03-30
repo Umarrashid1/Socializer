@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9925c17b-5e21-4a39-9642-ac6074097831" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Socializer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Socializer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/main.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="9925c17b-5e21-4a39-9642-ac6074097831" name="Changes" comment="flags added" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -113,8 +109,16 @@
       <workItem from="1679666498605" duration="32402000" />
       <workItem from="1680000188259" duration="4701000" />
       <workItem from="1680107595589" duration="3710000" />
-      <workItem from="1680114060628" duration="13581000" />
+      <workItem from="1680114060628" duration="13823000" />
     </task>
+    <task id="LOCAL-00001" summary="flags added">
+      <created>1680175118354</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1680175118354</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,6 +140,8 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Socializer" />
     </ignored-roots>
+    <MESSAGE value="flags added" />
+    <option name="LAST_COMMIT_MESSAGE" value="flags added" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
