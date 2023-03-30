@@ -9,9 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
@@ -23,44 +21,43 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.util.Duration;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-
 
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.util.*;
 
 public class CalendarController implements Initializable {
 
-    //public JFXButton eventCalendarButton;
-    public Tab eventCalendarButton;
-    @FXML
-    void handleCreateEventButton(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Socializer.class.getResource("main.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = new Stage();
-        stage.setTitle("Socializer");
-        stage.setScene(scene);
-        stage.show();
-    }
-
     ZonedDateTime dateFocus;
     ZonedDateTime today;
-
+    @FXML
+    public Tab eventCalendarButton;
     @FXML
     private Text year;
-
     @FXML
     private Text month;
-
     @FXML
     private FlowPane calendar;
+    @FXML
+    private TextField eventNameTextField;
+    @FXML
+    private DatePicker eventDatePicker;
+    @FXML
+    private TextField eventTimeTextField;
+    @FXML
+    private TextField eventCityTextField;
+    @FXML
+    private TextField eventOrganiserTextField;
+    @FXML
+    private TextField eventCountryTextField;
+    @FXML
+    private TextArea eventDescriptionTextArea;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -266,6 +263,23 @@ public class CalendarController implements Initializable {
         calendarActivityBox.setMaxHeight(rectangleHeight * 0.70);
         stackPane.getChildren().add(calendarActivityBox);
         calendarActivityBox.toBack();
+
+    }
+
+    @FXML
+    public void handleCreateEvent() throws SQLException {
+        String eventName = eventNameTextField.getText();
+        LocalDate eventDate = eventDatePicker.getValue();
+        LocalTime eventTime = LocalTime.parse(eventTimeTextField.getText());
+        String eventCity = eventCityTextField.getText();
+        String eventCountry = eventCountryTextField.getText();
+        String eventDescription = eventDescriptionTextArea.getText();
+        String eventOrganiser = eventOrganiserTextField.getText();
+        LocalDateTime localDateTime = LocalDateTime.of(eventDate, eventTime);
+        ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.systemDefault());
+        ZoneId zoneId = ZoneId.systemDefault();
+        String timeZone = zoneId.toString();
+        CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
 
     }
 }
