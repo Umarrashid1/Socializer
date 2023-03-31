@@ -4,14 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92f53a86-253f-4ab7-bf8b-d0990df24caf" name="Changes" comment="new &quot;Event created window&quot;, screen utils">
+    <list default="true" id="92f53a86-253f-4ab7-bf8b-d0990df24caf" name="Changes" comment="Event page opens when event is clicked">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/EventPage/EventPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/EventPage/EventPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/event_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/event_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/main_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/main_window.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Socializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Socializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Calendar/CalendarActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Calendar/CalendarActivity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Calendar/CalendarController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Calendar/CalendarController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Calendar/CalendarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Calendar/CalendarController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/event_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/event_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/main_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/main_window.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +122,7 @@
       <workItem from="1680000188259" duration="4701000" />
       <workItem from="1680107595589" duration="3710000" />
       <workItem from="1680114060628" duration="13823000" />
-      <workItem from="1680267206700" duration="9938000" />
+      <workItem from="1680267206700" duration="22551000" />
     </task>
     <task id="LOCAL-00001" summary="flags added">
       <created>1680175118354</created>
@@ -155,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680226862562</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Event page opens when event is clicked">
+      <created>1680281261589</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680281261589</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,7 +192,8 @@
     <MESSAGE value="flags added repaired" />
     <MESSAGE value="Sync calendar button added" />
     <MESSAGE value="new &quot;Event created window&quot;, screen utils" />
-    <option name="LAST_COMMIT_MESSAGE" value="new &quot;Event created window&quot;, screen utils" />
+    <MESSAGE value="Event page opens when event is clicked" />
+    <option name="LAST_COMMIT_MESSAGE" value="Event page opens when event is clicked" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

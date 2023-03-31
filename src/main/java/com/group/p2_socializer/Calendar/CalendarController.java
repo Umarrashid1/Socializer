@@ -1,5 +1,6 @@
 package com.group.p2_socializer.Calendar;
 
+import com.group.p2_socializer.EventPage.EventPageController;
 import com.group.p2_socializer.Utils.ScreenUtils;
 import javafx.animation.FadeTransition;
 import javafx.animation.SequentialTransition;
@@ -182,7 +183,6 @@ public class CalendarController implements Initializable {
 
         rectangle.setOnMouseClicked((MouseEvent event) -> {
             ListView<CalendarActivity> listView = new ListView<>();
-            listView.setPrefSize(400,  600); // set preferred size
             listView.getItems().addAll(calendarActivities);
             listView.setCellFactory(param -> new ListCell<>() {
                 @Override
@@ -230,7 +230,6 @@ public class CalendarController implements Initializable {
                         // Set the VBox as the center of the BorderPane
                         borderPane.setCenter(vbox);
                         borderPane.setStyle("-fx-border-color: black; -fx-border-width: 2px; -fx-padding: 5px;");
-                        borderPane.setPrefSize(500,600);
 
                         // Set the BorderPane as the cell's graphic
                         setGraphic(borderPane);
@@ -238,25 +237,10 @@ public class CalendarController implements Initializable {
 
 
                         vbox.setOnMouseClicked((MouseEvent event) -> {
-                             try{
-                                // Load the FXML file
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/event_page.fxml"));
-                                Parent root = loader.load();
-
-                                // Get the current window's stage
-                                Stage currentStage = (Stage) vbox.getScene().getWindow();
-
-                                //Create a new stage and set the new scene
-                                Stage newStage = new Stage();
-                                newStage.setScene(new Scene(root));
-
-                                //Show the new stage, close the current stage
-                                newStage.show();
-                                currentStage.close();
-
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                            String eventName = item.getEventName();
+                            System.out.println(eventName);
+                            EventPageController controller = new EventPageController();
+                            controller.loadEventPage(event, eventName);
                         });
 
 
@@ -265,7 +249,7 @@ public class CalendarController implements Initializable {
                 }
             });
 
-            Scene scene = new Scene(listView, 400, 300);
+            Scene scene = new Scene(listView, 600, 700);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();

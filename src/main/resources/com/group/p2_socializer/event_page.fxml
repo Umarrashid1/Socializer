@@ -24,7 +24,6 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </FontAwesomeIconView>
-                  <Label prefHeight="29.0" prefWidth="95.0" text="MANAGE EVENT" underline="true" />
                   <JFXButton prefHeight="29.0" prefWidth="78.0" text="Edit event" />
                   <JFXButton prefHeight="29.0" prefWidth="78.0" text="Post news" />
                   <JFXButton prefHeight="29.0" prefWidth="104.0" text="Manage groups" />
@@ -33,7 +32,7 @@
             </HBox>
          </top>
          <center>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="centerPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="30.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" width="577.0">
                      <fill>
