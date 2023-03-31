@@ -1,5 +1,7 @@
-package com.group.p2_socializer;
+package com.group.p2_socializer.UserLogIn;
 
+import com.group.p2_socializer.Socializer;
+import com.group.p2_socializer.Utils.ScreenUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -30,11 +32,17 @@ public class LoginController {
             Scene scene = result.getScene();
             Window window = scene.getWindow();
             Stage stage = (Stage) window;
-            FXMLLoader fxmlLoader = new FXMLLoader(Socializer.class.getResource("main.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Socializer.class.getResource("main_window.fxml"));
             scene = new Scene(fxmlLoader.load());
             stage.setTitle("Socializer");
             stage.setScene(scene);
             stage.show();
+
+            double centerX = ScreenUtils.getScreenCenterX() - stage.getWidth() / 2;
+            double centerY = ScreenUtils.getScreenCenterY() - stage.getHeight() / 2;
+            stage.setX(centerX);
+            stage.setY(centerY);
+
             //change scene if method returns non-null value
         }else{
             result.setText("Wrong username or password");

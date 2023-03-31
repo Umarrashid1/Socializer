@@ -24,7 +24,7 @@
 
 <StackPane prefHeight="708.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Calendar.CalendarController">
     <children>
-      <JFXTabPane prefHeight="52.0" prefWidth="749.0">
+      <JFXTabPane fx:id="mainTabPane" prefHeight="52.0" prefWidth="749.0">
          <tabs>
             <Tab>
               <content>
@@ -54,7 +54,7 @@
                           <FontAwesomeIconView glyphName="USERS" size="20" />
                </graphic>
             </Tab>
-            <Tab fx:id="eventCalendarButton" text="Calendar">
+            <Tab fx:id="calendarTab" text="Calendar">
                <graphic>
                   <FontAwesomeIconView glyphName="CALENDAR" size="20" />
                </graphic>

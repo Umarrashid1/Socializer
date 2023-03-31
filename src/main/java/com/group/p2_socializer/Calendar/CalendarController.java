@@ -1,8 +1,12 @@
 package com.group.p2_socializer.Calendar;
 
 import com.group.p2_socializer.Socializer;
+import com.group.p2_socializer.Utils.ScreenUtils;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTabPane;
 import javafx.animation.FadeTransition;
+import javafx.animation.SequentialTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +24,9 @@ import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import javafx.util.Duration;
 import javafx.scene.layout.VBox;
@@ -58,6 +64,10 @@ public class CalendarController implements Initializable {
     private TextField eventCountryTextField;
     @FXML
     private TextArea eventDescriptionTextArea;
+    @FXML
+    private TabPane mainTabPane;
+    @FXML
+    private Tab calendarTab;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -168,19 +178,11 @@ public class CalendarController implements Initializable {
             if(k >= 2) {
                 Text moreActivities = new Text("...");
                 calendarActivityBox.getChildren().add(moreActivities);
-                moreActivities.setOnMouseClicked(mouseEvent -> {
-                    //On ... click print all activities for given date
-                    System.out.println(calendarActivities);
-                });
                 break;
             }
             Text text = new Text(calendarActivities.get(k).getEventName());
             text.setFont(Font.font("Eras Light ITC", 12));
             calendarActivityBox.getChildren().add(text);
-            text.setOnMouseClicked(mouseEvent -> {
-                //On Text clicked
-                System.out.println(text.getText());
-            });
         }
 
         rectangle.setOnMouseClicked((MouseEvent event) -> {
@@ -266,8 +268,10 @@ public class CalendarController implements Initializable {
 
     }
 
+
+
     @FXML
-    public void handleCreateEvent() throws SQLException {
+    public void handleCreateEvent() throws SQLException, IOException {
         String eventName = eventNameTextField.getText();
         LocalDate eventDate = eventDatePicker.getValue();
         LocalTime eventTime = LocalTime.parse(eventTimeTextField.getText());
@@ -281,5 +285,49 @@ public class CalendarController implements Initializable {
         String timeZone = zoneId.toString();
         CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
 
+        //Switch to Calendar tab
+        mainTabPane.getSelectionModel().select(calendarTab);
+        showEventCreatedMessage();
     }
+
+    public void showEventCreatedMessage() {
+        Stage stage = new Stage();
+        stage.initStyle(StageStyle.TRANSPARENT);
+
+        Label message = new Label("Event created!");
+        message.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: Black;");
+
+        StackPane root = new StackPane();
+        root.getChildren().add(message);
+
+        Scene scene = new Scene(root, 200, 50);
+        scene.setFill(Color.TRANSPARENT);
+        stage.setScene(scene);
+        stage.show();
+
+        // Get screen dimensions and center point
+        // position popup window in center of screen
+        double centerX = ScreenUtils.getScreenCenterX() - stage.getWidth() / 2;
+        double centerY = ScreenUtils.getScreenCenterY() - stage.getHeight() / 2;
+        stage.setX(centerX);
+        stage.setY(centerY);
+
+// Set stage position to the center of the screen
+
+        FadeTransition fadeIn = new FadeTransition(Duration.millis(500), root);
+        fadeIn.setFromValue(0.0);
+        fadeIn.setToValue(1.0);
+
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(500), root);
+        fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.0);
+        fadeOut.setDelay(Duration.seconds(5));
+
+        SequentialTransition sequence = new SequentialTransition(fadeIn, fadeOut);
+        sequence.setCycleCount(1);
+        sequence.play();
+
+        sequence.setOnFinished(e -> stage.close());
+    }
+
 }

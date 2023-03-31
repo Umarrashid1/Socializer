@@ -50,7 +50,7 @@ public class CalendarDB {
             newActivity.eventCountry = result.getString("eventcountry");
             newActivity.eventOrganiser = result.getString("eventorganiser");
             newActivity.date = ((LocalDateTime) result.getObject("localdatetime")).atZone(ZoneId.of(result.getString("timezone")));
-            // Convert localda
+            // Convert localdate
             calendarActivities.add(newActivity);
         }
 

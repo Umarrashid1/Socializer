@@ -4,21 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92f53a86-253f-4ab7-bf8b-d0990df24caf" name="Changes" comment="flags added repaired">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/de_jensd_fontawesomefx_materialicons.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fontawesomefx-materialicons-2.2.0-9.1.2.jar" afterDir="false" />
+    <list default="true" id="92f53a86-253f-4ab7-bf8b-d0990df24caf" name="Changes" comment="Sync calendar button added">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Utils/ScreenUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CreateEventController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/calendar-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create-event-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/UserLogIn/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/LoginDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/UserLogIn/LoginDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Socializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Socializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/UserLogIn/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/login_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/login_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/main_window.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Calendar/CalendarController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Calendar/CalendarController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Calendar/CalendarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Calendar/CalendarController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Calendar/CreateEventController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/calendar-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/create-event-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/loginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/loginDB.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/login_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/login_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/main.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +34,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -140,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680184761599</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Sync calendar button added">
+      <created>1680206948375</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1680206948375</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,7 +177,8 @@
     </ignored-roots>
     <MESSAGE value="flags added" />
     <MESSAGE value="flags added repaired" />
-    <option name="LAST_COMMIT_MESSAGE" value="flags added repaired" />
+    <MESSAGE value="Sync calendar button added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sync calendar button added" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

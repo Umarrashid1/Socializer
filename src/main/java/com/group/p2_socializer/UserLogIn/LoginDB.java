@@ -1,4 +1,4 @@
-package com.group.p2_socializer;
+package com.group.p2_socializer.UserLogIn;
 import java.sql.*;
 public class LoginDB {
     public static boolean checkUser(String username) throws SQLException {
