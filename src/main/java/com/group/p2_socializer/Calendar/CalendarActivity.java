@@ -7,7 +7,6 @@ import java.time.ZonedDateTime;
 public class CalendarActivity {
     public LocalDateTime localDateTime;
     public ZoneId timeZone;
-
     public ZonedDateTime date;
     public String eventName;
     public String eventDescription;
@@ -20,15 +19,12 @@ public class CalendarActivity {
     public ZonedDateTime getDate() {
         return date;
     }
-
     public void setDate(ZonedDateTime date) {
         this.date = date;
     }
-
     public String getEventName() {
         return eventName;
     }
-
     public String getEventCity(){
         return eventCity;
     }
@@ -38,11 +34,9 @@ public class CalendarActivity {
     public String getEventOrganiser(){
         return eventOrganiser;
     }
-
     public void setEventName(String eventName) {
         this.eventName = eventName;
     }
-
     public String getEventDescription() {
         return eventDescription;
     }

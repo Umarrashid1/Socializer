@@ -1,17 +1,15 @@
 package com.group.p2_socializer.Calendar;
 
-import com.group.p2_socializer.Socializer;
 import com.group.p2_socializer.Utils.ScreenUtils;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXTabPane;
 import javafx.animation.FadeTransition;
 import javafx.animation.SequentialTransition;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
@@ -24,10 +22,8 @@ import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.Window;
 import javafx.util.Duration;
 import javafx.scene.layout.VBox;
 
@@ -171,7 +167,6 @@ public class CalendarController implements Initializable {
         }
     }
 
-
     void createCalendarActivity(List<CalendarActivity> calendarActivities, double rectangleHeight, double rectangleWidth, StackPane stackPane, Rectangle rectangle) {
         VBox calendarActivityBox = new VBox();
         for (int k = 0; k < calendarActivities.size(); k++) {
@@ -187,6 +182,7 @@ public class CalendarController implements Initializable {
 
         rectangle.setOnMouseClicked((MouseEvent event) -> {
             ListView<CalendarActivity> listView = new ListView<>();
+            listView.setPrefSize(400,  600); // set preferred size
             listView.getItems().addAll(calendarActivities);
             listView.setCellFactory(param -> new ListCell<>() {
                 @Override
@@ -217,7 +213,7 @@ public class CalendarController implements Initializable {
                         Label[] labels = {eventNameTitle, eventNameLabel, eventDateTitle, eventDateLabel, eventDescriptionTitle, eventDescriptionLabel, eventLocationTitle, eventLocationLabel, eventOrganiserTitle, eventOrganiserLabel};
 
                         for (int i = 0; i < labels.length; i++) {
-                            // Check if the index is even, which means it's every other label
+                            // Check if the index is even, which means every other label becomes bold
                             if (i % 2 == 0) {
                                 labels[i].setFont(Font.font("Eras Bold ITC", 17));
                             }
@@ -231,13 +227,39 @@ public class CalendarController implements Initializable {
                         vbox.getChildren().addAll(eventNameTitle,eventNameLabel, eventDateTitle, eventDateLabel, eventDescriptionTitle, eventDescriptionLabel, eventLocationTitle, eventLocationLabel,eventOrganiserTitle,eventOrganiserLabel);
                         BorderPane borderPane = new BorderPane();
 
-// Set the VBox as the center of the BorderPane
+                        // Set the VBox as the center of the BorderPane
                         borderPane.setCenter(vbox);
                         borderPane.setStyle("-fx-border-color: black; -fx-border-width: 2px; -fx-padding: 5px;");
+                        borderPane.setPrefSize(500,600);
 
-
-// Set the BorderPane as the cell's graphic
+                        // Set the BorderPane as the cell's graphic
                         setGraphic(borderPane);
+
+
+
+                        vbox.setOnMouseClicked((MouseEvent event) -> {
+                             try{
+                                // Load the FXML file
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/event_page.fxml"));
+                                Parent root = loader.load();
+
+                                // Get the current window's stage
+                                Stage currentStage = (Stage) vbox.getScene().getWindow();
+
+                                //Create a new stage and set the new scene
+                                Stage newStage = new Stage();
+                                newStage.setScene(new Scene(root));
+
+                                //Show the new stage, close the current stage
+                                newStage.show();
+                                currentStage.close();
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
+
+
 
                     }
                 }
@@ -267,7 +289,6 @@ public class CalendarController implements Initializable {
         calendarActivityBox.toBack();
 
     }
-
 
 
     @FXML

@@ -31,7 +31,7 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
               </content>
                <graphic>
-                          <ImageView fx:id="homeButton" accessibleRole="BUTTON" fitHeight="57.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                          <ImageView fx:id="homeTab" accessibleRole="BUTTON" fitHeight="57.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
                               <image>
                                   <Image url="@logo-no-background.png" />
                               </image>
@@ -46,7 +46,7 @@
                           <FontAwesomeIconView glyphName="STAR" size="20" />
                </graphic>
             </Tab>
-            <Tab fx:id="importantButton" text="Groups">
+            <Tab fx:id="groupsTab" text="Groups">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                </content>
@@ -209,8 +209,8 @@
                                           </HBox>
                                           <HBox prefHeight="27.0" prefWidth="409.0">
                                              <children>
-                                                <JFXTextField fx:id="eventCityTextField" promptText="City" text="eg. Copenhagen" />
-                                                <JFXTextField fx:id="eventCountryTextField" promptText="Country" text="eg. Denmark">
+                                                <JFXTextField fx:id="eventCityTextField" promptText="eg. Copenhagen" />
+                                                <JFXTextField fx:id="eventCountryTextField" promptText="eg. Denmark">
                                                    <HBox.margin>
                                                       <Insets left="110.0" />
                                                    </HBox.margin>

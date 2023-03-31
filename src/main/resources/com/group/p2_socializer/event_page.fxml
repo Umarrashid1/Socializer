@@ -1,14 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.group.p2_socializer.EventPage.EventPageController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="739.0" prefWidth="636.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.EventPage.EventPageController">
+   <children>
+      <BorderPane prefHeight="739.0" prefWidth="636.0">
+         <top>
+            <HBox fx:id="manageEventBar" prefHeight="29.0" prefWidth="628.0" BorderPane.alignment="CENTER">
+               <children>
+                  <FontAwesomeIconView glyphName="WRENCH" size="25">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+                  <Label prefHeight="29.0" prefWidth="95.0" text="MANAGE EVENT" underline="true" />
+                  <JFXButton prefHeight="29.0" prefWidth="78.0" text="Edit event" />
+                  <JFXButton prefHeight="29.0" prefWidth="78.0" text="Post news" />
+                  <JFXButton prefHeight="29.0" prefWidth="104.0" text="Manage groups" />
+                  <JFXButton prefHeight="29.0" prefWidth="91.0" text="Cancel event" />
+               </children>
+            </HBox>
+         </top>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="30.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" width="577.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.4796539843082428" green="0.6635213494300842" blue="0.8355262875556946" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <JFXButton layoutX="516.0" layoutY="229.0" prefHeight="52.0" prefWidth="91.0" ripplerFill="#7bce3c" text="Attend Event" wrapText="true" />
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
 </AnchorPane>
