@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane prefHeight="708.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Calendar.CalendarController">
+    <children>
+      <JFXTabPane fx:id="mainTabPane" prefHeight="52.0" prefWidth="749.0">
+         <tabs>
+            <Tab>
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+               <graphic>
+                          <ImageView fx:id="homeButton" accessibleRole="BUTTON" fitHeight="57.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                  <Image url="@logo-no-background.png" />
+                              </image>
+                          </ImageView>
+               </graphic>
+            </Tab>
+            <Tab fx:id="trendingButton" text="Trending">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+               <graphic>
+                          <FontAwesomeIconView glyphName="STAR" size="20" />
+               </graphic>
+            </Tab>
+            <Tab fx:id="importantButton" text="Groups">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+               <graphic>
+                          <FontAwesomeIconView glyphName="USERS" size="20" />
+               </graphic>
+            </Tab>
+            <Tab fx:id="calendarTab" text="Calendar">
+               <graphic>
+                  <FontAwesomeIconView glyphName="CALENDAR" size="20" />
+               </graphic>
+               <content />
+               <content>
+                      <AnchorPane prefHeight="611.0" prefWidth="749.0" style="-fx-background-color: #f2fafc;">
+                     <FlowPane fx:id="calendar" hgap="10.0" layoutX="16.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="489.0" prefWidth="716.0" vgap="5.0" />
+                     <HBox alignment="CENTER" layoutX="173.0" layoutY="44.0" prefHeight="44.0" prefWidth="419.0" spacing="5.0">
+                        <children>
+                           <JFXButton mnemonicParsing="false" onAction="#backOneMonth" text="&lt;" />
+                           <Text fx:id="year" strokeType="OUTSIDE" strokeWidth="0.0" text="####">
+                              <font>
+                                 <Font name="Eras Light ITC" size="22.0" />
+                              </font>
+                           </Text>
+                           <Text fx:id="month" strokeType="OUTSIDE" strokeWidth="0.0" text="####">
+                              <font>
+                                 <Font name="Eras Light ITC" size="22.0" />
+                              </font>
+                           </Text>
+                           <JFXButton mnemonicParsing="false" onAction="#forwardOneMonth" text="&gt;" />
+                        </children>
+                     </HBox>
+                     <HBox alignment="CENTER" layoutX="14.0" layoutY="116.0" prefHeight="44.0" prefWidth="716.0" spacing="35.0">
+                        <children>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sunday" textAlignment="CENTER">
+                              <font>
+                                 <Font name="Eras Light ITC" size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets right="10.0" />
+                              </HBox.margin>
+                           </Text>
+                           <Text layoutX="213.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monday" textAlignment="CENTER">
+                              <font>
+                                 <Font name="Eras Light ITC" size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets />
+                              </HBox.margin>
+                           </Text>
+                           <Text layoutX="222.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tuesday" textAlignment="CENTER">
+                              <font>
+                                 <Font name="Eras Light ITC" size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="10.0" />
+                              </HBox.margin>
+                           </Text>
+                           <Text layoutX="232.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wednesday" textAlignment="CENTER">
+                              <font>
+                                 <Font name="Eras Light ITC" size="16.0" />
+                              </font>
+                           </Text>
+                           <Text layoutX="241.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thursday" textAlignment="CENTER">
+                              <font>
+                                 <Font name="Eras Light ITC" size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets />
+                              </HBox.margin>
+                           </Text>
+                           <Text layoutX="251.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Friday" textAlignment="CENTER">
+                              <font>
+                                 <Font name="Eras Light ITC" size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="10.0" />
+                              </HBox.margin>
+                           </Text>
+                           <Text layoutX="266.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Saturday" textAlignment="CENTER">
+                              <font>
+                                 <Font name="Eras Light ITC" size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="10.0" />
+                              </HBox.margin>
+                           </Text>
+                        </children>
+                     </HBox>
+                     <JFXButton layoutX="570.0" layoutY="52.0" text="Sync Calendar">
+                        <graphic>
+                           <MaterialIconView glyphName="SYNC" size="25" />
+                        </graphic>
+                     </JFXButton>
+
+                      </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="createEventButton" text="Create Event">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BorderPane layoutX="-1.0" prefHeight="671.0" prefWidth="749.0">
+                           <top>
+                              <AnchorPane prefHeight="91.0" prefWidth="609.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label layoutX="14.0" prefHeight="81.0" prefWidth="243.0" text="Create Event">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="34.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                           </top>
+                           <center>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <VBox layoutX="63.0" prefHeight="561.0" prefWidth="623.0" spacing="10.0">
+                                       <children>
+                                          <Label text="Event name:" />
+                                          <JFXTextField fx:id="eventNameTextField" prefHeight="25.0" prefWidth="432.0" promptText="eg. Board game night!">
+                                             <VBox.margin>
+                                                <Insets right="90.0" />
+                                             </VBox.margin>
+                                          </JFXTextField>
+                                          <HBox prefHeight="15.0" prefWidth="409.0">
+                                             <children>
+                                                <Label text="Date:" />
+                                                <Label text="Time:">
+                                                   <HBox.margin>
+                                                      <Insets left="215.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="20.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox prefHeight="27.0" prefWidth="409.0">
+                                             <children>
+                                                <DatePicker fx:id="eventDatePicker" />
+                                                <JFXTextField fx:id="eventTimeTextField">
+                                                   <HBox.margin>
+                                                      <Insets left="70.0" />
+                                                   </HBox.margin>
+                                                </JFXTextField>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="16.0" prefWidth="409.0">
+                                             <children>
+                                                <Label prefHeight="30.0" prefWidth="138.0" text="City:" />
+                                                <Label prefHeight="27.0" prefWidth="86.0" text="Country:">
+                                                   <HBox.margin>
+                                                      <Insets left="110.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="20.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox prefHeight="27.0" prefWidth="409.0">
+                                             <children>
+                                                <JFXTextField fx:id="eventCityTextField" promptText="City" text="eg. Copenhagen" />
+                                                <JFXTextField fx:id="eventCountryTextField" promptText="Country" text="eg. Denmark">
+                                                   <HBox.margin>
+                                                      <Insets left="110.0" />
+                                                   </HBox.margin>
+                                                </JFXTextField>
+                                             </children>
+                                          </HBox>
+                                          <Label prefHeight="24.0" prefWidth="100.0" text="Event description:">
+                                             <VBox.margin>
+                                                <Insets top="20.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <JFXTextArea fx:id="eventDescriptionTextArea" prefHeight="135.0" prefWidth="409.0" promptText="eg. lots of text in here." />
+                                          <HBox prefHeight="47.0" prefWidth="409.0">
+                                             <children>
+                                                <JFXCheckBox prefHeight="44.0" prefWidth="104.0" text="I am the organiser of this event" />
+                                                <JFXTextField fx:id="eventOrganiserTextField" promptText="Organiser">
+                                                   <HBox.margin>
+                                                      <Insets left="60.0" top="8.0" />
+                                                   </HBox.margin>
+                                                </JFXTextField>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="20.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="99.0" prefWidth="409.0">
+                                             <children>
+                                                <JFXButton fx:id="createNewEventButton" onAction="#handleCreateEvent" prefHeight="61.0" prefWidth="138.0" text="Create Event" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </center>
+                        </BorderPane>
+                     </children></AnchorPane>
+               </content>
+               <graphic>
+                          <FontAwesomeIconView glyphName="PLUS" size="20" />
+               </graphic>
+            </Tab>
+            <Tab fx:id="myProfileButton" text="My Profile">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+               <graphic>
+                          <FontAwesomeIconView glyphName="USER" size="20" />
+               </graphic>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+    </children>
+</StackPane>
