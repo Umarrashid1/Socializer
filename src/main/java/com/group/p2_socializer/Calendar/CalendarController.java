@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -25,6 +26,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.Window;
 import javafx.util.Duration;
 import javafx.scene.layout.VBox;
 
@@ -263,7 +265,14 @@ public class CalendarController implements Initializable {
 
                             String eventDescription = item.getEventDescription();
 
-                            controller.loadEventPage(event, eventName, formattedDate, eventOrganiser, eventDescription, eventCity, eventCountry);
+                            // Open the event page of the created event
+                            controller.loadEventPage(eventName, formattedDate, eventOrganiser, eventDescription, eventCity, eventCountry);
+
+                            // Close the list window
+                            Scene scene = vbox.getScene();
+                            Window window = scene.getWindow();
+                            window.hide();
+
                         });
 
                     }
@@ -307,12 +316,20 @@ public class CalendarController implements Initializable {
         String eventOrganiser = eventOrganiserTextField.getText();
         LocalDateTime localDateTime = LocalDateTime.of(eventDate, eventTime);
         ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.systemDefault());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy 'AT' HH:mm", Locale.ENGLISH);
+        String formattedDate = zonedDateTime.format(formatter).toUpperCase();
         ZoneId zoneId = ZoneId.systemDefault();
         String timeZone = zoneId.toString();
         CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
 
         //Switch to Calendar tab
         mainTabPane.getSelectionModel().select(calendarTab);
+
+
+
+        EventPageController controller = new EventPageController();
+        controller.loadEventPage(eventName, formattedDate, eventOrganiser, eventDescription, eventCity, eventCountry);
+
         showEventCreatedMessage();
     }
 

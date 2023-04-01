@@ -37,7 +37,7 @@ public class EventPageController {
     public Label eventOrganiserLabel;
 
 
-    public void loadEventPage(MouseEvent event, String eventName, String eventDate, String eventOrganiser, String eventDescription, String eventCity, String eventCountry) {
+    public void loadEventPage(String eventName, String eventDate, String eventOrganiser, String eventDescription, String eventCity, String eventCountry) {
         try {
 
             //TODO: Set max size and enable text wrap for every label and text
@@ -80,25 +80,17 @@ public class EventPageController {
             eventDescriptionLabel.setLayoutY(460);
             eventDescriptionLabel.setFont(Font.font("Arial", 13));
 
-
-
-
             // Add the label to the center pane
             centerPane.getChildren().add(eventInfoVBox);
             centerPane.getChildren().add(eventDescriptionLabel);
-
-
-
-            // Get the current window's stage
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
             // Create a new stage and set the new scene
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
 
-            // Show the new stage, close the current stage
+            // Show the new stage
             newStage.show();
-            currentStage.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
