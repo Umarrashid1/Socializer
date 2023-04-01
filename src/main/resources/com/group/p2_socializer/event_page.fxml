@@ -11,7 +11,7 @@
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
-
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="739.0" prefWidth="636.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.EventPage.EventPageController">
    <children>
@@ -19,11 +19,16 @@
          <top>
             <HBox fx:id="manageEventBar" prefHeight="29.0" prefWidth="628.0" BorderPane.alignment="CENTER">
                <children>
-                  <FontAwesomeIconView glyphName="WRENCH" size="25">
+                  <FontAwesomeIconView glyphName="WRENCH" size="20">
                      <HBox.margin>
-                        <Insets right="10.0" />
+                        <Insets left="30.0" right="10.0" top="5.0" />
                      </HBox.margin>
                   </FontAwesomeIconView>
+                  <Label prefHeight="29.0" prefWidth="101.0" text="MANAGE EVENT:" underline="true">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
                   <JFXButton prefHeight="29.0" prefWidth="78.0" text="Edit event" />
                   <JFXButton prefHeight="29.0" prefWidth="78.0" text="Post news" />
                   <JFXButton prefHeight="29.0" prefWidth="104.0" text="Manage groups" />

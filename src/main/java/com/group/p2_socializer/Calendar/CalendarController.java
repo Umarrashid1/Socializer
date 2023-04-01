@@ -33,6 +33,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.*;
 
 public class CalendarController implements Initializable {
@@ -237,13 +239,26 @@ public class CalendarController implements Initializable {
 
 
                         vbox.setOnMouseClicked((MouseEvent event) -> {
-                            String eventName = item.getEventName();
-                            System.out.println(eventName);
+
                             EventPageController controller = new EventPageController();
-                            controller.loadEventPage(event, eventName);
+
+                            String eventName = item.getEventName();
+
+
+                            ZonedDateTime zonedDateTime = item.getDate();
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy 'AT' HH:mm", Locale.ENGLISH);
+
+                            String formattedDate = zonedDateTime.format(formatter).toUpperCase();
+
+                            String eventOrganiser = item.getEventOrganiser();
+
+                            String eventCity = item.getEventCity();
+                            String eventCountry = item.getEventCountry();
+
+                            String eventDescription = item.getEventDescription();
+
+                            controller.loadEventPage(event, eventName, formattedDate, eventOrganiser, eventDescription, eventCity, eventCountry);
                         });
-
-
 
                     }
                 }
