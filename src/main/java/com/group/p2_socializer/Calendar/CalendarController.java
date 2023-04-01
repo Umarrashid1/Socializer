@@ -195,6 +195,10 @@ public class CalendarController implements Initializable {
                     } else {
                         // Create a VBox to hold the text boxes
                         VBox vbox = new VBox();
+                        Label windowTitleLabel = new Label();
+                        windowTitleLabel.setText("Click event to enter event page");
+                        windowTitleLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 11; -fx-text-fill: #797878;");
+
 
                         // Create a text box for each property of the CalendarActivity
                         Label eventNameTitle = new Label("Event:");
@@ -212,7 +216,9 @@ public class CalendarController implements Initializable {
                         Label eventOrganiserTitle = new Label("Organiser:");
                         Label eventOrganiserLabel = new Label(item.getEventOrganiser());
 
-                        Label[] labels = {eventNameTitle, eventNameLabel, eventDateTitle, eventDateLabel, eventDescriptionTitle, eventDescriptionLabel, eventLocationTitle, eventLocationLabel, eventOrganiserTitle, eventOrganiserLabel};
+                        Label[] labels = {eventNameTitle, eventNameLabel, eventDateTitle, eventDateLabel,
+                                eventDescriptionTitle, eventDescriptionLabel, eventLocationTitle,
+                                eventLocationLabel, eventOrganiserTitle, eventOrganiserLabel};
 
                         for (int i = 0; i < labels.length; i++) {
                             // Check if the index is even, which means every other label becomes bold
@@ -226,7 +232,7 @@ public class CalendarController implements Initializable {
                         }
 
                         // Add the text boxes to the VBox
-                        vbox.getChildren().addAll(eventNameTitle,eventNameLabel, eventDateTitle, eventDateLabel, eventDescriptionTitle, eventDescriptionLabel, eventLocationTitle, eventLocationLabel,eventOrganiserTitle,eventOrganiserLabel);
+                        vbox.getChildren().addAll(windowTitleLabel, eventNameTitle, eventNameLabel, eventDateTitle, eventDateLabel, eventDescriptionTitle, eventDescriptionLabel, eventLocationTitle, eventLocationLabel, eventOrganiserTitle, eventOrganiserLabel);
                         BorderPane borderPane = new BorderPane();
 
                         // Set the VBox as the center of the BorderPane

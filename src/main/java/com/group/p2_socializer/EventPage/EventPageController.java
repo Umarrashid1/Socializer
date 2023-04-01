@@ -56,8 +56,7 @@ public class EventPageController {
             Label eventDateLabel = (Label) eventInfoVBox.lookup("#eventDateLabel");
             eventDateLabel.setText(eventDate);
             eventDateLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 13; -fx-text-fill: #797878;");
-            //eventDateLabel.setLayoutX(30);
-            //eventDateLabel.setLayoutY(210);
+
 
             Label eventTitleLabel = (Label) eventInfoVBox.lookup("#eventTitleLabel" );
             eventTitleLabel.setText(eventName);
@@ -78,7 +77,7 @@ public class EventPageController {
 
             Label eventDescriptionLabel = new Label(eventDescription);
             eventDescriptionLabel.setLayoutX(36);
-            eventDescriptionLabel.setLayoutY(450);
+            eventDescriptionLabel.setLayoutY(460);
             eventDescriptionLabel.setFont(Font.font("Arial", 13));
 
 

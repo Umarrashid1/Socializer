@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92f53a86-253f-4ab7-bf8b-d0990df24caf" name="Changes" comment="Cleaned up event page">
+    <list default="true" id="92f53a86-253f-4ab7-bf8b-d0990df24caf" name="Changes" comment="Cleaned up event page.. again">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/EventPage/EventPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/EventPage/EventPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/event_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/event_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/EventPage/EventPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/EventPage/EventPageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/event_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/event_page.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +118,7 @@
       <workItem from="1680107595589" duration="3710000" />
       <workItem from="1680114060628" duration="13823000" />
       <workItem from="1680267206700" duration="39474000" />
-      <workItem from="1680348325885" duration="15130000" />
+      <workItem from="1680348325885" duration="19127000" />
     </task>
     <task id="LOCAL-00001" summary="flags added">
       <created>1680175118354</created>
@@ -173,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680317354348</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Cleaned up event page.. again">
+      <created>1680375955775</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1680375955775</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,7 +212,8 @@
     <MESSAGE value="Event page opens when event is clicked" />
     <MESSAGE value="Event info added to event page" />
     <MESSAGE value="Cleaned up event page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up event page" />
+    <MESSAGE value="Cleaned up event page.. again" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up event page.. again" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

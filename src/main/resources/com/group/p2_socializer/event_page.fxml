@@ -26,9 +26,9 @@
                <center>
                   <AnchorPane fx:id="centerPane" BorderPane.alignment="CENTER">
                      <children>
-                        <JFXButton layoutX="120.0" layoutY="402.0" prefHeight="52.0" prefWidth="86.0" ripplerFill="#7bce3c" text="Attend Event" wrapText="true" />
-                        <JFXButton layoutX="28.0" layoutY="402.0" prefHeight="52.0" prefWidth="75.0" ripplerFill="#7bce3c" text="Interested" wrapText="true" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="124.0" layoutX="30.0" layoutY="640.0" stroke="BLACK" strokeType="INSIDE" width="306.0" AnchorPane.leftAnchor="36.0">
+                        <JFXButton layoutX="120.0" layoutY="411.0" prefHeight="29.0" prefWidth="86.0" ripplerFill="#7bce3c" text="Attend Event" wrapText="true" />
+                        <JFXButton layoutX="28.0" layoutY="411.0" prefHeight="29.0" prefWidth="75.0" ripplerFill="#7bce3c" text="Interested" wrapText="true" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="111.0" layoutX="37.0" layoutY="654.0" stroke="BLACK" strokeType="INSIDE" width="253.0" AnchorPane.leftAnchor="37.0">
                            <fill>
                               <LinearGradient endX="1.0" endY="1.0">
                                  <stops>
@@ -46,7 +46,7 @@
                               </LinearGradient>
                            </fill>
                         </Rectangle>
-                        <Circle layoutX="73.0" layoutY="673.0" radius="29.0" stroke="BLACK" strokeType="INSIDE">
+                        <Circle layoutX="80.0" layoutY="690.0" radius="29.0" stroke="BLACK" strokeType="INSIDE">
                            <fill>
                               <LinearGradient endX="1.0" endY="1.0">
                                  <stops>
@@ -64,7 +64,7 @@
                               </LinearGradient>
                            </fill>
                         </Circle>
-                        <Circle layoutX="149.0" layoutY="673.0" radius="29.0" stroke="BLACK" strokeType="INSIDE">
+                        <Circle layoutX="163.0" layoutY="690.0" radius="29.0" stroke="BLACK" strokeType="INSIDE">
                            <fill>
                               <LinearGradient endX="1.0" endY="1.0">
                                  <stops>
@@ -82,7 +82,7 @@
                               </LinearGradient>
                            </fill>
                         </Circle>
-                        <Circle layoutX="219.0" layoutY="673.0" radius="29.0" stroke="BLACK" strokeType="INSIDE">
+                        <Circle layoutX="239.0" layoutY="690.0" radius="29.0" stroke="BLACK" strokeType="INSIDE">
                            <fill>
                               <LinearGradient endX="1.0" endY="1.0">
                                  <stops>
@@ -100,26 +100,8 @@
                               </LinearGradient>
                            </fill>
                         </Circle>
-                        <Circle layoutX="295.0" layoutY="673.0" radius="29.0" stroke="BLACK" strokeType="INSIDE">
-                           <fill>
-                              <LinearGradient endX="1.0" endY="1.0">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color red="0.2898087203502655" green="0.5139777064323425" blue="0.7236841917037964" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color red="1.0" green="1.0" blue="1.0" />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </LinearGradient>
-                           </fill>
-                        </Circle>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="325.0" layoutX="394.0" layoutY="321.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-                        <JFXTextArea layoutX="396.0" layoutY="646.0" prefHeight="35.0" prefWidth="200.0" promptText="Chat" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="285.0" layoutX="368.0" layoutY="445.0" stroke="BLACK" strokeType="INSIDE" width="226.0" />
+                        <JFXTextArea layoutX="369.0" layoutY="730.0" prefHeight="35.0" prefWidth="227.0" promptText="Chat" />
                         <VBox layoutX="30.0" layoutY="788.0" prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <Label prefHeight="34.0" prefWidth="566.0" text="Label" />
@@ -180,7 +162,8 @@
                               </LinearGradient>
                            </fill>
                         </Rectangle>
-                        <Line endX="253.5" layoutX="130.0" layoutY="405.0" startX="-100.0" />
+                        <Line endX="464.0" layoutX="130.0" layoutY="405.0" startX="-92.5" />
+                        <Line endX="100.0" layoutX="138.0" layoutY="447.0" startX="-100.0" />
                      </children>
                   </AnchorPane>
                </center>
