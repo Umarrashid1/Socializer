@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -123,51 +124,70 @@ public class EventPageController {
         }
     }
     //TODO: Save news in DB and make them load on event page.
-    public void handlePostNewsButton(VBox postList){
-        Stage newWindow = new Stage();
-        newWindow.setTitle("New Post");
+    private boolean isWindowOpen = false;
 
-        // Create a layout for the new window
-        VBox layout = new VBox(10);
-        layout.setAlignment(Pos.CENTER);
+    public void handlePostNewsButton(VBox postList) {
+        if (!isWindowOpen) {
+            Stage newWindow = new Stage();
+            newWindow.setTitle("New Post");
+
+            // Create a layout for the new window
+
+            VBox postVBox = new VBox(10);
+            postVBox.setAlignment(Pos.CENTER);
+
+            // Add a text field for the user to enter their post
+            JFXTextArea JFXPostArea = new JFXTextArea();
+            JFXPostArea.setPromptText("new post text goes in here");
+            JFXPostArea.setPadding(new Insets(30));
+
+            postVBox.getChildren().add(JFXPostArea);
+
+            // Add a button to submit the post
+            JFXButton submitButton = new JFXButton("Submit");
+            submitButton.setPrefWidth(200);
+            submitButton.setPrefHeight(50);
+            submitButton.setStyle("-fx-background-color: #00ff00;");
 
 
-        // Add a text field for the user to enter their post
-        JFXTextArea JFXPostArea = new JFXTextArea();
-        JFXPostArea.setPromptText("new post text goes in here");
-        JFXPostArea.setPadding(new Insets(30));
+            submitButton.setOnAction(e -> {
 
-        layout.getChildren().add(JFXPostArea);
+                // Get the text from the text field and add it to the event page
+                String postText = JFXPostArea.getText();
 
-        // Add a button to submit the post
-        JFXButton submitButton = new JFXButton("Submit");
-        submitButton.setPrefWidth(200);
-        submitButton.setPrefHeight(50);
-        submitButton.setStyle("-fx-background-color: #00ff00;");
+                for (int i = 0; i < 1; i++){
+                    Label postLabel = new Label(postText);
+                    postLabel.setStyle("-fx-border-color: black; -fx-border-width: 1px;");
+                    postLabel.setMaxWidth(Double.MAX_VALUE);
+                    postLabel.setMaxHeight(Double.MAX_VALUE);
+                    VBox.setVgrow(postLabel, Priority.ALWAYS);
+                    postList.setPadding(new Insets(5, 0, 5, 36));
+                    postList.getChildren().add(postLabel);
+                    postList.setSpacing(30);
+
+                }
 
 
-        submitButton.setOnAction(e -> {
+                // Close the new window
+                newWindow.close();
 
-            // Get the text from the text field and add it to the event page
-            String postText = JFXPostArea.getText();
-            Label postLabel = new Label(postText);
-            postList.getChildren().add(postLabel);
-            // Close the new window
-            newWindow.close();
+                String createdMessage = "Post submitted!";
+                CalendarController calendarController = new CalendarController();
+                calendarController.showEventCreatedMessage(createdMessage);
+                isWindowOpen = false;
 
-            String createdMessage = "Post submitted!";
-            CalendarController calendarController = new CalendarController();
-            calendarController.showEventCreatedMessage(createdMessage);
 
-        });
+            });
 
-        layout.getChildren().add(submitButton);
+            postVBox.getChildren().add(submitButton);
 
-        // Show the new window
-        Scene scene = new Scene(layout, 400, 280);
-        newWindow.setScene(scene);
-        newWindow.show();
+            // Show the new window
+            Scene scene = new Scene(postVBox, 400, 280);
+            newWindow.setScene(scene);
+            newWindow.setAlwaysOnTop(true);
+            newWindow.show();
+            isWindowOpen = true;
 
+        }
     }
-
 }

@@ -157,7 +157,12 @@
                         </Rectangle>
                         <Line endX="464.0" layoutX="130.0" layoutY="405.0" startX="-92.5" />
                         <Line endX="100.0" layoutX="138.0" layoutY="447.0" startX="-100.0" />
-                        <VBox fx:id="postList" layoutX="9.0" layoutY="820.0" prefHeight="134.0" prefWidth="576.0" />
+                        <VBox fx:id="postList" layoutX="9.0" layoutY="845.0" prefHeight="20.0" prefWidth="576.0" />
+                        <Label layoutX="37.0" layoutY="805.0" prefHeight="39.0" prefWidth="459.0" text="Posts:">
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </center>
