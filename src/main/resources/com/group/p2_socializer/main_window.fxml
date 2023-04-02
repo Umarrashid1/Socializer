@@ -140,6 +140,7 @@
                            <MaterialIconView glyphName="SYNC" size="25" />
                         </graphic>
                      </JFXButton>
+                     <FontAwesomeIconView glyphName="WRENCH" layoutX="724.0" layoutY="661.0" />
 
                       </AnchorPane>
                </content>

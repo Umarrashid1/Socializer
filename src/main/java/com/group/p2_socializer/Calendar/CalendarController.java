@@ -325,27 +325,31 @@ public class CalendarController implements Initializable {
         //Switch to Calendar tab
         mainTabPane.getSelectionModel().select(calendarTab);
 
-
-
         EventPageController controller = new EventPageController();
         controller.loadEventPage(eventName, formattedDate, eventOrganiser, eventDescription, eventCity, eventCountry);
 
-        showEventCreatedMessage();
+        String createdMessage = "Event Created!";
+        showEventCreatedMessage(createdMessage);
+
     }
 
-    public void showEventCreatedMessage() {
+    public void showEventCreatedMessage(String createdMessage) {
         Stage stage = new Stage();
         stage.initStyle(StageStyle.TRANSPARENT);
 
-        Label message = new Label("Event created!");
+        Label message = new Label(createdMessage);
         message.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: Black;");
+
+
 
         StackPane root = new StackPane();
         root.getChildren().add(message);
+        root.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
 
         Scene scene = new Scene(root, 200, 50);
         scene.setFill(Color.TRANSPARENT);
         stage.setScene(scene);
+        stage.setAlwaysOnTop(true);
         stage.show();
 
         // Get screen dimensions and center point
@@ -355,8 +359,7 @@ public class CalendarController implements Initializable {
         stage.setX(centerX);
         stage.setY(centerY);
 
-// Set stage position to the center of the screen
-
+        // Added fade in and out
         FadeTransition fadeIn = new FadeTransition(Duration.millis(500), root);
         fadeIn.setFromValue(0.0);
         fadeIn.setToValue(1.0);
