@@ -7,20 +7,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -70,6 +67,7 @@ public class EventPageController {
             AnchorPane centerPane = (AnchorPane) scrollPane.getContent();
             VBox eventInfoVBox = (VBox) centerPane.lookup("#eventInfoVBox");
             HBox organiserHBox = (HBox) eventInfoVBox.lookup("#organiserHBox");
+            organiserHBox.setMaxWidth(250);
 
             //Label eventDateLabel = new Label(eventDate);
             Label eventDateLabel = (Label) eventInfoVBox.lookup("#eventDateLabel");
@@ -113,6 +111,8 @@ public class EventPageController {
 
             // Get reference from FXML
             VBox postList = (VBox) root.lookup("#postList");
+            postList.setMaxWidth(Double.MAX_VALUE);
+            postList.setMaxHeight(Double.MAX_VALUE);
             Button postNewsButton = (Button) root.lookup("#postNewsButton");
 
             postNewsButton.setOnMouseClicked((MouseEvent event) -> {
@@ -157,6 +157,7 @@ public class EventPageController {
 
                 for (int i = 0; i < 1; i++){
                     Label postLabel = new Label(postText);
+                    postLabel.setWrapText(true);
                     postLabel.setStyle("-fx-border-color: black; -fx-border-width: 1px;");
                     postLabel.setMaxWidth(Double.MAX_VALUE);
                     postLabel.setMaxHeight(Double.MAX_VALUE);
@@ -173,7 +174,7 @@ public class EventPageController {
 
                 String createdMessage = "Post submitted!";
                 CalendarController calendarController = new CalendarController();
-                calendarController.showEventCreatedMessage(createdMessage);
+                calendarController.showCreatedPopUp(createdMessage);
                 isWindowOpen = false;
 
 

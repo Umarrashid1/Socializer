@@ -5,16 +5,12 @@ import com.group.p2_socializer.Utils.ScreenUtils;
 import javafx.animation.FadeTransition;
 import javafx.animation.SequentialTransition;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -23,7 +19,9 @@ import javafx.scene.paint.RadialGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
@@ -36,7 +34,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.*;
 
 public class CalendarController implements Initializable {
@@ -172,17 +169,34 @@ public class CalendarController implements Initializable {
         }
     }
 
+
+    //TODO: Too intricate, split into methods
     void createCalendarActivity(List<CalendarActivity> calendarActivities, double rectangleHeight, double rectangleWidth, StackPane stackPane, Rectangle rectangle) {
         VBox calendarActivityBox = new VBox();
+
+        //TODO: NEEDS A REDO
+
         for (int k = 0; k < calendarActivities.size(); k++) {
-            if(k >= 2) {
-                Text moreActivities = new Text("...");
+            if(k >= 3) {
+                Text moreActivities = new Text("and more!");
                 calendarActivityBox.getChildren().add(moreActivities);
                 break;
             }
-            Text text = new Text(calendarActivities.get(k).getEventName());
-            text.setFont(Font.font("Eras Light ITC", 12));
-            calendarActivityBox.getChildren().add(text);
+
+
+            // Set max number of characters in event name, displayed in calendar
+            Text text = new Text(calendarActivities.get(k).getEventName().substring(0, Math.min(calendarActivities.get(k).getEventName().length(), 20)));
+            if (calendarActivities.get(k).getEventName().length() > 20) {
+                text.setText(text.getText() + "...");
+            }
+            TextFlow textFlow = new TextFlow(text);
+            //textFlow.setMaxWidth(80);
+
+            text.setFont(Font.font("Eras Light ITC", FontPosture.REGULAR, 11));
+            text.setUnderline(true);
+            calendarActivityBox.getChildren().add(textFlow);
+
+
         }
 
         rectangle.setOnMouseClicked((MouseEvent event) -> {
@@ -211,6 +225,8 @@ public class CalendarController implements Initializable {
 
                         Label eventDescriptionTitle = new Label("Description:");
                         Label eventDescriptionLabel = new Label(item.getEventDescription());
+                        eventDescriptionLabel.setWrapText(true);
+                        eventDescriptionLabel.setMaxWidth(550);
 
                         Label eventLocationTitle = new Label("Location:");
                         Label eventLocationLabel = new Label(item.getEventCountry()+ ", " + item.getEventCity());
@@ -286,18 +302,18 @@ public class CalendarController implements Initializable {
         });
 
 
-    Stop[] stops = new Stop[] {
-                new Stop(0, Color.web("#ECFF79")),
-                new Stop(1, Color.web("#ECFF79", 0.5))
+        Stop[] stops = new Stop[] {
+            new Stop(0, Color.web("#ECFF79")),
+            new Stop(1, Color.web("#ECFF79", 0.5))
         };
 
-// Create the RadialGradient and set it as the background fill for the VBox
+        // Create the RadialGradient and set it as the background fill for the VBox
         RadialGradient gradient = new RadialGradient(0, 0, 0.5, 0.5, 0.5, true, CycleMethod.NO_CYCLE, stops);
         calendarActivityBox.setBackground(new Background(new BackgroundFill(gradient, CornerRadii.EMPTY, Insets.EMPTY)));
 
-// Set other properties for the VBox as needed
+        // Set other properties for the VBox as needed
         calendarActivityBox.setTranslateY((rectangleHeight / 2) * 0.20);
-        calendarActivityBox.setMaxWidth(rectangleWidth * 0.9);
+        calendarActivityBox.setMaxWidth(rectangleWidth * 0.99);
         calendarActivityBox.setMaxHeight(rectangleHeight * 0.70);
         stackPane.getChildren().add(calendarActivityBox);
         calendarActivityBox.toBack();
@@ -329,11 +345,11 @@ public class CalendarController implements Initializable {
         controller.loadEventPage(eventName, formattedDate, eventOrganiser, eventDescription, eventCity, eventCountry);
 
         String createdMessage = "Event Created!";
-        showEventCreatedMessage(createdMessage);
+        showCreatedPopUp(createdMessage);
 
     }
 
-    public void showEventCreatedMessage(String createdMessage) {
+    public void showCreatedPopUp(String createdMessage) {
         Stage stage = new Stage();
         stage.initStyle(StageStyle.TRANSPARENT);
 

@@ -4,12 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92f53a86-253f-4ab7-bf8b-d0990df24caf" name="Changes" comment="handlePostNewsButton handler">
+    <list default="true" id="92f53a86-253f-4ab7-bf8b-d0990df24caf" name="Changes" comment="refined handlePostNewsButton handler">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/EventPage/EventPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/EventPage/EventPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/event_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/event_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/main_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/main_window.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/EventPage/EventPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/EventPage/EventPageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/event_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/event_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +32,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
     <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group/p2_socializer/EventPage/EventPageController.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -118,7 +125,7 @@
       <workItem from="1680114060628" duration="13823000" />
       <workItem from="1680267206700" duration="39474000" />
       <workItem from="1680348325885" duration="35370000" />
-      <workItem from="1680434810419" duration="9147000" />
+      <workItem from="1680434810419" duration="21789000" />
     </task>
     <task id="LOCAL-00001" summary="flags added">
       <created>1680175118354</created>
@@ -204,7 +211,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680403513937</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="refined handlePostNewsButton handler">
+      <created>1680444042683</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1680444042683</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,7 +251,8 @@
     <MESSAGE value="&quot;click event to view event page label&quot; added" />
     <MESSAGE value="event page opens after creation" />
     <MESSAGE value="handlePostNewsButton handler" />
-    <option name="LAST_COMMIT_MESSAGE" value="handlePostNewsButton handler" />
+    <MESSAGE value="refined handlePostNewsButton handler" />
+    <option name="LAST_COMMIT_MESSAGE" value="refined handlePostNewsButton handler" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

@@ -105,7 +105,7 @@
                         <VBox fx:id="eventInfoVBox" layoutX="36.0" layoutY="312.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="26.0">
                            <children>
                               <Label fx:id="eventDateLabel" text="Label" />
-                              <Label fx:id="eventTitleLabel" text="Label" />
+                              <Label fx:id="eventTitleLabel" text="Label" maxWidth="558" />
                               <Label fx:id="eventLocationLabel" text="Label" />
                               <HBox fx:id="organiserHBox" prefWidth="534.0">
                                  <children>
@@ -157,7 +157,12 @@
                         </Rectangle>
                         <Line endX="464.0" layoutX="130.0" layoutY="405.0" startX="-92.5" />
                         <Line endX="100.0" layoutX="138.0" layoutY="447.0" startX="-100.0" />
-                        <VBox fx:id="postList" layoutX="9.0" layoutY="820.0" prefHeight="134.0" prefWidth="576.0" />
+                        <VBox fx:id="postList" layoutX="9.0" layoutY="845.0" minWidth="558" />
+                        <Label layoutX="37.0" layoutY="805.0" minWidth="558.0" text="Posts:">
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </center>

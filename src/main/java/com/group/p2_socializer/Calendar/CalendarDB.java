@@ -45,7 +45,7 @@ public class CalendarDB {
             newActivity.localDateTime = (LocalDateTime) result.getObject("localdatetime");
             newActivity.timeZone = ZoneId.of(result.getString("timezone"));
             newActivity.eventName = result.getString("eventname");
-            newActivity.eventDescription = result.getString("eventdescription");
+            newActivity.eventDescription = result.getString("eventdescription"); //TODO: Fix "Data truncation: Data too long for column 'eventdescription' at row 1"
             newActivity.eventCity = result.getString("eventcity");
             newActivity.eventCountry = result.getString("eventcountry");
             newActivity.eventOrganiser = result.getString("eventorganiser");
