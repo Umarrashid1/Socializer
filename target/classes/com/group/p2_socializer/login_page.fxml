@@ -70,7 +70,7 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Button fx:id="quitButton" layoutX="40.0" layoutY="326.0" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="31.0" prefWidth="228.0" style="-fx-background-color: #263F73;" text="Quit" textFill="WHITE">
+            <Button fx:id="quitButton" layoutX="40.0" layoutY="326.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="228.0" style="-fx-background-color: #263F73;" text="Quit" textFill="WHITE">
                <effect>
                   <DropShadow />
                </effect>
@@ -85,7 +85,7 @@
                   <Font name="Arial" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="loginButton1" layoutX="40.0" layoutY="278.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="228.0" style="-fx-background-color: #263F73;" text="New User? (Create Account)" textFill="WHITE">
+            <Button fx:id="loginButton1" layoutX="40.0" layoutY="278.0" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="31.0" prefWidth="228.0" style="-fx-background-color: #263F73;" text="New User? (Create Account)" textFill="WHITE">
                <effect>
                   <DropShadow />
                </effect>
