@@ -16,7 +16,7 @@ import java.sql.SQLException;
 
 public class LoginController {
     @FXML
-    private Label result;
+    private Label loginMessage;
     @FXML
     private TextField username;
     @FXML
@@ -45,7 +45,7 @@ public class LoginController {
 
             //change scene if method returns non-null value
         }else{
-            result.setText("Wrong username or password");
+            loginMessage.setText("Wrong username or password");
         }
     }
     @FXML
@@ -54,9 +54,9 @@ public class LoginController {
         String currentPass = password.getText();
 
         if( LoginDB.registerUser(currentUser,currentPass)){
-            //result.setText("User registered");
+            loginMessage.setText("User registered");
         }else{
-            //result.setText("Username already taken");
+            loginMessage.setText("Username already taken");
         }
         // Call registerUser method, returns null if username taken
 
