@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="92f53a86-253f-4ab7-bf8b-d0990df24caf" name="Changes" comment="isWindowOpen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/UserLogIn/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/UserLogIn/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/login_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/login_page.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +121,7 @@
       <workItem from="1680434810419" duration="22849000" />
       <workItem from="1680516761648" duration="2338000" />
       <workItem from="1680523975428" duration="1049000" />
-      <workItem from="1680603643990" duration="1632000" />
+      <workItem from="1680603643990" duration="2458000" />
     </task>
     <task id="LOCAL-00001" summary="flags added">
       <created>1680175118354</created>
