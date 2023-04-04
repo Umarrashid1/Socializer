@@ -29,7 +29,7 @@ public class LoginController {
         User user = LoginDB.authLogin(currentUser,currentPass);
         // Call database to authenticate login, returns null value if auth fails.
         if(user != null){
-            Scene scene = result.getScene();
+            Scene scene = username.getScene();
             Window window = scene.getWindow();
             Stage stage = (Stage) window;
             FXMLLoader fxmlLoader = new FXMLLoader(Socializer.class.getResource("main_window.fxml"));
@@ -54,9 +54,9 @@ public class LoginController {
         String currentPass = password.getText();
 
         if( LoginDB.registerUser(currentUser,currentPass)){
-            result.setText("User registered");
+            //result.setText("User registered");
         }else{
-            result.setText("Username already taken");
+            //result.setText("Username already taken");
         }
         // Call registerUser method, returns null if username taken
 
