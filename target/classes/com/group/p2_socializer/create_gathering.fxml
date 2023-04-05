@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="createGatheringAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="781.0" prefWidth="956.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox layoutX="325.0" layoutY="199.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="120.0">
+         <children>
+            <HBox prefHeight="550.0" prefWidth="796.0">
+               <children>
+                  <VBox prefHeight="431.0" prefWidth="553.0">
+                     <children>
+                        <Label prefHeight="70.0" prefWidth="270.0" text="Event Gathering" textAlignment="CENTER" />
+                        <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 1" />
+                        <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 2" />
+                        <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 3" />
+                        <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 4" />
+                        <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 5" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="431.0" prefWidth="553.0">
+                     <children>
+                        <Label prefHeight="70.0" prefWidth="270.0" text="Custom Gathering" textAlignment="CENTER" />
+                        <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 1" />
+                        <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 2" />
+                        <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 3" />
+                        <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 4" />
+                        <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 5" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="431.0" prefWidth="553.0">
+                     <children>
+                        <Label prefHeight="70.0" prefWidth="270.0" text="Pre-defined Gathering" />
+                        <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 1" />
+                        <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 2" />
+                        <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 3" />
+                        <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 4" />
+                        <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 5" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
