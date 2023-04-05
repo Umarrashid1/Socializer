@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92f53a86-253f-4ab7-bf8b-d0990df24caf" name="Changes" comment="isWindowOpen">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Tabs/CreateEventController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create_event_page.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create_gathering.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/80d95b82-3828-45bf-80ba-8d417e42f06f.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/main_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/main_window.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/main_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/main_window.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="92f53a86-253f-4ab7-bf8b-d0990df24caf" name="Changes" comment="new package to seperate tabs" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -130,7 +120,7 @@
       <workItem from="1680516761648" duration="2338000" />
       <workItem from="1680523975428" duration="1049000" />
       <workItem from="1680603643990" duration="2458000" />
-      <workItem from="1680696127069" duration="5921000" />
+      <workItem from="1680696127069" duration="6391000" />
     </task>
     <task id="LOCAL-00001" summary="flags added">
       <created>1680175118354</created>
@@ -244,7 +234,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680519371535</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="new package to seperate tabs">
+      <created>1680707974115</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1680707974115</updated>
+    </task>
+    <task id="LOCAL-00018" summary="new package to seperate tabs">
+      <created>1680707999645</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1680707999645</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,7 +284,8 @@
     <MESSAGE value="refined handlePostNewsButton handler" />
     <MESSAGE value="fixed calendar activity name view" />
     <MESSAGE value="isWindowOpen" />
-    <option name="LAST_COMMIT_MESSAGE" value="isWindowOpen" />
+    <MESSAGE value="new package to seperate tabs" />
+    <option name="LAST_COMMIT_MESSAGE" value="new package to seperate tabs" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
