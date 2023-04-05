@@ -14,4 +14,6 @@ module com.group.p2_socializer {
     opens com.group.p2_socializer.Calendar to javafx.fxml;
     exports com.group.p2_socializer.UserLogIn;
     opens com.group.p2_socializer.UserLogIn to javafx.fxml;
+    exports com.group.p2_socializer.Tabs;
+    opens com.group.p2_socializer.Tabs to javafx.fxml;
 }
