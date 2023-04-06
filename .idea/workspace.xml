@@ -4,21 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92f53a86-253f-4ab7-bf8b-d0990df24caf" name="Changes" comment="new package to seperate tabs">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Tabs/CreateEventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="92f53a86-253f-4ab7-bf8b-d0990df24caf" name="Changes" comment="switch back to original anchor pane (not working)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Calendar/CalendarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Tabs/CreateGatheringController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Tabs/CreateGatheringController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create_event_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create_event_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create_gathering.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create_gathering.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/main_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/main_window.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Calendar/CalendarController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Calendar/CalendarController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Calendar/CalendarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Calendar/CalendarController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Tabs/CreateGatheringController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/create_event_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/create_event_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/create_gathering.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/create_gathering.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/main_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/main_window.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +126,7 @@
       <workItem from="1680523975428" duration="1049000" />
       <workItem from="1680603643990" duration="2458000" />
       <workItem from="1680696127069" duration="26945000" />
-      <workItem from="1680777058613" duration="2102000" />
+      <workItem from="1680777058613" duration="2767000" />
     </task>
     <task id="LOCAL-00001" summary="flags added">
       <created>1680175118354</created>
@@ -278,7 +268,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680708618680</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="switch back to original anchor pane (not working)">
+      <created>1680779280278</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1680779280278</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,7 +312,8 @@
     <MESSAGE value="fixed calendar activity name view" />
     <MESSAGE value="isWindowOpen" />
     <MESSAGE value="new package to seperate tabs" />
-    <option name="LAST_COMMIT_MESSAGE" value="new package to seperate tabs" />
+    <MESSAGE value="switch back to original anchor pane (not working)" />
+    <option name="LAST_COMMIT_MESSAGE" value="switch back to original anchor pane (not working)" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

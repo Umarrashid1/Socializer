@@ -142,7 +142,7 @@
             </Tab>
             <Tab fx:id="createGatheringButton" text="Create Gathering">
                <content>
-                  <AnchorPane>
+                  <AnchorPane fx:id="outerAnchorPane">
                      <children>
                         <AnchorPane fx:id="ChooseGatheringAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="781.0" prefWidth="956.0">
                            <children>

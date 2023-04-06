@@ -106,11 +106,14 @@ public class CalendarController implements Initializable {
     private AnchorPane ChooseGatheringAnchorPane;
     @FXML
     private AnchorPane createGatheringAnchorPane;
+    @FXML
+    private AnchorPane outerAnchorPane;
 
 
 
     public void handleCustomGatheringCreation() {
         AnchorPane originalAnchorPane = ChooseGatheringAnchorPane;
+
         customGatheringVBox.setOnMouseClicked((MouseEvent event) -> {
 
             FXMLLoader loader = new FXMLLoader();
