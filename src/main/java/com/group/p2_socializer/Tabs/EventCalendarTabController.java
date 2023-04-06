@@ -1,13 +1,13 @@
-package com.group.p2_socializer.Calendar;
+package com.group.p2_socializer.Tabs;
 
+import com.group.p2_socializer.Calendar.CalendarActivity;
+import com.group.p2_socializer.Calendar.CalendarManager;
 import com.group.p2_socializer.EventPage.EventPageController;
 import com.group.p2_socializer.Utils.ScreenUtils;
 import javafx.animation.FadeTransition;
 import javafx.animation.SequentialTransition;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -30,123 +30,46 @@ import javafx.stage.Window;
 import javafx.util.Duration;
 import javafx.scene.layout.VBox;
 
-
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class CalendarController implements Initializable {
 
-    ZonedDateTime dateFocus;
-    ZonedDateTime today;
-    @FXML
-    public Tab eventCalendarButton;
-    @FXML
-    private Text year;
-    @FXML
-    private Text month;
+public class EventCalendarTabController implements Initializable {
+    ZonedDateTime dateFocus = ZonedDateTime.now();
+    ZonedDateTime today = ZonedDateTime.now();;
+
     @FXML
     private FlowPane calendar;
-    @FXML
-    private TextField eventNameTextField;
-    @FXML
-    private DatePicker eventDatePicker;
-    @FXML
-    private TextField eventTimeTextField;
-    @FXML
-    private TextField eventCityTextField;
-    @FXML
-    private TextField eventOrganiserTextField;
-    @FXML
-    private TextField eventCountryTextField;
-    @FXML
-    private TextArea eventDescriptionTextArea;
-    @FXML
-    private TabPane mainTabPane;
-    @FXML
-    private Tab calendarTab;
 
     @FXML
-    public Tab createGatheringButton;
+    private Text year;
 
-    @Override
+    @FXML
+    private Text month;
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        dateFocus = ZonedDateTime.now();
-        today = ZonedDateTime.now();
-
-        Map<Integer, List<CalendarActivity>> calendarData;
-
+        Map<Integer, List<CalendarActivity>> calendarData = null;
         try {
             calendarData = CalendarManager.getCalendarActivitiesMonth(dateFocus);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        drawCalendar(calendarData);
+        drawCalendar (calendarData);
+    }
 
-        /*FXMLLoader loader = new FXMLLoader();
+    public void updateCalendar(){
+        Map<Integer, List<CalendarActivity>> calendarData = null;
         try {
-            //TODO: Fix naming here wtf
-            AnchorPane createGatheringAnchorPaneNew = loader.load(getClass().getResource("/com/group/p2_socializer/create_gathering.fxml"));
-            createGatheringAnchorPane.getChildren().setAll(createGatheringAnchorPaneNew);
+            calendarData = CalendarManager.getCalendarActivitiesMonth(dateFocus);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        catch (IOException iex) {
-                System.out.println("file not found");
-        }
-*/
+        drawCalendar (calendarData);
     }
 
-
-
-    @FXML
-    private VBox customGatheringVBox;
-    @FXML
-    private AnchorPane ChooseGatheringAnchorPane;
-    @FXML
-    private AnchorPane createGatheringAnchorPane;
-    @FXML
-    private AnchorPane outerAnchorPane;
-
-
-
-    public void handleCustomGatheringCreation() {
-        AnchorPane originalAnchorPane = ChooseGatheringAnchorPane;
-
-        customGatheringVBox.setOnMouseClicked((MouseEvent event) -> {
-
-            FXMLLoader loader = new FXMLLoader();
-            try {
-                ChooseGatheringAnchorPane.getChildren().remove(ChooseGatheringAnchorPane);
-                AnchorPane createGatheringAnchorPane = loader.load(getClass().getResource("/com/group/p2_socializer/create_event_page.fxml"));
-                ChooseGatheringAnchorPane.getChildren().setAll(createGatheringAnchorPane);
-            } catch (IOException iex) {
-                System.out.println("file not found");
-            }
-        });
-
-        /*ChooseGatheringAnchorPane.setOnMouseClicked((MouseEvent event) -> {
-            if (!event.getTarget().equals(customGatheringVBox)) {
-                ChooseGatheringAnchorPane.getChildren().setAll(originalAnchorPane.getChildren());
-            }
-        });*/
-
-        mainTabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldTab, newTab) -> {
-            if (!newTab.equals(createGatheringButton)) {
-                ChooseGatheringAnchorPane.getChildren().remove(ChooseGatheringAnchorPane);
-
-                // switch back to original anchor pane
-                ChooseGatheringAnchorPane.getChildren().setAll(originalAnchorPane);
-            }
-        });
-    }
-
-
-
-
-
-    
     @FXML
     void backOneMonth() throws SQLException {
         dateFocus = dateFocus.minusMonths(1);
@@ -172,6 +95,7 @@ public class CalendarController implements Initializable {
         double strokeWidth = 1;
         double spacingH = calendar.getHgap();
         double spacingV = calendar.getVgap();
+
 
         int monthMaxDate = dateFocus.getMonth().maxLength();
         if(dateFocus.getYear() % 4 != 0 && monthMaxDate == 29){
@@ -235,9 +159,11 @@ public class CalendarController implements Initializable {
             }
         }
     }
+
     private boolean isWindowOpen = false;
 
     //TODO: Too intricate, split into methods
+
     void createCalendarActivity(List<CalendarActivity> calendarActivities, double rectangleHeight, double rectangleWidth, StackPane stackPane, Rectangle rectangle) {
         VBox calendarActivityBox = new VBox();
 
@@ -372,8 +298,8 @@ public class CalendarController implements Initializable {
         }
 
         Stop[] stops = new Stop[] {
-            new Stop(0, Color.web("#ECFF79")),
-            new Stop(1, Color.web("#ECFF79", 0.5))
+                new Stop(0, Color.web("#ECFF79")),
+                new Stop(1, Color.web("#ECFF79", 0.5))
         };
 
         // Create the RadialGradient and set it as the background fill for the VBox
@@ -390,49 +316,5 @@ public class CalendarController implements Initializable {
     }
 
 
-
-
-    public void showCreatedPopUp(String createdMessage) {
-        Stage stage = new Stage();
-        stage.initStyle(StageStyle.TRANSPARENT);
-
-        Label message = new Label(createdMessage);
-        message.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: Black;");
-
-
-
-        StackPane root = new StackPane();
-        root.getChildren().add(message);
-        root.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
-
-        Scene scene = new Scene(root, 200, 50);
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene(scene);
-        stage.setAlwaysOnTop(true);
-        stage.show();
-
-        // Get screen dimensions and center point
-        // position popup window in center of screen
-        double centerX = ScreenUtils.getScreenCenterX() - stage.getWidth() / 2;
-        double centerY = ScreenUtils.getScreenCenterY() - stage.getHeight() / 2;
-        stage.setX(centerX);
-        stage.setY(centerY);
-
-        // Added fade in and out
-        FadeTransition fadeIn = new FadeTransition(Duration.millis(500), root);
-        fadeIn.setFromValue(0.0);
-        fadeIn.setToValue(1.0);
-
-        FadeTransition fadeOut = new FadeTransition(Duration.millis(500), root);
-        fadeOut.setFromValue(1.0);
-        fadeOut.setToValue(0.0);
-        fadeOut.setDelay(Duration.seconds(5));
-
-        SequentialTransition sequence = new SequentialTransition(fadeIn, fadeOut);
-        sequence.setCycleCount(1);
-        sequence.play();
-
-        sequence.setOnFinished(e -> stage.close());
-    }
 
 }

@@ -1,6 +1,6 @@
 package com.group.p2_socializer.EventPage;
 
-import com.group.p2_socializer.Calendar.CalendarController;
+import com.group.p2_socializer.Utils.PopUpMessage;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.fxml.FXML;
@@ -173,8 +173,10 @@ public class EventPageController {
                 newWindow.close();
 
                 String createdMessage = "Post submitted!";
-                CalendarController calendarController = new CalendarController();
-                calendarController.showCreatedPopUp(createdMessage);
+
+                PopUpMessage popUpMessage = new PopUpMessage();
+                popUpMessage.showCreatedPopUp(createdMessage);
+
                 isWindowOpen = false;
 
 

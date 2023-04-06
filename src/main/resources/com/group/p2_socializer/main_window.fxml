@@ -1,39 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<StackPane prefHeight="821.0" prefWidth="956.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Calendar.CalendarController">
+<StackPane prefHeight="821.0" prefWidth="956.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.MainController">
     <children>
       <JFXTabPane fx:id="mainTabPane" prefHeight="52.0" prefWidth="749.0">
          <tabs>
-            <Tab>
+            <Tab fx:id="homeTab" onSelectionChanged="#detectTab" >
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
               </content>
                <graphic>
-                          <ImageView fx:id="homeTab" accessibleRole="BUTTON" fitHeight="57.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                          <ImageView accessibleRole="BUTTON" fitHeight="57.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
                               <image>
                                   <Image url="@logo-no-background.png" />
                               </image>
                           </ImageView>
                </graphic>
             </Tab>
-            <Tab fx:id="trendingButton" text="Trending">
+            <Tab fx:id="trendingTab" onSelectionChanged="#detectTab" text="Trending">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                </content>
@@ -41,7 +35,7 @@
                           <FontAwesomeIconView glyphName="STAR" size="20" />
                </graphic>
             </Tab>
-            <Tab fx:id="groupsTab" text="Discover">
+            <Tab fx:id="groupsTab" onSelectionChanged="#detectTab" text="Discover">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                </content>
@@ -49,150 +43,20 @@
                           <FontAwesomeIconView glyphName="USERS" size="20" />
                </graphic>
             </Tab>
-            <Tab fx:id="calendarTab" text="Event Calendar">
+            <Tab  fx:id="calendarTab" onSelectionChanged="#detectTab" text="Event Calendar">
                <graphic>
                   <FontAwesomeIconView glyphName="CALENDAR" size="20" />
                </graphic>
                <content />
-               <content>
-                      <AnchorPane prefHeight="611.0" prefWidth="749.0" style="-fx-background-color: #f2fafc;">
-                     <FlowPane fx:id="calendar" hgap="10.0" layoutX="16.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="489.0" prefWidth="716.0" vgap="5.0" />
-                     <HBox alignment="CENTER" layoutX="173.0" layoutY="44.0" prefHeight="44.0" prefWidth="419.0" spacing="5.0">
-                        <children>
-                           <JFXButton mnemonicParsing="false" onAction="#backOneMonth" text="&lt;" />
-                           <Text fx:id="year" strokeType="OUTSIDE" strokeWidth="0.0" text="####">
-                              <font>
-                                 <Font name="Eras Light ITC" size="22.0" />
-                              </font>
-                           </Text>
-                           <Text fx:id="month" strokeType="OUTSIDE" strokeWidth="0.0" text="####">
-                              <font>
-                                 <Font name="Eras Light ITC" size="22.0" />
-                              </font>
-                           </Text>
-                           <JFXButton mnemonicParsing="false" onAction="#forwardOneMonth" text="&gt;" />
-                        </children>
-                     </HBox>
-                     <HBox alignment="CENTER" layoutX="14.0" layoutY="116.0" prefHeight="44.0" prefWidth="716.0" spacing="35.0">
-                        <children>
-                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sunday" textAlignment="CENTER">
-                              <font>
-                                 <Font name="Eras Light ITC" size="16.0" />
-                              </font>
-                              <HBox.margin>
-                                 <Insets right="10.0" />
-                              </HBox.margin>
-                           </Text>
-                           <Text layoutX="213.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monday" textAlignment="CENTER">
-                              <font>
-                                 <Font name="Eras Light ITC" size="16.0" />
-                              </font>
-                              <HBox.margin>
-                                 <Insets />
-                              </HBox.margin>
-                           </Text>
-                           <Text layoutX="222.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tuesday" textAlignment="CENTER">
-                              <font>
-                                 <Font name="Eras Light ITC" size="16.0" />
-                              </font>
-                              <HBox.margin>
-                                 <Insets left="10.0" />
-                              </HBox.margin>
-                           </Text>
-                           <Text layoutX="232.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wednesday" textAlignment="CENTER">
-                              <font>
-                                 <Font name="Eras Light ITC" size="16.0" />
-                              </font>
-                           </Text>
-                           <Text layoutX="241.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thursday" textAlignment="CENTER">
-                              <font>
-                                 <Font name="Eras Light ITC" size="16.0" />
-                              </font>
-                              <HBox.margin>
-                                 <Insets />
-                              </HBox.margin>
-                           </Text>
-                           <Text layoutX="251.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Friday" textAlignment="CENTER">
-                              <font>
-                                 <Font name="Eras Light ITC" size="16.0" />
-                              </font>
-                              <HBox.margin>
-                                 <Insets left="10.0" />
-                              </HBox.margin>
-                           </Text>
-                           <Text layoutX="266.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Saturday" textAlignment="CENTER">
-                              <font>
-                                 <Font name="Eras Light ITC" size="16.0" />
-                              </font>
-                              <HBox.margin>
-                                 <Insets left="10.0" />
-                              </HBox.margin>
-                           </Text>
-                        </children>
-                     </HBox>
-                     <JFXButton layoutX="570.0" layoutY="52.0" text="Sync Calendar">
-                        <graphic>
-                           <MaterialIconView glyphName="SYNC" size="25" />
-                        </graphic>
-                     </JFXButton>
-                     <FontAwesomeIconView glyphName="WRENCH" layoutX="724.0" layoutY="661.0" />
-
-                      </AnchorPane>
-               </content>
             </Tab>
-            <Tab fx:id="createGatheringButton" text="Create Gathering">
-               <content>
-                  <AnchorPane fx:id="outerAnchorPane">
-                     <children>
-                        <AnchorPane fx:id="ChooseGatheringAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="781.0" prefWidth="956.0">
-                           <children>
-                              <VBox layoutX="325.0" layoutY="199.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="120.0">
-                                 <children>
-                                    <HBox onMouseClicked="#handleCustomGatheringCreation" prefHeight="550.0" prefWidth="796.0">
-                                       <children>
-                                          <VBox prefHeight="431.0" prefWidth="553.0">
-                                             <children>
-                                                <Label prefHeight="70.0" prefWidth="270.0" text="Event Gathering" textAlignment="CENTER" />
-                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 1" />
-                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 2" />
-                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 3" />
-                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 4" />
-                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 5" />
-                                             </children>
-                                          </VBox>
-                                          <VBox fx:id="customGatheringVBox" onContextMenuRequested="#handleCustomGatheringCreation" prefHeight="431.0" prefWidth="553.0">
-                                             <children>
-                                                <Label prefHeight="70.0" prefWidth="270.0" text="Custom Gathering" textAlignment="CENTER" />
-                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 1" />
-                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 2" />
-                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 3" />
-                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 4" />
-                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 5" />
-                                             </children>
-                                          </VBox>
-                                          <VBox prefHeight="431.0" prefWidth="553.0">
-                                             <children>
-                                                <Label prefHeight="70.0" prefWidth="270.0" text="Pre-defined Gathering" />
-                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 1" />
-                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 2" />
-                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 3" />
-                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 4" />
-                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 5" />
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
-                     </children></AnchorPane>
+             <Tab fx:id="createGatheringTab" text="Create Gathering" onSelectionChanged="#detectTab">
+                 <content>
                </content>
                <graphic>
                           <FontAwesomeIconView glyphName="PLUS" size="20" />
                </graphic>
             </Tab>
-            <Tab fx:id="myProfileButton" text="My Profile">
+            <Tab fx:id="myProfileTab" onSelectionChanged="#detectTab" text="My Profile">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                </content>

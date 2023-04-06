@@ -15,9 +15,7 @@ public class CalendarManager {
         List<CalendarActivity> calendarActivities;
         int year = dateFocus.getYear();
         int month = dateFocus.getMonth().getValue();
-
         calendarActivities = CalendarDB.getEvent(month, year);
-
         return createCalendarMap(calendarActivities);
     }
 
