@@ -5,7 +5,9 @@ import com.group.p2_socializer.Utils.ScreenUtils;
 import javafx.animation.FadeTransition;
 import javafx.animation.SequentialTransition;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -67,18 +69,80 @@ public class CalendarController implements Initializable {
     @FXML
     private Tab calendarTab;
 
+    @FXML
+    public Tab createGatheringButton;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         dateFocus = ZonedDateTime.now();
         today = ZonedDateTime.now();
+
         Map<Integer, List<CalendarActivity>> calendarData;
+
         try {
             calendarData = CalendarManager.getCalendarActivitiesMonth(dateFocus);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         drawCalendar(calendarData);
+
+        /*FXMLLoader loader = new FXMLLoader();
+        try {
+            //TODO: Fix naming here wtf
+            AnchorPane createGatheringAnchorPaneNew = loader.load(getClass().getResource("/com/group/p2_socializer/create_gathering.fxml"));
+            createGatheringAnchorPane.getChildren().setAll(createGatheringAnchorPaneNew);
+        }
+        catch (IOException iex) {
+                System.out.println("file not found");
+        }
+*/
     }
+
+
+
+    @FXML
+    private VBox customGatheringVBox;
+    @FXML
+    private AnchorPane ChooseGatheringAnchorPane;
+    @FXML
+    private AnchorPane createGatheringAnchorPane;
+
+
+
+    public void handleCustomGatheringCreation() {
+        AnchorPane originalAnchorPane = ChooseGatheringAnchorPane;
+        customGatheringVBox.setOnMouseClicked((MouseEvent event) -> {
+
+            FXMLLoader loader = new FXMLLoader();
+            try {
+                ChooseGatheringAnchorPane.getChildren().remove(ChooseGatheringAnchorPane);
+                AnchorPane createGatheringAnchorPane = loader.load(getClass().getResource("/com/group/p2_socializer/create_event_page.fxml"));
+                ChooseGatheringAnchorPane.getChildren().setAll(createGatheringAnchorPane);
+            } catch (IOException iex) {
+                System.out.println("file not found");
+            }
+        });
+
+        /*ChooseGatheringAnchorPane.setOnMouseClicked((MouseEvent event) -> {
+            if (!event.getTarget().equals(customGatheringVBox)) {
+                ChooseGatheringAnchorPane.getChildren().setAll(originalAnchorPane.getChildren());
+            }
+        });*/
+
+        mainTabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldTab, newTab) -> {
+            if (!newTab.equals(createGatheringButton)) {
+                ChooseGatheringAnchorPane.getChildren().remove(ChooseGatheringAnchorPane);
+
+                // switch back to original anchor pane
+                ChooseGatheringAnchorPane.getChildren().setAll(originalAnchorPane);
+            }
+        });
+    }
+
+
+
+
+
     
     @FXML
     void backOneMonth() throws SQLException {

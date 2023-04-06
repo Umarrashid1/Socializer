@@ -5,6 +5,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,6 +13,7 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -140,7 +142,51 @@
             </Tab>
             <Tab fx:id="createGatheringButton" text="Create Gathering">
                <content>
-                  <AnchorPane fx:id="createGatheringAnchorPane" />
+                  <AnchorPane>
+                     <children>
+                        <AnchorPane fx:id="ChooseGatheringAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="781.0" prefWidth="956.0">
+                           <children>
+                              <VBox layoutX="325.0" layoutY="199.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="120.0">
+                                 <children>
+                                    <HBox onMouseClicked="#handleCustomGatheringCreation" prefHeight="550.0" prefWidth="796.0">
+                                       <children>
+                                          <VBox prefHeight="431.0" prefWidth="553.0">
+                                             <children>
+                                                <Label prefHeight="70.0" prefWidth="270.0" text="Event Gathering" textAlignment="CENTER" />
+                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 1" />
+                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 2" />
+                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 3" />
+                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 4" />
+                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 5" />
+                                             </children>
+                                          </VBox>
+                                          <VBox fx:id="customGatheringVBox" onContextMenuRequested="#handleCustomGatheringCreation" prefHeight="431.0" prefWidth="553.0">
+                                             <children>
+                                                <Label prefHeight="70.0" prefWidth="270.0" text="Custom Gathering" textAlignment="CENTER" />
+                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 1" />
+                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 2" />
+                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 3" />
+                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 4" />
+                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 5" />
+                                             </children>
+                                          </VBox>
+                                          <VBox prefHeight="431.0" prefWidth="553.0">
+                                             <children>
+                                                <Label prefHeight="70.0" prefWidth="270.0" text="Pre-defined Gathering" />
+                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 1" />
+                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 2" />
+                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 3" />
+                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 4" />
+                                                <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 5" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </children></AnchorPane>
                </content>
                <graphic>
                           <FontAwesomeIconView glyphName="PLUS" size="20" />
