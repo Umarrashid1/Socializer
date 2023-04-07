@@ -28,8 +28,6 @@ public class ChooseGatheringTabController {
 
 
         public void handleCustomGatheringCreation() {
-
-
                 //customGatheringVBox.setOnMouseClicked((MouseEvent event) -> {
 
                         FXMLLoader loader = new FXMLLoader();
@@ -41,8 +39,34 @@ public class ChooseGatheringTabController {
                                 System.out.println("file not found");
                         }
                // });
+        }
 
 
+        public void handlePremadeGatheringCreation() {
+
+            FXMLLoader loader = new FXMLLoader();
+            try {
+            AnchorPane createGatheringAnchorPane = loader.load(getClass().getResource("/com/group/p2_socializer/create_event_page.fxml"));
+            ChooseGatheringAnchorPane.getChildren().setAll(createGatheringAnchorPane);
+
+            } catch (IOException iex) {
+            System.out.println("file not found");
+            }
 
         }
+
+
+        public void handleEventGatheringCreation() {
+
+            FXMLLoader loader = new FXMLLoader();
+            try {
+            AnchorPane createGatheringAnchorPane = loader.load(getClass().getResource("/com/group/p2_socializer/create_event_page.fxml"));
+            ChooseGatheringAnchorPane.getChildren().setAll(createGatheringAnchorPane);
+
+            } catch (IOException iex) {
+            System.out.println("file not found");
+            }
+
+        }
+
 }

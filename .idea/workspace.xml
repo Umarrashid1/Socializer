@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92f53a86-253f-4ab7-bf8b-d0990df24caf" name="Changes" comment="switch back to original anchor pane (not working)">
+    <list default="true" id="92f53a86-253f-4ab7-bf8b-d0990df24caf" name="Changes" comment="small details">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Socializer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Socializer.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Tabs/ChooseGatheringTabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Tabs/ChooseGatheringTabController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/choose_gathering.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/choose_gathering.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create_event_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create_event_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Tabs/ChooseGatheringTabController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Tabs/ChooseGatheringTabController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/choose_gathering.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/choose_gathering.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/style.css" afterDir="false" />
     </list>
     <list id="7828a811-cd15-40f5-aa48-43d7b14a8927" name="Changes by umarrashid" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +50,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/com/group/p2_socializer/EventPage/EventPageController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group/p2_socializer/MainController.java" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -151,7 +155,8 @@
       <workItem from="1680603643990" duration="2458000" />
       <workItem from="1680696127069" duration="26945000" />
       <workItem from="1680777058613" duration="22686000" />
-      <workItem from="1680865715571" duration="2732000" />
+      <workItem from="1680865715571" duration="3383000" />
+      <workItem from="1680871928357" duration="4487000" />
     </task>
     <task id="LOCAL-00001" summary="flags added">
       <created>1680175118354</created>
@@ -307,7 +312,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680780020872</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="small details">
+      <created>1680868486499</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1680868486499</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,7 +357,8 @@
     <MESSAGE value="isWindowOpen" />
     <MESSAGE value="new package to seperate tabs" />
     <MESSAGE value="switch back to original anchor pane (not working)" />
-    <option name="LAST_COMMIT_MESSAGE" value="switch back to original anchor pane (not working)" />
+    <MESSAGE value="small details" />
+    <option name="LAST_COMMIT_MESSAGE" value="small details" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

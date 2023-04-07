@@ -19,3 +19,18 @@
     -fx-border-width: 0px 0px 3px 0px;
 }
 
+.eventGatheringVBox {
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-border-style: solid;
+}
+.customGatheringVBox {
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-border-style: solid;
+}
+.preDefinedGatheringVBox {
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-border-style: solid;
+}
