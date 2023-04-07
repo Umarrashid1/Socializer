@@ -1,4 +1,4 @@
-package com.group.p2_socializer.EventPage;
+package com.group.p2_socializer.Pages;
 
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.jfoenix.controls.JFXButton;

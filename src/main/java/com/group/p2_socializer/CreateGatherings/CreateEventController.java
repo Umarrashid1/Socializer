@@ -1,7 +1,7 @@
-package com.group.p2_socializer.Tabs;
+package com.group.p2_socializer.CreateGatherings;
 
 import com.group.p2_socializer.Calendar.CalendarDB;
-import com.group.p2_socializer.EventPage.EventPageController;
+import com.group.p2_socializer.Pages.EventPageController;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;

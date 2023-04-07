@@ -18,7 +18,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefWidth="631.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.EventPage.EventPageController">
+<ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefWidth="631.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Pages.EventPageController">
    <content>
       <AnchorPane prefHeight="770.0">
          <children>
