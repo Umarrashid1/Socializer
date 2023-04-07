@@ -18,24 +18,29 @@ public class ChooseGatheringTabController {
         private AnchorPane ChooseGatheringAnchorPane;
 
         @FXML
+        private VBox eventGatheringVBox;
+
+        @FXML
         private VBox customGatheringVBox;
+
+        @FXML
+        private VBox preDefinedGatheringVBox;
 
 
         public void handleCustomGatheringCreation() {
 
-                AnchorPane originalAnchorPane = ChooseGatheringAnchorPane;
 
-                customGatheringVBox.setOnMouseClicked((MouseEvent event) -> {
+                //customGatheringVBox.setOnMouseClicked((MouseEvent event) -> {
 
                         FXMLLoader loader = new FXMLLoader();
                         try {
-                                //ChooseGatheringAnchorPane.getChildren().remove(ChooseGatheringAnchorPane);
                                 AnchorPane createGatheringAnchorPane = loader.load(getClass().getResource("/com/group/p2_socializer/create_event_page.fxml"));
                                 ChooseGatheringAnchorPane.getChildren().setAll(createGatheringAnchorPane);
+
                         } catch (IOException iex) {
                                 System.out.println("file not found");
                         }
-                });
+               // });
 
 
 
