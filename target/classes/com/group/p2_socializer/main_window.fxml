@@ -20,11 +20,11 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
               </content>
                <graphic>
-                          <ImageView accessibleRole="BUTTON" fitHeight="57.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                  <Image url="@logo-no-background.png" />
-                              </image>
-                          </ImageView>
+                   <ImageView accessibleRole="BUTTON" fitHeight="57.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                       <image>
+                           <Image url="@logo-no-background.png" />
+                       </image>
+                   </ImageView>
                </graphic>
             </Tab>
             <Tab fx:id="trendingTab" onSelectionChanged="#detectTab" text="Trending">
@@ -32,7 +32,7 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                </content>
                <graphic>
-                          <FontAwesomeIconView glyphName="STAR" size="20" />
+                   <FontAwesomeIconView glyphName="STAR" size="20" />
                </graphic>
             </Tab>
             <Tab fx:id="groupsTab" onSelectionChanged="#detectTab" text="Discover">
@@ -40,20 +40,21 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                </content>
                <graphic>
-                          <FontAwesomeIconView glyphName="USERS" size="20" />
+                   <FontAwesomeIconView glyphName="USERS" size="20" />
                </graphic>
             </Tab>
             <Tab  fx:id="calendarTab" onSelectionChanged="#detectTab" text="Event Calendar">
                <graphic>
                   <FontAwesomeIconView glyphName="CALENDAR" size="20" />
                </graphic>
-               <content />
+                <content>
+                </content>
             </Tab>
              <Tab fx:id="createGatheringTab" text="Create Gathering" onSelectionChanged="#detectTab">
                  <content>
                </content>
                <graphic>
-                          <FontAwesomeIconView glyphName="PLUS" size="20" />
+                   <FontAwesomeIconView glyphName="PLUS" size="20" />
                </graphic>
             </Tab>
             <Tab fx:id="myProfileTab" onSelectionChanged="#detectTab" text="My Profile">
@@ -61,7 +62,7 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                </content>
                <graphic>
-                          <FontAwesomeIconView glyphName="USER" size="20" />
+                   <FontAwesomeIconView glyphName="USER" size="20" />
                </graphic>
             </Tab>
          </tabs>
