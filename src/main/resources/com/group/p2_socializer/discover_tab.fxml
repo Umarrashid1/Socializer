@@ -12,11 +12,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="discoverAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="781.0" prefWidth="956.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Tabs.DiscoverTabController">
+<AnchorPane fx:id="discoverAnchorPane" minHeight="0.0" minWidth="0.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Tabs.DiscoverTabController" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
    <children>
-      <BorderPane layoutY="-2.0" prefHeight="784.0" prefWidth="956.0">
+      <BorderPane  minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1000.0" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <left>
-            <VBox prefHeight="784.0" prefWidth="200.0" style="-fx-border-style: solid;" BorderPane.alignment="CENTER">
+            <VBox prefHeight="0" prefWidth="200.0" style="-fx-border-style: solid;" BorderPane.alignment="CENTER">
                <children>
                   <HBox prefHeight="68.0" prefWidth="186.0">
                      <children>
@@ -46,9 +46,9 @@
             </VBox>
          </left>
          <center>
-            <ScrollPane fx:id="discoverScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" BorderPane.alignment="CENTER">
+            <ScrollPane fx:id="discoverScrollPane" hbarPolicy="NEVER" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER" prefHeight="800.0" maxHeight="${discoverAnchorPane.height}">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="787.0" prefWidth="736.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" >
                      <children>
                         <VBox fx:id="gatheringItemVBox" layoutX="3.0" layoutY="6.0">
                            <padding>
