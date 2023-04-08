@@ -157,12 +157,12 @@ public class EventCalendarTabController implements Initializable {
         }
     }
 
-    private boolean isWindowOpen = false;
 
     //TODO: Too intricate, split into methods
-
+     boolean isWindowOpen = false;
     void createCalendarActivity(List<CalendarActivity> calendarActivities, double rectangleHeight, double rectangleWidth, StackPane stackPane, Rectangle rectangle) {
         VBox calendarActivityBox = new VBox();
+        boolean isWindowOpen = false;
 
         //TODO: NEEDS A REDO
 
@@ -192,104 +192,7 @@ public class EventCalendarTabController implements Initializable {
 
         if (!isWindowOpen) {
             rectangle.setOnMouseClicked((MouseEvent event) -> {
-                ListView<CalendarActivity> listView = new ListView<>();
-                listView.getItems().addAll(calendarActivities);
-                listView.setCellFactory(param -> new ListCell<>() {
-                    @Override
-                    protected void updateItem(CalendarActivity item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty || item == null) {
-                            setText(null);
-                        } else {
-                            // Create a VBox to hold the text boxes
-                            VBox vbox = new VBox();
-                            Label windowTitleLabel = new Label();
-                            windowTitleLabel.setText("Click event to enter event page");
-                            windowTitleLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 11; -fx-text-fill: #797878;");
-
-
-                            // Create a text box for each property of the CalendarActivity
-                            Label eventNameTitle = new Label("Event:");
-                            Label eventNameLabel = new Label(item.getEventName());
-
-                            Label eventDateTitle = new Label("Date:");
-                            Label eventDateLabel = new Label(item.getDate().toString());
-
-                            Label eventDescriptionTitle = new Label("Description:");
-                            Label eventDescriptionLabel = new Label(item.getEventDescription());
-                            eventDescriptionLabel.setWrapText(true);
-                            eventDescriptionLabel.setMaxWidth(550);
-
-                            Label eventLocationTitle = new Label("Location:");
-                            Label eventLocationLabel = new Label(item.getEventCountry() + ", " + item.getEventCity());
-
-                            Label eventOrganiserTitle = new Label("Organiser:");
-                            Label eventOrganiserLabel = new Label(item.getEventOrganiser());
-
-                            Label[] labels = {eventNameTitle, eventNameLabel, eventDateTitle, eventDateLabel,
-                                    eventDescriptionTitle, eventDescriptionLabel, eventLocationTitle,
-                                    eventLocationLabel, eventOrganiserTitle, eventOrganiserLabel};
-
-                            for (int i = 0; i < labels.length; i++) {
-                                // Check if the index is even, which means every other label becomes bold
-                                if (i % 2 == 0) {
-                                    labels[i].setFont(Font.font("Eras Bold ITC", 17));
-                                } else {
-                                    //labels[i].setStyle("-fx-border-style: solid; -fx-border-width: 1px; -fx-border-color: black;");
-                                    labels[i].setFont(Font.font("Eras Medium ITC", 12));
-                                }
-                            }
-
-                            // Add the text boxes to the VBox
-                            vbox.getChildren().addAll(windowTitleLabel, eventNameTitle, eventNameLabel, eventDateTitle, eventDateLabel, eventDescriptionTitle, eventDescriptionLabel, eventLocationTitle, eventLocationLabel, eventOrganiserTitle, eventOrganiserLabel);
-                            BorderPane borderPane = new BorderPane();
-
-                            // Set the VBox as the center of the BorderPane
-                            borderPane.setCenter(vbox);
-                            borderPane.setStyle("-fx-border-color: black; -fx-border-width: 2px; -fx-padding: 5px;");
-
-                            // Set the BorderPane as the cell's graphic
-                            setGraphic(borderPane);
-
-
-                            vbox.setOnMouseClicked((MouseEvent event) -> {
-
-                                EventPageController controller = new EventPageController();
-
-                                String eventName = item.getEventName();
-
-
-                                ZonedDateTime zonedDateTime = item.getDate();
-                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy 'AT' HH:mm", Locale.ENGLISH);
-
-                                String formattedDate = zonedDateTime.format(formatter).toUpperCase();
-
-                                String eventOrganiser = item.getEventOrganiser();
-
-                                String eventCity = item.getEventCity();
-                                String eventCountry = item.getEventCountry();
-
-                                String eventDescription = item.getEventDescription();
-
-                                // Open the event page of the created event
-                                controller.loadEventPage(eventName, formattedDate, eventOrganiser, eventDescription, eventCity, eventCountry);
-
-                                // Close the list window
-                                Scene scene = vbox.getScene();
-                                Window window = scene.getWindow();
-                                window.hide();
-                                isWindowOpen = false;
-                            });
-
-                        }
-                    }
-                });
-//TODO: IF OPEN DONT OPEN
-                Scene scene = new Scene(listView, 600, 700);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.show();
-                isWindowOpen = true;
+                listEventsForDate(calendarActivities);
 
             });
         }
@@ -312,6 +215,110 @@ public class EventCalendarTabController implements Initializable {
 
     }
 
+
+    public void listEventsForDate(List<CalendarActivity> calendarActivities){
+        ListView<CalendarActivity> listView = new ListView<>();
+        listView.getItems().addAll(calendarActivities);
+        listView.setCellFactory(param -> new ListCell<>() {
+            @Override
+            protected void updateItem(CalendarActivity item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    // Create a VBox to hold the text boxes
+                    VBox vbox = new VBox();
+                    Label windowTitleLabel = new Label();
+                    windowTitleLabel.setText("Click event to enter event page");
+                    windowTitleLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 11; -fx-text-fill: #797878;");
+
+
+                    // Create a text box for each property of the CalendarActivity
+                    Label eventNameTitle = new Label("Event:");
+                    Label eventNameLabel = new Label(item.getEventName());
+
+                    Label eventDateTitle = new Label("Date:");
+                    Label eventDateLabel = new Label(item.getDate().toString());
+
+                    Label eventDescriptionTitle = new Label("Description:");
+                    Label eventDescriptionLabel = new Label(item.getEventDescription());
+                    eventDescriptionLabel.setWrapText(true);
+                    eventDescriptionLabel.setMaxWidth(550);
+
+                    Label eventLocationTitle = new Label("Location:");
+                    Label eventLocationLabel = new Label(item.getEventCountry() + ", " + item.getEventCity());
+
+                    Label eventOrganiserTitle = new Label("Organiser:");
+                    Label eventOrganiserLabel = new Label(item.getEventOrganiser());
+
+                    Label[] labels = {eventNameTitle, eventNameLabel, eventDateTitle, eventDateLabel,
+                            eventDescriptionTitle, eventDescriptionLabel, eventLocationTitle,
+                            eventLocationLabel, eventOrganiserTitle, eventOrganiserLabel};
+
+                    for (int i = 0; i < labels.length; i++) {
+                        // Check if the index is even, which means every other label becomes bold
+                        if (i % 2 == 0) {
+                            labels[i].setFont(Font.font("Eras Bold ITC", 17));
+                        } else {
+                            //labels[i].setStyle("-fx-border-style: solid; -fx-border-width: 1px; -fx-border-color: black;");
+                            labels[i].setFont(Font.font("Eras Medium ITC", 12));
+                        }
+                    }
+
+                    // Add the text boxes to the VBox
+                    vbox.getChildren().addAll(windowTitleLabel, eventNameTitle, eventNameLabel, eventDateTitle, eventDateLabel, eventDescriptionTitle, eventDescriptionLabel, eventLocationTitle, eventLocationLabel, eventOrganiserTitle, eventOrganiserLabel);
+                    BorderPane borderPane = new BorderPane();
+
+                    // Set the VBox as the center of the BorderPane
+                    borderPane.setCenter(vbox);
+                    borderPane.setStyle("-fx-border-color: black; -fx-border-width: 2px; -fx-padding: 5px;");
+
+                    // Set the BorderPane as the cell's graphic
+                    setGraphic(borderPane);
+
+
+                    vbox.setOnMouseClicked((MouseEvent event) -> {
+
+                        EventPageController controller = new EventPageController();
+
+                        String eventName = item.getEventName();
+
+
+                        ZonedDateTime zonedDateTime = item.getDate();
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy 'AT' HH:mm", Locale.ENGLISH);
+
+                        String formattedDate = zonedDateTime.format(formatter).toUpperCase();
+
+                        String eventOrganiser = item.getEventOrganiser();
+
+                        String eventCity = item.getEventCity();
+                        String eventCountry = item.getEventCountry();
+
+                        String eventDescription = item.getEventDescription();
+
+                        // Open the event page of the created event
+                        controller.loadEventPage(eventName, formattedDate, eventOrganiser, eventDescription, eventCity, eventCountry);
+
+                        // Close the list window
+                        Scene scene = vbox.getScene();
+                        Window window = scene.getWindow();
+                        window.hide();
+                        isWindowOpen = false;
+                    });
+
+                }
+            }
+        });
+//TODO: IF OPEN DONT OPEN
+        Scene scene = new Scene(listView, 600, 700);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        isWindowOpen = true;
+
+
+
+    }
 
 
 }

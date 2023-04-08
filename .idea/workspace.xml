@@ -4,33 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92f53a86-253f-4ab7-bf8b-d0990df24caf" name="Changes" comment="more handler methods">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/CreateGatherings/CreateCustomGatheringController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/CreateGatherings/CreateEventGatheringController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/CreateGatherings/CreatePredefinedGatheringController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Pages/GatheringPageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create_event.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create_event_gathering.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create_predefined_gathering.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/gathering_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Socializer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Socializer.xml" afterDir="false" />
+    <list default="true" id="92f53a86-253f-4ab7-bf8b-d0990df24caf" name="Changes" comment="fxml files and controllers for each kind of gathering">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/CreateGatherings/GatheringItemController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Tabs/DiscoverTabController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/bannerpic.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/discover_tab.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/gathering_item.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/EventPage/EventPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Pages/EventPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/CreateGatherings/CreateCustomGatheringController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/CreateGatherings/CreateGatheringController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/CreateGatherings/CreateEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/CreateGatherings/CreateEventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/CreateGatherings/CreateEventGatheringController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/CreateGatherings/CreatePredefinedGatheringController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Tabs/ChooseGatheringTabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Tabs/ChooseGatheringTabController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Tabs/CreateEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/CreateGatherings/CreateEventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Pages/GatheringPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Pages/GatheringPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Tabs/EventCalendarTabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Tabs/EventCalendarTabController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create_event_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create_custom_gathering.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/event_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/event_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/EventPage/EventPageController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create_custom_gathering.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create_custom_gathering.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create_event_gathering.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create_event_gathering.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create_predefined_gathering.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/create_predefined_gathering.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/gathering_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/gathering_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/main_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/main_window.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Tabs/ChooseGatheringTabController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Tabs/ChooseGatheringTabController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Tabs/CreateEventController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Tabs/EventCalendarTabController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Tabs/EventCalendarTabController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Tabs/EventCalendarTabController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Tabs/EventCalendarTabController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/create_event_page.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/event_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/event_page.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
     </list>
     <list id="7828a811-cd15-40f5-aa48-43d7b14a8927" name="Changes by umarrashid" comment="" />
@@ -42,9 +38,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="FxmlFile" />
         <option value="Class" />
-        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -66,9 +62,6 @@
       </UrlAndAccount>
     </option>
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group/p2_socializer/EventPage/EventPageController.java" root0="FORCE_HIGHLIGHTING" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -83,40 +76,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Downloaded.Files.Path.Enabled": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "import_schema_mapping": "<schema-mapping>\n  <databases>\n    <list>\n      <schema-mapping-item>\n        <source-data-source-id>80d95b82-3828-45bf-80ba-8d417e42f06f</source-data-source-id>\n        <source-path>schema/&quot;socializer&quot;</source-path>\n        <target-data-source-id>80d95b82-3828-45bf-80ba-8d417e42f06f</target-data-source-id>\n        <target-path>schema/&quot;events&quot;</target-path>\n      </schema-mapping-item>\n    </list>\n  </databases>\n</schema-mapping>",
-    "last_directory_selection": "C:/Users/Roni/OneDrive - Aalborg Universitet/Desktop/P2/Socializer/src/main/java/com/group/p2_socializer",
-    "last_opened_file_path": "C:/Users/Roni/OneDrive - Aalborg Universitet/Desktop/P2/Socializer/src/main/resources/com/group/p2_socializer",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.32786888",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;import_schema_mapping&quot;: &quot;&lt;schema-mapping&gt;\n  &lt;databases&gt;\n    &lt;list&gt;\n      &lt;schema-mapping-item&gt;\n        &lt;source-data-source-id&gt;80d95b82-3828-45bf-80ba-8d417e42f06f&lt;/source-data-source-id&gt;\n        &lt;source-path&gt;schema/&amp;quot;socializer&amp;quot;&lt;/source-path&gt;\n        &lt;target-data-source-id&gt;80d95b82-3828-45bf-80ba-8d417e42f06f&lt;/target-data-source-id&gt;\n        &lt;target-path&gt;schema/&amp;quot;events&amp;quot;&lt;/target-path&gt;\n      &lt;/schema-mapping-item&gt;\n    &lt;/list&gt;\n  &lt;/databases&gt;\n&lt;/schema-mapping&gt;&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/Roni/OneDrive - Aalborg Universitet/Desktop/P2/Socializer/src/main/java/com/group/p2_socializer&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Roni/OneDrive - Aalborg Universitet/Desktop/P2/Socializer/src/main/resources/com/group/p2_socializer&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.32786888&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.group.p2_socializer.Tabs" />
@@ -126,6 +119,7 @@
       <recent name="C:\Users\ronie\OneDrive - Aalborg Universitet\Desktop\P2\P2_socializer\Socializer\src\main\resources\com\group\p2_socializer" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Roni\OneDrive - Aalborg Universitet\Desktop\P2\Socializer\src\main\resources\com\group\p2_socializer" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer" />
       <recent name="$PROJECT_DIR$/src/main/java/com/group/p2_socializer" />
       <recent name="$PROJECT_DIR$/src/main/java/Calendar" />
@@ -180,6 +174,7 @@
       <workItem from="1680777058613" duration="22686000" />
       <workItem from="1680865715571" duration="3383000" />
       <workItem from="1680871928357" duration="4487000" />
+      <workItem from="1680905457549" duration="393000" />
     </task>
     <task id="LOCAL-00001" summary="flags added">
       <created>1680175118354</created>
@@ -349,7 +344,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680878997435</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="fxml files and controllers for each kind of gathering">
+      <created>1680892886031</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1680892886031</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -389,7 +391,8 @@
     <MESSAGE value="switch back to original anchor pane (not working)" />
     <MESSAGE value="small details" />
     <MESSAGE value="more handler methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="more handler methods" />
+    <MESSAGE value="fxml files and controllers for each kind of gathering" />
+    <option name="LAST_COMMIT_MESSAGE" value="fxml files and controllers for each kind of gathering" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

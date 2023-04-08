@@ -34,17 +34,8 @@ public class CreateEventController {
     private TabPane mainTabPane;
     @FXML
     private Tab calendarTab;
-
-
-
     @FXML
     public JFXButton goBack;
-
-
-
-
-
-
 
     @FXML
     public void handleCreateEvent() throws SQLException, IOException {

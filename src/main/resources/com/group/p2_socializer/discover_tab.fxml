@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="discoverAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="781.0" prefWidth="956.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Tabs.DiscoverTabController">
+   <children>
+      <BorderPane layoutY="-2.0" prefHeight="784.0" prefWidth="956.0">
+         <left>
+            <VBox prefHeight="784.0" prefWidth="200.0" style="-fx-border-style: solid;" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="68.0" prefWidth="186.0">
+                     <children>
+                        <Label contentDisplay="RIGHT" prefHeight="63.0" prefWidth="171.0" text="Filters">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <MaterialIconView glyphName="FILTER" wrappingWidth="35.0" />
+                           </graphic>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Line endX="100.0" startX="-100.0" />
+                  <JFXCheckBox prefHeight="47.0" prefWidth="200.0" />
+                  <JFXCheckBox prefHeight="47.0" prefWidth="200.0" />
+                  <JFXCheckBox prefHeight="47.0" prefWidth="200.0" />
+                  <JFXCheckBox prefHeight="47.0" prefWidth="200.0" />
+                  <JFXCheckBox prefHeight="47.0" prefWidth="200.0" />
+                  <JFXCheckBox prefHeight="47.0" prefWidth="200.0" />
+                  <JFXCheckBox prefHeight="47.0" prefWidth="200.0" />
+                  <JFXCheckBox prefHeight="47.0" prefWidth="200.0" />
+               </children>
+               <padding>
+                  <Insets left="9.0" />
+               </padding>
+            </VBox>
+         </left>
+         <center>
+            <ScrollPane fx:id="discoverScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" BorderPane.alignment="CENTER">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="787.0" prefWidth="736.0">
+                     <children>
+                        <VBox fx:id="gatheringItemVBox" layoutX="3.0" layoutY="6.0">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

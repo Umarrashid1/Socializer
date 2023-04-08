@@ -49,13 +49,13 @@ public class GatheringPageController {
     private VBox postList;
 
 
-    public void loadEventPage(String eventName, String eventDate, String eventOrganiser, String eventDescription, String eventCity, String eventCountry) {
+    public void loadGatheringPage(String eventName, String eventDate, String eventOrganiser, String eventDescription, String eventCity, String eventCountry) {
         try {
 
             //TODO: Set max size and enable text wrap for every label and text
 
             // Load the FXML file
-            FXMLLoader loader = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/event_page.fxml"));
+            FXMLLoader loader = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/gathering_page.fxml"));
             Parent root = loader.load();
 
 
@@ -123,7 +123,7 @@ public class GatheringPageController {
             e.printStackTrace();
         }
     }
-    //TODO: Save news in DB and make them load on event page.
+    //TODO: Save news in DB and make them load on event page
     private boolean isWindowOpen = false;
 
     public void handlePostNewsButton(VBox postList) {

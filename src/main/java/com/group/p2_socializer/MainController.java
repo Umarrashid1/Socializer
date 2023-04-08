@@ -84,7 +84,7 @@ public class MainController implements Initializable {
                 }else if (newTab == trendingTab) {
                     loadPage("choose_gathering");
                 }else if (newTab == groupsTab){
-                    loadPage("choose_gathering");
+                    loadPage("discover_tab");
                 }else if (newTab == myProfileTab){
                     loadPage("choose_gathering");
                 }else if (newTab == createGatheringTab)
