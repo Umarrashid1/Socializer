@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92f53a86-253f-4ab7-bf8b-d0990df24caf" name="Changes" comment="Dynamic scaling Discover tab" />
+    <list default="true" id="92f53a86-253f-4ab7-bf8b-d0990df24caf" name="Changes" comment="Dynamic scaling Discover tab">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <list id="7828a811-cd15-40f5-aa48-43d7b14a8927" name="Changes by umarrashid" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +158,7 @@
       <workItem from="1680954403648" duration="2187000" />
       <workItem from="1680971019872" duration="2021000" />
       <workItem from="1681217893605" duration="9379000" />
+      <workItem from="1681232451937" duration="138000" />
     </task>
     <task id="LOCAL-00001" summary="flags added">
       <created>1680175118354</created>
