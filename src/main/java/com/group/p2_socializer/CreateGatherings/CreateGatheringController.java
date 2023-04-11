@@ -64,16 +64,11 @@ public class CreateGatheringController {
 
         //Switch to Calendar tab
         //mainTabPane.getSelectionModel().select(calendarTab);
-
-
-
-
     }
 
 
     @FXML
     public void handleCreateCustomGathering() throws SQLException {
-
         getDataFromUserForm();
 
         String createdMessage = "Gathering Created!";
