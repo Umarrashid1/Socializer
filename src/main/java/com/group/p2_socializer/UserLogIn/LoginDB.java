@@ -67,6 +67,20 @@ public class LoginDB {
             return true;
         }
     }
+    public static void deleteUser(int id) throws SQLException {
+        String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
+        String dbUser = "root";
+        String dbPassword = "password";
+        String sql = "DELETE FROM users WHERE id = ?";
+        Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1, id);
+        statement.executeUpdate();
+        connection.close();
+
+
+
+    }
 
 }
 

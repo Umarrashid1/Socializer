@@ -1,6 +1,5 @@
-package com.group.p2_socializer.CreateGatherings;
+package com.group.p2_socializer.Calendar;
 
-import com.group.p2_socializer.Calendar.CalendarDB;
 import com.group.p2_socializer.Pages.EventPageController;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.jfoenix.controls.JFXButton;
@@ -39,27 +38,30 @@ public class CreateEventController {
 
     @FXML
     public void handleCreateEvent() throws SQLException, IOException {
-
-        String eventName = eventNameTextField.getText();
-        LocalDate eventDate = eventDatePicker.getValue();
+        Event newEvent = new Event();
+        newEvent.eventName = eventNameTextField.getText();
+        newEvent.eventCity = eventCityTextField.getText();
+        newEvent.eventCountry = eventCountryTextField.getText();
+        newEvent.eventDescription = eventDescriptionTextArea.getText();
+        newEvent.eventOrganiser = eventOrganiserTextField.getText();
         LocalTime eventTime = LocalTime.parse(eventTimeTextField.getText());
-        String eventCity = eventCityTextField.getText();
-        String eventCountry = eventCountryTextField.getText();
-        String eventDescription = eventDescriptionTextArea.getText();
-        String eventOrganiser = eventOrganiserTextField.getText();
-        LocalDateTime localDateTime = LocalDateTime.of(eventDate, eventTime);
+        // get time user input
+        LocalDateTime localDateTime = LocalDateTime.of(eventDatePicker.getValue(), eventTime);
+        // combine localDate and localTime into localDateTime
+        newEvent.localDateTime = localDateTime;
         ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.systemDefault());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy 'AT' HH:mm", Locale.ENGLISH);
-        String formattedDate = zonedDateTime.format(formatter).toUpperCase();
-        ZoneId zoneId = ZoneId.systemDefault();
-        String timeZone = zoneId.toString();
-        CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
+        // convert localDateTime into ZonedDateTime
+        newEvent.zonedDatetime = zonedDateTime;
+        newEvent.timeZone = ZoneId.systemDefault();
+
+
+        CalendarDB.storeEvent(newEvent);
 
         //Switch to Calendar tab
         mainTabPane.getSelectionModel().select(calendarTab);
 
         EventPageController controller = new EventPageController();
-        controller.loadEventPage(eventName, formattedDate, eventOrganiser, eventDescription, eventCity, eventCountry);
+        controller.loadEventPage(newEvent);
 
         String createdMessage = "Event Created!";
 

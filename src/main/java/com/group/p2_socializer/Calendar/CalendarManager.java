@@ -5,30 +5,28 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-
 public class CalendarManager {
-    public static Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) throws SQLException {
+    public static Map<Integer, List<Event>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) throws SQLException {
         if (dateFocus == null) {
             throw new IllegalArgumentException("dateFocus cannot be null");
         }
-        List<CalendarActivity> calendarActivities;
+        List<Event> eventList;
         int year = dateFocus.getYear();
         int month = dateFocus.getMonth().getValue();
-        calendarActivities = CalendarDB.getEvent(month, year);
-        return createCalendarMap(calendarActivities);
+        eventList = CalendarDB.getEvent(month, year);
+        return createCalendarMap(eventList);
     }
 
-    public static Map<Integer, List<CalendarActivity>> createCalendarMap(List<CalendarActivity> calendarActivities) {
-        Map<Integer, List<CalendarActivity>> calendarActivityMap = new HashMap<>();
+    public static Map<Integer, List<Event>> createCalendarMap(List<Event> calendarActivities) {
+        Map<Integer, List<Event>> calendarActivityMap = new HashMap<>();
 
-        for (CalendarActivity activity: calendarActivities) {
-            int activityDate = activity.getDate().getDayOfMonth();
+        for (Event activity: calendarActivities) {
+            int activityDate = activity.getZonedDatetime().getDayOfMonth();
             if(!calendarActivityMap.containsKey(activityDate)){
                 calendarActivityMap.put(activityDate, List.of(activity));
             } else {
-                List<CalendarActivity> OldListByDate = calendarActivityMap.get(activityDate);
-                List<CalendarActivity> newList = new ArrayList<>(OldListByDate);
+                List<Event> OldListByDate = calendarActivityMap.get(activityDate);
+                List<Event> newList = new ArrayList<>(OldListByDate);
                 newList.add(activity);
                 calendarActivityMap.put(activityDate, newList);
             }

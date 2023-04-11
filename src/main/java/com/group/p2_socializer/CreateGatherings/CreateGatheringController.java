@@ -59,6 +59,8 @@ public class CreateGatheringController {
         timeZone = zoneId.toString();
 
         //TODO: fix
+        //TODO: Fix
+        //CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
 
         //Switch to Calendar tab
         //mainTabPane.getSelectionModel().select(calendarTab);
@@ -80,7 +82,6 @@ public class CreateGatheringController {
         popUpMessage.showCreatedPopUp(createdMessage);
 
         CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
-
 
         GatheringPageController gatheringPageController = new GatheringPageController();
         gatheringPageController.loadGatheringPage(eventName, formattedDate, eventOrganiser, eventDescription, eventCity, eventCountry);

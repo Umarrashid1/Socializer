@@ -4,23 +4,24 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-public class CalendarActivity {
+public class Event {
     public LocalDateTime localDateTime;
     public ZoneId timeZone;
-    public ZonedDateTime date;
+    public ZonedDateTime zonedDatetime;
     public String eventName;
     public String eventDescription;
     public String eventCity;
     public String eventCountry;
     public String eventOrganiser;
+    public int id;
 
 
 
-    public ZonedDateTime getDate() {
-        return date;
+    public ZonedDateTime getZonedDatetime() {
+        return zonedDatetime;
     }
-    public void setDate(ZonedDateTime date) {
-        this.date = date;
+    public void setZonedDatetime(ZonedDateTime zonedDatetime) {
+        this.zonedDatetime = zonedDatetime;
     }
     public String getEventName() {
         return eventName;
@@ -48,7 +49,7 @@ public class CalendarActivity {
     @Override
     public String toString() {
         return "CalendarActivity{" +
-                "date=" + date +
+                "date=" + zonedDatetime +
                 ", name='" + eventName + '\'' +
                 ", description='" + eventDescription + '\'' +
                 ", city='" + eventCity + '\'' +

@@ -1,6 +1,6 @@
 package com.group.p2_socializer.Tabs;
 
-import com.group.p2_socializer.Calendar.CalendarActivity;
+import com.group.p2_socializer.Calendar.Event;
 import com.group.p2_socializer.Calendar.CalendarManager;
 import com.group.p2_socializer.Pages.EventPageController;
 import javafx.animation.FadeTransition;
@@ -26,7 +26,6 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.util.Duration;
 import javafx.scene.layout.VBox;
-
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.*;
@@ -40,15 +39,13 @@ public class EventCalendarTabController implements Initializable {
 
     @FXML
     private FlowPane calendar;
-
     @FXML
     private Text year;
-
     @FXML
     private Text month;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Map<Integer, List<CalendarActivity>> calendarData = null;
+        Map<Integer, List<Event>> calendarData = null;
         try {
             calendarData = CalendarManager.getCalendarActivitiesMonth(dateFocus);
         } catch (SQLException e) {
@@ -58,7 +55,7 @@ public class EventCalendarTabController implements Initializable {
     }
 
     public void updateCalendar(){
-        Map<Integer, List<CalendarActivity>> calendarData = null;
+        Map<Integer, List<Event>> calendarData = null;
         try {
             calendarData = CalendarManager.getCalendarActivitiesMonth(dateFocus);
         } catch (SQLException e) {
@@ -71,7 +68,7 @@ public class EventCalendarTabController implements Initializable {
     void backOneMonth() throws SQLException {
         dateFocus = dateFocus.minusMonths(1);
         calendar.getChildren().clear();
-        Map<Integer, List<CalendarActivity>> calendarData = CalendarManager.getCalendarActivitiesMonth(dateFocus);
+        Map<Integer, List<Event>> calendarData = CalendarManager.getCalendarActivitiesMonth(dateFocus);
         drawCalendar (calendarData);
     }
 
@@ -79,14 +76,13 @@ public class EventCalendarTabController implements Initializable {
     void forwardOneMonth(ActionEvent event) throws SQLException {
         dateFocus = dateFocus.plusMonths(1);
         calendar.getChildren().clear();
-        Map<Integer, List<CalendarActivity>> calendarData = CalendarManager.getCalendarActivitiesMonth(dateFocus);
+        Map<Integer, List<Event>> calendarData = CalendarManager.getCalendarActivitiesMonth(dateFocus);
         drawCalendar (calendarData);
     }
     @FXML
-    public void drawCalendar(Map<Integer, List<CalendarActivity>> calendarData) {
+    public void drawCalendar(Map<Integer, List<Event>> calendarData) {
         year.setText(String.valueOf(dateFocus.getYear()));
         month.setText(String.valueOf(dateFocus.getMonth()));
-
         double calendarWidth = calendar.getPrefWidth();
         double calendarHeight = calendar.getPrefHeight();
         double strokeWidth = 1;
@@ -142,7 +138,7 @@ public class EventCalendarTabController implements Initializable {
                         date.setTranslateY(textTranslationY);
                         stackPane.getChildren().add(date);
 
-                        List<CalendarActivity> activities = calendarData.get(currentDate);
+                        List<Event> activities = calendarData.get(currentDate);
                         if (activities != null) {
                             createCalendarActivity(activities, rectangleHeight, rectangleWidth, stackPane, rectangle);
                         }
@@ -160,7 +156,7 @@ public class EventCalendarTabController implements Initializable {
 
     //TODO: Too intricate, split into methods
      boolean isWindowOpen = false;
-    void createCalendarActivity(List<CalendarActivity> calendarActivities, double rectangleHeight, double rectangleWidth, StackPane stackPane, Rectangle rectangle) {
+    void createCalendarActivity(List<Event> calendarActivities, double rectangleHeight, double rectangleWidth, StackPane stackPane, Rectangle rectangle) {
         VBox calendarActivityBox = new VBox();
         boolean isWindowOpen = false;
 
@@ -181,19 +177,15 @@ public class EventCalendarTabController implements Initializable {
             }
             TextFlow textFlow = new TextFlow(text);
             //textFlow.setMaxWidth(80);
-
             text.setFont(Font.font("Eras Light ITC", FontPosture.REGULAR, 11));
             text.setUnderline(true);
             calendarActivityBox.getChildren().add(textFlow);
-
-
         }
         //TODO: Fix isWindowOpen
 
         if (!isWindowOpen) {
             rectangle.setOnMouseClicked((MouseEvent event) -> {
                 listEventsForDate(calendarActivities);
-
             });
         }
 
@@ -212,16 +204,14 @@ public class EventCalendarTabController implements Initializable {
         calendarActivityBox.setMaxHeight(rectangleHeight * 0.70);
         stackPane.getChildren().add(calendarActivityBox);
         calendarActivityBox.toBack();
-
     }
 
-
-    public void listEventsForDate(List<CalendarActivity> calendarActivities){
-        ListView<CalendarActivity> listView = new ListView<>();
+    public void listEventsForDate(List<Event> calendarActivities){
+        ListView<Event> listView = new ListView<>();
         listView.getItems().addAll(calendarActivities);
         listView.setCellFactory(param -> new ListCell<>() {
             @Override
-            protected void updateItem(CalendarActivity item, boolean empty) {
+            protected void updateItem(Event item, boolean empty) {
                 super.updateItem(item, empty);
                 if (empty || item == null) {
                     setText(null);
@@ -238,7 +228,7 @@ public class EventCalendarTabController implements Initializable {
                     Label eventNameLabel = new Label(item.getEventName());
 
                     Label eventDateTitle = new Label("Date:");
-                    Label eventDateLabel = new Label(item.getDate().toString());
+                    Label eventDateLabel = new Label(item.getZonedDatetime().toString());
 
                     Label eventDescriptionTitle = new Label("Description:");
                     Label eventDescriptionLabel = new Label(item.getEventDescription());
@@ -280,24 +270,10 @@ public class EventCalendarTabController implements Initializable {
                     vbox.setOnMouseClicked((MouseEvent event) -> {
 
                         EventPageController controller = new EventPageController();
-
-                        String eventName = item.getEventName();
-
-
-                        ZonedDateTime zonedDateTime = item.getDate();
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy 'AT' HH:mm", Locale.ENGLISH);
-
-                        String formattedDate = zonedDateTime.format(formatter).toUpperCase();
-
-                        String eventOrganiser = item.getEventOrganiser();
-
-                        String eventCity = item.getEventCity();
-                        String eventCountry = item.getEventCountry();
-
-                        String eventDescription = item.getEventDescription();
+                        Event newEvent = item;
 
                         // Open the event page of the created event
-                        controller.loadEventPage(eventName, formattedDate, eventOrganiser, eventDescription, eventCity, eventCountry);
+                        controller.loadEventPage(newEvent);
 
                         // Close the list window
                         Scene scene = vbox.getScene();

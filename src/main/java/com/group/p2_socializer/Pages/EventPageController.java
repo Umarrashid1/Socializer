@@ -1,8 +1,11 @@
 package com.group.p2_socializer.Pages;
 
+import com.group.p2_socializer.Calendar.CalendarDB;
+import com.group.p2_socializer.Calendar.Event;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -21,6 +24,9 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class EventPageController {
     @FXML
@@ -48,20 +54,18 @@ public class EventPageController {
     @FXML
     private VBox postList;
 
+    public void handleCancelEventButton(){
+    }
 
-    public void loadEventPage(String eventName, String eventDate, String eventOrganiser, String eventDescription, String eventCity, String eventCountry) {
+    public void loadEventPage(Event newEvent) {
         try {
-
             //TODO: Set max size and enable text wrap for every label and text
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy 'AT' HH:mm", Locale.ENGLISH);
+            String date = newEvent.zonedDatetime.format(formatter).toUpperCase();
 
             // Load the FXML file
             FXMLLoader loader = new FXMLLoader(EventPageController.class.getResource("/com/group/p2_socializer/event_page.fxml"));
             Parent root = loader.load();
-
-
-
-
-
             // Get reference to centerPane FXML file
             ScrollPane scrollPane = (ScrollPane) root.lookup("#scrollPane");
             AnchorPane centerPane = (AnchorPane) scrollPane.getContent();
@@ -71,16 +75,16 @@ public class EventPageController {
 
             //Label eventDateLabel = new Label(eventDate);
             Label eventDateLabel = (Label) eventInfoVBox.lookup("#eventDateLabel");
-            eventDateLabel.setText(eventDate);
+            eventDateLabel.setText(date);
             eventDateLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 13; -fx-text-fill: #797878;");
 
 
             Label eventTitleLabel = (Label) eventInfoVBox.lookup("#eventTitleLabel" );
-            eventTitleLabel.setText(eventName);
+            eventTitleLabel.setText(newEvent.eventName);
             eventTitleLabel.setFont(Font.font("Eras Bold ITC", 30));
 
             Label eventLocation =  (Label) eventInfoVBox.lookup("#eventLocationLabel");
-            eventLocation.setText(eventCity + ", " + eventCountry);
+            eventLocation.setText(newEvent.eventCity + ", " + newEvent.eventCountry);
             eventLocation.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 11; -fx-text-fill: #797878;");
 
             Label byLabel = (Label) organiserHBox.lookup("#byLabel");
@@ -89,10 +93,10 @@ public class EventPageController {
 
 
             Label eventOrganiserLabel = (Label) organiserHBox.lookup("#eventOrganiserLabel");
-            eventOrganiserLabel.setText(eventOrganiser);
+            eventOrganiserLabel.setText(newEvent.eventOrganiser);
             eventOrganiserLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 12; -fx-text-fill: #000000;");
 
-            Label eventDescriptionLabel = new Label(eventDescription);
+            Label eventDescriptionLabel = new Label(newEvent.eventDescription);
             eventDescriptionLabel.setLayoutX(36);
             eventDescriptionLabel.setLayoutY(460);
             eventDescriptionLabel.setFont(Font.font("Arial", 13));
@@ -104,7 +108,7 @@ public class EventPageController {
             // Create a new stage and set the new scene
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
-            newStage.setTitle(eventName);
+            newStage.setTitle(newEvent.eventName);
 
             // Show the new stage
             newStage.show();
@@ -142,14 +146,11 @@ public class EventPageController {
             JFXPostArea.setPadding(new Insets(30));
 
             postVBox.getChildren().add(JFXPostArea);
-
             // Add a button to submit the post
             JFXButton submitButton = new JFXButton("Submit");
             submitButton.setPrefWidth(200);
             submitButton.setPrefHeight(50);
             submitButton.setStyle("-fx-background-color: #00ff00;");
-
-
             submitButton.setOnAction(e -> {
 
                 // Get the text from the text field and add it to the event page
@@ -171,15 +172,11 @@ public class EventPageController {
 
                 // Close the new window
                 newWindow.close();
-
                 String createdMessage = "Post submitted!";
-
                 PopUpMessage popUpMessage = new PopUpMessage();
                 popUpMessage.showCreatedPopUp(createdMessage);
 
                 isWindowOpen = false;
-
-
             });
 
             postVBox.getChildren().add(submitButton);
@@ -193,4 +190,6 @@ public class EventPageController {
 
         }
     }
+
+
 }
