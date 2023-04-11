@@ -33,30 +33,37 @@ public class CreateGatheringController {
     @FXML
     public JFXButton goBack;
 
+    private String eventName;
+    private String formattedDate;
+    private String eventOrganiser;
+    private String eventDescription;
+    private String eventCity;
+    private String eventCountry;
+    private LocalDateTime localDateTime;
+    private String timeZone;
+
     //  Hmmmm bad name for method fix
     public void getDataFromUserForm() throws SQLException {
-        String eventName = eventNameTextField.getText();
+        eventName = eventNameTextField.getText();
         LocalDate eventDate = eventDatePicker.getValue();
         LocalTime eventTime = LocalTime.parse(eventTimeTextField.getText());
-        String eventCity = eventCityTextField.getText();
-        String eventCountry = eventCountryTextField.getText();
-        String eventDescription = eventDescriptionTextArea.getText();
-        String eventOrganiser = eventOrganiserTextField.getText();
-        LocalDateTime localDateTime = LocalDateTime.of(eventDate, eventTime);
+        eventCity = eventCityTextField.getText();
+        eventCountry = eventCountryTextField.getText();
+        eventDescription = eventDescriptionTextArea.getText();
+        eventOrganiser = eventOrganiserTextField.getText();
+        localDateTime = LocalDateTime.of(eventDate, eventTime);
         ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.systemDefault());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy 'AT' HH:mm", Locale.ENGLISH);
-        String formattedDate = zonedDateTime.format(formatter).toUpperCase();
+        formattedDate = zonedDateTime.format(formatter).toUpperCase();
         ZoneId zoneId = ZoneId.systemDefault();
-        String timeZone = zoneId.toString();
+        timeZone = zoneId.toString();
 
-        //TODO: Fix
-        CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
+        //TODO: fix
 
         //Switch to Calendar tab
         //mainTabPane.getSelectionModel().select(calendarTab);
 
-        GatheringPageController gatheringPageController = new GatheringPageController();
-        gatheringPageController.loadGatheringPage(eventName, formattedDate, eventOrganiser, eventDescription, eventCity, eventCountry);
+
 
 
     }
@@ -72,6 +79,12 @@ public class CreateGatheringController {
         PopUpMessage popUpMessage = new PopUpMessage();
         popUpMessage.showCreatedPopUp(createdMessage);
 
+        CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
+
+
+        GatheringPageController gatheringPageController = new GatheringPageController();
+        gatheringPageController.loadGatheringPage(eventName, formattedDate, eventOrganiser, eventDescription, eventCity, eventCountry);
+
 
     }
 
@@ -86,6 +99,11 @@ public class CreateGatheringController {
         PopUpMessage popUpMessage = new PopUpMessage();
         popUpMessage.showCreatedPopUp(createdMessage);
 
+        //CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
+
+
+        GatheringPageController gatheringPageController = new GatheringPageController();
+        gatheringPageController.loadGatheringPage(eventName, formattedDate, eventOrganiser, eventDescription, eventCity, eventCountry);
 
     }
 
@@ -98,6 +116,12 @@ public class CreateGatheringController {
 
         PopUpMessage popUpMessage = new PopUpMessage();
         popUpMessage.showCreatedPopUp(createdMessage);
+
+        //CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
+
+
+        GatheringPageController gatheringPageController = new GatheringPageController();
+        gatheringPageController.loadGatheringPage(eventName, formattedDate, eventOrganiser, eventDescription, eventCity, eventCountry);
 
 
     }

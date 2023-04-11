@@ -123,7 +123,7 @@ public class GatheringPageController {
             e.printStackTrace();
         }
     }
-    //TODO: Save news in DB and make them load on event page
+    //TODO: save news in DB and make them load on event page
     private boolean isWindowOpen = false;
 
     public void handlePostNewsButton(VBox postList) {

@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92f53a86-253f-4ab7-bf8b-d0990df24caf" name="Changes" comment="First edition of Discover tab">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="92f53a86-253f-4ab7-bf8b-d0990df24caf" name="Changes" comment="Dynamic scaling Discover tab">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/discover_tab.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group/p2_socializer/discover_tab.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Tabs/DiscoverTabController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/Tabs/DiscoverTabController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/discover_tab.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group/p2_socializer/discover_tab.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/CreateGatherings/CreateGatheringController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/CreateGatherings/CreateGatheringController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/CreateGatherings/GatheringItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/CreateGatherings/GatheringItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Pages/GatheringPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group/p2_socializer/Pages/GatheringPageController.java" afterDir="false" />
     </list>
     <list id="7828a811-cd15-40f5-aa48-43d7b14a8927" name="Changes by umarrashid" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -157,7 +157,8 @@
       <workItem from="1680871928357" duration="4487000" />
       <workItem from="1680905457549" duration="393000" />
       <workItem from="1680954403648" duration="2187000" />
-      <workItem from="1680971019872" duration="353000" />
+      <workItem from="1680971019872" duration="2021000" />
+      <workItem from="1681217893605" duration="9379000" />
     </task>
     <task id="LOCAL-00001" summary="flags added">
       <created>1680175118354</created>
@@ -348,7 +349,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680920246541</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Dynamic scaling Discover tab">
+      <created>1680971461073</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1680971461073</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -390,7 +398,8 @@
     <MESSAGE value="more handler methods" />
     <MESSAGE value="fxml files and controllers for each kind of gathering" />
     <MESSAGE value="First edition of Discover tab" />
-    <option name="LAST_COMMIT_MESSAGE" value="First edition of Discover tab" />
+    <MESSAGE value="Dynamic scaling Discover tab" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dynamic scaling Discover tab" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
