@@ -122,7 +122,7 @@
                               <JFXButton prefHeight="29.0" prefWidth="78.0" text="Edit event" />
                               <JFXButton fx:id="postNewsButton" prefHeight="29.0" prefWidth="78.0" text="Post news" />
                               <JFXButton prefHeight="29.0" prefWidth="104.0" text="Manage groups" />
-                              <JFXButton fx:id="CancelEventButton" onAction="#handleCancelEventButton" prefHeight="29.0" prefWidth="91.0" text="Cancel event" />
+                              <JFXButton fx:id="cancelEventButton" prefHeight="29.0" prefWidth="91.0" text="Cancel event" />
                            </children>
                            <padding>
                               <Insets bottom="1.0" />

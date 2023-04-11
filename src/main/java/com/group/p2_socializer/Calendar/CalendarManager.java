@@ -1,4 +1,6 @@
 package com.group.p2_socializer.Calendar;
+import com.group.p2_socializer.Database.EventDB;
+
 import java.sql.SQLException;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -13,7 +15,7 @@ public class CalendarManager {
         List<Event> eventList;
         int year = dateFocus.getYear();
         int month = dateFocus.getMonth().getValue();
-        eventList = CalendarDB.getEvent(month, year);
+        eventList = EventDB.getEvent(month, year);
         return createCalendarMap(eventList);
     }
 

@@ -1,5 +1,6 @@
 package com.group.p2_socializer.Calendar;
 
+import com.group.p2_socializer.Database.EventDB;
 import com.group.p2_socializer.Pages.EventPageController;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.jfoenix.controls.JFXButton;
@@ -9,8 +10,6 @@ import javafx.scene.control.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.*;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
 public class CreateEventController {
 
@@ -53,9 +52,7 @@ public class CreateEventController {
         // convert localDateTime into ZonedDateTime
         newEvent.zonedDatetime = zonedDateTime;
         newEvent.timeZone = ZoneId.systemDefault();
-
-
-        CalendarDB.storeEvent(newEvent);
+        EventDB.storeEvent(newEvent);
 
         //Switch to Calendar tab
         mainTabPane.getSelectionModel().select(calendarTab);

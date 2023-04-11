@@ -1,6 +1,8 @@
 package com.group.p2_socializer.CreateGatherings;
 
-import com.group.p2_socializer.Calendar.CalendarDB;
+import com.group.p2_socializer.Calendar.Event;
+import com.group.p2_socializer.Database.EventDB;
+import com.group.p2_socializer.Database.GatheringDB;
 import com.group.p2_socializer.Pages.GatheringPageController;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.jfoenix.controls.JFXButton;
@@ -44,20 +46,22 @@ public class CreateGatheringController {
 
     //  Hmmmm bad name for method fix
     public void getDataFromUserForm() throws SQLException {
-        eventName = eventNameTextField.getText();
-        LocalDate eventDate = eventDatePicker.getValue();
+        Gathering newGathering = new Gathering();
+        newGathering.eventName = eventNameTextField.getText();
+        newGathering.eventCity = eventCityTextField.getText();
+        newGathering.eventCountry = eventCountryTextField.getText();
+        newGathering.eventDescription = eventDescriptionTextArea.getText();
+        newGathering.eventOrganiser = eventOrganiserTextField.getText();
         LocalTime eventTime = LocalTime.parse(eventTimeTextField.getText());
-        eventCity = eventCityTextField.getText();
-        eventCountry = eventCountryTextField.getText();
-        eventDescription = eventDescriptionTextArea.getText();
-        eventOrganiser = eventOrganiserTextField.getText();
-        localDateTime = LocalDateTime.of(eventDate, eventTime);
+        // get time user input
+        LocalDateTime localDateTime = LocalDateTime.of(eventDatePicker.getValue(), eventTime);
+        // combine localDate and localTime into localDateTime
+        newGathering.localDateTime = localDateTime;
         ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.systemDefault());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy 'AT' HH:mm", Locale.ENGLISH);
-        formattedDate = zonedDateTime.format(formatter).toUpperCase();
-        ZoneId zoneId = ZoneId.systemDefault();
-        timeZone = zoneId.toString();
-
+        // convert localDateTime into ZonedDateTime
+        newGathering.zonedDatetime = zonedDateTime;
+        newGathering.timeZone = ZoneId.systemDefault();
+        GatheringDB.storeGathering(newGathering);
         //TODO: fix
         //TODO: Fix
         //CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
@@ -75,32 +79,21 @@ public class CreateGatheringController {
 
         PopUpMessage popUpMessage = new PopUpMessage();
         popUpMessage.showCreatedPopUp(createdMessage);
-
-        CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
-
+        //CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
         GatheringPageController gatheringPageController = new GatheringPageController();
         gatheringPageController.loadGatheringPage(eventName, formattedDate, eventOrganiser, eventDescription, eventCity, eventCountry);
-
-
     }
 
 
     @FXML
     public void handleCreateEventGathering() throws SQLException, IOException {
-
         getDataFromUserForm();
-
         String createdMessage = "Gathering Created!";
-
         PopUpMessage popUpMessage = new PopUpMessage();
         popUpMessage.showCreatedPopUp(createdMessage);
-
-        //CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
-
-
+        CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
         GatheringPageController gatheringPageController = new GatheringPageController();
         gatheringPageController.loadGatheringPage(eventName, formattedDate, eventOrganiser, eventDescription, eventCity, eventCountry);
-
     }
 
     @FXML

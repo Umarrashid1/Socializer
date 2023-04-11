@@ -1,5 +1,6 @@
 package com.group.p2_socializer.UserLogIn;
 
+import com.group.p2_socializer.Database.UserDB;
 import com.group.p2_socializer.Socializer;
 import com.group.p2_socializer.Utils.ScreenUtils;
 import javafx.fxml.FXML;
@@ -26,7 +27,7 @@ public class LoginController {
         String currentUser = username.getText();
         String currentPass = password.getText();
         //Get user input from login form
-        User user = LoginDB.authLogin(currentUser,currentPass);
+        User user = UserDB.authLogin(currentUser,currentPass);
         // Call database to authenticate login, returns null value if auth fails.
         if(user != null){
             Scene scene = username.getScene();
@@ -53,7 +54,7 @@ public class LoginController {
         String currentUser = username.getText();
         String currentPass = password.getText();
 
-        if( LoginDB.registerUser(currentUser,currentPass)){
+        if( UserDB.registerUser(currentUser,currentPass)){
             loginMessage.setText("User registered");
         }else{
             loginMessage.setText("Username already taken");

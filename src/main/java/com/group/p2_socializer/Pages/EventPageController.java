@@ -1,11 +1,10 @@
 package com.group.p2_socializer.Pages;
 
-import com.group.p2_socializer.Calendar.CalendarDB;
+import com.group.p2_socializer.Database.EventDB;
 import com.group.p2_socializer.Calendar.Event;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -24,7 +23,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.time.ZonedDateTime;
+import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
@@ -52,9 +51,14 @@ public class EventPageController {
     @FXML
     private JFXButton postNewsButton;
     @FXML
+    private JFXButton cancelEventButton;
+    @FXML
     private VBox postList;
 
-    public void handleCancelEventButton(){
+    public void handleCancelEventButton(Event newEvent) throws SQLException {
+        EventDB.deleteEvent(newEvent.id);
+        Stage stage = (Stage) cancelEventButton.getScene().getWindow();
+        stage.close();
     }
 
     public void loadEventPage(Event newEvent) {
@@ -118,9 +122,16 @@ public class EventPageController {
             postList.setMaxWidth(Double.MAX_VALUE);
             postList.setMaxHeight(Double.MAX_VALUE);
             Button postNewsButton = (Button) root.lookup("#postNewsButton");
-
             postNewsButton.setOnMouseClicked((MouseEvent event) -> {
                 handlePostNewsButton(postList);
+            });
+            Button cancelEventButton = (Button) root.lookup("#CancelEventButton");
+            cancelEventButton.setOnMouseClicked((MouseEvent event) -> {
+                try {
+                    handleCancelEventButton(newEvent);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
             });
 
         } catch (IOException e) {

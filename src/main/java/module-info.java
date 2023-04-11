@@ -19,5 +19,7 @@ module com.group.p2_socializer {
     exports com.group.p2_socializer.Calendar;
     exports com.group.p2_socializer.UserLogIn;
     exports com.group.p2_socializer.CreateGatherings;
+    exports com.group.p2_socializer.Database;
+    opens com.group.p2_socializer.Database to javafx.fxml;
 
 }

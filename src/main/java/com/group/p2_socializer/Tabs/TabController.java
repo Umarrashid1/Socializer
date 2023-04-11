@@ -1,4 +1,4 @@
-package com.group.p2_socializer;
+package com.group.p2_socializer.Tabs;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -13,7 +13,7 @@ import java.net.URL;
 import java.time.*;
 import java.util.*;
 
-public class MainController implements Initializable {
+public class TabController implements Initializable {
 
     ZonedDateTime dateFocus;
     ZonedDateTime today;
