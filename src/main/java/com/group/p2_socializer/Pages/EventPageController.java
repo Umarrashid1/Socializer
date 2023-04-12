@@ -56,7 +56,7 @@ public class EventPageController {
     @FXML
     private VBox postList;
 
-    public void handleCancelEventButton(Event newEvent) throws SQLException {
+    public void handleCancelEventButton(MouseEvent event, Event newEvent) throws SQLException {
         EventDB.deleteEvent(newEvent.id);
         Node node = (Node) event.getSource();
         Scene scene = node.getScene();
@@ -133,7 +133,7 @@ public class EventPageController {
             cancelEventButton.setOnMouseClicked((MouseEvent event) -> {
 
                 try {
-                    handleCancelEventButton(newEvent);
+                    handleCancelEventButton(event,newEvent);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
