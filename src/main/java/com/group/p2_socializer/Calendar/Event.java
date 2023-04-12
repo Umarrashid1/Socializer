@@ -45,7 +45,7 @@ public class Event {
     //public void setEventDescription(String eventDescription) {
       //  this.eventDescription = eventDescription;
     //}
-
+/*
     @Override
     public String toString() {
         return "CalendarActivity{" +
@@ -57,4 +57,6 @@ public class Event {
                 ", organiser='" + eventOrganiser + '\'' +
                 '}';
     }
+
+ */
 }

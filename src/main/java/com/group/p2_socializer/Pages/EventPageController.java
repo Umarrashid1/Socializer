@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -57,7 +58,9 @@ public class EventPageController {
 
     public void handleCancelEventButton(Event newEvent) throws SQLException {
         EventDB.deleteEvent(newEvent.id);
-        Stage stage = (Stage) cancelEventButton.getScene().getWindow();
+        Node node = (Node) event.getSource();
+        Scene scene = node.getScene();
+        Stage stage = (Stage) scene.getWindow();
         stage.close();
     }
 
@@ -125,8 +128,10 @@ public class EventPageController {
             postNewsButton.setOnMouseClicked((MouseEvent event) -> {
                 handlePostNewsButton(postList);
             });
-            Button cancelEventButton = (Button) root.lookup("#CancelEventButton");
+
+            Button cancelEventButton = (Button) root.lookup("#cancelEventButton");
             cancelEventButton.setOnMouseClicked((MouseEvent event) -> {
+
                 try {
                     handleCancelEventButton(newEvent);
                 } catch (SQLException e) {

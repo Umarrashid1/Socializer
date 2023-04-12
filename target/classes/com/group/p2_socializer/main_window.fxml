@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane prefHeight="821.0" prefWidth="956.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.MainController">
+<StackPane prefHeight="821.0" prefWidth="956.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Tabs.TabController">
     <children>
       <JFXTabPane fx:id="mainTabPane" prefHeight="52.0" prefWidth="749.0">
          <tabs>

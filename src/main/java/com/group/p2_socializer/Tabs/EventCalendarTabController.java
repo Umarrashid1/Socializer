@@ -237,7 +237,6 @@ public class EventCalendarTabController implements Initializable {
 
                     Label eventLocationTitle = new Label("Location:");
                     Label eventLocationLabel = new Label(item.getEventCountry() + ", " + item.getEventCity());
-
                     Label eventOrganiserTitle = new Label("Organiser:");
                     Label eventOrganiserLabel = new Label(item.getEventOrganiser());
 

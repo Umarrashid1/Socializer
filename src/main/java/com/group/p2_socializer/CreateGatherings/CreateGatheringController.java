@@ -68,18 +68,17 @@ public class CreateGatheringController {
 
         //Switch to Calendar tab
         //mainTabPane.getSelectionModel().select(calendarTab);
+        return newGathering;
     }
 
 
     @FXML
     public void handleCreateCustomGathering() throws SQLException {
         Gathering newGathering = getDataFromUserForm();
-
         String createdMessage = "Gathering Created!";
-
         PopUpMessage popUpMessage = new PopUpMessage();
         popUpMessage.showCreatedPopUp(createdMessage);
-        //CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
+        GatheringDB.storeGathering(newGathering);
         GatheringPageController gatheringPageController = new GatheringPageController();
         gatheringPageController.loadGatheringPage(newGathering);
     }
@@ -87,30 +86,28 @@ public class CreateGatheringController {
 
     @FXML
     public void handleCreateEventGathering() throws SQLException, IOException {
-        getDataFromUserForm();
+        Gathering newGathering = getDataFromUserForm();
         String createdMessage = "Gathering Created!";
         PopUpMessage popUpMessage = new PopUpMessage();
         popUpMessage.showCreatedPopUp(createdMessage);
-        EventDB.storeEvent(newGathering);
+        GatheringDB.storeGathering(newGathering);
         GatheringPageController gatheringPageController = new GatheringPageController();
-        gatheringPageController.loadGatheringPage(eventName, formattedDate, eventOrganiser, eventDescription, eventCity, eventCountry);
+        gatheringPageController.loadGatheringPage(newGathering);
     }
 
     @FXML
     public void handleCreatePredefinedGathering() throws SQLException, IOException {
 
-        getDataFromUserForm();
+        Gathering newGathering = getDataFromUserForm();
 
         String createdMessage = "Gathering Created!";
 
         PopUpMessage popUpMessage = new PopUpMessage();
         popUpMessage.showCreatedPopUp(createdMessage);
 
-        //CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
-
-
+        //CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone)
         GatheringPageController gatheringPageController = new GatheringPageController();
-        gatheringPageController.loadGatheringPage(eventName, formattedDate, eventOrganiser, eventDescription, eventCity, eventCountry);
+        gatheringPageController.loadGatheringPage(newGathering);
 
 
     }
