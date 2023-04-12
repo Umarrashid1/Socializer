@@ -45,7 +45,7 @@ public class CreateGatheringController {
     private String timeZone;
 
     //  Hmmmm bad name for method fix
-    public void getDataFromUserForm() throws SQLException {
+    public Gathering getDataFromUserForm() throws SQLException {
         Gathering newGathering = new Gathering();
         newGathering.eventName = eventNameTextField.getText();
         newGathering.eventCity = eventCityTextField.getText();
@@ -73,7 +73,7 @@ public class CreateGatheringController {
 
     @FXML
     public void handleCreateCustomGathering() throws SQLException {
-        getDataFromUserForm();
+        Gathering newGathering = getDataFromUserForm();
 
         String createdMessage = "Gathering Created!";
 
@@ -81,7 +81,7 @@ public class CreateGatheringController {
         popUpMessage.showCreatedPopUp(createdMessage);
         //CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
         GatheringPageController gatheringPageController = new GatheringPageController();
-        gatheringPageController.loadGatheringPage(eventName, formattedDate, eventOrganiser, eventDescription, eventCity, eventCountry);
+        gatheringPageController.loadGatheringPage(newGathering);
     }
 
 
@@ -91,7 +91,7 @@ public class CreateGatheringController {
         String createdMessage = "Gathering Created!";
         PopUpMessage popUpMessage = new PopUpMessage();
         popUpMessage.showCreatedPopUp(createdMessage);
-        CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
+        EventDB.storeEvent(newGathering);
         GatheringPageController gatheringPageController = new GatheringPageController();
         gatheringPageController.loadGatheringPage(eventName, formattedDate, eventOrganiser, eventDescription, eventCity, eventCountry);
     }
