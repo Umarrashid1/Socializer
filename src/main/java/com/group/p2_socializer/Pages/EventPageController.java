@@ -1,6 +1,6 @@
 package com.group.p2_socializer.Pages;
 
-import com.group.p2_socializer.Database.EventDB;
+import com.group.p2_socializer.Database.ActivityDB;
 import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.jfoenix.controls.JFXButton;
@@ -57,7 +57,7 @@ public class EventPageController {
     private VBox postList;
 
     public void handleCancelEventButton(MouseEvent event, Event newEvent) throws SQLException {
-        EventDB.deleteEvent(newEvent.getActivityID());
+        ActivityDB.deleteEvent(newEvent.getActivityID());
         Node node = (Node) event.getSource();
         Scene scene = node.getScene();
         Stage stage = (Stage) scene.getWindow();

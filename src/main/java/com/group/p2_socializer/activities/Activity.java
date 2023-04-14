@@ -1,12 +1,13 @@
 package com.group.p2_socializer.activities;
 
-import com.group.p2_socializer.Database.EventDB;
+import com.group.p2_socializer.Database.ActivityDB;
+import com.group.p2_socializer.Database.UserDB;
 
+import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.TimeZone;
+import java.util.List;
 
 public class Activity {
     private int activityID;
@@ -49,6 +50,15 @@ public class Activity {
     }
     public ZonedDateTime getZonedDatetime() {
         return zonedDatetime;
+    }
+    public List getTags(int activityID) throws SQLException {
+        List tagList = ActivityDB.getTags(activityID);
+
+        return tagList;
+    }
+
+    public void setTags(List tagList){
+        ActivityDB.setTags(tagList, activityID);
     }
 
     public Activity(Builder builder) {

@@ -8,12 +8,13 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventDB {
+public class ActivityDB {
     public static void storeEvent(Event newEvent) throws SQLException {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
-        String sql = "INSERT INTO Activities(activityname, activitydescription, activitycity, activitycountry, activityorganiser, activitydatetime, activitytimezone) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Activities(activityname, activitydescription, activitycity, activitycountry, " +
+                "activityorganiser, activitydatetime, activitytimezone) VALUES (?, ?, ?, ?, ?, ?, ?)";
         // connect to database
         Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -33,7 +34,9 @@ public class EventDB {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
-        String sql = "SELECT * FROM Activities WHERE EXTRACT(YEAR FROM activitydatetime) = ? AND EXTRACT(MONTH FROM activitydatetime) = ?";
+        String sql = "SELECT * FROM Activities " +
+                "WHERE EXTRACT(YEAR FROM activitydatetime) = ? " +
+                "AND EXTRACT(MONTH FROM activitydatetime) = ?";
         Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, year);
@@ -65,12 +68,37 @@ public class EventDB {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
-        String sql = "DELETE  FROM events WHERE eventID = ?";
+        String sql = "DELETE  FROM events " +
+                "WHERE eventID = ?";
         Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, eventID);
         statement.executeUpdate();
         connection.close();
+
+    }
+
+    public static List getTags(int activityID) throws SQLException {
+        String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
+        String dbUser = "root";
+        String dbPassword = "password";
+        String sql = "SELECT activitytags.tag FROM Activities " +
+                "JOIN activitytagmap ON Activities.activityID = activitytagmap.activityID " +
+                "JOIN activitytags On activitytags.tagID = activitytagmap.TagID " +
+                "WHERE Activities.activityID = ?";
+        Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1, activityID);
+        ResultSet result = statement.executeQuery();
+        List<String> tagList = new ArrayList<>();
+        while (result.next()) {
+            tagList.add(result.getString("tag"));
+        }
+        connection.close();
+        return tagList;
+    }
+
+    public static void setTags(List tagList, int userID) {
 
     }
 }

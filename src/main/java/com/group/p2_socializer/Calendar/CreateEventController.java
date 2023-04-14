@@ -1,9 +1,8 @@
 package com.group.p2_socializer.Calendar;
 
-import com.group.p2_socializer.Database.EventDB;
+import com.group.p2_socializer.Database.ActivityDB;
 import com.group.p2_socializer.Pages.EventPageController;
 import com.group.p2_socializer.Utils.PopUpMessage;
-import com.group.p2_socializer.activities.Activity;
 import com.group.p2_socializer.activities.Event;
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
@@ -57,7 +56,7 @@ public class CreateEventController {
                 .eventOrganizerEmail("info@rockfest.com")
                 .build();
 
-        EventDB.storeEvent(event);
+        ActivityDB.storeEvent(event);
 
         //Switch to Calendar tab
         mainTabPane.getSelectionModel().select(calendarTab);
