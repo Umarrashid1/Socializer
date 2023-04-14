@@ -1,7 +1,7 @@
 package com.group.p2_socializer.Pages;
 
 import com.group.p2_socializer.Database.EventDB;
-import com.group.p2_socializer.Calendar.Event;
+import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
@@ -57,7 +57,7 @@ public class EventPageController {
     private VBox postList;
 
     public void handleCancelEventButton(MouseEvent event, Event newEvent) throws SQLException {
-        EventDB.deleteEvent(newEvent.id);
+        EventDB.deleteEvent(newEvent.getActivityID());
         Node node = (Node) event.getSource();
         Scene scene = node.getScene();
         Stage stage = (Stage) scene.getWindow();
@@ -68,7 +68,7 @@ public class EventPageController {
         try {
             //TODO: Set max size and enable text wrap for every label and text
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy 'AT' HH:mm", Locale.ENGLISH);
-            String date = newEvent.zonedDatetime.format(formatter).toUpperCase();
+            String date = newEvent.getZonedDatetime().format(formatter).toUpperCase();
 
             // Load the FXML file
             FXMLLoader loader = new FXMLLoader(EventPageController.class.getResource("/com/group/p2_socializer/event_page.fxml"));
@@ -87,11 +87,11 @@ public class EventPageController {
 
 
             Label eventTitleLabel = (Label) eventInfoVBox.lookup("#eventTitleLabel" );
-            eventTitleLabel.setText(newEvent.eventName);
+            eventTitleLabel.setText(newEvent.getActivityName());
             eventTitleLabel.setFont(Font.font("Eras Bold ITC", 30));
 
             Label eventLocation =  (Label) eventInfoVBox.lookup("#eventLocationLabel");
-            eventLocation.setText(newEvent.eventCity + ", " + newEvent.eventCountry);
+            eventLocation.setText(newEvent.getActivityCity() + ", " + newEvent.getActivityCountry());
             eventLocation.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 11; -fx-text-fill: #797878;");
 
             Label byLabel = (Label) organiserHBox.lookup("#byLabel");
@@ -100,10 +100,10 @@ public class EventPageController {
 
 
             Label eventOrganiserLabel = (Label) organiserHBox.lookup("#eventOrganiserLabel");
-            eventOrganiserLabel.setText(newEvent.eventOrganiser);
+            eventOrganiserLabel.setText(newEvent.getActivityOrganiser());
             eventOrganiserLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 12; -fx-text-fill: #000000;");
 
-            Label eventDescriptionLabel = new Label(newEvent.eventDescription);
+            Label eventDescriptionLabel = new Label(newEvent.getActivityDescription());
             eventDescriptionLabel.setLayoutX(36);
             eventDescriptionLabel.setLayoutY(460);
             eventDescriptionLabel.setFont(Font.font("Arial", 13));
@@ -115,7 +115,7 @@ public class EventPageController {
             // Create a new stage and set the new scene
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
-            newStage.setTitle(newEvent.eventName);
+            newStage.setTitle(newEvent.getActivityName());
 
             // Show the new stage
             newStage.show();

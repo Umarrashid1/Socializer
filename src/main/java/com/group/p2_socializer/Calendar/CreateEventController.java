@@ -3,6 +3,8 @@ package com.group.p2_socializer.Calendar;
 import com.group.p2_socializer.Database.EventDB;
 import com.group.p2_socializer.Pages.EventPageController;
 import com.group.p2_socializer.Utils.PopUpMessage;
+import com.group.p2_socializer.activities.Activity;
+import com.group.p2_socializer.activities.Event;
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -37,28 +39,31 @@ public class CreateEventController {
 
     @FXML
     public void handleCreateEvent() throws SQLException, IOException {
-        Event newEvent = new Event();
-        newEvent.eventName = eventNameTextField.getText();
-        newEvent.eventCity = eventCityTextField.getText();
-        newEvent.eventCountry = eventCountryTextField.getText();
-        newEvent.eventDescription = eventDescriptionTextArea.getText();
-        newEvent.eventOrganiser = eventOrganiserTextField.getText();
         LocalTime eventTime = LocalTime.parse(eventTimeTextField.getText());
         // get time user input
         LocalDateTime localDateTime = LocalDateTime.of(eventDatePicker.getValue(), eventTime);
         // combine localDate and localTime into localDateTime
-        newEvent.localDateTime = localDateTime;
-        ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.systemDefault());
-        // convert localDateTime into ZonedDateTime
-        newEvent.zonedDatetime = zonedDateTime;
-        newEvent.timeZone = ZoneId.systemDefault();
-        EventDB.storeEvent(newEvent);
+
+        Event event = (Event) new Event.Builder()
+                .activityType("EventActivity")
+                .activityName(eventNameTextField.getText())
+                .activityDescription(eventDescriptionTextArea.getText())
+                .activityCity(eventCityTextField.getText())
+                .activityCountry(eventCountryTextField.getText())
+                .activityOrganiser(eventOrganiserTextField.getText())
+                .localDateTime(localDateTime)
+                .timeZone(ZoneId.systemDefault())
+                .eventVenue("Madison Square Garden")
+                .eventOrganizerEmail("info@rockfest.com")
+                .build();
+
+        EventDB.storeEvent(event);
 
         //Switch to Calendar tab
         mainTabPane.getSelectionModel().select(calendarTab);
 
         EventPageController controller = new EventPageController();
-        controller.loadEventPage(newEvent);
+        controller.loadEventPage(event);
 
         String createdMessage = "Event Created!";
 

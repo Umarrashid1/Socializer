@@ -38,7 +38,7 @@ public class UserDB {
         User user = null;
         if(result.next()){
             user = new User();
-            user.id = result.getInt("id");
+            user.userID = result.getInt("userID");
             user.username = result.getString("username");
             user.password = result.getString("password");
         // assign database values to current user
@@ -69,14 +69,14 @@ public class UserDB {
             return true;
         }
     }
-    public static void deleteUser(int id) throws SQLException {
+    public void deleteUser(int userID) throws SQLException {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
-        String sql = "DELETE FROM users WHERE id = ?";
+        String sql = "DELETE FROM users WHERE userID = ?";
         Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1, id);
+        statement.setInt(1, userID);
         statement.executeUpdate();
         connection.close();
 
@@ -84,5 +84,29 @@ public class UserDB {
 
     }
 
+    public static void joinGathering(int userID, int gatheringID) throws SQLException {
+        String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
+        String dbUser = "root";
+        String dbPassword = "password";
+        String sql = "INSERT INTO Participations(userID, gatheringID) VALUES (?, ?)";
+        Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1, userID);
+        statement.setInt(2, gatheringID);
+        statement.executeUpdate();
+        connection.close();
+    }
+    public static void leaveGathering(int userID, int gatheringID) throws SQLException {
+        String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
+        String dbUser = "root";
+        String dbPassword = "password";
+        String sql = "DELETE FROM Participations WHERE userID = ? AND gatheringID = ?";
+        Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1, userID);
+        statement.setInt(2, gatheringID);
+        statement.executeUpdate();
+        connection.close();
+    }
 }
 

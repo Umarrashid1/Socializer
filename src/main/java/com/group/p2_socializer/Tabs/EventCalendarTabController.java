@@ -1,6 +1,6 @@
 package com.group.p2_socializer.Tabs;
 
-import com.group.p2_socializer.Calendar.Event;
+import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.Calendar.CalendarManager;
 import com.group.p2_socializer.Pages.EventPageController;
 import javafx.animation.FadeTransition;
@@ -29,7 +29,6 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.*;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 
@@ -171,8 +170,8 @@ public class EventCalendarTabController implements Initializable {
 
 
             // Set max number of characters in event name, displayed in calendar
-            Text text = new Text(calendarActivities.get(k).getEventName().substring(0, Math.min(calendarActivities.get(k).getEventName().length(), 20)));
-            if (calendarActivities.get(k).getEventName().length() > 20) {
+            Text text = new Text(calendarActivities.get(k).getActivityName().substring(0, Math.min(calendarActivities.get(k).getActivityName().length(), 20)));
+            if (calendarActivities.get(k).getActivityName().length() > 20) {
                 text.setText(text.getText() + "...");
             }
             TextFlow textFlow = new TextFlow(text);
@@ -225,20 +224,20 @@ public class EventCalendarTabController implements Initializable {
 
                     // Create a text box for each property of the CalendarActivity
                     Label eventNameTitle = new Label("Event:");
-                    Label eventNameLabel = new Label(item.getEventName());
+                    Label eventNameLabel = new Label(item.getActivityName());
 
                     Label eventDateTitle = new Label("Date:");
                     Label eventDateLabel = new Label(item.getZonedDatetime().toString());
 
                     Label eventDescriptionTitle = new Label("Description:");
-                    Label eventDescriptionLabel = new Label(item.getEventDescription());
+                    Label eventDescriptionLabel = new Label(item.getActivityDescription());
                     eventDescriptionLabel.setWrapText(true);
                     eventDescriptionLabel.setMaxWidth(550);
 
                     Label eventLocationTitle = new Label("Location:");
-                    Label eventLocationLabel = new Label(item.getEventCountry() + ", " + item.getEventCity());
+                    Label eventLocationLabel = new Label(item.getActivityCountry() + ", " + item.getActivityCity());
                     Label eventOrganiserTitle = new Label("Organiser:");
-                    Label eventOrganiserLabel = new Label(item.getEventOrganiser());
+                    Label eventOrganiserLabel = new Label(item.getActivityOrganiser());
 
                     Label[] labels = {eventNameTitle, eventNameLabel, eventDateTitle, eventDateLabel,
                             eventDescriptionTitle, eventDescriptionLabel, eventLocationTitle,

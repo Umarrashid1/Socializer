@@ -1,6 +1,6 @@
 package com.group.p2_socializer.Pages;
 
-import com.group.p2_socializer.CreateGatherings.Gathering;
+import com.group.p2_socializer.activities.Gathering;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
@@ -55,7 +55,7 @@ public class GatheringPageController {
     public void loadGatheringPage(Gathering newGathering) {
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy 'AT' HH:mm", Locale.ENGLISH);
-            String dateString = newGathering.zonedDatetime.format(formatter).toUpperCase();
+            String dateString = newGathering.getZonedDatetime().format(formatter).toUpperCase();
             //TODO: Set max size and enable text wrap for every label and text
 
             // Load the FXML file
@@ -76,11 +76,11 @@ public class GatheringPageController {
 
 
             Label eventTitleLabel = (Label) eventInfoVBox.lookup("#eventTitleLabel" );
-            eventTitleLabel.setText(newGathering.eventName);
+            eventTitleLabel.setText(newGathering.getActivityName());
             eventTitleLabel.setFont(Font.font("Eras Bold ITC", 30));
 
             Label eventLocation =  (Label) eventInfoVBox.lookup("#eventLocationLabel");
-            eventLocation.setText(newGathering.eventCity + ", " + newGathering.eventCountry);
+            eventLocation.setText(newGathering.getActivityCity() + ", " + newGathering.getActivityCountry());
             eventLocation.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 11; -fx-text-fill: #797878;");
 
             Label byLabel = (Label) organiserHBox.lookup("#byLabel");
@@ -89,10 +89,10 @@ public class GatheringPageController {
 
 
             Label eventOrganiserLabel = (Label) organiserHBox.lookup("#eventOrganiserLabel");
-            eventOrganiserLabel.setText(newGathering.eventOrganiser);
+            eventOrganiserLabel.setText(newGathering.getActivityOrganiser());
             eventOrganiserLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 12; -fx-text-fill: #000000;");
 
-            Label eventDescriptionLabel = new Label(newGathering.eventDescription);
+            Label eventDescriptionLabel = new Label(newGathering.getActivityDescription());
             eventDescriptionLabel.setLayoutX(36);
             eventDescriptionLabel.setLayoutY(460);
             eventDescriptionLabel.setFont(Font.font("Arial", 13));
@@ -104,7 +104,7 @@ public class GatheringPageController {
             // Create a new stage and set the new scene
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
-            newStage.setTitle(newGathering.eventName);
+            newStage.setTitle(newGathering.getActivityName());
 
             // Show the new stage
             newStage.show();

@@ -1,10 +1,10 @@
 package com.group.p2_socializer.CreateGatherings;
 
-import com.group.p2_socializer.Calendar.Event;
-import com.group.p2_socializer.Database.EventDB;
 import com.group.p2_socializer.Database.GatheringDB;
 import com.group.p2_socializer.Pages.GatheringPageController;
 import com.group.p2_socializer.Utils.PopUpMessage;
+import com.group.p2_socializer.activities.Event;
+import com.group.p2_socializer.activities.Gathering;
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -12,8 +12,6 @@ import javafx.scene.control.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.*;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
 public class CreateGatheringController {
 
@@ -46,26 +44,21 @@ public class CreateGatheringController {
 
     //  Hmmmm bad name for method fix
     public Gathering getDataFromUserForm() throws SQLException {
-        Gathering newGathering = new Gathering();
-        newGathering.eventName = eventNameTextField.getText();
-        newGathering.eventCity = eventCityTextField.getText();
-        newGathering.eventCountry = eventCountryTextField.getText();
-        newGathering.eventDescription = eventDescriptionTextArea.getText();
-        newGathering.eventOrganiser = eventOrganiserTextField.getText();
         LocalTime eventTime = LocalTime.parse(eventTimeTextField.getText());
-        // get time user input
         LocalDateTime localDateTime = LocalDateTime.of(eventDatePicker.getValue(), eventTime);
-        // combine localDate and localTime into localDateTime
-        newGathering.localDateTime = localDateTime;
-        ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.systemDefault());
-        // convert localDateTime into ZonedDateTime
-        newGathering.zonedDatetime = zonedDateTime;
-        newGathering.timeZone = ZoneId.systemDefault();
-        GatheringDB.storeGathering(newGathering);
-        //TODO: fix
-        //TODO: Fix
-        //CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone);
 
+        Gathering newGathering = (Gathering) new Gathering.Builder()
+                .activityType("EventActivity")
+                .activityName(eventNameTextField.getText())
+                .activityDescription(eventDescriptionTextArea.getText())
+                .activityCity(eventCityTextField.getText())
+                .activityCountry(eventCountryTextField.getText())
+                .activityOrganiser(eventOrganiserTextField.getText())
+                .localDateTime(localDateTime)
+                .timeZone(ZoneId.systemDefault())
+                .build();
+
+        GatheringDB.storeGathering(newGathering);
         //Switch to Calendar tab
         //mainTabPane.getSelectionModel().select(calendarTab);
         return newGathering;

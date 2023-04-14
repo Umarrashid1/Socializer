@@ -21,5 +21,7 @@ module com.group.p2_socializer {
     exports com.group.p2_socializer.CreateGatherings;
     exports com.group.p2_socializer.Database;
     opens com.group.p2_socializer.Database to javafx.fxml;
+    exports com.group.p2_socializer.activities;
+    opens com.group.p2_socializer.activities to javafx.fxml;
 
 }

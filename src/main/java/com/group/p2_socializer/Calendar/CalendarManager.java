@@ -1,5 +1,6 @@
 package com.group.p2_socializer.Calendar;
 import com.group.p2_socializer.Database.EventDB;
+import com.group.p2_socializer.activities.Event;
 
 import java.sql.SQLException;
 import java.time.ZonedDateTime;
