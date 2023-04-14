@@ -13,6 +13,10 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.sql.SQLException;
 
 public class LoginController {
@@ -23,12 +27,14 @@ public class LoginController {
     @FXML
     private PasswordField password;
     @FXML
-    protected void onLoginButtonClick() throws SQLException, IOException {
+    protected void onLoginButtonClick() throws SQLException, IOException, NoSuchAlgorithmException {
         String currentUser = username.getText();
         String currentPass = password.getText();
         //Get user input from login form
-        User user = UserDB.authLogin(currentUser,currentPass);
         // Call database to authenticate login, returns null value if auth fails.
+
+        User user = UserDB.authLogin(currentUser,currentPass);
+
         if(user != null){
             Scene scene = username.getScene();
             Window window = scene.getWindow();
@@ -50,7 +56,7 @@ public class LoginController {
         }
     }
     @FXML
-    protected void onRegisterButtonClick() throws SQLException {
+    protected void onRegisterButtonClick() throws SQLException, NoSuchAlgorithmException {
         String currentUser = username.getText();
         String currentPass = password.getText();
 

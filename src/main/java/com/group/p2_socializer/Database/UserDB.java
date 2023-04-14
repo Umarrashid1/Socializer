@@ -1,7 +1,9 @@
 package com.group.p2_socializer.Database;
 import com.group.p2_socializer.UserLogIn.User;
+import com.group.p2_socializer.Utils.PasswordUtils;
 import com.group.p2_socializer.activities.Event;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,33 +28,35 @@ public class UserDB {
         }
         // return true if username exists
     }
-    public static User authLogin(String username, String password) throws SQLException {
+    public static User authLogin(String username, String password) throws SQLException, NoSuchAlgorithmException {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
-        String authSQL = "SELECT * FROM users WHERE username = ? and password = ?";
+        String authSQL = "SELECT * FROM users WHERE username = ?";
         Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         PreparedStatement statement = connection.prepareStatement(authSQL);
         statement.setString(1, username);
-        statement.setString(2, password);
-        // Connect to database and issue command
-
-
         ResultSet result = statement.executeQuery();
-        User user = null;
+
         if(result.next()){
-            user = new User();
-            user.userID = result.getInt("userID");
-            user.username = result.getString("username");
-            user.password = result.getString("password");
-        // assign database values to current user
-        }
-        connection.close();
-        return user;
-        // if login is successful then return non-null user variable
+            String hashedPassword = result.getString("password");
+            if(PasswordUtils.verifyPassword(password, hashedPassword)){
+                User user = new User();
+                user.setUserID(result.getInt("userid"));
+                user.setUsername(result.getString("username"));
+                user.setUserType(result.getString("usertype"));
+                return user;
+            }else{
+                return null;
+                // Wrong password
+            }
+        }return null;
+        // Wrong username
+
     }
 
-    public static boolean registerUser(String username, String password) throws SQLException {
+
+    public static boolean registerUser(String username, String password) throws SQLException, NoSuchAlgorithmException {
 
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
@@ -64,10 +68,11 @@ public class UserDB {
             return false;
 
         }else{
+            String hashedPassword = PasswordUtils.hashPassword(password);
             Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, username);
-            statement.setString(2, password);
+            statement.setString(2, hashedPassword);
             statement.executeUpdate();
             connection.close();
             return true;
@@ -79,9 +84,9 @@ public class UserDB {
         String dbUser = "root";
         String dbPassword = "password";
         String sql = "SELECT usertags.tag FROM users " +
-                "JOIN usertagmap ON users.userID = usertagmap.userID " +
+                "JOIN usertagmap ON users.userid = usertagmap.userID " +
                 "JOIN usertags On usertags.tagID = usertagmap.TagID " +
-                "WHERE users.userID = ?";
+                "WHERE users.userid = ?";
         Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, userID);
@@ -102,7 +107,7 @@ public class UserDB {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
-        String sql = "DELETE FROM users WHERE userID = ?";
+        String sql = "DELETE FROM users WHERE userid = ?";
         Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, userID);
