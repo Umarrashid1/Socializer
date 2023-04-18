@@ -83,6 +83,13 @@ public class TabController implements Initializable {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/" + name + ".fxml"));
             AnchorPane newPane = loader.load();
+            //TODO: Maybe the user object recieved(?) from login should be also be passed further along to the other tabs.
+            // a static int for the current session?.
+            // tags, userID, and so on are rather integral to most of the functionalities:
+            // think: sorting gatherings, declaring attendance, my profile, etc etc
+            /*
+
+             */
 
 
             mainTabPane.getSelectionModel().getSelectedItem().setContent(newPane);
@@ -107,7 +114,7 @@ public class TabController implements Initializable {
                 }else if (newTab == groupsTab){
                     loadPage("discover_tab");
                 }else if (newTab == myProfileTab){
-                    loadPage("choose_gathering");
+                    loadPage("profile_page");
                 }else if (newTab == createGatheringTab)
                     loadPage("choose_gathering");
             });

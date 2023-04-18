@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Activity {
@@ -20,6 +21,18 @@ public class Activity {
     private LocalDateTime localDateTime;
     private ZoneId timeZone;
     private ZonedDateTime zonedDatetime;
+
+    private ArrayList attendeeList = new ArrayList<>();
+    //todo: use attendeeList for collecting the attendees of a gathering
+    /*
+    public ArrayList setAttendeeList(ArrayList attendeelist, User user) {
+        attendeeList.add(user.getUserID()); //should be nickname or use first and last to get initials
+    }
+
+    public ArrayList getAttendeeList() {
+        return attendeList;
+    }
+     */
 
     public int getActivityID() {
         return activityID;
