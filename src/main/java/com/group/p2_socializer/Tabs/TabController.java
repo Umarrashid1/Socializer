@@ -1,11 +1,14 @@
 package com.group.p2_socializer.Tabs;
 
+import com.group.p2_socializer.UserLogIn.User;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.stage.Stage;
 
 
 import java.io.IOException;
@@ -32,10 +35,9 @@ public class TabController implements Initializable {
     @FXML
     public Tab createGatheringTab;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
     }
 /* // temporary fix for memory issue
     private Map<String, FXMLLoader> fxmlLoaders = new HashMap<>();
@@ -83,16 +85,20 @@ public class TabController implements Initializable {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/" + name + ".fxml"));
             AnchorPane newPane = loader.load();
+
             //TODO: Maybe the user object recieved(?) from login should be also be passed further along to the other tabs.
             // a static int for the current session?.
             // tags, userID, and so on are rather integral to most of the functionalities:
             // think: sorting gatherings, declaring attendance, my profile, etc etc
-            /*
 
-             */
-
-
+            if(name == "profile_page"){
+                ProfileTabController controller = loader.getController();
+                // Set data in the controller
+                User user = (User) mainTabPane.getScene().getWindow().getUserData();
+                controller.setUser(user);
+            }
             mainTabPane.getSelectionModel().getSelectedItem().setContent(newPane);
+
             // Reset the anchors
             AnchorPane.setBottomAnchor(newPane, 0.0);
             AnchorPane.setLeftAnchor(newPane, 0.0);
@@ -104,19 +110,23 @@ public class TabController implements Initializable {
     }
 
     public void detectTab(Event event) {
-            mainTabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldTab, newTab) -> {
-                if(newTab == homeTab){
-                    loadPage("choose_gathering");
-                }else if(newTab == calendarTab) {
-                    loadPage("event_calendar_tab");
-                }else if (newTab == trendingTab) {
-                    loadPage("choose_gathering");
-                }else if (newTab == groupsTab){
-                    loadPage("discover_tab");
-                }else if (newTab == myProfileTab){
-                    loadPage("profile_page");
-                }else if (newTab == createGatheringTab)
-                    loadPage("choose_gathering");
-            });
+        mainTabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldTab, newTab) -> {
+            if(newTab == homeTab){
+                loadPage("choose_gathering");
+            }else if(newTab == calendarTab) {
+                loadPage("event_calendar_tab");
+            }else if (newTab == trendingTab) {
+                loadPage("choose_gathering");
+            }else if (newTab == groupsTab){
+                loadPage("discover_tab");
+            }else if (newTab == myProfileTab){
+                loadPage("profile_page");
+            }else if (newTab == createGatheringTab)
+                loadPage("choose_gathering");
+        });
+    }
+    public Stage getStage(){
+        Stage stage = (Stage) mainTabPane.getScene().getWindow();
+        return stage;
     }
 }

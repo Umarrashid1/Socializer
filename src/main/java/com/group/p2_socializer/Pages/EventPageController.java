@@ -62,6 +62,7 @@ public class EventPageController {
         Scene scene = node.getScene();
         Stage stage = (Stage) scene.getWindow();
         stage.close();
+
     }
 
     public void loadEventPage(Event newEvent) {
@@ -111,6 +112,7 @@ public class EventPageController {
             // Add the label to the center pane
             centerPane.getChildren().add(eventInfoVBox);
             centerPane.getChildren().add(eventDescriptionLabel);
+
 
             // Create a new stage and set the new scene
             Stage newStage = new Stage();

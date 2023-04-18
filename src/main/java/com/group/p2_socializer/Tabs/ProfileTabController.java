@@ -17,18 +17,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class ProfileTabController implements Initializable{
-    //TODO: !!! pass the user in all instances of navigation to profile !!!
-        /*
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/" + name + ".fxml"));
-            AnchorPane newPane = loader.load();
-         */
+   // ObservableList<Activity> listGatheringsPrior = FXCollections.observableArrayList();
+    // ObservableList<Activity> listGatheringInterest = FXCollections.observableArrayList();
+    //ObservableList<Activity> listGatheringOrganized = FXCollections.observableArrayList();
 
-    //TODO convert users tags to viewable tokens. possibly add highlighting for shared tags
-    ObservableList<Activity> listGatheringsPrior = FXCollections.observableArrayList();
-    ObservableList<Activity> listGatheringInterest = FXCollections.observableArrayList();
-    ObservableList<Activity> listGatheringOrganized = FXCollections.observableArrayList();
-    private User selectedUser; //TODO: method for getting correct User object
-    private User systemUser; //
     @FXML
     private AnchorPane ChooseGatheringAnchorPane;
 
@@ -67,14 +59,10 @@ public class ProfileTabController implements Initializable{
 
     @FXML
     private JFXListView<String> listGatheringOrganized;
-
-    public void initializeProfileFromUser(User userOfProfile) {
-        selectedUser = userOfProfile;
-        //TODO:
-    }
     @FXML
     void goToSelectedGathering(MouseEvent event) {
         //TODO: make click go to selected gathering
+
     }
 
     @FXML
@@ -82,14 +70,7 @@ public class ProfileTabController implements Initializable{
         //TODO: make distinction and tooltip for edit
     }
 
-    public void revealProfile(ObservableList<Activity> list) {
-        for(Activity i: list) {
-            if((i.getAttendeeList).contains(systemUser.getUserID()) == true) {
-                //do something to set ImageViewer opacity to zero
-                // show name?
-            }
-        }
-    }
+
 
     private void loadData(ObservableList<Activity> list) {
        list.removeAll(list);
@@ -98,29 +79,12 @@ public class ProfileTabController implements Initializable{
         for(String i: gatheringAttendingList) {
             list.add(userOfProfile.getGatheringAttending(i));
          */
-
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //TODO: fucing initialize something man.
+    }
+    public void setUser(User user) {
+        profileUsername.setText(user.getUsername());
     }
 }
-
-/*
-  private User coolUserGuy;
-    @FXML
-    public Tab myProfileTab;
-    Profile thisProfile = profile.getUserID();  //get the required user info to fill the profile page
-
-
-
-    boolean isUsersProfile = doesUserOwnProfile();
-    public bolean doesUserOwnProfile(User user, ) {
-        if (user.getUserID() == profile.getUserID) {
-            return true;
-        } else {
-            return false;
-        }
-    }
- */

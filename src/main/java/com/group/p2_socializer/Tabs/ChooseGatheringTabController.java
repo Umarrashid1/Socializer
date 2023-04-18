@@ -1,5 +1,7 @@
 package com.group.p2_socializer.Tabs;
 
+import com.group.p2_socializer.CreateGatherings.CreateGatheringController;
+import com.group.p2_socializer.UserLogIn.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -27,6 +29,7 @@ public class ChooseGatheringTabController {
 
                         FXMLLoader loader = new FXMLLoader();
                         try {
+
                                 AnchorPane createGatheringAnchorPane = loader.load(getClass().getResource("/com/group/p2_socializer/create_custom_gathering.fxml"));
                                 ChooseGatheringAnchorPane.getChildren().setAll(createGatheringAnchorPane);
 
@@ -39,10 +42,12 @@ public class ChooseGatheringTabController {
 
         public void handlePremadeGatheringCreation() {
 
-            FXMLLoader loader = new FXMLLoader();
             try {
-            AnchorPane createGatheringAnchorPane = loader.load(getClass().getResource("/com/group/p2_socializer/create_predefined_gathering.fxml"));
-            ChooseGatheringAnchorPane.getChildren().setAll(createGatheringAnchorPane);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/create_custom_gathering.fxml"));
+                AnchorPane createGatheringAnchorPane = loader.load();
+                CreateGatheringController controller = loader.getController();
+                controller.setDistortion();
+                ChooseGatheringAnchorPane.getChildren().setAll(createGatheringAnchorPane);
 
             } catch (IOException iex) {
             System.out.println("file not found");
@@ -54,8 +59,7 @@ public class ChooseGatheringTabController {
         public void handleEventGatheringCreation() {
 
             FXMLLoader loader = new FXMLLoader();
-            try {
-            AnchorPane createGatheringAnchorPane = loader.load(getClass().getResource("/com/group/p2_socializer/create_event_gathering.fxml"));
+            try {AnchorPane createGatheringAnchorPane = loader.load(getClass().getResource("/com/group/p2_socializer/create_custom_gathering.fxml"));
             ChooseGatheringAnchorPane.getChildren().setAll(createGatheringAnchorPane);
 
             } catch (IOException iex) {

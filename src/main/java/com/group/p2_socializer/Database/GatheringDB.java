@@ -14,7 +14,7 @@ public class GatheringDB {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
-        String sql = "INSERT INTO gathering(eventname, eventdescription, eventcity, eventcountry, eventorganiser, localdatetime, timezone) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO gathering(eventname, eventdescription, eventcity, eventcountry, eventorganiser, localdatetime, timezone, activitytype) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         // connect to database
         Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -25,6 +25,8 @@ public class GatheringDB {
         statement.setString(5, newGathering.getActivityOrganiser());
         statement.setObject(6, newGathering.getLocalDateTime());
         statement.setString(7, newGathering.getTimeZone().toString());
+        statement.setString(8, newGathering.getActivityType().toString());
+
         //Convert timezone to string for storage in sql database
         statement.executeUpdate();
         connection.close();

@@ -6,14 +6,21 @@ import com.group.p2_socializer.Utils.PopUpMessage;
 import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.activities.Gathering;
 import com.jfoenix.controls.JFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.time.*;
+import java.util.Date;
+import java.util.ResourceBundle;
 
-public class CreateGatheringController {
+
+public class CreateGatheringController implements Initializable {
 
 
     @FXML
@@ -43,7 +50,21 @@ public class CreateGatheringController {
     private String timeZone;
 
     //  Hmmmm bad name for method fix
-    public Gathering getDataFromUserForm() throws SQLException {
+
+    public void setEventData(Event event){
+        eventNameTextField.setText(event.getActivityName());
+        eventDescriptionTextArea.setText(event.getActivityDescription());
+        eventCityTextField.setText(event.getActivityCity());
+        eventCountryTextField.setText(event.getActivityCountry());
+        eventOrganiserTextField.setText(event.getActivityOrganiser());
+        //eventTimeTextField.setText();
+        //eventDatePicker.setChronology();
+    }
+
+    public void setDistortion(){
+        eventNameTextField.setText("distortion");
+    }
+    public void handleCreateGathering(ActionEvent actionEvent) throws SQLException {
         LocalTime eventTime = LocalTime.parse(eventTimeTextField.getText());
         LocalDateTime localDateTime = LocalDateTime.of(eventDatePicker.getValue(), eventTime);
 
@@ -59,49 +80,15 @@ public class CreateGatheringController {
                 .build();
 
         GatheringDB.storeGathering(newGathering);
-        //Switch to Calendar tab
-        //mainTabPane.getSelectionModel().select(calendarTab);
-        return newGathering;
-    }
-
-
-    @FXML
-    public void handleCreateCustomGathering() throws SQLException {
-        Gathering newGathering = getDataFromUserForm();
         String createdMessage = "Gathering Created!";
         PopUpMessage popUpMessage = new PopUpMessage();
         popUpMessage.showCreatedPopUp(createdMessage);
-        GatheringDB.storeGathering(newGathering);
         GatheringPageController gatheringPageController = new GatheringPageController();
         gatheringPageController.loadGatheringPage(newGathering);
     }
 
-
-    @FXML
-    public void handleCreateEventGathering() throws SQLException, IOException {
-        Gathering newGathering = getDataFromUserForm();
-        String createdMessage = "Gathering Created!";
-        PopUpMessage popUpMessage = new PopUpMessage();
-        popUpMessage.showCreatedPopUp(createdMessage);
-        GatheringDB.storeGathering(newGathering);
-        GatheringPageController gatheringPageController = new GatheringPageController();
-        gatheringPageController.loadGatheringPage(newGathering);
-    }
-
-    @FXML
-    public void handleCreatePredefinedGathering() throws SQLException, IOException {
-
-        Gathering newGathering = getDataFromUserForm();
-
-        String createdMessage = "Gathering Created!";
-
-        PopUpMessage popUpMessage = new PopUpMessage();
-        popUpMessage.showCreatedPopUp(createdMessage);
-
-        //CalendarDB.storeEvent(eventName, eventDescription, eventCity, eventCountry, eventOrganiser, localDateTime, timeZone)
-        GatheringPageController gatheringPageController = new GatheringPageController();
-        gatheringPageController.loadGatheringPage(newGathering);
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 }

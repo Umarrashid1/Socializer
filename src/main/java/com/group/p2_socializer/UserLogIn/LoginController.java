@@ -41,6 +41,7 @@ public class LoginController {
             Stage stage = (Stage) window;
             FXMLLoader fxmlLoader = new FXMLLoader(Socializer.class.getResource("main_window.fxml"));
             scene = new Scene(fxmlLoader.load());
+            stage.setUserData(user);
             stage.setTitle("Socializer");
             stage.setScene(scene);
             stage.show();

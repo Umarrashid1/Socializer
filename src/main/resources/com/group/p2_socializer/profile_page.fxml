@@ -1,26 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXListView?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.effect.Glow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="MyProfileTab" minHeight="0.0" minWidth="0.0" prefHeight="781.0" prefWidth="956.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Tabs.ProfileTabController">
+<AnchorPane fx:id="MyProfileTab" minHeight="0.0" minWidth="0.0" prefHeight="781.0" prefWidth="956.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Tabs.ProfileTabController">
    <children>
       <AnchorPane layoutY="-2.0" prefHeight="781.0" prefWidth="238.0" style="-fx-background-color: Royalblue;">
          <children>
@@ -74,7 +63,7 @@
                         </HBox>
                         <Button fx:id="inviteToGathering" alignment="TOP_CENTER" mnemonicParsing="false" text="Invite to gathering" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="21.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-                        <Button fx:id="reportUser" alignment="TOP_CENTER" mnemonicParsing="false" style="-fx-background-color: salmon;" text="Report" />
+                        <Button fx:id="reportUser" alignment="TOP_CENTER" mnemonicParsing="false"  style="-fx-background-color: salmon;" text="Report" />
                      </children>
                   </VBox>
                </children>

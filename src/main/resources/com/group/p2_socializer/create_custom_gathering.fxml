@@ -105,7 +105,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="99.0" prefWidth="409.0">
                            <children>
-                              <JFXButton fx:id="createCustomGatheringButton" onAction="#handleCreateCustomGathering" prefHeight="61.0" prefWidth="138.0" text="Create Gathering" />
+                              <JFXButton fx:id="createCustomGatheringButton" onAction="#handleCreateGathering" prefHeight="61.0" prefWidth="138.0" text="Create Gathering" />
                            </children>
                         </HBox>
                      </children>
