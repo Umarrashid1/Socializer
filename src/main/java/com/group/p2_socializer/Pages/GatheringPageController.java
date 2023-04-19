@@ -19,6 +19,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -52,78 +53,93 @@ public class GatheringPageController {
     private VBox postList;
 
 
-    public void loadGatheringPage(Gathering newGathering) {
-        try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy 'AT' HH:mm", Locale.ENGLISH);
-            String dateString = newGathering.getZonedDatetime().format(formatter).toUpperCase();
-            //TODO: Set max size and enable text wrap for every label and text
-
-            // Load the FXML file
-            FXMLLoader loader = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/gathering_page.fxml"));
-            Parent root = loader.load();
-
-            // Get reference to centerPane FXML file
-            ScrollPane scrollPane = (ScrollPane) root.lookup("#scrollPane");
-            AnchorPane centerPane = (AnchorPane) scrollPane.getContent();
-            VBox eventInfoVBox = (VBox) centerPane.lookup("#eventInfoVBox");
-            HBox organiserHBox = (HBox) eventInfoVBox.lookup("#organiserHBox");
-            organiserHBox.setMaxWidth(250);
-
-            //Label eventDateLabel = new Label(eventDate);
-            Label eventDateLabel = (Label) eventInfoVBox.lookup("#eventDateLabel");
-            eventDateLabel.setText(dateString);
-            eventDateLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 13; -fx-text-fill: #797878;");
+    public void loadGatheringPage(Gathering newGathering) throws SQLException, IOException {
 
 
-            Label eventTitleLabel = (Label) eventInfoVBox.lookup("#eventTitleLabel" );
-            eventTitleLabel.setText(newGathering.getActivityName());
-            eventTitleLabel.setFont(Font.font("Eras Bold ITC", 30));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy 'AT' HH:mm", Locale.ENGLISH);
+        ZonedDateTime zonedDateTime = newGathering.getLocalDateTime().atZone(newGathering.getTimeZone());
+        String dateString = zonedDateTime.format(formatter).toUpperCase();
+        //TODO: Set max size and enable text wrap for every label and text
 
-            Label eventLocation =  (Label) eventInfoVBox.lookup("#eventLocationLabel");
-            eventLocation.setText(newGathering.getActivityCity() + ", " + newGathering.getActivityCountry());
-            eventLocation.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 11; -fx-text-fill: #797878;");
+        // Load the FXML file
+        FXMLLoader loader = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/gathering_page.fxml"));
+        Parent root = loader.load();
 
-            Label byLabel = (Label) organiserHBox.lookup("#byLabel");
-            byLabel.setText("by ");
-            byLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 11; -fx-text-fill: #797878;");
+        // Get reference to centerPane FXML file
+        ScrollPane scrollPane = (ScrollPane) root.lookup("#scrollPane");
+        AnchorPane centerPane = (AnchorPane) scrollPane.getContent();
+        VBox eventInfoVBox = (VBox) centerPane.lookup("#eventInfoVBox");
+        HBox organiserHBox = (HBox) eventInfoVBox.lookup("#organiserHBox");
+        organiserHBox.setMaxWidth(250);
+
+        //Label eventDateLabel = new Label(eventDate);
+        Label eventDateLabel = (Label) eventInfoVBox.lookup("#eventDateLabel");
+        eventDateLabel.setText(dateString);
+        eventDateLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 13; -fx-text-fill: #797878;");
 
 
-            Label eventOrganiserLabel = (Label) organiserHBox.lookup("#eventOrganiserLabel");
-            eventOrganiserLabel.setText(newGathering.getActivityOrganiser());
-            eventOrganiserLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 12; -fx-text-fill: #000000;");
+        Label eventTitleLabel = (Label) eventInfoVBox.lookup("#eventTitleLabel");
+        eventTitleLabel.setText(newGathering.getActivityName());
+        eventTitleLabel.setFont(Font.font("Eras Bold ITC", 30));
 
-            Label eventDescriptionLabel = new Label(newGathering.getActivityDescription());
-            eventDescriptionLabel.setLayoutX(36);
-            eventDescriptionLabel.setLayoutY(460);
-            eventDescriptionLabel.setFont(Font.font("Arial", 13));
+        Label eventLocation = (Label) eventInfoVBox.lookup("#eventLocationLabel");
+        eventLocation.setText(newGathering.getActivityCity() + ", " + newGathering.getActivityCountry());
+        eventLocation.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 11; -fx-text-fill: #797878;");
 
-            // Add the label to the center pane
-            centerPane.getChildren().add(eventInfoVBox);
-            centerPane.getChildren().add(eventDescriptionLabel);
+        Label byLabel = (Label) organiserHBox.lookup("#byLabel");
+        byLabel.setText("by ");
+        byLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 11; -fx-text-fill: #797878;");
 
-            // Create a new stage and set the new scene
-            Stage newStage = new Stage();
-            newStage.setScene(new Scene(root));
-            newStage.setTitle(newGathering.getActivityName());
 
-            // Show the new stage
-            newStage.show();
+        Label eventOrganiserLabel = (Label) organiserHBox.lookup("#eventOrganiserLabel");
+        eventOrganiserLabel.setText(newGathering.getActivityOrganiser());
+        eventOrganiserLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 12; -fx-text-fill: #000000;");
 
-            // Get reference from FXML
-            VBox postList = (VBox) root.lookup("#postList");
-            postList.setMaxWidth(Double.MAX_VALUE);
-            postList.setMaxHeight(Double.MAX_VALUE);
-            Button postNewsButton = (Button) root.lookup("#postNewsButton");
 
-            postNewsButton.setOnMouseClicked((MouseEvent event) -> {
-                handlePostNewsButton(postList);
-            });
+        Label eventDescriptionLabel = new Label(newGathering.getActivityDescription());
+        eventDescriptionLabel.setFont(Font.font("Arial", 13));
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        ArrayList<String> tagList = (ArrayList<String>) newGathering.getTags(newGathering.getActivityID());
+
+        StringBuilder tagListString = new StringBuilder();
+        for (String i : tagList) {
+            tagListString.append('#').append(i).append(", ");
         }
+
+        Text tagText = new Text(tagListString.toString());
+
+        VBox descriptionAndTagVBox = new VBox();
+        descriptionAndTagVBox.setLayoutX(36);
+        descriptionAndTagVBox.setLayoutY(460);
+
+        descriptionAndTagVBox.getChildren().add(eventDescriptionLabel);
+        descriptionAndTagVBox.getChildren().add(tagText);
+
+
+        // Add the label to the center pane
+        centerPane.getChildren().add(eventInfoVBox);
+        centerPane.getChildren().add(descriptionAndTagVBox);
+
+        // Create a new stage and set the new scene
+        Stage newStage = new Stage();
+        newStage.setScene(new Scene(root));
+        newStage.setTitle(newGathering.getActivityName());
+
+        // Show the new stage
+        newStage.show();
+
+        // Get reference from FXML
+        VBox postList = (VBox) root.lookup("#postList");
+        postList.setMaxWidth(Double.MAX_VALUE);
+        postList.setMaxHeight(Double.MAX_VALUE);
+        Button postNewsButton = (Button) root.lookup("#postNewsButton");
+
+        postNewsButton.setOnMouseClicked((MouseEvent event) -> {
+            handlePostNewsButton(postList);
+        });
     }
-    //TODO: save news in DB and make them load on event page
+
+        //TODO: save news in DB and make them load on event page
     private boolean isWindowOpen = false;
 
     public void handlePostNewsButton(VBox postList) {

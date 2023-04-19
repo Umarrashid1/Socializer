@@ -63,7 +63,7 @@ public class CreateGatheringController implements Initializable {
     public void setDistortion(){
         eventNameTextField.setText("distortion");
     }
-    public void handleCreateGathering(ActionEvent actionEvent) throws SQLException {
+    public void handleCreateGathering(ActionEvent actionEvent) throws SQLException, IOException {
         LocalTime eventTime = LocalTime.parse(eventTimeTextField.getText());
         LocalDateTime localDateTime = LocalDateTime.of(eventDatePicker.getValue(), eventTime);
 

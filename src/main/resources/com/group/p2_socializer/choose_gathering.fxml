@@ -12,7 +12,7 @@
          <children>
             <HBox prefHeight="550.0" prefWidth="796.0">
                <children>
-                  <VBox fx:id="eventGatheringVBox" onMouseClicked="#handleEventGatheringCreation" prefHeight="431.0" prefWidth="553.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;">
+                  <VBox fx:id="eventGatheringVBox" onMouseClicked="#openCalendarTab" prefHeight="431.0" prefWidth="553.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;">
                      <children>
                         <Label alignment="CENTER" prefHeight="70.0" prefWidth="270.0" text="Event Gathering" textAlignment="CENTER" />
                         <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 1" />

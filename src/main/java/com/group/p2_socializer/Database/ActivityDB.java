@@ -49,15 +49,15 @@ public class ActivityDB {
             Event newEvent = (Event) new Event.Builder()
                     .activityID(result.getInt("activityID"))
                     .activityType("activitytype")
-                    .activityName(result.getString("eventname"))
-                    .activityDescription(result.getString("eventdescription"))
-                    .activityCity(result.getString("eventcity"))
-                    .activityCountry(result.getString("eventcountry"))
-                    .activityOrganiser(result.getString("eventorganiser"))
-                    .localDateTime((LocalDateTime) result.getObject("localdatetime"))
-                    .timeZone(ZoneId.systemDefault())
-                    .eventVenue("Madison Square Garden")
-                    .eventOrganizerEmail("info@rockfest.com")
+                    .activityName(result.getString("activityname"))
+                    .activityDescription(result.getString("activitydescription"))
+                    .activityCity(result.getString("activitycity"))
+                    .activityCountry(result.getString("activitycountry"))
+                    .activityOrganiser(result.getString("activityorganiser"))
+                    .localDateTime((LocalDateTime) result.getObject("activitydatetime"))
+                    .timeZone(ZoneId.systemDefault()) //FIX
+                    //.eventVenue("Madison Square Garden")
+                    //.eventOrganizerEmail("info@rockfest.com")
                     .build();
             eventList.add(newEvent);
         }

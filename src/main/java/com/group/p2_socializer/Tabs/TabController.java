@@ -16,7 +16,7 @@ import java.net.URL;
 import java.time.*;
 import java.util.*;
 
-public class TabController implements Initializable {
+public class TabController implements Initializable  {
 
     ZonedDateTime dateFocus;
     ZonedDateTime today;
@@ -25,7 +25,7 @@ public class TabController implements Initializable {
     @FXML
     private Tab homeTab;
     @FXML
-    private Tab calendarTab;
+    Tab calendarTab;
     @FXML
     private Tab trendingTab;
     @FXML

@@ -27,6 +27,8 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.util.Duration;
 import javafx.scene.layout.VBox;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.*;
@@ -34,9 +36,11 @@ import java.util.*;
 
 
 public class EventCalendarTabController implements Initializable {
+
     ZonedDateTime dateFocus = ZonedDateTime.now();
     ZonedDateTime today = ZonedDateTime.now();;
-
+    @FXML
+    public AnchorPane eventCalendarAnchorPane;
     @FXML
     private FlowPane calendar;
     @FXML
@@ -249,6 +253,9 @@ public class EventCalendarTabController implements Initializable {
                     JFXButton createEventGatheringButton = new JFXButton("Create Event Gathering");
                     createEventGatheringButton.setStyle("-fx-font-family: 'Arial'; -fx-font-size: 11; -fx-text-fill: #797878;");
 
+                    createEventGatheringButton.setOnMouseClicked((MouseEvent event) -> {
+                        createEventGatheringButtonHandler(eventLocationLabel, item);
+                    });
 
                     Label[] labels = {eventNameTitle, eventNameLabel, eventDateTitle, eventDateLabel,
                             eventDescriptionTitle, eventDescriptionLabel, eventLocationTitle,

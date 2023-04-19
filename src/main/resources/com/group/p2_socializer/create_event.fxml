@@ -13,13 +13,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Calendar.CreateEventController">
+<AnchorPane fx:id="createEventAnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Calendar.CreateEventController">
    <children>
       <BorderPane prefHeight="681.0" prefWidth="758.0">
          <top>
             <AnchorPane prefHeight="91.0" prefWidth="609.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="14.0" prefHeight="91.0" prefWidth="434.0" text="Create Gathering" AnchorPane.leftAnchor="14.0">
+                  <Label layoutX="14.0" prefHeight="91.0" prefWidth="434.0" text="Create Event" AnchorPane.leftAnchor="14.0">
                      <font>
                         <Font name="Eras Bold ITC" size="34.0" />
                      </font>

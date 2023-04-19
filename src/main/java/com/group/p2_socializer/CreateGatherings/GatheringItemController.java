@@ -1,12 +1,17 @@
 package com.group.p2_socializer.CreateGatherings;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class GatheringItemController {
     public void setGatheringItemAnchorPane(AnchorPane gatheringItemAnchorPane) {
@@ -58,6 +63,12 @@ public class GatheringItemController {
 
     @FXML
     private Label timeLabel;
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }
 
 
