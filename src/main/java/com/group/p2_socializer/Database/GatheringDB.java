@@ -32,15 +32,15 @@ public class GatheringDB {
         connection.close();
     }
 
-    public static List<Gathering> getGatheringsDate() throws SQLException {
+    public static List<Gathering> getGatheringsDate(int year) throws SQLException {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
-        String sql = " ";
+        String sql = "SELECT * FROM gathering " +
+                "WHERE EXTRACT(YEAR FROM localdatetime) = ? ";
         Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         PreparedStatement statement = connection.prepareStatement(sql);
-        //statement.setInt(1, );
-        //statement.setInt(2, );
+        statement.setInt(1, year);
         ResultSet result = statement.executeQuery();
         List<Gathering> gatheringList = new ArrayList<>();
         while (result.next()) {

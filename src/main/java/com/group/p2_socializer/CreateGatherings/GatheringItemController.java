@@ -9,9 +9,38 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class GatheringItemController {
+    public void setGatheringItemAnchorPane(AnchorPane gatheringItemAnchorPane) {
+        this.gatheringItemAnchorPane = gatheringItemAnchorPane;
+    }
+
+    public void setTitleLabel(String titleLabel) {
+        this.titleLabel.setText(titleLabel);
+    }
+
+    public void setOrganiserLabel(String organiserLabel) {
+        this.organiserLabel.setText(organiserLabel);
+    }
+
+    public void setAttendingLabel(String attendingLabel) {
+        this.attendingLabel.setText(attendingLabel);
+    }
+
+    public void setDayOfMonthLabel(String day) {
+        this.dayOfMonthLabel.setText(day);
+
+
+    }
+
+    public void setMonthLabel(String monthLabel) {
+        this.monthLabel.setText(monthLabel);
+    }
+
+    public void setTimeLabel(String timeLabel) {
+        this.timeLabel.setText(timeLabel);
+    }
+
     @FXML
     private AnchorPane gatheringItemAnchorPane;
-
     @FXML
     private Label titleLabel;
 
@@ -29,12 +58,6 @@ public class GatheringItemController {
 
     @FXML
     private Label timeLabel;
-
-
-
-
-
-
 }
 
 

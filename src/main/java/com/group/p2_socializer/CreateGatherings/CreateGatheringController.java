@@ -39,7 +39,6 @@ public class CreateGatheringController implements Initializable {
     private TextArea eventDescriptionTextArea;
     @FXML
     public JFXButton goBack;
-
     private String eventName;
     private String formattedDate;
     private String eventOrganiser;
