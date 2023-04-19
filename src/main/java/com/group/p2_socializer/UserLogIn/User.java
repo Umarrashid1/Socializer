@@ -3,6 +3,7 @@ package com.group.p2_socializer.UserLogIn;
 import com.group.p2_socializer.Database.UserDB;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -10,6 +11,7 @@ public class User {
     private String username;
     private String password;
     private String userType;
+    private List<String> userTagList = new ArrayList<>();
 
     public int getUserID() {
         return userID;
@@ -45,14 +47,16 @@ public class User {
 
 
 
+
+
     public void joinGathering(int gatheringID) throws SQLException {
         UserDB.joinGathering(userID, gatheringID);
     }
     public void leaveGathering(int gatheringID) throws SQLException{
         UserDB.leaveGathering(userID, gatheringID);
     }
-    public List getTags(int userID) throws SQLException {
-        List tagList = UserDB.getTags(userID);
+    public ArrayList getTags(int userID) throws SQLException {
+        ArrayList tagList = UserDB.getTags(userID);
         return tagList;
     }
     public void setTags(List tagList){

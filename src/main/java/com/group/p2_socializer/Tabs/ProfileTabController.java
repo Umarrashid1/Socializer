@@ -1,5 +1,6 @@
 package com.group.p2_socializer.Tabs;
 
+import com.group.p2_socializer.Database.UserDB;
 import com.group.p2_socializer.UserLogIn.User;
 import com.group.p2_socializer.activities.Activity;
 import com.jfoenix.controls.JFXListView;
@@ -12,20 +13,27 @@ import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 public class ProfileTabController implements Initializable{
    // ObservableList<Activity> listGatheringsPrior = FXCollections.observableArrayList();
     // ObservableList<Activity> listGatheringInterest = FXCollections.observableArrayList();
     //ObservableList<Activity> listGatheringOrganized = FXCollections.observableArrayList();
+   ArrayList<String> tagList = new ArrayList<>();
 
     @FXML
     private AnchorPane ChooseGatheringAnchorPane;
 
     @FXML
     private ImageView profilePic;
+
+    @FXML
+    private Text tagListText;
 
     @FXML
     private Label profileUsername;
@@ -60,6 +68,28 @@ public class ProfileTabController implements Initializable{
     @FXML
     private JFXListView<String> listGatheringOrganized;
     @FXML
+
+    public void setUser(User user) throws SQLException {
+     profileUsername.setText(user.getUsername());
+     tagList =  user.getTags(user.getUserID());
+     String tagListAsString =tagList.toString();
+     tagListText.setText(tagListAsString);
+     //StringUtils.join(tagList, ", #")
+    }
+     /*/try {
+      tagList = (ArrayList<String>) user.getTags(user.getUserID());
+     } catch (SQLException e) {
+      throw new RuntimeException(e);
+     }
+
+
+     StringBuilder tagListString = new StringBuilder();
+     for (String i : tagList) {
+      tagListString.append('#').append(i).append(", ");
+     }
+     tagListText.setText(tagListString.toString());
+
+      */
     void goToSelectedGathering(MouseEvent event) {
         //TODO: make click go to selected gathering
 
@@ -84,7 +114,8 @@ public class ProfileTabController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
-    public void setUser(User user) {
-        profileUsername.setText(user.getUsername());
-    }
+
+
+
+
 }
