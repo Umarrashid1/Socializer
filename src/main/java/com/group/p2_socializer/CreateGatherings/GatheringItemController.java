@@ -1,4 +1,6 @@
 package com.group.p2_socializer.CreateGatherings;
+import com.group.p2_socializer.Pages.GatheringPageController;
+import com.group.p2_socializer.activities.Gathering;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -13,29 +15,30 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class GatheringItemController {
+public class GatheringItemController implements Initializable {
     public void setGatheringItemAnchorPane(AnchorPane gatheringItemAnchorPane) {
         this.gatheringItemAnchorPane = gatheringItemAnchorPane;
     }
 
-    public void setTitleLabel(String titleLabel) {
-        this.titleLabel.setText(titleLabel);
-    }
 
-    public void setOrganiserLabel(String organiserLabel) {
-        this.organiserLabel.setText(organiserLabel);
-    }
-
-    public void setAttendingLabel(String attendingLabel) {
-        this.attendingLabel.setText(attendingLabel);
-    }
-
-    public void setDayOfMonthLabel(String day) {
-        this.dayOfMonthLabel.setText(day);
-
+    public void setGathering(Gathering gathering){
+        currentGathering = gathering;
+        titleLabel.setText(gathering.getActivityName());
+        dayOfMonthLabel.setText(String.valueOf(gathering.getLocalDateTime().getDayOfMonth()));
+        monthLabel.setText(gathering.getLocalDateTime().getMonth().toString());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        timeLabel.setText(String.valueOf(gathering.getLocalDateTime().format(formatter)));
+        organiserLabel.setText(gathering.getActivityOrganiser());
 
     }
-
+    public void onGatheringClicked(MouseEvent mouseEvent) {
+    GatheringPageController gatheringPageController = new GatheringPageController();
+        try {
+            gatheringPageController.loadGatheringPage(currentGathering);
+        } catch (SQLException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public void setMonthLabel(String monthLabel) {
         this.monthLabel.setText(monthLabel);
     }
@@ -43,6 +46,9 @@ public class GatheringItemController {
     public void setTimeLabel(String timeLabel) {
         this.timeLabel.setText(timeLabel);
     }
+
+
+    private Gathering currentGathering;
 
     @FXML
     private AnchorPane gatheringItemAnchorPane;

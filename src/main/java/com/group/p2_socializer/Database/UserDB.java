@@ -79,7 +79,7 @@ public class UserDB {
         }
     }
 
-    public static List getTags(int userID) throws SQLException {
+    public static ArrayList getTags(int userID) throws SQLException {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
@@ -91,7 +91,7 @@ public class UserDB {
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, userID);
         ResultSet result = statement.executeQuery();
-        List<String> tagList = new ArrayList<>();
+        ArrayList<String> tagList = new ArrayList<>();
         while (result.next()) {
             tagList.add(result.getString("tag"));
         }

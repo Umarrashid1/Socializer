@@ -13,17 +13,17 @@ import java.io.IOException;
 
 public class ChooseGatheringTabController {
 
-        @FXML
-        private AnchorPane ChooseGatheringAnchorPane;
 
-        @FXML
-        private VBox eventGatheringVBox;
+    @FXML
+    private AnchorPane ChooseGatheringAnchorPane;
 
-        @FXML
-        private VBox customGatheringVBox;
+    @FXML
+    private VBox eventGatheringVBox;
+    @FXML
+    private VBox customGatheringVBox;
 
-        @FXML
-        private VBox preDefinedGatheringVBox;
+    @FXML
+    private VBox preDefinedGatheringVBox;
 
 
         public void handleCustomGatheringCreation() {
@@ -57,14 +57,16 @@ public class ChooseGatheringTabController {
         }
 
 
-        public void handleEventGatheringCreation() {
-
-            FXMLLoader loader = new FXMLLoader();
-            try {AnchorPane createGatheringAnchorPane = loader.load(getClass().getResource("/com/group/p2_socializer/create_custom_gathering.fxml"));
-            ChooseGatheringAnchorPane.getChildren().setAll(createGatheringAnchorPane);
+        public void handleEventGatheringCreation(Event event) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/create_custom_gathering.fxml"));
+                AnchorPane createGatheringAnchorPane = loader.load();
+                CreateGatheringController controller = loader.getController();
+                controller.setDistortion();
+                ChooseGatheringAnchorPane.getChildren().setAll(createGatheringAnchorPane);
 
             } catch (IOException iex) {
-            System.out.println("file not found");
+                System.out.println("file not found");
             }
 
         }

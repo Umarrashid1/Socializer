@@ -1,5 +1,6 @@
 package com.group.p2_socializer.Tabs;
 
+import com.group.p2_socializer.CreateGatherings.CreateGatheringController;
 import com.group.p2_socializer.UserLogIn.User;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -13,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.*;
 import java.util.*;
 
@@ -21,7 +23,7 @@ public class TabController implements Initializable  {
     ZonedDateTime dateFocus;
     ZonedDateTime today;
     @FXML
-    private TabPane mainTabPane;
+    TabPane mainTabPane;
     @FXML
     private Tab homeTab;
     @FXML
@@ -97,8 +99,11 @@ public class TabController implements Initializable  {
                 User user = (User) mainTabPane.getScene().getWindow().getUserData();
                 controller.setUser(user);
             }
+            if(name == "event_calendar_tab"){
+                EventCalendarTabController controller = loader.getController();
+                controller.setOuterController(this);
+            }
             mainTabPane.getSelectionModel().getSelectedItem().setContent(newPane);
-
             // Reset the anchors
             AnchorPane.setBottomAnchor(newPane, 0.0);
             AnchorPane.setLeftAnchor(newPane, 0.0);
@@ -106,6 +111,8 @@ public class TabController implements Initializable  {
             AnchorPane.setTopAnchor(newPane, 0.0);
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -129,4 +136,23 @@ public class TabController implements Initializable  {
         Stage stage = (Stage) mainTabPane.getScene().getWindow();
         return stage;
     }
+
+    public void clearedChooseGatheringTab(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/create_custom_gathering.fxml"));
+        AnchorPane newPane = null;
+        try {
+            newPane = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        CreateGatheringController controller = loader.getController();
+        mainTabPane.getSelectionModel().getSelectedItem().setContent(newPane);
+        // Reset the anchors
+        AnchorPane.setBottomAnchor(newPane, 0.0);
+        AnchorPane.setLeftAnchor(newPane, 0.0);
+        AnchorPane.setRightAnchor(newPane, 0.0);
+        AnchorPane.setTopAnchor(newPane, 0.0);
+
+    }
 }
+

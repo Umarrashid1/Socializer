@@ -57,6 +57,7 @@ public class GatheringPageController {
     private VBox postList;
 
 
+
     public void loadGatheringPage(Gathering newGathering) throws SQLException, IOException {
 
 

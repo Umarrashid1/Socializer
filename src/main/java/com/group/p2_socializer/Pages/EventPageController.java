@@ -70,7 +70,8 @@ public class EventPageController {
         try {
             //TODO: Set max size and enable text wrap for every label and text
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy 'AT' HH:mm", Locale.ENGLISH);
-            String date = newEvent.getZonedDatetime().format(formatter).toUpperCase();
+            ZonedDateTime zonedDateTime = newEvent.getLocalDateTime().atZone(newEvent.getTimeZone());
+            String dateString = zonedDateTime.format(formatter).toUpperCase();
 
             // Load the FXML file
             FXMLLoader loader = new FXMLLoader(EventPageController.class.getResource("/com/group/p2_socializer/event_page.fxml"));
@@ -84,7 +85,7 @@ public class EventPageController {
 
             //Label eventDateLabel = new Label(eventDate);
             Label eventDateLabel = (Label) eventInfoVBox.lookup("#eventDateLabel");
-            eventDateLabel.setText(date);
+            eventDateLabel.setText(dateString);
             eventDateLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 13; -fx-text-fill: #797878;");
 
 

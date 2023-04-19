@@ -36,9 +36,7 @@ public class DiscoverTabController implements Initializable {
                 try {
                     VBox vBox = loader.load();
                     GatheringItemController controller = loader.getController();
-                    controller.setTitleLabel(gathering.getActivityName());
-                    controller.setDayOfMonthLabel(String.valueOf(gathering.getLocalDateTime().getDayOfMonth()));
-                    controller.setMonthLabel(gathering.getLocalDateTime().getMonth().toString());
+                    controller.setGathering(gathering);
                     gatheringItemVBox.getChildren().add(vBox);
                 } catch (IOException e) {
                     throw new RuntimeException(e);

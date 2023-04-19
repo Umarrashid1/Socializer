@@ -14,7 +14,7 @@ public class ActivityDB {
         String dbUser = "root";
         String dbPassword = "password";
         String sql = "INSERT INTO Activities(activityname, activitydescription, activitycity, activitycountry, " +
-                "activityorganiser, activitydatetime, activitytimezone) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                "activityorganiser, activitydatetime, activitytimezone, activitytype) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         // connect to database
         Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -25,6 +25,8 @@ public class ActivityDB {
         statement.setString(5, newEvent.getActivityOrganiser());
         statement.setObject(6, newEvent.getLocalDateTime());
         statement.setString(7, newEvent.getTimeZone().toString());
+        statement.setString(8, newEvent.getActivityType());
+
         //Convert timezone to string for storage in sql database
         statement.executeUpdate();
         connection.close();

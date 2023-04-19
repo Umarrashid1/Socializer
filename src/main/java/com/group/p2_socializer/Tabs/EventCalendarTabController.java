@@ -1,12 +1,17 @@
 package com.group.p2_socializer.Tabs;
 
+import com.group.p2_socializer.Calendar.CreateEventController;
+import com.group.p2_socializer.CreateGatherings.CreateGatheringController;
+import com.group.p2_socializer.Pages.GatheringPageController;
 import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.Calendar.CalendarManager;
 import com.group.p2_socializer.Pages.EventPageController;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTabPane;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -48,7 +53,10 @@ public class EventCalendarTabController implements Initializable {
     @FXML
     private Text month;
     @FXML
-    private JFXButton createEventButton;
+    private AnchorPane createEventAnchorPane;
+
+    private TabController controller;
+
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Map<Integer, List<Event>> calendarData = null;
@@ -59,9 +67,20 @@ public class EventCalendarTabController implements Initializable {
         }
         drawCalendar (calendarData);
     }
-    public void handleCreateEventButton(){
-        //TODO: Umar
+    public void handleCreateEventButton() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane createEventAnchorPane = loader.load(getClass().getResource("/com/group/p2_socializer/create_event.fxml"));
+        eventCalendarAnchorPane.getChildren().setAll(createEventAnchorPane);
+    }
+    public void createEventGatheringButtonHandler(Label eventLocationLabel, Event event) {
+        controller.mainTabPane.getSelectionModel().select(4);
+        Stage stage = (Stage) eventLocationLabel.getScene().getWindow();
+        stage.close();
+        controller.clearedChooseGatheringTab();
 
+    }
+    public void setOuterController(TabController outerController) throws IOException {
+        controller = outerController;
     }
 
     public void updateCalendar(){
@@ -238,7 +257,8 @@ public class EventCalendarTabController implements Initializable {
                     Label eventNameLabel = new Label(item.getActivityName());
 
                     Label eventDateTitle = new Label("Date:");
-                    Label eventDateLabel = new Label(item.getZonedDatetime().toString());
+
+                    Label eventDateLabel = new Label(item.getLocalDateTime().toString()); // to do fix to zone
 
                     Label eventDescriptionTitle = new Label("Description:");
                     Label eventDescriptionLabel = new Label(item.getActivityDescription());

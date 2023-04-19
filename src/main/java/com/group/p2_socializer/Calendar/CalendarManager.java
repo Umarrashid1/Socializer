@@ -24,7 +24,7 @@ public class CalendarManager {
         Map<Integer, List<Event>> calendarActivityMap = new HashMap<>();
 
         for (Event activity: calendarActivities) {
-            int activityDate = activity.getZonedDatetime().getDayOfMonth();
+            int activityDate = activity.getLocalDateTime().getDayOfMonth();
             if(!calendarActivityMap.containsKey(activityDate)){
                 calendarActivityMap.put(activityDate, List.of(activity));
             } else {

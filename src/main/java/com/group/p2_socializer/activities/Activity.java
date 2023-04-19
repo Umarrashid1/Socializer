@@ -20,7 +20,6 @@ public class Activity {
     private String activityOrganiser;
     private LocalDateTime localDateTime;
     private ZoneId timeZone;
-    private ZonedDateTime zonedDatetime;
 
     private ArrayList attendeeList = new ArrayList<>();
     //todo: use attendeeList for collecting the attendees of a gathering
@@ -61,9 +60,6 @@ public class Activity {
     public ZoneId getTimeZone() {
         return timeZone;
     }
-    public ZonedDateTime getZonedDatetime() {
-        return zonedDatetime;
-    }
     public List getTags(int activityID) throws SQLException {
         List tagList = ActivityDB.getTags(activityID);
 
@@ -84,7 +80,6 @@ public class Activity {
         this.activityOrganiser = builder.activityOrganiser;
         this.localDateTime = builder.localDateTime;
         this.timeZone = builder.timeZone;
-        this.zonedDatetime = builder.zonedDatetime;
     }
 
     public static class Builder<T extends Builder<T>> {

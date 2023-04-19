@@ -52,8 +52,7 @@ public class CreateEventController {
                 .activityOrganiser(eventOrganiserTextField.getText())
                 .localDateTime(localDateTime)
                 .timeZone(ZoneId.systemDefault())
-                .eventVenue("Madison Square Garden")
-                .eventOrganizerEmail("info@rockfest.com")
+                .activityType("Event")
                 .build();
 
         ActivityDB.storeEvent(event);
