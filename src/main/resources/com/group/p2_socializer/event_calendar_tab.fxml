@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:controller="com.group.p2_socializer.Tabs.EventCalendarTabController" prefHeight="611.0" prefWidth="749.0" style="-fx-background-color: #f2fafc;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="611.0" prefWidth="749.0" style="-fx-background-color: #f2fafc;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Tabs.EventCalendarTabController">
    <children>
       <FlowPane fx:id="calendar" hgap="10.0" layoutX="16.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="489.0" prefWidth="716.0" vgap="5.0" />
       <HBox alignment="CENTER" layoutX="173.0" layoutY="44.0" prefHeight="44.0" prefWidth="419.0" spacing="5.0">
@@ -86,11 +86,12 @@
             </Text>
          </children>
       </HBox>
-      <JFXButton layoutX="570.0" layoutY="52.0" text="Sync Calendar" onAction="#updateCalendar">
+      <JFXButton layoutX="570.0" layoutY="52.0" onAction="#updateCalendar" text="Sync Calendar">
          <graphic>
             <MaterialIconView glyphName="SYNC" size="25" />
          </graphic>
       </JFXButton>
       <FontAwesomeIconView glyphName="WRENCH" layoutX="724.0" layoutY="661.0" />
+      <JFXButton fx:id="createEventButton" layoutX="83.0" layoutY="54.0" onAction="#handleCreateEventButton" text="Create Event" />
    </children>
 </AnchorPane>

@@ -3,6 +3,7 @@ package com.group.p2_socializer.Tabs;
 import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.Calendar.CalendarManager;
 import com.group.p2_socializer.Pages.EventPageController;
+import com.jfoenix.controls.JFXButton;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -42,6 +43,8 @@ public class EventCalendarTabController implements Initializable {
     private Text year;
     @FXML
     private Text month;
+    @FXML
+    private JFXButton createEventButton;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Map<Integer, List<Event>> calendarData = null;
@@ -51,6 +54,10 @@ public class EventCalendarTabController implements Initializable {
             throw new RuntimeException(e);
         }
         drawCalendar (calendarData);
+    }
+    public void handleCreateEventButton(){
+        //TODO: Umar
+
     }
 
     public void updateCalendar(){
@@ -154,7 +161,7 @@ public class EventCalendarTabController implements Initializable {
 
 
     //TODO: Too intricate, split into methods
-     boolean isWindowOpen = false;
+    boolean isWindowOpen = false;
     void createCalendarActivity(List<Event> calendarActivities, double rectangleHeight, double rectangleWidth, StackPane stackPane, Rectangle rectangle) {
         VBox calendarActivityBox = new VBox();
         boolean isWindowOpen = false;
@@ -239,6 +246,10 @@ public class EventCalendarTabController implements Initializable {
                     Label eventOrganiserTitle = new Label("Organiser:");
                     Label eventOrganiserLabel = new Label(item.getActivityOrganiser());
 
+                    JFXButton createEventGatheringButton = new JFXButton("Create Event Gathering");
+                    createEventGatheringButton.setStyle("-fx-font-family: 'Arial'; -fx-font-size: 11; -fx-text-fill: #797878;");
+
+
                     Label[] labels = {eventNameTitle, eventNameLabel, eventDateTitle, eventDateLabel,
                             eventDescriptionTitle, eventDescriptionLabel, eventLocationTitle,
                             eventLocationLabel, eventOrganiserTitle, eventOrganiserLabel};
@@ -254,7 +265,10 @@ public class EventCalendarTabController implements Initializable {
                     }
 
                     // Add the text boxes to the VBox
-                    vbox.getChildren().addAll(windowTitleLabel, eventNameTitle, eventNameLabel, eventDateTitle, eventDateLabel, eventDescriptionTitle, eventDescriptionLabel, eventLocationTitle, eventLocationLabel, eventOrganiserTitle, eventOrganiserLabel);
+                    vbox.getChildren().addAll(windowTitleLabel, eventNameTitle, eventNameLabel, eventDateTitle, eventDateLabel,
+                            eventDescriptionTitle, eventDescriptionLabel, eventLocationTitle,
+                            eventLocationLabel, eventOrganiserTitle, eventOrganiserLabel, createEventGatheringButton);
+
                     BorderPane borderPane = new BorderPane();
 
                     // Set the VBox as the center of the BorderPane
