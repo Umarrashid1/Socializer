@@ -80,13 +80,28 @@ public class TabController implements Initializable  {
  */
     private void loadPage(String name) {
 
+
         try {
+            int a = 0;
+
             if (mainTabPane != null) {
                 mainTabPane.getSelectionModel().getSelectedItem().setContent(null); //did not fix performance problem
             }
 
+
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/" + name + ".fxml"));
             AnchorPane newPane = loader.load();
+            a++;
+            if(a>1){
+                loader.setRoot(null);
+                loader.setController(null);
+                loader.setClassLoader(null);
+            }
+
+
+
+
 
             //TODO: Maybe the user object recieved(?) from login should be also be passed further along to the other tabs.
             // a static int for the current session?.

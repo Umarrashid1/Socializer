@@ -29,9 +29,11 @@ public class DiscoverTabController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         try {
+
             List<Gathering> gatheringList = GatheringDB.getGatheringsDate(2023);
             for (Gathering gathering : gatheringList){
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/gathering_item.fxml"));
+
 
                 try {
                     VBox vBox = loader.load();
