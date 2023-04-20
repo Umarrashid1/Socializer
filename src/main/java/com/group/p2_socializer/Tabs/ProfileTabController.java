@@ -20,7 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-public class ProfileTabController implements Initializable{
+public class ProfileTabController extends TabController implements Initializable{
    // ObservableList<Activity> listGatheringsPrior = FXCollections.observableArrayList();
     // ObservableList<Activity> listGatheringInterest = FXCollections.observableArrayList();
     //ObservableList<Activity> listGatheringOrganized = FXCollections.observableArrayList();

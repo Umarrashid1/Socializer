@@ -40,7 +40,7 @@ import java.time.*;
 import java.util.*;
 
 
-public class EventCalendarTabController implements Initializable {
+public class EventCalendarTabController extends TabController implements Initializable {
 
     ZonedDateTime dateFocus = ZonedDateTime.now();
     ZonedDateTime today = ZonedDateTime.now();;

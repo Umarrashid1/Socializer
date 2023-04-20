@@ -29,16 +29,14 @@ public class DiscoverTabController extends TabController implements Initializabl
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         try {
-
             List<Gathering> gatheringList = GatheringDB.getGatheringsDate(2023);
             for (Gathering gathering : gatheringList){
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/gathering_item.fxml"));
-
-
                 try {
                     VBox vBox = loader.load();
+                    GatheringItemController controller = loader.getController();
+                    controller.setGathering(gathering);
                     gatheringItemVBox.getChildren().add(vBox);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
