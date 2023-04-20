@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
@@ -16,13 +17,14 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class DiscoverTabController implements Initializable {
+public class DiscoverTabController extends TabController implements Initializable {
     @FXML
     private AnchorPane discoverAnchorPane;
     @FXML
     private ScrollPane discoverScrollPane;
     @FXML
     private VBox gatheringItemVBox;
+
 
 
     @Override
@@ -37,8 +39,6 @@ public class DiscoverTabController implements Initializable {
 
                 try {
                     VBox vBox = loader.load();
-                    GatheringItemController controller = loader.getController();
-                    controller.setGathering(gathering);
                     gatheringItemVBox.getChildren().add(vBox);
                 } catch (IOException e) {
                     throw new RuntimeException(e);

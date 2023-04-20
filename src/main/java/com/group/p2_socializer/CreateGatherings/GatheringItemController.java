@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class GatheringItemController implements Initializable {
+public class GatheringItemController extends implements Initializable {
     public void setGatheringItemAnchorPane(AnchorPane gatheringItemAnchorPane) {
         this.gatheringItemAnchorPane = gatheringItemAnchorPane;
     }
