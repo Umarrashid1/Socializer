@@ -2,6 +2,7 @@ package com.group.p2_socializer.CreateGatherings;
 
 import com.group.p2_socializer.Database.GatheringDB;
 import com.group.p2_socializer.Pages.GatheringPageController;
+import com.group.p2_socializer.Tabs.ChooseGatheringTabController;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.activities.Gathering;
@@ -14,13 +15,11 @@ import javafx.scene.control.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.time.*;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 
-public class CreateGatheringController implements Initializable {
+public class CreateGatheringController extends ChooseGatheringTabController implements Initializable {
 
 
     @FXML
@@ -84,6 +83,7 @@ public class CreateGatheringController implements Initializable {
         popUpMessage.showCreatedPopUp(createdMessage);
         GatheringPageController gatheringPageController = new GatheringPageController();
         gatheringPageController.loadGatheringPage(newGathering);
+        //tabVisitedMap.put(discoverTab, true);
     }
 
     @Override

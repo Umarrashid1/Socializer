@@ -46,6 +46,7 @@ public class DiscoverTabController extends TabController implements Initializabl
             throw new RuntimeException(e);
         }
         discoverScrollPane.setContent(gatheringItemVBox);
+        gatheringItemVBox = null;
     }
 
 
