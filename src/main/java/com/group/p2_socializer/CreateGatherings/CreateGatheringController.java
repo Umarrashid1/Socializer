@@ -83,7 +83,7 @@ public class CreateGatheringController extends ChooseGatheringTabController impl
         popUpMessage.showCreatedPopUp(createdMessage);
         GatheringPageController gatheringPageController = new GatheringPageController();
         gatheringPageController.loadGatheringPage(newGathering);
-        //tabVisitedMap.put(discoverTab, true);
+        tabUpdateMap.put(discoverTab, true);
     }
 
     @Override

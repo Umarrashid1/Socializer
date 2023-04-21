@@ -85,12 +85,12 @@ public class TabController implements Initializable  {
     }
 
 
-    public Map<Tab, Boolean> tabVisitedMap = new HashMap<>();
+    public Map<Tab, Boolean> tabUpdateMap = new HashMap<>();
 
     public void detectTab(Event event) {
         Tab newTab = mainTabPane.getSelectionModel().getSelectedItem();
-            if (!tabVisitedMap.getOrDefault(newTab, false)) {
-               tabVisitedMap.put(newTab, true);
+            if (tabUpdateMap.getOrDefault(newTab, true)) {
+               tabUpdateMap.put(newTab, false);
                 if(newTab == homeTab){
                     loadPage("choose_gathering");
                 } else if(newTab == calendarTab) {
@@ -98,7 +98,7 @@ public class TabController implements Initializable  {
                 } else if (newTab == trendingTab) {
                     loadPage("choose_gathering");
                 } else if (newTab == discoverTab){
-                    loadPage("discover_tab");
+                    loadPage("discoverTab");
                 } else if (newTab == myProfileTab){
                     loadPage("profile_page");
                 } else if (newTab == createGatheringTab) {
