@@ -1,5 +1,7 @@
 package com.group.p2_socializer.Pages;
 
+import com.group.p2_socializer.Database.ActivityDB;
+import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.activities.Gathering;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.jfoenix.controls.JFXButton;
@@ -8,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -59,6 +62,15 @@ public class GatheringPageController {
 
 
     public void loadGatheringPage(Gathering newGathering) throws SQLException, IOException {
+
+        public void handleCancelGatheringtButton(MouseEvent event, Gathering gathering) throws SQLException {
+            ActivityDB.deleteEvent(newGathering.getGatheringID);
+            Node node = (Node) event.getSource();
+            Scene scene = node.getScene();
+            Stage stage = (Stage) scene.getWindow();
+            stage.close();
+
+        }
 
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy 'AT' HH:mm", Locale.ENGLISH);
