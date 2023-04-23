@@ -6,6 +6,7 @@ module com.group.p2_socializer {
     requires com.jfoenix;
     requires java.sql;
     requires transitive javafx.graphics;
+    requires de.jensd.fx.glyphs.fontawesome;
 
     opens com.group.p2_socializer.Tabs to javafx.fxml;
     opens com.group.p2_socializer to javafx.fxml;

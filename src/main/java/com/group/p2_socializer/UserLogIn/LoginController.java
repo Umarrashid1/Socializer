@@ -2,6 +2,7 @@ package com.group.p2_socializer.UserLogIn;
 
 import com.group.p2_socializer.Database.UserDB;
 import com.group.p2_socializer.Socializer;
+import com.group.p2_socializer.Tabs.TabController;
 import com.group.p2_socializer.Utils.ScreenUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,7 +42,9 @@ public class LoginController {
             Stage stage = (Stage) window;
             FXMLLoader fxmlLoader = new FXMLLoader(Socializer.class.getResource("main_window.fxml"));
             scene = new Scene(fxmlLoader.load());
-            stage.setUserData(user);
+            TabController controller = fxmlLoader.getController();
+            controller.setCurrentUser(user);
+            //stage.setUserData(user);
             stage.setTitle("Socializer");
             stage.setScene(scene);
             stage.show();

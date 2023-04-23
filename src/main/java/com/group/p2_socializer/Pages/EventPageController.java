@@ -1,6 +1,7 @@
 package com.group.p2_socializer.Pages;
 
 import com.group.p2_socializer.Database.ActivityDB;
+import com.group.p2_socializer.Tabs.EventCalendarTabController;
 import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.jfoenix.controls.JFXButton;
@@ -22,6 +23,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -29,7 +31,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-public class EventPageController {
+public class EventPageController{
     @FXML
     public AnchorPane centerPane;
     @FXML
@@ -42,6 +44,7 @@ public class EventPageController {
     public Label eventTitleLabel;
     @FXML
     public Label eventLocationLabel;
+
     @FXML HBox organiserHBox;
     @FXML
     public Label byLabel;
@@ -57,12 +60,15 @@ public class EventPageController {
     @FXML
     private VBox postList;
 
+
     public void handleCancelEventButton(MouseEvent event, Event newEvent) throws SQLException {
         ActivityDB.deleteEvent(newEvent.getActivityID());
         Node node = (Node) event.getSource();
         Scene scene = node.getScene();
         Stage stage = (Stage) scene.getWindow();
         stage.close();
+        //tabUpdateMap.put(calendarTab, true);
+
 
     }
 
@@ -121,6 +127,8 @@ public class EventPageController {
             newStage.setScene(new Scene(root));
             newStage.setTitle(newEvent.getActivityName());
 
+            //addManageEventBar();
+
             // Show the new stage
             newStage.show();
 
@@ -128,12 +136,12 @@ public class EventPageController {
             VBox postList = (VBox) root.lookup("#postList");
             postList.setMaxWidth(Double.MAX_VALUE);
             postList.setMaxHeight(Double.MAX_VALUE);
-            Button postNewsButton = (Button) root.lookup("#postNewsButton");
+            JFXButton postNewsButton = (JFXButton) root.lookup("#postNewsButton");
             postNewsButton.setOnMouseClicked((MouseEvent event) -> {
                 handlePostNewsButton(postList);
             });
 
-            Button cancelEventButton = (Button) root.lookup("#cancelEventButton");
+            JFXButton cancelEventButton = (JFXButton) root.lookup("#cancelEventButton");
             cancelEventButton.setOnMouseClicked((MouseEvent event) -> {
 
                 try {
@@ -147,6 +155,53 @@ public class EventPageController {
             e.printStackTrace();
         }
     }
+
+    private void addManageEventBar() {
+        // Create HBox
+        HBox manageEventBar = new HBox();
+        manageEventBar.setLayoutX(28.0);
+        manageEventBar.setLayoutY(-1.0);
+
+        // Create FontAwesomeIconView
+        FontAwesomeIconView wrenchIcon = new FontAwesomeIconView();
+        wrenchIcon.setGlyphName("WRENCH");
+        wrenchIcon.setSize("20");
+        HBox.setMargin(wrenchIcon, new Insets(0, 0, 5, 30)); // Set margin using Insets
+
+        // Create Label
+        Label manageEventLabel = new Label("MANAGE EVENT:");
+        manageEventLabel.setPrefHeight(29.0);
+        manageEventLabel.setPrefWidth(101.0);
+        manageEventLabel.setUnderline(true);
+        manageEventLabel.setFont(new Font("System Bold", 12.0));
+
+        // Create JFXButtons
+        JFXButton editEventButton = new JFXButton("Edit event");
+        editEventButton.setPrefHeight(29.0);
+        editEventButton.setPrefWidth(78.0);
+
+        JFXButton postNewsButton = new JFXButton("Post news");
+        postNewsButton.setPrefHeight(29.0);
+        postNewsButton.setPrefWidth(78.0);
+        postNewsButton.setId("postNewsButton"); // Set fx:id for the button
+
+
+        JFXButton manageGroupsButton = new JFXButton("Manage groups");
+        manageGroupsButton.setPrefHeight(29.0);
+        manageGroupsButton.setPrefWidth(104.0);
+
+        JFXButton cancelEventButton = new JFXButton("Cancel event");
+        cancelEventButton.setPrefHeight(29.0);
+        cancelEventButton.setPrefWidth(91.0);
+        cancelEventButton.setId("cancelEventButton"); // Set fx:id for the button
+
+        // Add children to HBox
+        manageEventBar.getChildren().addAll(wrenchIcon, manageEventLabel, editEventButton, postNewsButton, manageGroupsButton, cancelEventButton);
+
+        // Set padding for HBox
+        manageEventBar.setPadding(new Insets(0, 0, 1, 0));
+    }
+
     //TODO: Save news in DB and make them load on event page.
     private boolean isWindowOpen = false;
 

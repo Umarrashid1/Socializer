@@ -72,14 +72,6 @@ public class ChooseGatheringTabController extends TabController {
         }
 
     public void openCalendarTab(MouseEvent mouseEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/event_calendar_tab.fxml"));
-            AnchorPane createGatheringAnchorPane = loader.load();
-            EventCalendarTabController controller = loader.getController();
-            ChooseGatheringAnchorPane.getChildren().setAll(createGatheringAnchorPane);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
+        super.mainTabPane.getSelectionModel().select(3);
     }
 }

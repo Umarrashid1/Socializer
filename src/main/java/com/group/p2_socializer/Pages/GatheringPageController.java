@@ -63,14 +63,7 @@ public class GatheringPageController {
 
     public void loadGatheringPage(Gathering newGathering) throws SQLException, IOException {
 
-        public void handleCancelGatheringtButton(MouseEvent event, Gathering gathering) throws SQLException {
-            ActivityDB.deleteEvent(newGathering.getGatheringID);
-            Node node = (Node) event.getSource();
-            Scene scene = node.getScene();
-            Stage stage = (Stage) scene.getWindow();
-            stage.close();
 
-        }
 
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy 'AT' HH:mm", Locale.ENGLISH);

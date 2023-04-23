@@ -24,11 +24,11 @@ public class TabController implements Initializable  {
     ZonedDateTime dateFocus;
     ZonedDateTime today;
     @FXML
-    TabPane mainTabPane;
+    public TabPane mainTabPane;
     @FXML
     private Tab homeTab;
     @FXML
-    Tab calendarTab;
+    public Tab calendarTab;
     @FXML
     public Tab trendingTab;
     @FXML
@@ -37,35 +37,27 @@ public class TabController implements Initializable  {
     public Tab myProfileTab;
     @FXML
     public Tab createGatheringTab;
+    public User currentUser;
 
-    private Parent fxmlParent;
-
-    private FXMLLoader loader;
+    FXMLLoader loader;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
-
-
     private void loadPage(String name) {
-       if(mainTabPane != null){
-           loader = null;
-       }
         try {
             loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/" + name + ".fxml"));
             AnchorPane newPane = loader.load();
             if(name == "profile_page"){
                 ProfileTabController controller = loader.getController();
-                // Set data in the controller
-                User user = (User) mainTabPane.getScene().getWindow().getUserData();
-                controller.setUser(user);
+                controller.setUser(currentUser);
+                //temporary fix
             }
-            if(name == "event_calendar_tab"){
-                EventCalendarTabController controller = loader.getController();
-                controller.setOuterController(this);
-            }
+            TabController controller = loader.getController();
+            controller.setMainTabPane(mainTabPane);
+            controller.setCurrentUser(currentUser);
             // Get the content of the current tab
             Node content = mainTabPane.getSelectionModel().getSelectedItem().getContent();
             if (content != null) {
@@ -77,10 +69,8 @@ public class TabController implements Initializable  {
             // Set the content of the current tab
             mainTabPane.getSelectionModel().getSelectedItem().setContent(newPane);
 
-        } catch (IOException e) {
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
     }
 
@@ -89,30 +79,23 @@ public class TabController implements Initializable  {
 
     public void detectTab(Event event) {
         Tab newTab = mainTabPane.getSelectionModel().getSelectedItem();
-            if (tabUpdateMap.getOrDefault(newTab, true)) {
-               tabUpdateMap.put(newTab, false);
-                if(newTab == homeTab){
-                    loadPage("choose_gathering");
-                } else if(newTab == calendarTab) {
-                    loadPage("calendarTab");
-                } else if (newTab == trendingTab) {
-                    loadPage("choose_gathering");
-                } else if (newTab == discoverTab){
-                    loadPage("discoverTab");
-                } else if (newTab == myProfileTab){
-                    loadPage("profile_page");
-                } else if (newTab == createGatheringTab) {
-                    loadPage("choose_gathering");
-                }
+        if (tabUpdateMap.getOrDefault(newTab, true)) {
+            tabUpdateMap.put(newTab, false);
+            if(newTab == homeTab){
+                loadPage("choose_gathering");
+            } else if(newTab == calendarTab) {
+                loadPage("calendarTab");
+            } else if (newTab == trendingTab) {
+                loadPage("choose_gathering");
+            } else if (newTab == discoverTab){
+                loadPage("discoverTab");
+            } else if (newTab == myProfileTab){
+                loadPage("profile_page");
+            } else if (newTab == createGatheringTab) {
+                loadPage("choose_gathering");
             }
+        }
     }
-
-
-    public Stage getStage(){
-        Stage stage = (Stage) mainTabPane.getScene().getWindow();
-        return stage;
-    }
-
     public void clearedChooseGatheringTab(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/create_custom_gathering.fxml"));
         AnchorPane newPane = null;
@@ -123,6 +106,12 @@ public class TabController implements Initializable  {
         }
         CreateGatheringController controller = loader.getController();
         mainTabPane.getSelectionModel().getSelectedItem().setContent(newPane);
+    }
+    public void setMainTabPane(TabPane mainTabPane){
+        this.mainTabPane = mainTabPane;
+    }
+    public void setCurrentUser(User user){
+        this.currentUser = user;
     }
 }
 

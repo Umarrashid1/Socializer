@@ -55,7 +55,6 @@ public class EventCalendarTabController extends TabController implements Initial
     @FXML
     private AnchorPane createEventAnchorPane;
 
-    private TabController controller;
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -72,15 +71,15 @@ public class EventCalendarTabController extends TabController implements Initial
         AnchorPane createEventAnchorPane = loader.load(getClass().getResource("/com/group/p2_socializer/create_event.fxml"));
         eventCalendarAnchorPane.getChildren().setAll(createEventAnchorPane);
     }
-    public void createEventGatheringButtonHandler(Label eventLocationLabel, Event event) {
-        controller.mainTabPane.getSelectionModel().select(4);
+    public void createEventGatheringButtonHandler(Label eventLocationLabel, Event event) throws IOException {
+        super.mainTabPane.getSelectionModel().select(4);
         Stage stage = (Stage) eventLocationLabel.getScene().getWindow();
         stage.close();
-        controller.clearedChooseGatheringTab();
-
-    }
-    public void setOuterController(TabController outerController) throws IOException {
-        controller = outerController;
+        super.loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/create_custom_gathering.fxml"));
+        AnchorPane newPane = loader.load();
+        CreateGatheringController controller = loader.getController();
+        controller.setEventData(event);
+        super.mainTabPane.getSelectionModel().getSelectedItem().setContent(newPane);
     }
 
     public void updateCalendar(){
@@ -274,7 +273,11 @@ public class EventCalendarTabController extends TabController implements Initial
                     createEventGatheringButton.setStyle("-fx-font-family: 'Arial'; -fx-font-size: 11; -fx-text-fill: #797878;");
 
                     createEventGatheringButton.setOnMouseClicked((MouseEvent event) -> {
-                        createEventGatheringButtonHandler(eventLocationLabel, item);
+                        try {
+                            createEventGatheringButtonHandler(eventLocationLabel, item);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                     });
 
                     Label[] labels = {eventNameTitle, eventNameLabel, eventDateTitle, eventDateLabel,

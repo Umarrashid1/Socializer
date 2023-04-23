@@ -74,22 +74,9 @@ public class ProfileTabController extends TabController implements Initializable
      tagList =  user.getTags(user.getUserID());
      String tagListAsString =tagList.toString();
      tagListText.setText(tagListAsString);
-     //StringUtils.join(tagList, ", #")
+     // Temporary solution
     }
-     /*/try {
-      tagList = (ArrayList<String>) user.getTags(user.getUserID());
-     } catch (SQLException e) {
-      throw new RuntimeException(e);
-     }
 
-
-     StringBuilder tagListString = new StringBuilder();
-     for (String i : tagList) {
-      tagListString.append('#').append(i).append(", ");
-     }
-     tagListText.setText(tagListString.toString());
-
-      */
     void goToSelectedGathering(MouseEvent event) {
         //TODO: make click go to selected gathering
 
