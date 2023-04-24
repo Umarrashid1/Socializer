@@ -18,7 +18,7 @@
 
 <AnchorPane fx:id="MyProfileTab" minHeight="0.0" minWidth="0.0" prefHeight="781.0" prefWidth="956.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Tabs.ProfileTabController">
    <children>
-      <AnchorPane layoutY="-2.0" prefHeight="781.0" prefWidth="238.0" style="-fx-background-color: Royalblue;">
+      <AnchorPane layoutY="-2.0" prefHeight="781.0" prefWidth="238.0" style="-fx-background-color: #66FCFF;">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="16.0" layoutY="750.0" prefHeight="17.0" prefWidth="215.0" text="Copyright (c). All Rights Reserved" textFill="WHITE">
                <font>

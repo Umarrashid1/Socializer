@@ -5,6 +5,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -25,6 +27,11 @@
                <center>
                   <AnchorPane fx:id="centerPane" BorderPane.alignment="CENTER">
                      <children>
+                        <ImageView fitHeight="274.0" fitWidth="554.0" layoutX="35.0" layoutY="29.0" preserveRatio="true" AnchorPane.bottomAnchor="542.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="18.16522216796875" AnchorPane.topAnchor="29.0">
+                           <image>
+                              <Image url="@festivalpic.png" />
+                           </image>
+                        </ImageView>
                         <JFXButton layoutX="120.0" layoutY="411.0" prefHeight="29.0" prefWidth="86.0" ripplerFill="#7bce3c" text="Attend Event" wrapText="true" />
                         <JFXButton layoutX="28.0" layoutY="411.0" prefHeight="29.0" prefWidth="75.0" ripplerFill="#7bce3c" text="Interested" wrapText="true" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" height="111.0" layoutX="37.0" layoutY="654.0" stroke="BLACK" strokeType="INSIDE" width="253.0" AnchorPane.leftAnchor="37.0">
@@ -120,26 +127,8 @@
                               <Insets bottom="1.0" />
                            </padding>
                         </HBox>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="283.0" layoutX="36.0" layoutY="29.0" stroke="BLACK" strokeType="INSIDE" width="558.0" AnchorPane.leftAnchor="36.0">
-                           <fill>
-                              <LinearGradient endX="1.0" endY="1.0">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color red="0.4224841594696045" green="0.5339155793190002" blue="0.6381579041481018" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color red="1.0" green="1.0" blue="1.0" />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </LinearGradient>
-                           </fill>
-                        </Rectangle>
                         <Line endX="464.0" layoutX="130.0" layoutY="405.0" startX="-92.5" />
-                        <Line endX="100.0" layoutX="138.0" layoutY="447.0" startX="-100.0" />
+                        <Line endX="200.0" layoutX="138.0" layoutY="447.0" startX="-100.0" />
                         <VBox fx:id="postList" layoutX="9.0" layoutY="845.0" minWidth="558" />
                         <Label layoutX="37.0" layoutY="805.0" minWidth="558.0" text="Posts:">
                            <font>

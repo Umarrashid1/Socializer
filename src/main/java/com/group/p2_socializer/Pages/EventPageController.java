@@ -6,6 +6,8 @@ import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -15,10 +17,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -26,8 +27,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 public class EventPageController {
     @FXML
@@ -100,14 +100,93 @@ public class EventPageController {
             eventOrganiserLabel.setText(newEvent.getActivityOrganiser());
             eventOrganiserLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 12; -fx-text-fill: #000000;");
 
-            Label eventDescriptionLabel = new Label(newEvent.getActivityDescription());
-            eventDescriptionLabel.setLayoutX(36);
-            eventDescriptionLabel.setLayoutY(460);
-            eventDescriptionLabel.setFont(Font.font("Arial", 13));
 
-            // Add the label to the center pane
-            centerPane.getChildren().add(eventInfoVBox);
-            centerPane.getChildren().add(eventDescriptionLabel);
+            Label eventDescriptionLabel = new Label(newEvent.getActivityDescription());
+
+
+            eventDescriptionLabel.setMaxWidth(300);
+            eventDescriptionLabel.setWrapText(true);
+            eventDescriptionLabel.setFont(Font.font("Arial", 13));
+            eventDescriptionLabel.setPadding(new Insets(0,0,15,0));
+
+            VBox descriptionVBox = new VBox(eventDescriptionLabel);
+            descriptionVBox.setLayoutX(36);
+            descriptionVBox.setLayoutY(460);
+
+            Line line = new Line();
+            double lineLength = 300;
+            line.setStrokeWidth(2);
+            line.setStroke(Color.GRAY);
+
+            // Bind the start and end points of the Line to VBox properties
+            line.startXProperty().bind(descriptionVBox.layoutXProperty().add(descriptionVBox.widthProperty().divide(2).subtract(lineLength / 2)));
+            line.startYProperty().bind(descriptionVBox.layoutYProperty().add(descriptionVBox.heightProperty().divide(2)));
+            line.endXProperty().bind(line.startXProperty().add(lineLength));
+            line.endYProperty().bind(line.startYProperty());
+
+            // Add the Line to the VBox
+            descriptionVBox.getChildren().add(line);
+
+            //-----------------------------------------------------------------------
+
+            List<String> words = new ArrayList<>();
+            words.add("Apple");
+            words.add("Banana");
+            words.add("Cherry");
+            words.add("Date");
+            words.add("Fig");
+            words.add("Grape");
+            words.add("Lemon");
+            words.add("Mango");
+            words.add("Orange");
+            words.add("Peach");
+            words.add("Quince");
+            words.add("Raspberry");
+            words.add("Strawberry");
+            words.add("Tangerine");
+            words.add("Watermelon");
+            Collections.shuffle(words);
+
+            //-------------------------------------------------------------------------------
+
+            // Create a GridPane to hold the labels for the words
+            GridPane wordsGridPane = new GridPane();
+            wordsGridPane.setHgap(10);
+            wordsGridPane.setVgap(10);
+            wordsGridPane.setPadding(new Insets(10));
+
+            // Create a CornerRadii object to specify the corner radii of the rounded box
+            CornerRadii cornerRadii = new CornerRadii(10);
+
+            // Create a BackgroundFill object to specify the background fill of the rounded box
+            BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTGRAY, cornerRadii, null);
+
+            // Create a Background object with the BackgroundFill
+            Background background = new Background(backgroundFill);
+
+            int column = 0;
+            int row = 0;
+            for (String word : words) {
+                Label tagLabel = new Label(word);
+                tagLabel.setBackground(background); // Set the background of the label to the rounded box
+                wordsGridPane.add(tagLabel, column, row); // Add each label to the GridPane
+
+                // Increment column and row counters
+                column++;
+                if (column == 3) {
+                    // Max 3 labels per row, move to next row
+                    column = 0;
+                    row++;
+                }
+            }
+
+
+            // Add the GridPane with the labels to the descriptionHBox
+
+
+            descriptionVBox.getChildren().add(wordsGridPane);
+
+
 
 
             // Load the manager_bar.fxml file
@@ -122,16 +201,15 @@ public class EventPageController {
             managerBarController.setCancelEventButton();
 
             centerPane.getChildren().add(managerBarRoot);
-
+            centerPane.getChildren().add(descriptionVBox); // Add the descriptionHBox to the center pane
 
             // Create a new stage and set the new scene
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
             newStage.setTitle(newEvent.getActivityName());
 
-            // Show the new stage
-            newStage.show();
 
+            newStage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -139,7 +217,19 @@ public class EventPageController {
             throw new RuntimeException(e);
         }
         isWindowOpen = true;
+    }
 
+
+    private static class LabelListCell extends ListCell<Label> {
+        @Override
+        protected void updateItem(Label item, boolean empty) {
+            super.updateItem(item, empty);
+            if (empty || item == null) {
+                setGraphic(null);
+            } else {
+                setGraphic(item);
+            }
+        }
     }
     //TODO: Save news in DB and make them load on event page.
     private boolean isWindowOpen = false;
