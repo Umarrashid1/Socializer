@@ -14,6 +14,8 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -23,6 +25,7 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class ManagerBarController extends EventPageController implements Initializable {
@@ -35,18 +38,12 @@ public class ManagerBarController extends EventPageController implements Initial
     @FXML
     private HBox manageEventBar;
     private Event newEvent;
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Access the newEvent parameter within the initialize method
-        //postList.setMaxWidth(Double.MAX_VALUE);
-        //postList.setMaxHeight(Double.MAX_VALUE);
-        //JFXButton postNewsButton = (JFXButton) manageEventBar.lookup("#postNewsButton");
-        /*postNewsButton.setOnMouseClicked((MouseEvent event) -> {
-            handlePostNewsButton(postList);
-        });*/
+    public Map<Tab, Boolean> tabUpdateMap;
 
-        //JFXButton cancelEventButton = (JFXButton) manageEventBar.lookup("#cancelEventButton");
-
+    private TabPane mainTabPane;
+    public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
+    public void setMainTabPane(TabPane mainTabPane){this.mainTabPane = mainTabPane;}
+    public void setCancelEventButton() throws SQLException {
         cancelEventButton.setOnMouseClicked((MouseEvent event) -> {
 
             try {
@@ -57,6 +54,7 @@ public class ManagerBarController extends EventPageController implements Initial
         });
     }
 
+
     public void setNewEvent(Event newEvent) {
         this.newEvent = newEvent;
     }
@@ -66,6 +64,10 @@ public class ManagerBarController extends EventPageController implements Initial
         Scene scene = node.getScene();
         Stage stage = (Stage) scene.getWindow();
         stage.close();
+        Tab newTab = mainTabPane.getTabs().get(3);
+        tabUpdateMap.put(newTab, true);
+        mainTabPane.getSelectionModel().select(1);
+        mainTabPane.getSelectionModel().select(3);
     }
 
     public void handlePostNewsButton(VBox postList) {
@@ -131,4 +133,8 @@ public class ManagerBarController extends EventPageController implements Initial
     }
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }

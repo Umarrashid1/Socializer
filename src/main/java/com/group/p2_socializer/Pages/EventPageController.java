@@ -13,9 +13,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -29,6 +27,7 @@ import java.sql.SQLException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import java.util.Map;
 
 public class EventPageController {
     @FXML
@@ -50,6 +49,14 @@ public class EventPageController {
     public Label eventOrganiserLabel;
     @FXML
     public VBox postList;
+    public Map<Tab, Boolean> tabUpdateMap;
+
+    private TabPane mainTabPane;
+
+    public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
+    public void setMainTabPane(TabPane mainTabPane){
+        this.mainTabPane = mainTabPane;
+    }
 
 
 
@@ -105,12 +112,14 @@ public class EventPageController {
 
             // Load the manager_bar.fxml file
             FXMLLoader loader1 = new FXMLLoader(EventPageController.class.getResource("/com/group/p2_socializer/manager_bar.fxml"));
+            ManagerBarController controller = loader1.getController();
             Parent managerBarRoot = loader1.load();
 
             ManagerBarController managerBarController = loader1.getController(); // Get reference to actual instance of ManagerBarController
+            managerBarController.setMainTabPane(mainTabPane);
+            managerBarController.setTabUpdateMap(tabUpdateMap);
             managerBarController.setNewEvent(newEvent);
-            managerBarController.initialize(loader1.getLocation(), loader1.getResources());
-
+            managerBarController.setCancelEventButton();
 
             centerPane.getChildren().add(managerBarRoot);
 
@@ -126,6 +135,8 @@ public class EventPageController {
 
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
         isWindowOpen = true;
 

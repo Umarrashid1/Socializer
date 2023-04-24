@@ -57,6 +57,7 @@ public class EventCalendarTabController extends TabController implements Initial
 
 
 
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Map<Integer, List<Event>> calendarData = null;
 
@@ -319,7 +320,6 @@ public class EventCalendarTabController extends TabController implements Initial
                         controller.setMainTabPane(mainTabPane);
                         controller.setTabUpdateMap(tabUpdateMap);
                         Event newEvent = item;
-
                         // Open the event page of the created event
                         controller.loadEventPage(newEvent);
 
