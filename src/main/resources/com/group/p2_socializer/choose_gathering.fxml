@@ -2,19 +2,40 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="ChooseGatheringAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="781.0" prefWidth="956.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Tabs.ChooseGatheringTabController">
    <children>
+      <ImageView fitHeight="498.0" fitWidth="252.0" layoutX="80.0" layoutY="141.0" opacity="0.24">
+         <image>
+            <Image url="@pexels-vishnu-r-nair-1105666.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="512.0" fitWidth="252.0" layoutX="624.0" layoutY="141.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@bowling.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="501.0" fitWidth="252.0" layoutX="353.0" layoutY="141.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@climbing.jpg" />
+         </image>
+      </ImageView>
       <VBox layoutX="325.0" layoutY="199.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="140.0">
          <children>
-            <HBox prefHeight="550.0" prefWidth="796.0">
+            <HBox maxHeight="548.0" maxWidth="796.0" minHeight="431.0" minWidth="796.0" prefHeight="548.0" prefWidth="796.0">
                <children>
-                  <VBox fx:id="eventGatheringVBox" onMouseClicked="#openCalendarTab" prefHeight="431.0" prefWidth="553.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;">
+                  <VBox fx:id="eventGatheringVBox" maxHeight="501.0" maxWidth="252.0" minHeight="501.0" minWidth="252.0" onMouseClicked="#openCalendarTab" prefHeight="501.0" prefWidth="553.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;">
                      <children>
-                        <Label alignment="CENTER" prefHeight="70.0" prefWidth="270.0" text="Event Gathering" textAlignment="CENTER" />
+                        <Label alignment="CENTER" prefHeight="70.0" prefWidth="270.0" text="Event Gathering" textAlignment="CENTER">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Label>
                         <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 1" />
                         <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 2" />
                         <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 3" />
@@ -28,9 +49,12 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox fx:id="customGatheringVBox" onMouseClicked="#handleCustomGatheringCreation" prefHeight="431.0" prefWidth="553.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;">
+                  <VBox fx:id="customGatheringVBox" maxHeight="501.0" maxWidth="252.0" minHeight="501.0" minWidth="252.0" onMouseClicked="#handleCustomGatheringCreation" prefHeight="501.0" prefWidth="553.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;">
                      <children>
-                        <Label alignment="CENTER" prefHeight="70.0" prefWidth="270.0" text="Custom Gathering" textAlignment="CENTER" />
+                        <Label alignment="CENTER" prefHeight="70.0" prefWidth="270.0" text="Custom Gathering" textAlignment="CENTER">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Label>
                         <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 1" />
                         <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 2" />
                         <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 3" />
@@ -44,9 +68,12 @@
                         <Insets left="10.0" right="10.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox fx:id="preDefinedGatheringVBox" onMouseClicked="#handlePremadeGatheringCreation" prefHeight="431.0" prefWidth="553.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;">
+                  <VBox fx:id="preDefinedGatheringVBox" maxHeight="501.0" maxWidth="252.0" minHeight="501.0" minWidth="252.0" onMouseClicked="#handlePremadeGatheringCreation" prefHeight="501.0" prefWidth="553.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;">
                      <children>
-                        <Label alignment="CENTER" prefHeight="70.0" prefWidth="270.0" text="Pre-defined Gathering" />
+                        <Label alignment="CENTER" prefHeight="70.0" prefWidth="270.0" text="Pre-defined Gathering">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Label>
                         <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 1" />
                         <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 2" />
                         <Label prefHeight="72.0" prefWidth="266.0" text="PUNKT 3" />
