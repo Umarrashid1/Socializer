@@ -16,10 +16,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.*;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 
-public class CreateGatheringController extends ChooseGatheringTabController implements Initializable {
+public class CreateGatheringController  extends ChooseGatheringTabController implements Initializable {
 
 
     @FXML
@@ -36,18 +37,9 @@ public class CreateGatheringController extends ChooseGatheringTabController impl
     private TextField eventCountryTextField;
     @FXML
     private TextArea eventDescriptionTextArea;
-    @FXML
-    public JFXButton goBack;
-    private String eventName;
-    private String formattedDate;
-    private String eventOrganiser;
-    private String eventDescription;
-    private String eventCity;
-    private String eventCountry;
-    private LocalDateTime localDateTime;
-    private String timeZone;
 
-    //  Hmmmm bad name for method fix
+    public Map<Tab, Boolean> actualtabUpdateMap;
+    private TabPane mainTabPane;
 
     public void setEventData(Event event){
         eventNameTextField.setText(event.getActivityName());
@@ -59,9 +51,6 @@ public class CreateGatheringController extends ChooseGatheringTabController impl
         //eventDatePicker.setChronology();
     }
 
-    public void setDistortion(){
-        eventNameTextField.setText("distortion");
-    }
     public void handleCreateGathering(ActionEvent actionEvent) throws SQLException, IOException {
         LocalTime eventTime = LocalTime.parse(eventTimeTextField.getText());
         LocalDateTime localDateTime = LocalDateTime.of(eventDatePicker.getValue(), eventTime);
@@ -83,8 +72,17 @@ public class CreateGatheringController extends ChooseGatheringTabController impl
         popUpMessage.showCreatedPopUp(createdMessage);
         GatheringPageController gatheringPageController = new GatheringPageController();
         gatheringPageController.loadGatheringPage(newGathering);
-        tabUpdateMap.put(discoverTab, true);
+        Tab newTab = mainTabPane.getTabs().get(2);
+        this.tabUpdateMap.put(newTab, true);
+        mainTabPane.getSelectionModel().select(1);
+        mainTabPane.getSelectionModel().select(2);
     }
+    public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
+    public void setMainTabPane(TabPane mainTabPane){
+        this.mainTabPane = mainTabPane;
+    }
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

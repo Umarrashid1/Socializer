@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.*;
+import java.util.Map;
 
 public class CreateEventController {
 
@@ -29,8 +30,11 @@ public class CreateEventController {
     private TextField eventCountryTextField;
     @FXML
     private TextArea eventDescriptionTextArea;
-    @FXML
+
     private TabPane mainTabPane;
+
+    public Map<Tab, Boolean> tabUpdateMap;
+
     @FXML
     private Tab calendarTab;
     @FXML
@@ -58,7 +62,10 @@ public class CreateEventController {
         ActivityDB.storeEvent(event);
 
         //Switch to Calendar tab
-        mainTabPane.getSelectionModel().select(calendarTab);
+        Tab newTab = mainTabPane.getTabs().get(3);
+        tabUpdateMap.put(newTab, true);
+        mainTabPane.getSelectionModel().select(1);
+        mainTabPane.getSelectionModel().select(3);
 
         EventPageController controller = new EventPageController();
         controller.loadEventPage(event);
@@ -67,7 +74,9 @@ public class CreateEventController {
 
         PopUpMessage popUpMessage = new PopUpMessage();
         popUpMessage.showCreatedPopUp(createdMessage);
-
-
+    }
+    public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
+    public void setMainTabPane(TabPane mainTabPane){
+        this.mainTabPane = mainTabPane;
     }
 }

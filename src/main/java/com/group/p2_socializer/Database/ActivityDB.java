@@ -70,8 +70,8 @@ public class ActivityDB {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
-        String sql = "DELETE  FROM events " +
-                "WHERE eventID = ?";
+        String sql = "DELETE  FROM Activities " +
+                "WHERE activityID = ?";
         Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, eventID);

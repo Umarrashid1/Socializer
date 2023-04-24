@@ -47,30 +47,12 @@ public class ChooseGatheringTabController extends TabController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/create_custom_gathering.fxml"));
                 AnchorPane createGatheringAnchorPane = loader.load();
                 CreateGatheringController controller = loader.getController();
-                controller.setDistortion();
                 ChooseGatheringAnchorPane.getChildren().setAll(createGatheringAnchorPane);
 
             } catch (IOException iex) {
             System.out.println("file not found");
             }
-
         }
-
-
-        public void handleEventGatheringCreation(Event event) {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/create_custom_gathering.fxml"));
-                AnchorPane createGatheringAnchorPane = loader.load();
-                CreateGatheringController controller = loader.getController();
-                controller.setDistortion();
-                ChooseGatheringAnchorPane.getChildren().setAll(createGatheringAnchorPane);
-
-            } catch (IOException iex) {
-                System.out.println("file not found");
-            }
-
-        }
-
     public void openCalendarTab(MouseEvent mouseEvent) {
         super.mainTabPane.getSelectionModel().select(3);
     }

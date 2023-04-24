@@ -13,9 +13,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -30,6 +28,7 @@ import java.sql.SQLException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import java.util.Map;
 
 public class EventPageController{
     @FXML
@@ -59,17 +58,25 @@ public class EventPageController{
     private JFXButton cancelEventButton;
     @FXML
     private VBox postList;
+    public Map<Tab, Boolean> tabUpdateMap;
+
+    private TabPane mainTabPane;
 
 
+    public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
+    public void setMainTabPane(TabPane mainTabPane){
+        this.mainTabPane = mainTabPane;
+    }
     public void handleCancelEventButton(MouseEvent event, Event newEvent) throws SQLException {
         ActivityDB.deleteEvent(newEvent.getActivityID());
         Node node = (Node) event.getSource();
         Scene scene = node.getScene();
         Stage stage = (Stage) scene.getWindow();
         stage.close();
-        //tabUpdateMap.put(calendarTab, true);
-
-
+        Tab newTab = mainTabPane.getTabs().get(3);
+        tabUpdateMap.put(newTab, true);
+        mainTabPane.getSelectionModel().select(1);
+        mainTabPane.getSelectionModel().select(3);
     }
 
     public void loadEventPage(Event newEvent) {

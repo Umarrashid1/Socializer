@@ -1,6 +1,8 @@
 package com.group.p2_socializer.Pages;
 
 import com.group.p2_socializer.Database.ActivityDB;
+import com.group.p2_socializer.Database.GatheringDB;
+import com.group.p2_socializer.Tabs.DiscoverTabController;
 import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.activities.Gathering;
 import com.group.p2_socializer.Utils.PopUpMessage;
@@ -13,9 +15,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -32,8 +32,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
-public class GatheringPageController {
+public class GatheringPageController{
     @FXML
     public AnchorPane centerPane;
     @FXML
@@ -55,17 +56,35 @@ public class GatheringPageController {
     @FXML
     private VBox vBoxPostNews;
     @FXML
-    private JFXButton postNewsButton;
+    private JFXButton cancelGatheringButton;
     @FXML
     private VBox postList;
+    
+    public Map<Tab, Boolean> tabUpdateMap;
+
+    private TabPane mainTabPane;
+
+
+
+    public void handleCancelGatheringButton(MouseEvent event, Gathering newGathering) throws SQLException {
+        GatheringDB.deleteGathering(newGathering.getGatheringID());
+        Node node = (Node) event.getSource();
+        Scene scene = node.getScene();
+        Stage stage = (Stage) scene.getWindow();
+        stage.close();
+        Tab newTab = mainTabPane.getTabs().get(2);
+        tabUpdateMap.put(newTab, true);
+        mainTabPane.getSelectionModel().select(1);
+        mainTabPane.getSelectionModel().select(2);
+    }
+    public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
+    public void setMainTabPane(TabPane mainTabPane){
+        this.mainTabPane = mainTabPane;
+    }
 
 
 
     public void loadGatheringPage(Gathering newGathering) throws SQLException, IOException {
-
-
-
-
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy 'AT' HH:mm", Locale.ENGLISH);
         ZonedDateTime zonedDateTime = newGathering.getLocalDateTime().atZone(newGathering.getTimeZone());
         String dateString = zonedDateTime.format(formatter).toUpperCase();
@@ -142,10 +161,22 @@ public class GatheringPageController {
         VBox postList = (VBox) root.lookup("#postList");
         postList.setMaxWidth(Double.MAX_VALUE);
         postList.setMaxHeight(Double.MAX_VALUE);
+
         Button postNewsButton = (Button) root.lookup("#postNewsButton");
 
         postNewsButton.setOnMouseClicked((MouseEvent event) -> {
             handlePostNewsButton(postList);
+        });
+
+
+        cancelGatheringButton = (JFXButton) root.lookup("#cancelGatheringButton");
+        cancelGatheringButton.setOnMouseClicked((MouseEvent event) -> {
+
+            try {
+                handleCancelGatheringButton(event,newGathering);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         });
     }
 

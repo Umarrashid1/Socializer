@@ -25,18 +25,21 @@ public class DiscoverTabController extends TabController implements Initializabl
     @FXML
     private VBox gatheringItemVBox;
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
+
+    public void loadGatheringItems() {
         try {
             List<Gathering> gatheringList = GatheringDB.getGatheringsDate(2023);
-            for (Gathering gathering : gatheringList){
+            for (Gathering gathering : gatheringList) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/gathering_item.fxml"));
                 try {
                     VBox vBox = loader.load();
                     GatheringItemController controller = loader.getController();
                     controller.setGathering(gathering);
+                    controller.setTabUpdateMap(tabUpdateMap);
+                    controller.setMainTabPane(mainTabPane);
                     gatheringItemVBox.getChildren().add(vBox);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
@@ -49,10 +52,4 @@ public class DiscoverTabController extends TabController implements Initializabl
         gatheringItemVBox = null;
     }
 
-
-
-
-
-
 }
-

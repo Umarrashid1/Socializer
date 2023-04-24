@@ -59,6 +59,7 @@ public class EventCalendarTabController extends TabController implements Initial
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Map<Integer, List<Event>> calendarData = null;
+
         try {
             calendarData = CalendarManager.getCalendarActivitiesMonth(dateFocus);
         } catch (SQLException e) {
@@ -67,29 +68,32 @@ public class EventCalendarTabController extends TabController implements Initial
         drawCalendar (calendarData);
     }
     public void handleCreateEventButton() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        AnchorPane createEventAnchorPane = loader.load(getClass().getResource("/com/group/p2_socializer/create_event.fxml"));
-        eventCalendarAnchorPane.getChildren().setAll(createEventAnchorPane);
+        super.loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/create_event.fxml"));
+        AnchorPane newPane = loader.load();
+        CreateEventController controller = loader.getController();
+        controller.setTabUpdateMap(tabUpdateMap);
+        controller.setMainTabPane(mainTabPane);
+        super.mainTabPane.getSelectionModel().getSelectedItem().setContent(newPane);
     }
     public void createEventGatheringButtonHandler(Label eventLocationLabel, Event event) throws IOException {
         super.mainTabPane.getSelectionModel().select(4);
+        //Select choosegathering tab
         Stage stage = (Stage) eventLocationLabel.getScene().getWindow();
         stage.close();
         super.loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/create_custom_gathering.fxml"));
         AnchorPane newPane = loader.load();
         CreateGatheringController controller = loader.getController();
         controller.setEventData(event);
+        controller.setTabUpdateMap(tabUpdateMap);
+        controller.setMainTabPane(mainTabPane);
         super.mainTabPane.getSelectionModel().getSelectedItem().setContent(newPane);
     }
 
     public void updateCalendar(){
-        Map<Integer, List<Event>> calendarData = null;
-        try {
-            calendarData = CalendarManager.getCalendarActivitiesMonth(dateFocus);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        drawCalendar (calendarData);
+        Tab newTab = mainTabPane.getTabs().get(3);
+        tabUpdateMap.put(newTab, true);
+        mainTabPane.getSelectionModel().select(1);
+        mainTabPane.getSelectionModel().select(3);
     }
 
     @FXML
@@ -312,6 +316,8 @@ public class EventCalendarTabController extends TabController implements Initial
                     vbox.setOnMouseClicked((MouseEvent event) -> {
 
                         EventPageController controller = new EventPageController();
+                        controller.setMainTabPane(mainTabPane);
+                        controller.setTabUpdateMap(tabUpdateMap);
                         Event newEvent = item;
 
                         // Open the event page of the created event

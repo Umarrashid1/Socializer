@@ -4,6 +4,8 @@ import com.group.p2_socializer.activities.Gathering;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
@@ -13,9 +15,13 @@ import java.sql.SQLException;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class GatheringItemController implements Initializable {
+    public Map<Tab, Boolean> tabUpdateMap;
+    private TabPane mainTabPane;
+
     public void setGatheringItemAnchorPane(AnchorPane gatheringItemAnchorPane) {
         this.gatheringItemAnchorPane = gatheringItemAnchorPane;
     }
@@ -31,10 +37,18 @@ public class GatheringItemController implements Initializable {
         organiserLabel.setText(gathering.getActivityOrganiser());
 
     }
+    public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
+    public void setMainTabPane(TabPane mainTabPane){
+        this.mainTabPane = mainTabPane;
+    }
+
+
     public void onGatheringClicked(MouseEvent mouseEvent) {
     GatheringPageController gatheringPageController = new GatheringPageController();
         try {
+            gatheringPageController.setTabUpdateMap(tabUpdateMap);
             gatheringPageController.loadGatheringPage(currentGathering);
+            gatheringPageController.setMainTabPane(mainTabPane);
         } catch (SQLException | IOException e) {
             throw new RuntimeException(e);
         }

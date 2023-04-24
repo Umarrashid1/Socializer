@@ -54,6 +54,7 @@ public class GatheringDB {
                     .activityOrganiser(result.getString("eventorganiser"))
                     .localDateTime((LocalDateTime) result.getObject("localdatetime"))
                     .timeZone(ZoneId.systemDefault())
+                    .gatheringID(result.getInt("gatheringID"))
                     .build();
             gatheringList.add(newGathering);
         }
