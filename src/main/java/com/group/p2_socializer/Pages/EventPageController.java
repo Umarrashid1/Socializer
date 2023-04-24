@@ -127,9 +127,13 @@ public class EventPageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        isWindowOpen = true;
+
     }
     //TODO: Save news in DB and make them load on event page.
     private boolean isWindowOpen = false;
+
+    //wakckck
 
 
 
