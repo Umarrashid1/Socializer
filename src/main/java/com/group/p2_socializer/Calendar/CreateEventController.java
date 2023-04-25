@@ -54,7 +54,7 @@ public class CreateEventController {
         LocalDateTime localDateTime = LocalDateTime.of(eventDatePicker.getValue(), eventTime);
         // combine localDate and localTime into localDateTime
 
-        Event event = (Event) new Event.Builder()
+        Event event = new Event.Builder()
                 .activityType("EventActivity")
                 .activityName(eventNameTextField.getText())
                 .activityDescription(eventDescriptionTextArea.getText())
@@ -83,7 +83,7 @@ public class CreateEventController {
         popUpMessage.showCreatedPopUp(createdMessage);
     }
 
-    public void handleAddTagsButton(){
+    public void handleAddTagsButton() {
         Stage stage = new Stage();
         stage.setTitle("ListView Select Example");
 
@@ -96,11 +96,18 @@ public class CreateEventController {
         Button button = new Button("Read Selected Value");
 
         button.setOnAction(event -> {
-
             ObservableList selectedItems = listView.getSelectionModel().getSelectedItems();
-
-            for(Object o : selectedItems){
+            for (Object o : selectedItems) {
                 System.out.println("o = " + o + " (" + o.getClass() + ")");
+            }
+        });
+
+        // Handle mouse pressed event on ListView
+        listView.setOnMousePressed(event -> {
+            // Check if the clicked item is already selected
+            if (listView.getSelectionModel().getSelectedItems().contains(listView.getSelectionModel().getSelectedItem())) {
+                // If the clicked item is already selected, clear the selection
+                listView.getSelectionModel().clearSelection();
             }
         });
 
@@ -109,8 +116,8 @@ public class CreateEventController {
         Scene scene = new Scene(vBox, 300, 120);
         stage.setScene(scene);
         stage.show();
-
     }
+
 
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
     public void setMainTabPane(TabPane mainTabPane){
