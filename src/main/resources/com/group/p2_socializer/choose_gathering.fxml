@@ -13,17 +13,17 @@
    <children>
       <ImageView fitHeight="498.0" fitWidth="252.0" layoutX="80.0" layoutY="141.0" opacity="0.24">
          <image>
-            <Image url="@pexels-vishnu-r-nair-1105666.jpg" />
+            <Image url="@pictures/festivalpicture.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="512.0" fitWidth="252.0" layoutX="624.0" layoutY="141.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@bowling.jpg" />
+            <Image url="@pictures/bowling.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="501.0" fitWidth="252.0" layoutX="353.0" layoutY="141.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@climbing.jpg" />
+            <Image url="@pictures/climbing.jpg" />
          </image>
       </ImageView>
       <VBox layoutX="325.0" layoutY="199.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="140.0">

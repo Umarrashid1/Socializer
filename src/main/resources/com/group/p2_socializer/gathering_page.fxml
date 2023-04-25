@@ -6,13 +6,12 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -63,24 +62,6 @@
                               <Insets bottom="1.0" />
                            </padding>
                         </HBox>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="283.0" layoutX="36.0" layoutY="29.0" stroke="BLACK" strokeType="INSIDE" width="558.0" AnchorPane.leftAnchor="36.0">
-                           <fill>
-                              <LinearGradient endX="1.0" endY="1.0">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color red="0.4224841594696045" green="0.5339155793190002" blue="0.6381579041481018" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color red="1.0" green="1.0" blue="1.0" />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </LinearGradient>
-                           </fill>
-                        </Rectangle>
                         <Line endX="464.0" layoutX="130.0" layoutY="405.0" startX="-92.5" />
                         <Line endX="147.0" layoutX="138.0" layoutY="447.0" startX="-100.0" />
                         <VBox fx:id="postList" layoutX="9.0" layoutY="845.0" minWidth="558" />
@@ -90,6 +71,11 @@
                            </font>
                         </Label>
                         <JFXButton layoutX="28.0" layoutY="411.0" prefHeight="29.0" prefWidth="116.0" ripplerFill="#7bce3c" text="Intersted" wrapText="true" />
+                        <ImageView fitHeight="279.0" fitWidth="564.0" layoutX="34.0" layoutY="29.0">
+                           <image>
+                              <Image url="@pictures/festivalpic.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                </center>

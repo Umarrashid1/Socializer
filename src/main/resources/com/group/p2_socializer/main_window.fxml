@@ -2,27 +2,24 @@
 
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 
 <StackPane prefHeight="821.0" prefWidth="956.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Tabs.TabController">
     <children>
       <JFXTabPane fx:id="mainTabPane" prefHeight="52.0" prefWidth="749.0">
          <tabs>
-            <Tab fx:id="homeTab" onSelectionChanged="#detectTab" >
+            <Tab fx:id="homeTab" onSelectionChanged="#detectTab">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
               </content>
                <graphic>
                    <ImageView accessibleRole="BUTTON" fitHeight="57.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
                        <image>
-                           <Image url="@logo-no-background.png" />
+                           <Image url="@pictures/logo-no-background.png" />
                        </image>
                    </ImageView>
                </graphic>
@@ -43,14 +40,14 @@
                    <FontAwesomeIconView glyphName="USERS" size="20" />
                </graphic>
             </Tab>
-            <Tab  fx:id="calendarTab" onSelectionChanged="#detectTab" text="Event Calendar">
+            <Tab fx:id="calendarTab" onSelectionChanged="#detectTab" text="Event Calendar">
                <graphic>
                   <FontAwesomeIconView glyphName="CALENDAR" size="20" />
                </graphic>
                 <content>
                 </content>
             </Tab>
-             <Tab fx:id="createGatheringTab" text="Create Gathering" onSelectionChanged="#detectTab">
+             <Tab fx:id="createGatheringTab" onSelectionChanged="#detectTab" text="Create Gathering">
                  <content>
                </content>
                <graphic>

@@ -26,7 +26,7 @@
             </Label>
             <ImageView fitHeight="124.0" fitWidth="200.0" layoutX="12.0" layoutY="36.0">
                <image>
-                  <Image url="@logo_login.png" />
+                  <Image url="@pictures/logo_login.png" />
                </image>
             </ImageView>
             <Line endX="100.0" layoutX="114.0" layoutY="188.0" startX="-100.0" />

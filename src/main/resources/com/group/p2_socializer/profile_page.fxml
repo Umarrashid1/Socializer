@@ -32,7 +32,7 @@
                <children>
                   <ImageView fx:id="profilePic" fitHeight="150.0" fitWidth="200.0" onMouseDragOver="#hoverOverProfilePic" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@yas.jpg" />
+                        <Image url="@pictures/yas.jpg" />
                      </image>
                   </ImageView>
                   <Line endX="81.66667175292969" startX="-80.33333587646484" stroke="WHITE" strokeWidth="2.0">

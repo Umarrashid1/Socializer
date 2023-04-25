@@ -77,6 +77,13 @@ public class CreateGatheringController  extends ChooseGatheringTabController imp
         mainTabPane.getSelectionModel().select(1);
         mainTabPane.getSelectionModel().select(2);
     }
+
+    public void handleAddTagsButton(){
+
+
+    }
+
+
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
     public void setMainTabPane(TabPane mainTabPane){
         this.mainTabPane = mainTabPane;

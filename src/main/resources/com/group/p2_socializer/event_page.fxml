@@ -25,7 +25,7 @@
                      <children>
                         <ImageView fitHeight="274.0" fitWidth="554.0" layoutX="35.0" layoutY="29.0" preserveRatio="true" AnchorPane.bottomAnchor="542.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="18.16522216796875" AnchorPane.topAnchor="29.0">
                            <image>
-                              <Image url="@festivalpic.png" />
+                              <Image url="@pictures/festivalpic.png" />
                            </image>
                         </ImageView>
                         <JFXButton layoutX="120.0" layoutY="411.0" prefHeight="29.0" prefWidth="86.0" ripplerFill="#7bce3c" text="Attend Event" wrapText="true" />
