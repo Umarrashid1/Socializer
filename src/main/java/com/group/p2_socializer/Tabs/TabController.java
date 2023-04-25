@@ -99,6 +99,7 @@ public class TabController implements Initializable  {
                 tabUpdateMap.put(discoverTab, true);
             } else if(newTab == calendarTab) {
                 loadPage("calendarTab");
+                tabUpdateMap.put(calendarTab, true);
             } else if (newTab == trendingTab) {
                 loadPage("choose_gathering");
             } else if (newTab == discoverTab){

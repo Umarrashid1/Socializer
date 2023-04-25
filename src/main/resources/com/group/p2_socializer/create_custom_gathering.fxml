@@ -76,17 +76,34 @@
                </VBox.margin>
             </Label>
             <JFXTextArea fx:id="eventDescriptionTextArea" prefHeight="101.0" prefWidth="490.0" promptText="eg. lots of text in here." />
-            <JFXButton fx:id="addTagsButton" alignment="CENTER" contentDisplay="CENTER" onAction="#handleAddTagsButton" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #38FFF5;" text="Add Tags">
+            <VBox>
+               <children>
+                  <HBox prefHeight="14.0" prefWidth="490.0">
+                     <children>
+                        <Label text="Minimum participants:" />
+                        <VBox prefHeight="27.0" prefWidth="125.0" />
+                        <Label text="Maximum participant:s:" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="55.0" prefWidth="490.0">
+                     <children>
+                        <JFXTextField fx:id="minimumParticipantsTextField" prefHeight="25.0" prefWidth="140.0" promptText="eg. 4" />
+                        <VBox prefHeight="31.0" prefWidth="105.0" />
+                        <JFXTextField fx:id="maximumParticipantsTextField" prefHeight="25.0" prefWidth="139.0" promptText="eg. 10" />
+                     </children>
+                  </HBox>
+               </children>
                <VBox.margin>
-                  <Insets left="200.0" right="200.0" top="20.0" />
+                  <Insets top="10.0" />
                </VBox.margin>
-            </JFXButton>
+            </VBox>
             <HBox prefHeight="47.0" prefWidth="409.0">
                <children>
                   <JFXCheckBox prefHeight="44.0" prefWidth="104.0" text="I am the organiser of this event" />
-                  <JFXTextField fx:id="eventOrganiserTextField" promptText="Organiser">
+                  <VBox prefHeight="33.0" prefWidth="56.0" />
+                  <JFXTextField fx:id="eventOrganiserTextField" prefHeight="21.0" prefWidth="135.0" promptText="Organiser">
                      <HBox.margin>
-                        <Insets left="60.0" top="8.0" />
+                        <Insets top="8.0" />
                      </HBox.margin>
                   </JFXTextField>
                </children>
@@ -94,6 +111,11 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </HBox>
+            <JFXButton fx:id="addTagsButton" alignment="CENTER" contentDisplay="CENTER" onAction="#handleAddTagsButton" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #38FFF5;" text="Add Tags">
+               <VBox.margin>
+                  <Insets left="200.0" right="200.0" top="20.0" />
+               </VBox.margin>
+            </JFXButton>
             <HBox alignment="CENTER" prefHeight="95.0" prefWidth="490.0">
                <children>
                   <JFXButton fx:id="createCustomGatheringButton" onAction="#handleCreateGathering" prefHeight="61.0" prefWidth="138.0" style="-fx-background-color: #41FF31;" text="Create Gathering" />
