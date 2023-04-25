@@ -43,7 +43,6 @@
                                     <Label fx:id="eventOrganiserLabel" text="Label" />
                                  </children>
                               </HBox>
-
                            </children>
                         </VBox>
                         <HBox fx:id="manageEventBar" layoutX="28.0" layoutY="-1.0">

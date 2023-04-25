@@ -1,22 +1,13 @@
 package com.group.p2_socializer.Pages;
 
-import com.group.p2_socializer.Database.ActivityDB;
 import com.group.p2_socializer.Utils.ManagerBarController;
 import com.group.p2_socializer.activities.Event;
-import com.group.p2_socializer.Utils.PopUpMessage;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextArea;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -42,6 +33,9 @@ public class EventPageController {
     public Label eventTitleLabel;
     @FXML
     public Label eventLocationLabel;
+    @FXML
+    public HBox manageEventBar;
+
     @FXML HBox organiserHBox;
     @FXML
     public Label byLabel;
@@ -62,14 +56,14 @@ public class EventPageController {
 
     public void loadEventPage(Event newEvent) {
         try {
-            //TODO: Set max size and enable text wrap for every label and text
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy 'AT' HH:mm", Locale.ENGLISH);
             ZonedDateTime zonedDateTime = newEvent.getLocalDateTime().atZone(newEvent.getTimeZone());
             String dateString = zonedDateTime.format(formatter).toUpperCase();
 
             // Load the FXML file
-            FXMLLoader loader = new FXMLLoader(EventPageController.class.getResource("/com/group/p2_socializer/event_page.fxml"));
-            Parent root = loader.load();
+            FXMLLoader fxmlLoader = new FXMLLoader(EventPageController.class.getResource("/com/group/p2_socializer/event_page.fxml"));
+            Parent root = fxmlLoader.load();
+
             // Get reference to centerPane FXML file
             ScrollPane scrollPane = (ScrollPane) root.lookup("#scrollPane");
             AnchorPane centerPane = (AnchorPane) scrollPane.getContent();
@@ -77,7 +71,6 @@ public class EventPageController {
             HBox organiserHBox = (HBox) eventInfoVBox.lookup("#organiserHBox");
             organiserHBox.setMaxWidth(250);
 
-            //Label eventDateLabel = new Label(eventDate);
             Label eventDateLabel = (Label) eventInfoVBox.lookup("#eventDateLabel");
             eventDateLabel.setText(dateString);
             eventDateLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 13; -fx-text-fill: #797878;");
@@ -102,7 +95,6 @@ public class EventPageController {
 
 
             Label eventDescriptionLabel = new Label(newEvent.getActivityDescription());
-
 
             eventDescriptionLabel.setMaxWidth(300);
             eventDescriptionLabel.setWrapText(true);
@@ -180,33 +172,33 @@ public class EventPageController {
                 }
             }
 
-
             // Add the GridPane with the labels to the descriptionHBox
-
-
             descriptionVBox.getChildren().add(wordsGridPane);
-
-
 
 
             // Load the manager_bar.fxml file
             FXMLLoader loader1 = new FXMLLoader(EventPageController.class.getResource("/com/group/p2_socializer/manager_bar.fxml"));
-            ManagerBarController controller = loader1.getController();
             Parent managerBarRoot = loader1.load();
 
             ManagerBarController managerBarController = loader1.getController(); // Get reference to actual instance of ManagerBarController
             managerBarController.setMainTabPane(mainTabPane);
             managerBarController.setTabUpdateMap(tabUpdateMap);
             managerBarController.setNewEvent(newEvent);
-            managerBarController.setCancelEventButton();
+
+            int a=0;
+            managerBarController.setCancelButton(a);
 
             centerPane.getChildren().add(managerBarRoot);
-            centerPane.getChildren().add(descriptionVBox); // Add the descriptionHBox to the center pane
+            centerPane.getChildren().add(descriptionVBox);
 
             // Create a new stage and set the new scene
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
             newStage.setTitle(newEvent.getActivityName());
+
+            //VBox postList = (VBox) root.lookup("#postList");
+            //postList.setMaxWidth(Double.MAX_VALUE);
+            //postList.setMaxHeight(Double.MAX_VALUE);
 
 
             newStage.show();
@@ -216,7 +208,6 @@ public class EventPageController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        isWindowOpen = true;
     }
 
 
@@ -231,12 +222,5 @@ public class EventPageController {
             }
         }
     }
-    //TODO: Save news in DB and make them load on event page.
-    private boolean isWindowOpen = false;
-
-    //wakckck
-
-
-
 
 }

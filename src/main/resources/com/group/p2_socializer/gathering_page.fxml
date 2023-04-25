@@ -2,8 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
@@ -41,36 +39,15 @@
 
                            </children>
                         </VBox>
-                        <HBox fx:id="manageEventBar" layoutX="28.0" layoutY="-1.0">
-                           <children>
-                              <FontAwesomeIconView glyphName="WRENCH" size="20">
-                                 <HBox.margin>
-                                    <Insets left="5.0" right="10.0" top="5.0" />
-                                 </HBox.margin>
-                              </FontAwesomeIconView>
-                              <Label prefHeight="29.0" prefWidth="137.0" text="MANAGE GATHERING:" underline="true">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Label>
-                              <JFXButton prefHeight="29.0" prefWidth="78.0" text="Edit event" />
-                              <JFXButton fx:id="postNewsButton" prefHeight="29.0" prefWidth="78.0" text="Post news" />
-                              <JFXButton prefHeight="29.0" prefWidth="104.0" text="Manage groups" />
-                              <JFXButton fx:id="cancelGatheringButton" prefHeight="29.0" prefWidth="127.0" text="Cancel Gathering" />
-                           </children>
-                           <padding>
-                              <Insets bottom="1.0" />
-                           </padding>
-                        </HBox>
                         <Line endX="464.0" layoutX="130.0" layoutY="405.0" startX="-92.5" />
-                        <Line endX="147.0" layoutX="138.0" layoutY="447.0" startX="-100.0" />
+                        <Line endX="200.0" layoutX="138.0" layoutY="447.0" startX="-100.0" />
                         <VBox fx:id="postList" layoutX="9.0" layoutY="845.0" minWidth="558" />
                         <Label layoutX="37.0" layoutY="805.0" minWidth="558.0" text="Posts:">
                            <font>
                               <Font name="System Bold" size="21.0" />
                            </font>
                         </Label>
-                        <JFXButton layoutX="28.0" layoutY="411.0" prefHeight="29.0" prefWidth="116.0" ripplerFill="#7bce3c" text="Intersted" wrapText="true" />
+                        <JFXButton layoutX="28.0" layoutY="411.0" prefHeight="29.0" prefWidth="116.0" ripplerFill="#7bce3c" text="Interested" wrapText="true" />
                         <ImageView fitHeight="279.0" fitWidth="564.0" layoutX="34.0" layoutY="29.0">
                            <image>
                               <Image url="@pictures/festivalpic.png" />

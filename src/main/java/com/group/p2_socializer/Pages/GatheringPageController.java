@@ -1,9 +1,6 @@
 package com.group.p2_socializer.Pages;
 
-import com.group.p2_socializer.Database.ActivityDB;
-import com.group.p2_socializer.Database.GatheringDB;
-import com.group.p2_socializer.Tabs.DiscoverTabController;
-import com.group.p2_socializer.activities.Event;
+import com.group.p2_socializer.Utils.ManagerBarController;
 import com.group.p2_socializer.activities.Gathering;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.jfoenix.controls.JFXButton;
@@ -12,29 +9,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
-public class GatheringPageController{
+public class GatheringPageController {
     @FXML
     public AnchorPane centerPane;
     @FXML
@@ -47,7 +36,8 @@ public class GatheringPageController{
     public Label eventTitleLabel;
     @FXML
     public Label eventLocationLabel;
-    @FXML HBox organiserHBox;
+    @FXML
+    HBox organiserHBox;
     @FXML
     public Label byLabel;
     @FXML
@@ -59,40 +49,29 @@ public class GatheringPageController{
     private JFXButton cancelGatheringButton;
     @FXML
     private VBox postList;
-    
+
     public Map<Tab, Boolean> tabUpdateMap;
 
     private TabPane mainTabPane;
 
 
-
-    public void handleCancelGatheringButton(MouseEvent event, Gathering newGathering) throws SQLException {
-        GatheringDB.deleteGathering(newGathering.getGatheringID());
-        Node node = (Node) event.getSource();
-        Scene scene = node.getScene();
-        Stage stage = (Stage) scene.getWindow();
-        stage.close();
-        Tab newTab = mainTabPane.getTabs().get(2);
-        tabUpdateMap.put(newTab, true);
-        mainTabPane.getSelectionModel().select(1);
-        mainTabPane.getSelectionModel().select(2);
+    public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap) {
+        this.tabUpdateMap = tabUpdateMap;
     }
-    public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
-    public void setMainTabPane(TabPane mainTabPane){
+
+    public void setMainTabPane(TabPane mainTabPane) {
         this.mainTabPane = mainTabPane;
     }
-
 
 
     public void loadGatheringPage(Gathering newGathering) throws SQLException, IOException {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy 'AT' HH:mm", Locale.ENGLISH);
         ZonedDateTime zonedDateTime = newGathering.getLocalDateTime().atZone(newGathering.getTimeZone());
         String dateString = zonedDateTime.format(formatter).toUpperCase();
-        //TODO: Set max size and enable text wrap for every label and text
 
         // Load the FXML file
-        FXMLLoader loader = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/gathering_page.fxml"));
-        Parent root = loader.load();
+        FXMLLoader fxmlLoader = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/gathering_page.fxml"));
+        Parent root = fxmlLoader.load();
 
         // Get reference to centerPane FXML file
         ScrollPane scrollPane = (ScrollPane) root.lookup("#scrollPane");
@@ -105,7 +84,6 @@ public class GatheringPageController{
         Label eventDateLabel = (Label) eventInfoVBox.lookup("#eventDateLabel");
         eventDateLabel.setText(dateString);
         eventDateLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 13; -fx-text-fill: #797878;");
-
 
         Label eventTitleLabel = (Label) eventInfoVBox.lookup("#eventTitleLabel");
         eventTitleLabel.setText(newGathering.getActivityName());
@@ -126,128 +104,119 @@ public class GatheringPageController{
 
 
         Label eventDescriptionLabel = new Label(newGathering.getActivityDescription());
+
+        eventDescriptionLabel.setMaxWidth(300);
+        eventDescriptionLabel.setWrapText(true);
         eventDescriptionLabel.setFont(Font.font("Arial", 13));
+        eventDescriptionLabel.setPadding(new Insets(0, 0, 15, 0));
 
-        ArrayList<String> tagList = (ArrayList<String>) newGathering.getTags(newGathering.getActivityID());
+        VBox descriptionVBox = new VBox(eventDescriptionLabel);
+        descriptionVBox.setLayoutX(36);
+        descriptionVBox.setLayoutY(460);
 
-        StringBuilder tagListString = new StringBuilder();
-        for (String i : tagList) {
-            tagListString.append('#').append(i).append(", ");
+        Line line = new Line();
+        double lineLength = 300;
+        line.setStrokeWidth(2);
+        line.setStroke(Color.GRAY);
+
+        // Bind the start and end points of the Line to VBox properties
+        line.startXProperty().bind(descriptionVBox.layoutXProperty().add(descriptionVBox.widthProperty().divide(2).subtract(lineLength / 2)));
+        line.startYProperty().bind(descriptionVBox.layoutYProperty().add(descriptionVBox.heightProperty().divide(2)));
+        line.endXProperty().bind(line.startXProperty().add(lineLength));
+        line.endYProperty().bind(line.startYProperty());
+        // Add the Line to the VBox
+        descriptionVBox.getChildren().add(line);
+
+        //-----------------------------------------------------------------------
+
+        List<String> words = new ArrayList<>();
+        words.add("Apple");
+        words.add("Banana");
+        words.add("Cherry");
+        words.add("Date");
+        words.add("Fig");
+        words.add("Grape");
+        words.add("Lemon");
+        words.add("Mango");
+        words.add("Orange");
+        words.add("Peach");
+        words.add("Quince");
+        words.add("Raspberry");
+        words.add("Strawberry");
+        words.add("Tangerine");
+        words.add("Watermelon");
+        Collections.shuffle(words);
+
+        //-------------------------------------------------------------------------------
+
+        // Create a GridPane to hold the labels for the words
+        GridPane wordsGridPane = new GridPane();
+        wordsGridPane.setHgap(10);
+        wordsGridPane.setVgap(10);
+        wordsGridPane.setPadding(new Insets(10));
+
+        // Create a CornerRadii object to specify the corner radii of the rounded box
+        CornerRadii cornerRadii = new CornerRadii(10);
+
+        // Create a BackgroundFill object to specify the background fill of the rounded box
+        BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTGRAY, cornerRadii, null);
+
+        // Create a Background object with the BackgroundFill
+        Background background = new Background(backgroundFill);
+
+        int column = 0;
+        int row = 0;
+        for (String word : words) {
+            Label tagLabel = new Label(word);
+            tagLabel.setBackground(background); // Set the background of the label to the rounded box
+            wordsGridPane.add(tagLabel, column, row); // Add each label to the GridPane
+
+            // Increment column and row counters
+            column++;
+            if (column == 3) {
+                // Max 3 labels per row, move to next row
+                column = 0;
+                row++;
+            }
         }
 
-        Text tagText = new Text(tagListString.toString());
-
-        VBox descriptionAndTagVBox = new VBox();
-        descriptionAndTagVBox.setLayoutX(36);
-        descriptionAndTagVBox.setLayoutY(460);
-
-        descriptionAndTagVBox.getChildren().add(eventDescriptionLabel);
-        descriptionAndTagVBox.getChildren().add(tagText);
+        // Add the GridPane with the labels to the descriptionHBox
+        descriptionVBox.getChildren().add(wordsGridPane);
 
 
-        // Add the label to the center pane
-        centerPane.getChildren().add(eventInfoVBox);
-        centerPane.getChildren().add(descriptionAndTagVBox);
+        // Load the manager_bar.fxml file
+        FXMLLoader fxmlLoader1 = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/manager_bar.fxml"));
+
+
+        //ManagerBarController controller = loader.getController();
+        Parent managerBarRoot = fxmlLoader1.load();
+
+        ManagerBarController managerBarController = fxmlLoader1.getController(); // Get reference to actual instance of ManagerBarController
+        managerBarController.setMainTabPane(mainTabPane);
+        managerBarController.setTabUpdateMap(tabUpdateMap);
+        managerBarController.setNewGathering(newGathering);
+
+        int a = 1;
+        managerBarController.setCancelButton(a);
+
+        centerPane.getChildren().add(managerBarRoot);
+        centerPane.getChildren().add(descriptionVBox);
 
         // Create a new stage and set the new scene
         Stage newStage = new Stage();
         newStage.setScene(new Scene(root));
         newStage.setTitle(newGathering.getActivityName());
 
-        // Show the new stage
+        //VBox postList = (VBox) root.lookup("#postList");
+        //postList.setMaxWidth(Double.MAX_VALUE);
+        //postList.setMaxHeight(Double.MAX_VALUE);
+
+
         newStage.show();
 
-        // Get reference from FXML
-        VBox postList = (VBox) root.lookup("#postList");
-        postList.setMaxWidth(Double.MAX_VALUE);
-        postList.setMaxHeight(Double.MAX_VALUE);
-
-        Button postNewsButton = (Button) root.lookup("#postNewsButton");
-
-        postNewsButton.setOnMouseClicked((MouseEvent event) -> {
-            handlePostNewsButton(postList);
-        });
-
-
         cancelGatheringButton = (JFXButton) root.lookup("#cancelGatheringButton");
-        cancelGatheringButton.setOnMouseClicked((MouseEvent event) -> {
-
-            try {
-                handleCancelGatheringButton(event,newGathering);
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        });
-    }
-
-        //TODO: save news in DB and make them load on event page
-    private boolean isWindowOpen = false;
-
-    public void handlePostNewsButton(VBox postList) {
-        if (!isWindowOpen) {
-            Stage newWindow = new Stage();
-            newWindow.setTitle("New Post");
-
-            // Create a layout for the new window
-
-            VBox postVBox = new VBox(10);
-            postVBox.setAlignment(Pos.CENTER);
-
-            // Add a text field for the user to enter their post
-            JFXTextArea JFXPostArea = new JFXTextArea();
-            JFXPostArea.setPromptText("new post text goes in here");
-            JFXPostArea.setPadding(new Insets(30));
-
-            postVBox.getChildren().add(JFXPostArea);
-
-            // Add a button to submit the post
-            JFXButton submitButton = new JFXButton("Submit");
-            submitButton.setPrefWidth(200);
-            submitButton.setPrefHeight(50);
-            submitButton.setStyle("-fx-background-color: #00ff00;");
 
 
-            submitButton.setOnAction(e -> {
-
-                // Get the text from the text field and add it to the event page
-                String postText = JFXPostArea.getText();
-
-                for (int i = 0; i < 1; i++){
-                    Label postLabel = new Label(postText);
-                    postLabel.setWrapText(true);
-                    postLabel.setStyle("-fx-border-color: black; -fx-border-width: 1px;");
-                    postLabel.setMaxWidth(Double.MAX_VALUE);
-                    postLabel.setMaxHeight(Double.MAX_VALUE);
-                    VBox.setVgrow(postLabel, Priority.ALWAYS);
-                    postList.setPadding(new Insets(5, 0, 5, 36));
-                    postList.getChildren().add(postLabel);
-                    postList.setSpacing(30);
-
-                }
-
-
-                // Close the new window
-                newWindow.close();
-
-                String createdMessage = "Post submitted!";
-
-                PopUpMessage popUpMessage = new PopUpMessage();
-                popUpMessage.showCreatedPopUp(createdMessage);
-
-                isWindowOpen = false;
-
-
-            });
-
-            postVBox.getChildren().add(submitButton);
-
-            // Show the new window
-            Scene scene = new Scene(postVBox, 400, 280);
-            newWindow.setScene(scene);
-            newWindow.setAlwaysOnTop(true);
-            newWindow.show();
-            isWindowOpen = true;
-
-        }
     }
 }
+

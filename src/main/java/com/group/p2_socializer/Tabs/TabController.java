@@ -107,6 +107,7 @@ public class TabController implements Initializable  {
                 loadPage("profile_page");
             } else if (newTab == createGatheringTab) {
                 loadPage("choose_gathering");
+                tabUpdateMap.put(createGatheringTab, true);
             }
         }
     }

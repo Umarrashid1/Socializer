@@ -1,9 +1,9 @@
 package com.group.p2_socializer.Utils;
 
 import com.group.p2_socializer.Database.ActivityDB;
-import com.group.p2_socializer.Pages.EventPageController;
-import com.group.p2_socializer.Tabs.TabController;
+import com.group.p2_socializer.Database.GatheringDB;
 import com.group.p2_socializer.activities.Event;
+import com.group.p2_socializer.activities.Gathering;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.fxml.FXML;
@@ -12,12 +12,10 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -28,7 +26,7 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class ManagerBarController extends EventPageController implements Initializable {
+public class ManagerBarController implements Initializable {
     @FXML
     private JFXButton editEventButton;
     @FXML
@@ -38,26 +36,45 @@ public class ManagerBarController extends EventPageController implements Initial
     @FXML
     private HBox manageEventBar;
     private Event newEvent;
+    private Gathering newGathering;
     public Map<Tab, Boolean> tabUpdateMap;
 
     private TabPane mainTabPane;
+
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
     public void setMainTabPane(TabPane mainTabPane){this.mainTabPane = mainTabPane;}
-    public void setCancelEventButton() throws SQLException {
-        cancelEventButton.setOnMouseClicked((MouseEvent event) -> {
 
-            try {
-                handleCancelEventButton(event, newEvent);
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        });
+    public void setCancelButton(int a) throws SQLException {
+
+        if (a == 0){
+            cancelEventButton.setOnMouseClicked((MouseEvent event) -> {
+
+                try {
+                    handleCancelEventButton(event, newEvent);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+        }
+        else {
+            cancelEventButton.setOnMouseClicked((MouseEvent event) -> {
+                try {
+                    handleCancelGatheringButton(event, newGathering);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+        }
     }
 
 
     public void setNewEvent(Event newEvent) {
         this.newEvent = newEvent;
     }
+    public void setNewGathering(Gathering newGathering) {
+        this.newGathering = newGathering;
+    }
+
     public void handleCancelEventButton(MouseEvent event, Event newEvent) throws SQLException {
         ActivityDB.deleteEvent(newEvent.getActivityID());
         Node node = (Node) event.getSource();
@@ -68,6 +85,17 @@ public class ManagerBarController extends EventPageController implements Initial
         tabUpdateMap.put(newTab, true);
         mainTabPane.getSelectionModel().select(1);
         mainTabPane.getSelectionModel().select(3);
+    }
+    public void handleCancelGatheringButton(MouseEvent event, Gathering newGathering) throws SQLException {
+        GatheringDB.deleteGathering(newGathering.getGatheringID());
+        Node node = (Node) event.getSource();
+        Scene scene = node.getScene();
+        Stage stage = (Stage) scene.getWindow();
+        stage.close();
+        Tab newTab = mainTabPane.getTabs().get(2);
+        tabUpdateMap.put(newTab, true);
+        mainTabPane.getSelectionModel().select(1);
+        mainTabPane.getSelectionModel().select(2);
     }
 
     public void handlePostNewsButton(VBox postList) {
