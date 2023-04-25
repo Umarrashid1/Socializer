@@ -37,21 +37,16 @@ public class GatheringPageController {
     @FXML
     public Label eventLocationLabel;
     @FXML
-    HBox organiserHBox;
+    public HBox organiserHBox;
     @FXML
     public Label byLabel;
     @FXML
     public Label eventOrganiserLabel;
-
     @FXML
     private VBox vBoxPostNews;
     @FXML
-    private JFXButton cancelGatheringButton;
-    @FXML
     private VBox postList;
-
     public Map<Tab, Boolean> tabUpdateMap;
-
     private TabPane mainTabPane;
 
 
@@ -104,7 +99,6 @@ public class GatheringPageController {
 
 
         Label eventDescriptionLabel = new Label(newGathering.getActivityDescription());
-
         eventDescriptionLabel.setMaxWidth(300);
         eventDescriptionLabel.setWrapText(true);
         eventDescriptionLabel.setFont(Font.font("Arial", 13));
@@ -196,8 +190,11 @@ public class GatheringPageController {
         managerBarController.setTabUpdateMap(tabUpdateMap);
         managerBarController.setNewGathering(newGathering);
 
-        int a = 1;
-        managerBarController.setCancelButton(a);
+
+        boolean isGathering;
+        isGathering = true;
+
+        managerBarController.setCancelButton(isGathering);
 
         centerPane.getChildren().add(managerBarRoot);
         centerPane.getChildren().add(descriptionVBox);
@@ -211,11 +208,7 @@ public class GatheringPageController {
         //postList.setMaxWidth(Double.MAX_VALUE);
         //postList.setMaxHeight(Double.MAX_VALUE);
 
-
         newStage.show();
-
-        cancelGatheringButton = (JFXButton) root.lookup("#cancelGatheringButton");
-
 
     }
 }

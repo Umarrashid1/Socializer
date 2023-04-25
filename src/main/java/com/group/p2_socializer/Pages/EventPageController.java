@@ -95,7 +95,6 @@ public class EventPageController {
 
 
             Label eventDescriptionLabel = new Label(newEvent.getActivityDescription());
-
             eventDescriptionLabel.setMaxWidth(300);
             eventDescriptionLabel.setWrapText(true);
             eventDescriptionLabel.setFont(Font.font("Arial", 13));
@@ -185,8 +184,9 @@ public class EventPageController {
             managerBarController.setTabUpdateMap(tabUpdateMap);
             managerBarController.setNewEvent(newEvent);
 
-            int a=0;
-            managerBarController.setCancelButton(a);
+            boolean isGathering;
+            isGathering = false;
+            managerBarController.setCancelButton(isGathering);
 
             centerPane.getChildren().add(managerBarRoot);
             centerPane.getChildren().add(descriptionVBox);

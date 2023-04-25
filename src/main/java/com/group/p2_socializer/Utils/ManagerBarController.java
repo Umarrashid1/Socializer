@@ -44,9 +44,9 @@ public class ManagerBarController implements Initializable {
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
     public void setMainTabPane(TabPane mainTabPane){this.mainTabPane = mainTabPane;}
 
-    public void setCancelButton(int a) throws SQLException {
+    public void setCancelButton(boolean isGathering) throws SQLException {
 
-        if (a == 0){
+        if (!isGathering){
             cancelEventButton.setOnMouseClicked((MouseEvent event) -> {
 
                 try {
