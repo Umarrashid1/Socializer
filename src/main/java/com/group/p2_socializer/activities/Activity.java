@@ -1,7 +1,6 @@
 package com.group.p2_socializer.activities;
 
 import com.group.p2_socializer.Database.ActivityDB;
-import com.group.p2_socializer.Database.UserDB;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
@@ -61,7 +60,7 @@ public class Activity {
         return timeZone;
     }
     public List getTags(int activityID) throws SQLException {
-        List tagList = ActivityDB.getTags(activityID);
+        List tagList = ActivityDB.getActivityTags(activityID);
 
         return tagList;
     }

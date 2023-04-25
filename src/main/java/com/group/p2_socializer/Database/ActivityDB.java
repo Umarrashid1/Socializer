@@ -1,6 +1,7 @@
 package com.group.p2_socializer.Database;
 
 import com.group.p2_socializer.activities.Event;
+import com.group.p2_socializer.activities.Tag;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -80,7 +81,8 @@ public class ActivityDB {
 
     }
 
-    public static List getTags(int activityID) throws SQLException {
+    public static List getActivityTags(int activityID) throws SQLException {
+        //Get tags for specific activity
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
@@ -92,16 +94,41 @@ public class ActivityDB {
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, activityID);
         ResultSet result = statement.executeQuery();
-        List<String> tagList = new ArrayList<>();
+        List<Tag> tagList = new ArrayList<>();
         while (result.next()) {
-            tagList.add(result.getString("tag"));
+            Tag tag = new Tag();
+            tag.setTagID(result.getInt("tagID"));
+            tag.setTag(result.getString("tag"));
+            tagList.add(tag);
+        }
+        connection.close();
+        return tagList;
+    }
+    public static List getTags(int activityID) throws SQLException {
+        // get all activity tags
+        String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
+        String dbUser = "root";
+        String dbPassword = "password";
+        String sql = "SELECT * FROM activitytags";
+        Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet result = statement.executeQuery();
+        List<Tag> tagList = new ArrayList<>();
+        while (result.next()) {
+            Tag tag = new Tag();
+            tag.setTagID(result.getInt("tagID"));
+            tag.setTag(result.getString("tag"));
+            tagList.add(tag);
         }
         connection.close();
         return tagList;
     }
 
     public static void setTags(List tagList, int userID) {
-
+        String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
+        String dbUser = "root";
+        String dbPassword = "password";
+        String sql = "I";
     }
 }
 
