@@ -130,39 +130,45 @@ public class EventPageController {
 
             //-------------------------------------------------------------------------------
 
-            // Create a GridPane to hold the labels for the words
-            GridPane wordsGridPane = new GridPane();
-            wordsGridPane.setHgap(10);
-            wordsGridPane.setVgap(10);
-            wordsGridPane.setPadding(new Insets(10));
 
-            // Create a CornerRadii object to specify the corner radii of the rounded box
-            CornerRadii cornerRadii = new CornerRadii(10);
-
-            // Create a BackgroundFill object to specify the background fill of the rounded box
-            BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTGRAY, cornerRadii, null);
-
-            // Create a Background object with the BackgroundFill
+            CornerRadii cornerRadii = new CornerRadii(30);
+            BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTBLUE, cornerRadii, null);
             Background background = new Background(backgroundFill);
 
-            int column = 0;
-            int row = 0;
+            VBox vbox = new VBox();
+            vbox.setSpacing(10);
+            vbox.setPadding(new Insets(10,10,10,0));
+
+            int count = 0;
+            HBox wordsHBox = new HBox(); // Create a new HBox for the labels
+            wordsHBox.setSpacing(10);
+
             for (Tag tag : taglist) {
                 Label tagLabel = new Label(tag.getTag());
-                tagLabel.setBackground(background); // Set the background of the label to the rounded box
-                wordsGridPane.add(tagLabel, column, row); // Add each label to the GridPane
+                tagLabel.setBackground(background);
+                tagLabel.setPadding(new Insets(3,5,3,5));
+                tagLabel.setMaxWidth(Double.MAX_VALUE);
+                VBox.setVgrow(tagLabel, Priority.ALWAYS);
 
-                // Increment column and row counters
-                column++;
-                if (column == 3) {
-                    // Max 3 labels per row, move to next row
-                    column = 0;
-                    row++;
+                wordsHBox.getChildren().add(tagLabel);
+                count++;
+
+                if (count == 3) {
+                    // Max 3 labels per HBox, add the current HBox to the VBox and create a new HBox
+                    count = 0;
+                    vbox.getChildren().add(wordsHBox);
+                    wordsHBox = new HBox();
+                    wordsHBox.setSpacing(10);
                 }
             }
 
-            // Add the GridPane with the labels to the descriptionHBox
-            descriptionVBox.getChildren().add(wordsGridPane);
+            // Add the last HBox to the VBox, if it contains any labels
+            if (wordsHBox.getChildren().size() > 0) {
+                vbox.getChildren().add(wordsHBox);
+            }
+
+            descriptionVBox.getChildren().add(vbox);
+
 
 
             // Load the manager_bar.fxml file
@@ -180,6 +186,7 @@ public class EventPageController {
 
             centerPane.getChildren().add(managerBarRoot);
             centerPane.getChildren().add(descriptionVBox);
+
 
             // Create a new stage and set the new scene
             Stage newStage = new Stage();
