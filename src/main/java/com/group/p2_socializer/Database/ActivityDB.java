@@ -67,6 +67,7 @@ public class ActivityDB {
                     .activityCountry(result.getString("activitycountry"))
                     .activityOrganiser(result.getString("activityorganiser"))
                     .activityMinimumParticipants(result.getString("activityminimumparticipants"))
+                    .activityMaximumParticipants(result.getString("activitymaximumparticipants"))
 
                     .localDateTime((LocalDateTime) result.getObject("activitydatetime"))
                     .timeZone(ZoneId.systemDefault()) //FIX
