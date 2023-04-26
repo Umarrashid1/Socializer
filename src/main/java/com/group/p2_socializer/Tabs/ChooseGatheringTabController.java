@@ -2,6 +2,7 @@ package com.group.p2_socializer.Tabs;
 
 import com.group.p2_socializer.CreateGatherings.CreateGatheringController;
 import com.group.p2_socializer.UserLogIn.User;
+import com.group.p2_socializer.Utils.PopUpMessage;
 import com.group.p2_socializer.activities.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -79,8 +80,7 @@ public class ChooseGatheringTabController extends TabController {
         gridPane.setHgap(10);
         gridPane.setVgap(10);
 
-        container.getChildren().add(gridPane); // Add the gridPane to the container
-        ChooseGatheringAnchorPane.getChildren().setAll(scrollPane); // Add the ScrollPane to the scene graph
+        container.getChildren().add(gridPane);
     }
 
 
@@ -89,5 +89,8 @@ public class ChooseGatheringTabController extends TabController {
 
     public void openCalendarTab(MouseEvent mouseEvent) {
         super.mainTabPane.getSelectionModel().select(3);
+        String clickEventMessage = "Click an event to create a gathering";
+        PopUpMessage popUpMessage = new PopUpMessage();
+        popUpMessage.showCreatedPopUp(clickEventMessage);
     }
 }
