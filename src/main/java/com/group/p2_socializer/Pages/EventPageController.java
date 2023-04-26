@@ -61,6 +61,7 @@ public class EventPageController {
 
 
 
+
     //TODO: Split into additional methods
     public void loadEventPage(Event newEvent) {
         try {

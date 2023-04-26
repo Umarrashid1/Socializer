@@ -4,7 +4,6 @@ import com.group.p2_socializer.Database.ActivityDB;
 import com.group.p2_socializer.Pages.EventPageController;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.group.p2_socializer.activities.Event;
-import com.group.p2_socializer.activities.Tag;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
@@ -19,7 +18,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -27,8 +25,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class CreateEventController {
@@ -64,7 +60,6 @@ public class CreateEventController {
     private Tab calendarTab;
     @FXML
     public JFXButton goBack;
-    ObservableList<Tag> selectedItems;
 
     @FXML
     public void handleCreateEvent() throws SQLException, IOException {
@@ -85,8 +80,8 @@ public class CreateEventController {
                 .activityType("Event")
                 .build();
 
-        event.activityID = ActivityDB.storeEvent(event);
-        event.setTags(selectedItems);
+        ActivityDB.storeEvent(event);
+
         //Switch to Calendar tab
         Tab newTab = mainTabPane.getTabs().get(3);
         tabUpdateMap.put(newTab, true);
@@ -102,28 +97,29 @@ public class CreateEventController {
         popUpMessage.showCreatedPopUp(createdMessage);
     }
 
-    public void handleAddTagsButton() throws SQLException {
+    public void handleAddTagsButton() {
         Stage stage = new Stage();
-        stage.setTitle("ListView Select Example");
-        List<Tag> tagList = ActivityDB.getTags();
-        ListView<Tag> listView = new ListView<>();
-        listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        stage.setTitle("Add tags!");
 
-        for (Tag tag : tagList) {
-            listView.getItems().add(tag);
-        }
-        listView.setCellFactory(param -> new ListCell<Tag>() {
-            @Override
-            protected void updateItem(Tag tag, boolean empty) {
-                super.updateItem(tag, empty);
-                if (empty || tag == null) {
-                    setText(null);
-                } else {
-                    setText(tag.getTag());
-                }
-            }
-        });
+        ListView<Label> listView = new ListView<>();
+        Label item1Label = new Label("Item 1");
+        Label item2Label = new Label("Item 2");
+        Label item3Label = new Label("Item 3");
+        Label item4Label = new Label("Item 4");
+        Label item5Label = new Label("Item 5");
+        Label item6Label = new Label("Item 6");
+        Label item7Label = new Label("Item 7");
+        Label item8Label = new Label("Item 8");
+        Label item9Label = new Label("Item 9");
+        Label item10Label = new Label("Item 10");
+        Label item11Label = new Label("Item 11");
+        Label item12Label = new Label("Item 12");
+        Label item13Label = new Label("Item 13");
+        Label item14Label = new Label("Item 14");
+        Label item15Label = new Label("Item 15");
+        Label item16Label = new Label("Item 16");
 
+        listView.getItems().addAll(item1Label, item2Label, item3Label, item4Label, item5Label, item6Label,item7Label, item8Label, item9Label, item10Label, item11Label, item12Label, item13Label, item14Label, item15Label, item16Label);
         listView.setPrefHeight(Region.USE_COMPUTED_SIZE);
 
         JFXButton addTagsButton = new JFXButton("Add tags");
@@ -134,7 +130,6 @@ public class CreateEventController {
         gridPane.setHgap(10);
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
-
 
         int row = 0;
         int col = 0;
@@ -168,13 +163,13 @@ public class CreateEventController {
         });
 
         VBox bottomVBox = new VBox(addTagsButton);
-        VBox.setMargin(addTagsButton, new Insets(10, 0, 0, 0));
-        bottomVBox.setAlignment(Pos.CENTER);
+        VBox.setMargin(addTagsButton, new Insets(10, 0, 0, 0)); // Set top margin to 10 pixels
+        bottomVBox.setAlignment(Pos.CENTER); // Set alignment to center for button
 
         BorderPane borderPane = new BorderPane();
         borderPane.setPadding(new Insets(10,10,10,10));
         borderPane.setCenter(gridPane);
-        borderPane.setBottom(bottomVBox);
+        borderPane.setBottom(bottomVBox); // Set VBox with button to the bottom
 
         Scene scene = new Scene(borderPane);
         stage.setScene(scene);
