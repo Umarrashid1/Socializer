@@ -2,6 +2,8 @@ package com.group.p2_socializer.Pages;
 
 import com.group.p2_socializer.Utils.ManagerBarController;
 import com.group.p2_socializer.activities.Event;
+import com.group.p2_socializer.Utils.PopUpMessage;
+import com.group.p2_socializer.activities.Tag;
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -122,24 +124,8 @@ public class EventPageController {
             descriptionVBox.getChildren().add(line);
 
             //-----------------------------------------------------------------------
-
-            List<String> words = new ArrayList<>();
-            words.add("Apple");
-            words.add("Banana");
-            words.add("Cherry");
-            words.add("Date");
-            words.add("Fig");
-            words.add("Grape");
-            words.add("Lemon");
-            words.add("Mango");
-            words.add("Orange");
-            words.add("Peach");
-            words.add("Quince");
-            words.add("Raspberry");
-            words.add("Strawberry");
-            words.add("Tangerine");
-            words.add("Watermelon");
-            Collections.shuffle(words);
+            newEvent.getTags();
+            List<Tag> taglist = newEvent.getTags();
 
             //-------------------------------------------------------------------------------
 
@@ -160,8 +146,8 @@ public class EventPageController {
 
             int column = 0;
             int row = 0;
-            for (String word : words) {
-                Label tagLabel = new Label(word);
+            for (Tag tag : taglist) {
+                Label tagLabel = new Label(tag.getTag());
                 tagLabel.setBackground(background); // Set the background of the label to the rounded box
                 wordsGridPane.add(tagLabel, column, row); // Add each label to the GridPane
 

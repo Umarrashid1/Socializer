@@ -1,6 +1,7 @@
 package com.group.p2_socializer.activities;
 
 import com.group.p2_socializer.Database.ActivityDB;
+import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Activity {
-    private int activityID;
+    public int activityID;
     private String activityType;
     private String activityName;
     private String activityDescription;
@@ -59,13 +60,13 @@ public class Activity {
     public ZoneId getTimeZone() {
         return timeZone;
     }
-    public List getTags(int activityID) throws SQLException {
+    public List getTags() throws SQLException {
         List tagList = ActivityDB.getActivityTags(activityID);
 
         return tagList;
     }
 
-    public void setTags(List tagList){
+    public void setTags(ObservableList<Tag> tagList) throws SQLException {
         ActivityDB.setTags(tagList, activityID);
     }
 

@@ -2,6 +2,7 @@ package com.group.p2_socializer.Database;
 
 import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.activities.Tag;
+import javafx.collections.ObservableList;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ActivityDB {
-    public static void storeEvent(Event newEvent) throws SQLException {
+    public static int storeEvent(Event newEvent) throws SQLException {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
@@ -18,8 +19,7 @@ public class ActivityDB {
                 "activityorganiser, activitydatetime, activitytimezone, activitytype) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         // connect to database
         Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, newEvent.getActivityName());
+        PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);        statement.setString(1, newEvent.getActivityName());
         statement.setString(2, newEvent.getActivityDescription());
         statement.setString(3, newEvent.getActivityCity());
         statement.setString(4, newEvent.getActivityCountry());
@@ -30,7 +30,15 @@ public class ActivityDB {
 
         //Convert timezone to string for storage in sql database
         statement.executeUpdate();
-        connection.close();
+        ResultSet generatedKeys = statement.getGeneratedKeys();
+        if (generatedKeys.next()) {
+            int activityID = generatedKeys.getInt(1);
+            connection.close();
+            return activityID;
+        } else {
+            connection.close();
+            throw new SQLException("Insertion failed, no activity ID obtained.");
+        }
     }
 
     public static List getEvent(int month, int year) throws SQLException {
@@ -80,13 +88,13 @@ public class ActivityDB {
         connection.close();
 
     }
-
+    //activitytags.tag
     public static List getActivityTags(int activityID) throws SQLException {
         //Get tags for specific activity
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
-        String sql = "SELECT activitytags.tag FROM Activities " +
+        String sql = "SELECT * FROM Activities " +
                 "JOIN activitytagmap ON Activities.activityID = activitytagmap.activityID " +
                 "JOIN activitytags On activitytags.tagID = activitytagmap.TagID " +
                 "WHERE Activities.activityID = ?";
@@ -104,7 +112,7 @@ public class ActivityDB {
         connection.close();
         return tagList;
     }
-    public static List getTags(int activityID) throws SQLException {
+    public static List getTags() throws SQLException {
         // get all activity tags
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
@@ -124,11 +132,22 @@ public class ActivityDB {
         return tagList;
     }
 
-    public static void setTags(List tagList, int userID) {
+    public static void setTags(ObservableList<Tag> tagList, int activityID) throws SQLException {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
         String sql = "I";
+        Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO activitytagmap (activityID, tagID) VALUES (?, ?)");
+
+        for (Tag tag : tagList) {
+            statement.setInt(1, activityID);
+            statement.setInt(2, tag.getTagID());
+            statement.executeUpdate();
+        }
+
+        statement.close();
+        connection.close();
     }
 }
 
