@@ -32,7 +32,6 @@
     -fx-background-color: rgba(0, 0, 0, 0.2);
     -fx-transition: background-color 0.7s ease;
 }
-
 #gatheringItemVBox:hover {
     -fx-background-color: lightgray;
     -fx-cursor: hand;
