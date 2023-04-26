@@ -43,6 +43,10 @@ public class GatheringPageController {
     @FXML
     public Label eventOrganiserLabel;
     @FXML
+    public JFXButton interestedButton;
+    @FXML
+    public JFXButton attendGatheringButton;
+    @FXML
     private VBox vBoxPostNews;
     @FXML
     private VBox postList;

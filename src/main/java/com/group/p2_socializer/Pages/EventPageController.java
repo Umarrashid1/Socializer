@@ -2,6 +2,7 @@ package com.group.p2_socializer.Pages;
 
 import com.group.p2_socializer.Utils.ManagerBarController;
 import com.group.p2_socializer.activities.Event;
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -43,6 +44,10 @@ public class EventPageController {
     public Label eventOrganiserLabel;
     @FXML
     public VBox postList;
+    @FXML
+    public JFXButton interestedButton;
+    @FXML
+    public JFXButton attendEventButton;
     public Map<Tab, Boolean> tabUpdateMap;
 
     private TabPane mainTabPane;
@@ -54,6 +59,7 @@ public class EventPageController {
 
 
 
+    //TODO: Split into additional methods
     public void loadEventPage(Event newEvent) {
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy 'AT' HH:mm", Locale.ENGLISH);
@@ -93,7 +99,6 @@ public class EventPageController {
             eventOrganiserLabel.setText(newEvent.getActivityOrganiser());
             eventOrganiserLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 12; -fx-text-fill: #000000;");
 
-
             Label eventDescriptionLabel = new Label(newEvent.getActivityDescription());
             eventDescriptionLabel.setMaxWidth(300);
             eventDescriptionLabel.setWrapText(true);
@@ -114,8 +119,6 @@ public class EventPageController {
             line.startYProperty().bind(descriptionVBox.layoutYProperty().add(descriptionVBox.heightProperty().divide(2)));
             line.endXProperty().bind(line.startXProperty().add(lineLength));
             line.endYProperty().bind(line.startYProperty());
-
-            // Add the Line to the VBox
             descriptionVBox.getChildren().add(line);
 
             //-----------------------------------------------------------------------
@@ -176,10 +179,10 @@ public class EventPageController {
 
 
             // Load the manager_bar.fxml file
-            FXMLLoader loader1 = new FXMLLoader(EventPageController.class.getResource("/com/group/p2_socializer/manager_bar.fxml"));
-            Parent managerBarRoot = loader1.load();
+            FXMLLoader fxmlLoader1 = new FXMLLoader(EventPageController.class.getResource("/com/group/p2_socializer/manager_bar.fxml"));
+            Parent managerBarRoot = fxmlLoader1.load();
 
-            ManagerBarController managerBarController = loader1.getController(); // Get reference to actual instance of ManagerBarController
+            ManagerBarController managerBarController = fxmlLoader1.getController(); // Get reference to actual instance of ManagerBarController
             managerBarController.setMainTabPane(mainTabPane);
             managerBarController.setTabUpdateMap(tabUpdateMap);
             managerBarController.setNewEvent(newEvent);

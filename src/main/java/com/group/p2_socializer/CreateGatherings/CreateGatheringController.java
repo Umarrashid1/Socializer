@@ -7,6 +7,7 @@ import com.group.p2_socializer.Utils.PopUpMessage;
 import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.activities.Gathering;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,6 +38,10 @@ public class CreateGatheringController  extends ChooseGatheringTabController imp
     private TextField eventCountryTextField;
     @FXML
     private TextArea eventDescriptionTextArea;
+    @FXML
+    public JFXTextField minimumParticipantsTextField; //---------newly added
+    @FXML
+    public JFXTextField maximumParticipantsTextField; //---------newly added
 
     public Map<Tab, Boolean> actualtabUpdateMap;
     private TabPane mainTabPane;
@@ -55,7 +60,7 @@ public class CreateGatheringController  extends ChooseGatheringTabController imp
         LocalTime eventTime = LocalTime.parse(eventTimeTextField.getText());
         LocalDateTime localDateTime = LocalDateTime.of(eventDatePicker.getValue(), eventTime);
 
-        Gathering newGathering = (Gathering) new Gathering.Builder()
+        Gathering newGathering = new Gathering.Builder()
                 .activityType("EventActivity")
                 .activityName(eventNameTextField.getText())
                 .activityDescription(eventDescriptionTextArea.getText())

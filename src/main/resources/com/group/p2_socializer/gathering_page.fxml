@@ -22,7 +22,7 @@
                <center>
                   <AnchorPane fx:id="centerPane" BorderPane.alignment="CENTER">
                      <children>
-                        <JFXButton layoutX="189.0" layoutY="412.0" prefHeight="29.0" prefWidth="116.0" ripplerFill="#7bce3c" style="-fx-background-color: #71FF60;" text="Attend Gathering" wrapText="true" />
+                        <JFXButton fx:id="attendGatheringButton" layoutX="189.0" layoutY="412.0" prefHeight="29.0" prefWidth="116.0" ripplerFill="#7bce3c" style="-fx-background-color: #71FF60;" text="Attend Gathering" wrapText="true" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="285.0" layoutX="368.0" layoutY="445.0" stroke="BLACK" strokeType="INSIDE" width="226.0" />
                         <JFXTextArea layoutX="369.0" layoutY="730.0" prefHeight="35.0" prefWidth="227.0" promptText="Chat" />
                         <VBox fx:id="eventInfoVBox" layoutX="36.0" layoutY="312.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="26.0">
@@ -47,7 +47,7 @@
                               <Font name="System Bold" size="21.0" />
                            </font>
                         </Label>
-                        <JFXButton layoutX="65.0" layoutY="412.0" prefHeight="29.0" prefWidth="116.0" ripplerFill="#7bce3c" style="-fx-background-color: #E2FF71;" text="Interested" wrapText="true" />
+                        <JFXButton fx:id="interestedButton" layoutX="65.0" layoutY="412.0" prefHeight="29.0" prefWidth="116.0" ripplerFill="#7bce3c" style="-fx-background-color: #E2FF71;" text="Interested" wrapText="true" />
                         <ImageView fitHeight="279.0" fitWidth="564.0" layoutX="34.0" layoutY="29.0">
                            <image>
                               <Image url="@pictures/festivalpic.png" />
