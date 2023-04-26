@@ -163,13 +163,13 @@ public class CreateEventController {
         });
 
         VBox bottomVBox = new VBox(addTagsButton);
-        VBox.setMargin(addTagsButton, new Insets(10, 0, 0, 0)); // Set top margin to 10 pixels
-        bottomVBox.setAlignment(Pos.CENTER); // Set alignment to center for button
+        VBox.setMargin(addTagsButton, new Insets(10, 0, 0, 0));
+        bottomVBox.setAlignment(Pos.CENTER);
 
         BorderPane borderPane = new BorderPane();
         borderPane.setPadding(new Insets(10,10,10,10));
         borderPane.setCenter(gridPane);
-        borderPane.setBottom(bottomVBox); // Set VBox with button to the bottom
+        borderPane.setBottom(bottomVBox);
 
         Scene scene = new Scene(borderPane);
         stage.setScene(scene);
