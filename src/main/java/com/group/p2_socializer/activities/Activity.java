@@ -66,7 +66,7 @@ public class Activity {
         return tagList;
     }
 
-    public void setTags(ObservableList<Tag> tagList) throws SQLException {
+    public void setTags(List<Tag> tagList) throws SQLException {
         ActivityDB.setTags(tagList, activityID);
     }
 

@@ -19,7 +19,8 @@ public class ActivityDB {
                 "activityorganiser, activitydatetime, activitytimezone, activitytype) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         // connect to database
         Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
-        PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);        statement.setString(1, newEvent.getActivityName());
+        PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        statement.setString(1, newEvent.getActivityName());
         statement.setString(2, newEvent.getActivityDescription());
         statement.setString(3, newEvent.getActivityCity());
         statement.setString(4, newEvent.getActivityCountry());
@@ -132,7 +133,7 @@ public class ActivityDB {
         return tagList;
     }
 
-    public static void setTags(ObservableList<Tag> tagList, int activityID) throws SQLException {
+    public static void setTags(List<Tag> tagList, int activityID) throws SQLException {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";

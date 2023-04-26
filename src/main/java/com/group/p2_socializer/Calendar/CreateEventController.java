@@ -4,6 +4,7 @@ import com.group.p2_socializer.Database.ActivityDB;
 import com.group.p2_socializer.Pages.EventPageController;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.group.p2_socializer.activities.Event;
+import com.group.p2_socializer.activities.Tag;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
@@ -25,6 +26,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CreateEventController {
@@ -61,6 +65,8 @@ public class CreateEventController {
     @FXML
     public JFXButton goBack;
 
+    public List<Tag> selectedTagList;
+
     @FXML
     public void handleCreateEvent() throws SQLException, IOException {
         LocalTime eventTime = LocalTime.parse(eventTimeTextField.getText());
@@ -80,7 +86,8 @@ public class CreateEventController {
                 .activityType("Event")
                 .build();
 
-        ActivityDB.storeEvent(event);
+        event.activityID = ActivityDB.storeEvent(event);
+        ActivityDB.setTags(selectedTagList, event.activityID);
 
         //Switch to Calendar tab
         Tab newTab = mainTabPane.getTabs().get(3);
@@ -101,26 +108,15 @@ public class CreateEventController {
         Stage stage = new Stage();
         stage.setTitle("Add tags!");
 
-        ListView<Label> listView = new ListView<>();
-        Label item1Label = new Label("Item 1");
-        Label item2Label = new Label("Item 2");
-        Label item3Label = new Label("Item 3");
-        Label item4Label = new Label("Item 4");
-        Label item5Label = new Label("Item 5");
-        Label item6Label = new Label("Item 6");
-        Label item7Label = new Label("Item 7");
-        Label item8Label = new Label("Item 8");
-        Label item9Label = new Label("Item 9");
-        Label item10Label = new Label("Item 10");
-        Label item11Label = new Label("Item 11");
-        Label item12Label = new Label("Item 12");
-        Label item13Label = new Label("Item 13");
-        Label item14Label = new Label("Item 14");
-        Label item15Label = new Label("Item 15");
-        Label item16Label = new Label("Item 16");
-
-        listView.getItems().addAll(item1Label, item2Label, item3Label, item4Label, item5Label, item6Label,item7Label, item8Label, item9Label, item10Label, item11Label, item12Label, item13Label, item14Label, item15Label, item16Label);
-        listView.setPrefHeight(Region.USE_COMPUTED_SIZE);
+        try {
+            List<Tag> tagList = ActivityDB.getTags();
+            ListView<Label> listView = new ListView<>();
+            Map<Label, Tag> labelTagMap = new HashMap<>();
+            for (Tag tag : tagList) {
+                Label label = new Label(tag.getTag());
+                listView.getItems().add(label);
+                labelTagMap.put(label, tag);            }
+            listView.setPrefHeight(Region.USE_COMPUTED_SIZE);
 
         JFXButton addTagsButton = new JFXButton("Add tags");
         addTagsButton.setStyle("-fx-background-color: #7FFF5B;");
@@ -157,7 +153,11 @@ public class CreateEventController {
             ObservableList<Label> selectedItems = listView.getItems()
                     .filtered(label -> label.getStyle().contains("-fx-background-color: lightblue;"));
 
+            selectedTagList = new ArrayList<>();
+
             for (Label label : selectedItems) {
+                Tag tag = labelTagMap.get(label);
+                selectedTagList.add(tag);
                 System.out.println("Selected item: " + label.getText());
             }
         });
@@ -174,6 +174,10 @@ public class CreateEventController {
         Scene scene = new Scene(borderPane);
         stage.setScene(scene);
         stage.show();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
