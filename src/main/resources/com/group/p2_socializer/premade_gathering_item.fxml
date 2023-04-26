@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="320.0" prefWidth="306.0" style="; -fx-border-width: 2; -fx-border-color: #00bcd4;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.CreateGatherings.PremadeGatheringItemController">
+<VBox fx:id="gatheringItemVBox" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="320.0" prefWidth="306.0" style="; -fx-border-width: 2; -fx-border-color: #00bcd4;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.CreateGatherings.PremadeGatheringItemController">
    <children>
       <ImageView fitHeight="190.0" fitWidth="288.0">
          <image>

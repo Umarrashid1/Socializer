@@ -238,7 +238,6 @@ public class EventCalendarTabController extends TabController implements Initial
         stackPane.getChildren().add(calendarActivityBox);
         calendarActivityBox.toBack();
     }
-
     public void listEventsForDate(List<Event> calendarActivities){
         ListView<Event> listView = new ListView<>();
         listView.getItems().addAll(calendarActivities);
@@ -337,6 +336,7 @@ public class EventCalendarTabController extends TabController implements Initial
         Scene scene = new Scene(listView, 600, 700);
         Stage stage = new Stage();
         stage.setScene(scene);
+        stage.setAlwaysOnTop(true);
         stage.show();
         isWindowOpen = true;
 

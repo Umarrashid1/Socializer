@@ -115,8 +115,8 @@ public class CreateEventController {
                 labelTagMap.put(label, tag);            }
             listView.setPrefHeight(Region.USE_COMPUTED_SIZE);
 
-        JFXButton addTagsButton = new JFXButton("Add tags");
-        addTagsButton.setStyle("-fx-background-color: #7FFF5B;");
+            JFXButton addTagsButton = new JFXButton("Add tags");
+            addTagsButton.setStyle("-fx-background-color: #7FFF5B;");
 
 
             HBox hbox = new HBox();
@@ -160,6 +160,9 @@ public class CreateEventController {
                     selectedTagList.add(tag);
                     System.out.println("Selected item: " + label.getText());
                 }
+                //Stage stage = (Stage) addTagsButton.getScene().getWindow();
+                stage.close();
+
             });
 
             VBox bottomVBox = new VBox(addTagsButton);
@@ -173,8 +176,9 @@ public class CreateEventController {
 
 
             Scene scene = new Scene(borderPane);
-        stage.setScene(scene);
-        stage.show();
+            stage.setScene(scene);
+            stage.setAlwaysOnTop(true);
+            stage.show();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
