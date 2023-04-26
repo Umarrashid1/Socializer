@@ -52,6 +52,8 @@ public class GatheringDB {
                     .activityCity(result.getString("eventcity"))
                     .activityCountry(result.getString("eventcountry"))
                     .activityOrganiser(result.getString("eventorganiser"))
+                    .activityMinimumParticipants(result.getString("activityminimumparticipants"))
+                    .activityMaximumParticipants(result.getString("activitymaximumparticipants"))
                     .localDateTime((LocalDateTime) result.getObject("localdatetime"))
                     .timeZone(ZoneId.systemDefault())
                     .gatheringID(result.getInt("gatheringID"))

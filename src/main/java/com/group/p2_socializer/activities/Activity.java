@@ -18,8 +18,11 @@ public class Activity {
     private String activityCity;
     private String activityCountry;
     private String activityOrganiser;
+    private String activityMinimumParticipants;
+    private String activityMaximumParticipants;
     private LocalDateTime localDateTime;
     private ZoneId timeZone;
+
 
     private ArrayList attendeeList = new ArrayList<>();
     //todo: use attendeeList for collecting the attendees of a gathering
@@ -54,6 +57,13 @@ public class Activity {
     public String getActivityOrganiser() {
         return activityOrganiser;
     }
+    public String getActivityMinimumParticipants() {
+        return activityMinimumParticipants;
+    }
+    public String getActivityMaximumParticipants() {
+        return activityMaximumParticipants;
+    }
+
     public LocalDateTime getLocalDateTime() {
         return localDateTime;
     }
@@ -78,6 +88,8 @@ public class Activity {
         this.activityCity = builder.activityCity;
         this.activityCountry = builder.activityCountry;
         this.activityOrganiser = builder.activityOrganiser;
+        this.activityMinimumParticipants = builder.activityMinimumParticipants;
+        this.activityMaximumParticipants = builder.activityMaximumParticipants;
         this.localDateTime = builder.localDateTime;
         this.timeZone = builder.timeZone;
     }
@@ -90,9 +102,13 @@ public class Activity {
         private String activityCity;
         private String activityCountry;
         private String activityOrganiser;
+        private String activityMinimumParticipants;
+        private String activityMaximumParticipants;
         private LocalDateTime localDateTime;
         private ZoneId timeZone;
         private ZonedDateTime zonedDatetime;
+
+
         public Builder() {
         }
         public T activityID(int activityID) {
@@ -129,6 +145,14 @@ public class Activity {
             this.activityOrganiser = activityOrganiser;
             return self();
         }
+        public T activityMinimumParticipants(String activityMinimumParticipants) {
+            this.activityMinimumParticipants = activityMinimumParticipants;
+            return self();
+        }
+        public T activityMaximumParticipants(String activityMaximumParticipants) {
+            this.activityMaximumParticipants = activityMaximumParticipants;
+            return self();
+        }
 
         public T localDateTime(LocalDateTime localDateTime) {
             this.localDateTime = localDateTime;
@@ -152,5 +176,7 @@ public class Activity {
         protected T self() {
             return (T) this;
         }
+
+
     }
 }

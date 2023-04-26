@@ -35,6 +35,7 @@ public class GatheringItemController implements Initializable {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         timeLabel.setText(String.valueOf(gathering.getLocalDateTime().format(formatter)));
         organiserLabel.setText(gathering.getActivityOrganiser());
+        attendingLabel.setText("x/" + gathering.getActivityMaximumParticipants());
 
     }
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}

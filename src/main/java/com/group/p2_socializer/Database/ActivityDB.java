@@ -66,6 +66,8 @@ public class ActivityDB {
                     .activityCity(result.getString("activitycity"))
                     .activityCountry(result.getString("activitycountry"))
                     .activityOrganiser(result.getString("activityorganiser"))
+                    .activityMinimumParticipants(result.getString("activityminimumparticipants"))
+
                     .localDateTime((LocalDateTime) result.getObject("activitydatetime"))
                     .timeZone(ZoneId.systemDefault()) //FIX
                     //.eventVenue("Madison Square Garden")

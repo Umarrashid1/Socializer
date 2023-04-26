@@ -67,6 +67,8 @@ public class CreateGatheringController  extends ChooseGatheringTabController imp
                 .activityCity(eventCityTextField.getText())
                 .activityCountry(eventCountryTextField.getText())
                 .activityOrganiser(eventOrganiserTextField.getText())
+                .activityMinimumParticipants(minimumParticipantsTextField.getText())
+                .activityMaximumParticipants(maximumParticipantsTextField.getText())
                 .localDateTime(localDateTime)
                 .timeZone(ZoneId.systemDefault())
                 .build();
