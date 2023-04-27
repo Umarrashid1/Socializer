@@ -19,6 +19,29 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 public class GatheringItemController implements Initializable {
+
+    private Gathering currentGathering;
+
+    @FXML
+    private AnchorPane gatheringItemAnchorPane;
+    @FXML
+    private Label titleLabel;
+
+    @FXML
+    private Label organiserLabel;
+
+    @FXML
+    private Label attendingLabel;
+
+    @FXML
+    private Label dayOfMonthLabel;
+
+    @FXML
+    private Label monthLabel;
+
+    @FXML
+    private Label timeLabel;
+
     public Map<Tab, Boolean> tabUpdateMap;
     private TabPane mainTabPane;
 
@@ -32,12 +55,13 @@ public class GatheringItemController implements Initializable {
         titleLabel.setText(gathering.getActivityName());
         dayOfMonthLabel.setText(String.valueOf(gathering.getLocalDateTime().getDayOfMonth()));
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MMM", Locale.ENGLISH);
-        monthLabel.setText(gathering.getLocalDateTime().format(dateFormatter));
+        String monthString = gathering.getLocalDateTime().format(dateFormatter).toUpperCase();
+        monthLabel.setText(monthString);
 
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
         timeLabel.setText(String.valueOf(gathering.getLocalDateTime().format(timeFormatter)));
         organiserLabel.setText(gathering.getActivityOrganiser());
-        attendingLabel.setText("x" + "/" + gathering.getActivityMaximumParticipants());
+        attendingLabel.setText("x" + "/" + String.valueOf(gathering.getActivityMaximumParticipants()));
 
     }
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
@@ -64,28 +88,6 @@ public class GatheringItemController implements Initializable {
         this.timeLabel.setText(timeLabel);
     }
 
-
-    private Gathering currentGathering;
-
-    @FXML
-    private AnchorPane gatheringItemAnchorPane;
-    @FXML
-    private Label titleLabel;
-
-    @FXML
-    private Label organiserLabel;
-
-    @FXML
-    private Label attendingLabel;
-
-    @FXML
-    private Label dayOfMonthLabel;
-
-    @FXML
-    private Label monthLabel;
-
-    @FXML
-    private Label timeLabel;
 
 
     @Override
