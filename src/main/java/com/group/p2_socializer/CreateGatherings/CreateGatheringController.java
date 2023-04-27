@@ -39,10 +39,9 @@ public class CreateGatheringController  extends ChooseGatheringTabController imp
     @FXML
     private TextArea eventDescriptionTextArea;
     @FXML
-    public JFXTextField minimumParticipantsTextField; //---------newly added
+    public JFXTextField minimumParticipantsTextField;
     @FXML
-    public JFXTextField maximumParticipantsTextField; //---------newly added
-
+    public JFXTextField maximumParticipantsTextField;
     public Map<Tab, Boolean> actualtabUpdateMap;
     private TabPane mainTabPane;
 

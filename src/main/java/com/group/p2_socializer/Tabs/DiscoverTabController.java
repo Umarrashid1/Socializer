@@ -36,10 +36,10 @@ public class DiscoverTabController extends TabController implements Initializabl
                 FXMLLoader itemFxmlLoader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/gathering_item.fxml"));
                 try {
                     VBox gatheringItem = itemFxmlLoader.load();
-                    GatheringItemController controller = itemFxmlLoader.getController();
-                    controller.setGathering(gathering);
-                    controller.setTabUpdateMap(tabUpdateMap);
-                    controller.setMainTabPane(mainTabPane);
+                    GatheringItemController gatheringItemController = itemFxmlLoader.getController();
+                    gatheringItemController.setGathering(gathering);
+                    gatheringItemController.setTabUpdateMap(tabUpdateMap);
+                    gatheringItemController.setMainTabPane(mainTabPane);
                     gatheringItemVBox.getChildren().add(gatheringItem);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
