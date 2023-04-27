@@ -18,8 +18,8 @@ public class Activity {
     private String activityCity;
     private String activityCountry;
     private String activityOrganiser;
-    private String activityMinimumParticipants;
-    private String activityMaximumParticipants;
+    private int activityMinimumParticipants;
+    private int activityMaximumParticipants;
     private LocalDateTime localDateTime;
     private ZoneId timeZone;
 
@@ -57,10 +57,10 @@ public class Activity {
     public String getActivityOrganiser() {
         return activityOrganiser;
     }
-    public String getActivityMinimumParticipants() {
+    public int getActivityMinimumParticipants() {
         return activityMinimumParticipants;
     }
-    public String getActivityMaximumParticipants() {
+    public int getActivityMaximumParticipants() {
         return activityMaximumParticipants;
     }
 
@@ -102,8 +102,8 @@ public class Activity {
         private String activityCity;
         private String activityCountry;
         private String activityOrganiser;
-        private String activityMinimumParticipants;
-        private String activityMaximumParticipants;
+        private int activityMinimumParticipants;
+        private int activityMaximumParticipants;
         private LocalDateTime localDateTime;
         private ZoneId timeZone;
         private ZonedDateTime zonedDatetime;
@@ -145,11 +145,11 @@ public class Activity {
             this.activityOrganiser = activityOrganiser;
             return self();
         }
-        public T activityMinimumParticipants(String activityMinimumParticipants) {
+        public T activityMinimumParticipants(int activityMinimumParticipants) {
             this.activityMinimumParticipants = activityMinimumParticipants;
             return self();
         }
-        public T activityMaximumParticipants(String activityMaximumParticipants) {
+        public T activityMaximumParticipants(int activityMaximumParticipants) {
             this.activityMaximumParticipants = activityMaximumParticipants;
             return self();
         }

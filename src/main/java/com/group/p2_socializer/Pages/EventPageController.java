@@ -93,10 +93,10 @@ public class EventPageController {
             eventLocation.setText(newEvent.getActivityCity() + ", " + newEvent.getActivityCountry());
             eventLocation.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 11; -fx-text-fill: #797878;");
 
-            Label cityLabel = (Label) organiserHBox.lookup("#cityLabel");
-            cityLabel.setText("by ");
-            cityLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 11; -fx-text-fill: #797878;");
-
+            //Label cityLabel = (Label) organiserHBox.lookup("#cityLabel");
+            //cityLabel.setText("by ");
+            //cityLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 11; -fx-text-fill: #797878;");
+            //Doesent exist in fxml
 
             Label eventOrganiserLabel = (Label) organiserHBox.lookup("#eventOrganiserLabel");
             eventOrganiserLabel.setText(newEvent.getActivityOrganiser());

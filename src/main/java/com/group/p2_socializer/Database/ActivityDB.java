@@ -66,12 +66,9 @@ public class ActivityDB {
                     .activityCity(result.getString("activitycity"))
                     .activityCountry(result.getString("activitycountry"))
                     .activityOrganiser(result.getString("activityorganiser"))
-                    .activityMinimumParticipants(result.getString("activityminimumparticipants"))
-
+                    .activityMinimumParticipants(result.getInt("activitymin"))
                     .localDateTime((LocalDateTime) result.getObject("activitydatetime"))
                     .timeZone(ZoneId.systemDefault()) //FIX
-                    //.eventVenue("Madison Square Garden")
-                    //.eventOrganizerEmail("info@rockfest.com")
                     .build();
             eventList.add(newEvent);
         }
