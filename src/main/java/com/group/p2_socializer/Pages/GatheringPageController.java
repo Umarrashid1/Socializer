@@ -36,7 +36,7 @@ public class GatheringPageController {
     @FXML
     public HBox organiserHBox;
     @FXML
-    public Label gathierngCityLabel;
+    public Label gatheringCityLabel;
     @FXML
     public Label gatheringOrganiserLabel;
     @FXML
@@ -51,6 +51,8 @@ public class GatheringPageController {
     private VBox postList;
     public Map<Tab, Boolean> tabUpdateMap;
     private TabPane mainTabPane;
+    @FXML
+    private VBox participantsVBox;
 
 
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap) {
@@ -74,20 +76,22 @@ public class GatheringPageController {
         // Get reference to centerPane FXML file
         ScrollPane scrollPane = (ScrollPane) root.lookup("#scrollPane");
         AnchorPane centerPane = (AnchorPane) scrollPane.getContent();
-        VBox eventInfoVBox = (VBox) centerPane.lookup("#eventInfoVBox");
-        HBox organiserHBox = (HBox) eventInfoVBox.lookup("#organiserHBox");
+        VBox gatheringInfoVBox = (VBox) centerPane.lookup("#gatheringInfoVBox");
+        HBox organiserHBox = (HBox) gatheringInfoVBox.lookup("#organiserHBox");
+        VBox participantsVBox = (VBox) centerPane.lookup("#participantsVBox");
+
         organiserHBox.setMaxWidth(250);
 
 
-        Label gatheringDateLabel = (Label) eventInfoVBox.lookup("#gatheringDateLabel");
+        Label gatheringDateLabel = (Label) gatheringInfoVBox.lookup("#gatheringDateLabel");
         gatheringDateLabel.setText(dateString);
         gatheringDateLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 13; -fx-text-fill: #797878;");
 
-        Label gatheringTitleLabel = (Label) eventInfoVBox.lookup("#gatheringTitleLabel");
+        Label gatheringTitleLabel = (Label) gatheringInfoVBox.lookup("#gatheringTitleLabel");
         gatheringTitleLabel.setText(newGathering.getActivityName());
         gatheringTitleLabel.setFont(Font.font("Eras Bold ITC", 30));
 
-        Label gatheringLocation = (Label) eventInfoVBox.lookup("#eventLocationLabel");
+        Label gatheringLocation = (Label) gatheringInfoVBox.lookup("#gatheringLocationLabel");
         gatheringLocation.setText(newGathering.getActivityCity() + ", " + newGathering.getActivityCountry());
         gatheringLocation.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 11; -fx-text-fill: #797878;");
 
@@ -100,8 +104,9 @@ public class GatheringPageController {
         gatheringOrganiserLabel.setText(newGathering.getActivityOrganiser());
         gatheringOrganiserLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 12; -fx-text-fill: #000000;");
 
-        Label gatheringParticipationLabel = (Label) centerPane.lookup("gatheringParticipationLabel");
-        gatheringParticipationLabel.setText(String.valueOf('x' + '/' + newGathering.getActivityMaximumParticipants()));
+        Label gatheringParticipationLabel = (Label) participantsVBox.lookup("#gatheringParticipationLabel");
+        gatheringParticipationLabel.setText("x" + "/" + newGathering.getActivityMaximumParticipants());
+
 
         Label gatheringDescriptionLabel = new Label(newGathering.getActivityDescription());
         gatheringDescriptionLabel.setMaxWidth(300);

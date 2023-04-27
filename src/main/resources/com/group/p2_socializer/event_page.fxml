@@ -37,7 +37,7 @@
                               <Label fx:id="eventLocationLabel" text="Label" />
                               <HBox fx:id="organiserHBox" prefWidth="534.0">
                                  <children>
-                                    <Label fx:id="byLabel" text="Label" />
+                                    <Label fx:id="eventCityLabel" text="Label" />
                                     <Label fx:id="eventOrganiserLabel" text="Label" />
                                  </children>
                               </HBox>

@@ -33,11 +33,10 @@
                               <Label fx:id="gatheringLocationLabel" text="Label" />
                               <HBox fx:id="organiserHBox" prefWidth="534.0">
                                  <children>
-                                    <Label fx:id="gathierngCityLabel" text="Label" />
+                                    <Label fx:id="gatheringCityLabel" text="Label" />
                                     <Label fx:id="gatheringOrganiserLabel" text="Label" />
                                  </children>
                               </HBox>
-
                            </children>
                         </VBox>
                         <Line endX="464.0" layoutX="130.0" layoutY="405.0" startX="-92.5" />
@@ -54,14 +53,18 @@
                               <Image url="@pictures/festivalpic.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="gatheringParticipationLabel" layoutX="286.0" layoutY="418.0" text="23/50">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                           <graphic>
-                              <MaterialIconView glyphName="GROUP" />
-                           </graphic>
-                        </Label>
+                        <VBox fx:id="participantsVBox" layoutX="286.0" layoutY="418.0">
+                           <children>
+                              <Label fx:id="gatheringParticipationLabel" text="23/50">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                                 <graphic>
+                                    <MaterialIconView glyphName="GROUP" />
+                                 </graphic>
+                              </Label>
+                           </children>
+                        </VBox>
                      </children>
                   </AnchorPane>
                </center>
