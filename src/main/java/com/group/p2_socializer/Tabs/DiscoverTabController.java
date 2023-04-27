@@ -33,14 +33,14 @@ public class DiscoverTabController extends TabController implements Initializabl
         try {
             List<Gathering> gatheringList = GatheringDB.getGatheringsDate(2023);
             for (Gathering gathering : gatheringList) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/gathering_item.fxml"));
+                FXMLLoader itemFxmlLoader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/gathering_item.fxml"));
                 try {
-                    VBox vBox = loader.load();
-                    GatheringItemController controller = loader.getController();
+                    VBox gatheringItem = itemFxmlLoader.load();
+                    GatheringItemController controller = itemFxmlLoader.getController();
                     controller.setGathering(gathering);
                     controller.setTabUpdateMap(tabUpdateMap);
                     controller.setMainTabPane(mainTabPane);
-                    gatheringItemVBox.getChildren().add(vBox);
+                    gatheringItemVBox.getChildren().add(gatheringItem);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

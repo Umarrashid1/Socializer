@@ -31,11 +31,13 @@ public class GatheringItemController implements Initializable {
         currentGathering = gathering;
         titleLabel.setText(gathering.getActivityName());
         dayOfMonthLabel.setText(String.valueOf(gathering.getLocalDateTime().getDayOfMonth()));
-        monthLabel.setText(gathering.getLocalDateTime().getMonth().toString());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        timeLabel.setText(String.valueOf(gathering.getLocalDateTime().format(formatter)));
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MMM", Locale.ENGLISH);
+        monthLabel.setText(gathering.getLocalDateTime().format(dateFormatter));
+
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        timeLabel.setText(String.valueOf(gathering.getLocalDateTime().format(timeFormatter)));
         organiserLabel.setText(gathering.getActivityOrganiser());
-        attendingLabel.setText("x/" + gathering.getActivityMaximumParticipants());
+        attendingLabel.setText("x" + "/" + gathering.getActivityMaximumParticipants());
 
     }
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}

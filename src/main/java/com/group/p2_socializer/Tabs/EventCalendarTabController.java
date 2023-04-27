@@ -2,12 +2,10 @@ package com.group.p2_socializer.Tabs;
 
 import com.group.p2_socializer.Calendar.CreateEventController;
 import com.group.p2_socializer.CreateGatherings.CreateGatheringController;
-import com.group.p2_socializer.Pages.GatheringPageController;
 import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.Calendar.CalendarManager;
 import com.group.p2_socializer.Pages.EventPageController;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTabPane;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -71,9 +69,9 @@ public class EventCalendarTabController extends TabController implements Initial
     public void handleCreateEventButton() throws IOException {
         super.loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/create_event.fxml"));
         AnchorPane newPane = loader.load();
-        CreateEventController controller = loader.getController();
-        controller.setTabUpdateMap(tabUpdateMap);
-        controller.setMainTabPane(mainTabPane);
+        CreateEventController createEventController = loader.getController();
+        createEventController.setTabUpdateMap(tabUpdateMap);
+        createEventController.setMainTabPane(mainTabPane);
         super.mainTabPane.getSelectionModel().getSelectedItem().setContent(newPane);
     }
     public void createEventGatheringButtonHandler(Label eventLocationLabel, Event event) throws IOException {
@@ -83,10 +81,10 @@ public class EventCalendarTabController extends TabController implements Initial
         stage.close();
         super.loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/create_custom_gathering.fxml"));
         AnchorPane newPane = loader.load();
-        CreateGatheringController controller = loader.getController();
-        controller.setEventData(event);
-        controller.setTabUpdateMap(tabUpdateMap);
-        controller.setMainTabPane(mainTabPane);
+        CreateGatheringController createGatheringController = loader.getController();
+        createGatheringController.setEventData(event);
+        createGatheringController.setTabUpdateMap(tabUpdateMap);
+        createGatheringController.setMainTabPane(mainTabPane);
         super.mainTabPane.getSelectionModel().getSelectedItem().setContent(newPane);
     }
 
@@ -193,8 +191,6 @@ public class EventCalendarTabController extends TabController implements Initial
         VBox calendarActivityBox = new VBox();
         boolean isWindowOpen = false;
 
-        //TODO: NEEDS A REDO
-
         for (int k = 0; k < calendarActivities.size(); k++) {
             if(k >= 3) {
                 Text moreActivities = new Text("and more!");
@@ -218,7 +214,7 @@ public class EventCalendarTabController extends TabController implements Initial
 
         if (!isWindowOpen) {
             rectangle.setOnMouseClicked((MouseEvent event) -> {
-                listEventsForDate(calendarActivities);
+                calendarDayView(calendarActivities);
             });
         }
 
@@ -238,7 +234,7 @@ public class EventCalendarTabController extends TabController implements Initial
         stackPane.getChildren().add(calendarActivityBox);
         calendarActivityBox.toBack();
     }
-    public void listEventsForDate(List<Event> calendarActivities){
+    public void calendarDayView(List<Event> calendarActivities){
         ListView<Event> listView = new ListView<>();
         listView.getItems().addAll(calendarActivities);
         listView.setCellFactory(param -> new ListCell<>() {
@@ -249,7 +245,7 @@ public class EventCalendarTabController extends TabController implements Initial
                     setText(null);
                 } else {
                     // Create a VBox to hold the text boxes
-                    VBox vbox = new VBox();
+                    VBox textBoxVBox = new VBox();
                     Label windowTitleLabel = new Label();
                     windowTitleLabel.setText("Click event to enter event page");
                     windowTitleLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 11; -fx-text-fill: #797878;");
@@ -299,31 +295,31 @@ public class EventCalendarTabController extends TabController implements Initial
                     }
 
                     // Add the text boxes to the VBox
-                    vbox.getChildren().addAll(windowTitleLabel, eventNameTitle, eventNameLabel, eventDateTitle, eventDateLabel,
+                    textBoxVBox.getChildren().addAll(windowTitleLabel, eventNameTitle, eventNameLabel, eventDateTitle, eventDateLabel,
                             eventDescriptionTitle, eventDescriptionLabel, eventLocationTitle,
                             eventLocationLabel, eventOrganiserTitle, eventOrganiserLabel, createEventGatheringButton);
 
                     BorderPane borderPane = new BorderPane();
 
                     // Set the VBox as the center of the BorderPane
-                    borderPane.setCenter(vbox);
+                    borderPane.setCenter(textBoxVBox);
                     borderPane.setStyle("-fx-border-color: black; -fx-border-width: 2px; -fx-padding: 5px;");
 
                     // Set the BorderPane as the cell's graphic
                     setGraphic(borderPane);
 
 
-                    vbox.setOnMouseClicked((MouseEvent event) -> {
+                    textBoxVBox.setOnMouseClicked((MouseEvent event) -> {
 
-                        EventPageController controller = new EventPageController();
-                        controller.setMainTabPane(mainTabPane);
-                        controller.setTabUpdateMap(tabUpdateMap);
+                        EventPageController eventPageController = new EventPageController();
+                        eventPageController.setMainTabPane(mainTabPane);
+                        eventPageController.setTabUpdateMap(tabUpdateMap);
                         Event newEvent = item;
                         // Open the event page of the created event
-                        controller.loadEventPage(newEvent);
+                        eventPageController.loadEventPage(newEvent);
 
                         // Close the list window
-                        Scene scene = vbox.getScene();
+                        Scene scene = textBoxVBox.getScene();
                         Window window = scene.getWindow();
                         window.hide();
                         isWindowOpen = false;
@@ -339,8 +335,6 @@ public class EventCalendarTabController extends TabController implements Initial
         stage.setAlwaysOnTop(true);
         stage.show();
         isWindowOpen = true;
-
-
 
     }
 

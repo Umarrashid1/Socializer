@@ -135,13 +135,13 @@ public class EventPageController {
             BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTBLUE, cornerRadii, null);
             Background background = new Background(backgroundFill);
 
-            VBox vbox = new VBox();
-            vbox.setSpacing(10);
-            vbox.setPadding(new Insets(10,10,10,0));
+            VBox tagsVBox = new VBox();
+            tagsVBox.setSpacing(10);
+            tagsVBox.setPadding(new Insets(10,10,10,0));
 
             int count = 0;
-            HBox wordsHBox = new HBox(); // Create a new HBox for the labels
-            wordsHBox.setSpacing(10);
+            HBox rowOfTagsHBox = new HBox(); // Create a new HBox for the labels
+            rowOfTagsHBox.setSpacing(10);
 
             for (Tag tag : taglist) {
                 Label tagLabel = new Label(tag.getTag());
@@ -150,32 +150,32 @@ public class EventPageController {
                 tagLabel.setMaxWidth(Double.MAX_VALUE);
                 VBox.setVgrow(tagLabel, Priority.ALWAYS);
 
-                wordsHBox.getChildren().add(tagLabel);
+                rowOfTagsHBox.getChildren().add(tagLabel);
                 count++;
 
                 if (count == 3) {
                     // Max 3 labels per HBox, add the current HBox to the VBox and create a new HBox
                     count = 0;
-                    vbox.getChildren().add(wordsHBox);
-                    wordsHBox = new HBox();
-                    wordsHBox.setSpacing(10);
+                    tagsVBox.getChildren().add(rowOfTagsHBox);
+                    rowOfTagsHBox = new HBox();
+                    rowOfTagsHBox.setSpacing(10);
                 }
             }
 
-            // Add the last HBox to the VBox, if it contains any labels
-            if (wordsHBox.getChildren().size() > 0) {
-                vbox.getChildren().add(wordsHBox);
+            // Add the last row of HBoxes to the VBox, if it contains any labels
+            if (rowOfTagsHBox.getChildren().size() > 0) {
+                tagsVBox.getChildren().add(rowOfTagsHBox);
             }
 
-            descriptionVBox.getChildren().add(vbox);
+            descriptionVBox.getChildren().add(tagsVBox);
 
 
 
             // Load the manager_bar.fxml file
-            FXMLLoader fxmlLoader1 = new FXMLLoader(EventPageController.class.getResource("/com/group/p2_socializer/manager_bar.fxml"));
-            Parent managerBarRoot = fxmlLoader1.load();
+            FXMLLoader manageBarFxmlLoader = new FXMLLoader(EventPageController.class.getResource("/com/group/p2_socializer/manager_bar.fxml"));
+            Parent managerBarRoot = manageBarFxmlLoader.load();
 
-            ManagerBarController managerBarController = fxmlLoader1.getController(); // Get reference to actual instance of ManagerBarController
+            ManagerBarController managerBarController = manageBarFxmlLoader.getController(); // Get reference to actual instance of ManagerBarController
             managerBarController.setMainTabPane(mainTabPane);
             managerBarController.setTabUpdateMap(tabUpdateMap);
             managerBarController.setNewEvent(newEvent);

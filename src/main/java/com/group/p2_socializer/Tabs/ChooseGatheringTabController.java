@@ -46,6 +46,7 @@ public class ChooseGatheringTabController extends TabController {
         }
 
 
+        //TODO: Not finished
     public void handlePremadeGatheringCreation() throws IOException {
         VBox container = new VBox(); // Use VBox as the container for the GridPane
         container.setSpacing(10); // Set spacing between items in the container

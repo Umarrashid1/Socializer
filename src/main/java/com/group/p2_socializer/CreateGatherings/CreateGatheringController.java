@@ -74,11 +74,14 @@ public class CreateGatheringController  extends ChooseGatheringTabController imp
                 .build();
 
         GatheringDB.storeGathering(newGathering);
+
         String createdMessage = "Gathering Created!";
         PopUpMessage popUpMessage = new PopUpMessage();
         popUpMessage.showCreatedPopUp(createdMessage);
+
         GatheringPageController gatheringPageController = new GatheringPageController();
         gatheringPageController.loadGatheringPage(newGathering);
+
         Tab newTab = mainTabPane.getTabs().get(2);
         this.tabUpdateMap.put(newTab, true);
         mainTabPane.getSelectionModel().select(1);

@@ -31,6 +31,8 @@ import java.util.Map;
 public class CreateEventController {
 
     @FXML
+    private JFXButton backButton;
+    @FXML
     public JFXButton createNewEventButton;
     @FXML
     public JFXButton addTagsButton;
@@ -63,6 +65,12 @@ public class CreateEventController {
     public JFXButton goBack;
 
     public List<Tag> selectedTagList;
+
+    @FXML
+    public void handleBackButton(){
+        //TODO: make button load calendarTab somehow
+
+    }
 
     @FXML
     public void handleCreateEvent() throws SQLException, IOException {
@@ -119,18 +127,18 @@ public class CreateEventController {
             addTagsButton.setStyle("-fx-background-color: #7FFF5B;");
 
 
-            HBox hbox = new HBox();
-            hbox.setSpacing(10);
+            HBox rowOfTagsHBox = new HBox();
+            rowOfTagsHBox.setSpacing(10);
 
-            VBox vbox = new VBox();
-            vbox.setSpacing(10);
-            vbox.setAlignment(Pos.CENTER);
+            VBox tagsVBox = new VBox();
+            tagsVBox.setSpacing(10);
+            tagsVBox.setAlignment(Pos.CENTER);
 
             int col = 0;
 
-            for (Label label : listView.getItems()) {
-                label.setStyle("-fx-background-color: #ccbfbf; -fx-background-radius: 15; -fx-padding: 5;");
-                label.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            for (Label tagLabel : listView.getItems()) {
+                tagLabel.setStyle("-fx-background-color: #ccbfbf; -fx-background-radius: 15; -fx-padding: 5;");
+                tagLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
                     Label clickedLabel = (Label) event.getSource();
                     if (clickedLabel.getStyle().contains("-fx-background-color: #ccbfbf;")) {
                         clickedLabel.setStyle("-fx-background-color: lightblue; -fx-background-radius: 15; -fx-padding: 5;");
@@ -139,12 +147,12 @@ public class CreateEventController {
                     }
 
                 });
-                hbox.getChildren().add(label);
+                rowOfTagsHBox.getChildren().add(tagLabel);
                 col++;
                 if (col == 3) {
-                    vbox.getChildren().add(hbox);
-                    hbox = new HBox();
-                    hbox.setSpacing(10);
+                    tagsVBox.getChildren().add(rowOfTagsHBox);
+                    rowOfTagsHBox = new HBox();
+                    rowOfTagsHBox.setSpacing(10);
                     col = 0;
                 }
             }
@@ -171,7 +179,7 @@ public class CreateEventController {
 
             BorderPane borderPane = new BorderPane();
             borderPane.setPadding(new Insets(10, 10, 10, 10));
-            borderPane.setCenter(vbox);
+            borderPane.setCenter(tagsVBox);
             borderPane.setBottom(bottomVBox);
 
 

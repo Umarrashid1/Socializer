@@ -78,7 +78,7 @@ public class GatheringPageController {
         HBox organiserHBox = (HBox) eventInfoVBox.lookup("#organiserHBox");
         organiserHBox.setMaxWidth(250);
 
-        //Label gatheringDateLabel = new Label(eventDate);
+
         Label gatheringDateLabel = (Label) eventInfoVBox.lookup("#gatheringDateLabel");
         gatheringDateLabel.setText(dateString);
         gatheringDateLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 13; -fx-text-fill: #797878;");
