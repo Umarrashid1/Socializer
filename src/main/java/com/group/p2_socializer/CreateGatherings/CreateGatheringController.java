@@ -6,7 +6,6 @@ import com.group.p2_socializer.Tabs.ChooseGatheringTabController;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.activities.Gathering;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,19 +24,19 @@ public class CreateGatheringController  extends ChooseGatheringTabController imp
 
 
     @FXML
-    private TextField eventNameTextField;
+    private TextField gatheringNameTextField;
     @FXML
     private DatePicker eventDatePicker;
     @FXML
     private TextField eventTimeTextField;
     @FXML
-    private TextField eventCityTextField;
+    private TextField gatheringCityTextField;
     @FXML
-    private TextField eventOrganiserTextField;
+    private TextField gatheringOrganiserTextField;
     @FXML
-    private TextField eventCountryTextField;
+    private TextField gatheringCountryTextField;
     @FXML
-    private TextArea eventDescriptionTextArea;
+    private TextArea gatheringDescriptionTextArea;
     @FXML
     public JFXTextField minimumParticipantsTextField;
     @FXML
@@ -46,11 +45,11 @@ public class CreateGatheringController  extends ChooseGatheringTabController imp
     private TabPane mainTabPane;
 
     public void setEventData(Event event){
-        eventNameTextField.setText(event.getActivityName());
-        eventDescriptionTextArea.setText(event.getActivityDescription());
-        eventCityTextField.setText(event.getActivityCity());
-        eventCountryTextField.setText(event.getActivityCountry());
-        eventOrganiserTextField.setText(event.getActivityOrganiser());
+        gatheringNameTextField.setText(event.getActivityName());
+        gatheringDescriptionTextArea.setText(event.getActivityDescription());
+        gatheringCityTextField.setText(event.getActivityCity());
+        gatheringCountryTextField.setText(event.getActivityCountry());
+        gatheringOrganiserTextField.setText(event.getActivityOrganiser());
         //eventTimeTextField.setText();
         //eventDatePicker.setChronology();
     }
@@ -61,11 +60,11 @@ public class CreateGatheringController  extends ChooseGatheringTabController imp
 
         Gathering newGathering = new Gathering.Builder()
                 .activityType("EventActivity")
-                .activityName(eventNameTextField.getText())
-                .activityDescription(eventDescriptionTextArea.getText())
-                .activityCity(eventCityTextField.getText())
-                .activityCountry(eventCountryTextField.getText())
-                .activityOrganiser(eventOrganiserTextField.getText())
+                .activityName(gatheringNameTextField.getText())
+                .activityDescription(gatheringDescriptionTextArea.getText())
+                .activityCity(gatheringCityTextField.getText())
+                .activityCountry(gatheringCountryTextField.getText())
+                .activityOrganiser(gatheringOrganiserTextField.getText())
                 .activityMinimumParticipants(Integer.parseInt(minimumParticipantsTextField.getText()))
                 .activityMaximumParticipants(Integer.parseInt(maximumParticipantsTextField.getText()))
                 .localDateTime(localDateTime)

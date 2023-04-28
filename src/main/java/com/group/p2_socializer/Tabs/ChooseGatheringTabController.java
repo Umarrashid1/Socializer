@@ -1,13 +1,8 @@
 package com.group.p2_socializer.Tabs;
 
-import com.group.p2_socializer.CreateGatherings.CreateGatheringController;
-import com.group.p2_socializer.UserLogIn.User;
 import com.group.p2_socializer.Utils.PopUpMessage;
-import com.group.p2_socializer.activities.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -36,7 +31,7 @@ public class ChooseGatheringTabController extends TabController {
 
         FXMLLoader loader = new FXMLLoader();
         try {
-            AnchorPane createGatheringAnchorPane = loader.load(getClass().getResource("/com/group/p2_socializer/create_custom_gathering.fxml"));
+            AnchorPane createGatheringAnchorPane = loader.load(getClass().getResource("/com/group/p2_socializer/create_gathering.fxml"));
             ChooseGatheringAnchorPane.getChildren().setAll(createGatheringAnchorPane);
 
         } catch (IOException iex) {

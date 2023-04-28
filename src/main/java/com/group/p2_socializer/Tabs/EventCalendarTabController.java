@@ -79,7 +79,7 @@ public class EventCalendarTabController extends TabController implements Initial
         //Select choosegathering tab
         Stage stage = (Stage) eventLocationLabel.getScene().getWindow();
         stage.close();
-        super.loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/create_custom_gathering.fxml"));
+        super.loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/create_gathering.fxml"));
         AnchorPane newPane = loader.load();
         CreateGatheringController createGatheringController = loader.getController();
         createGatheringController.setEventData(event);

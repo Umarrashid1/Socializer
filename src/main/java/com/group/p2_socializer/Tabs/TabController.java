@@ -62,7 +62,7 @@ public class TabController implements Initializable  {
                 //temporary fix
             }
 
-            if(name == "discoverTab"){
+            if(name == "discover_tab"){
                 DiscoverTabController discoverTabController = loader.getController();
                 discoverTabController.loadGatheringItems();
                 //temporary fix
@@ -98,12 +98,12 @@ public class TabController implements Initializable  {
                 loadPage("choose_gathering");
                 tabUpdateMap.put(discoverTab, true);
             } else if(newTab == calendarTab) {
-                loadPage("calendarTab");
+                loadPage("calendar_tab");
                 tabUpdateMap.put(calendarTab, true);
             } else if (newTab == trendingTab) {
                 loadPage("choose_gathering");
             } else if (newTab == discoverTab){
-                loadPage("discoverTab");
+                loadPage("discover_tab");
             } else if (newTab == myProfileTab){
                 loadPage("profile_page");
             } else if (newTab == createGatheringTab) {
