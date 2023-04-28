@@ -18,7 +18,7 @@
       <Rectangle arcHeight="50" arcWidth="50.0" fill="TRANSPARENT" height="697.0" layoutX="209.0" layoutY="42.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: #00bcd4;" width="533.0" />
       <VBox layoutX="231.0" layoutY="117.0" prefHeight="618.0" prefWidth="490.0" spacing="10.0">
          <children>
-            <Label text="Event name:" />
+            <Label text="Gathering name:" />
             <JFXTextField fx:id="gatheringNameTextField" prefHeight="25.0" prefWidth="432.0" promptText="eg. Board game night!">
                <VBox.margin>
                   <Insets right="90.0" />
@@ -70,7 +70,7 @@
                   </JFXTextField>
                </children>
             </HBox>
-            <Label prefHeight="24.0" prefWidth="100.0" text="Event description:">
+            <Label prefHeight="24.0" prefWidth="100.0" text="Gathering description:">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
@@ -118,7 +118,7 @@
             </JFXButton>
             <HBox alignment="CENTER" prefHeight="95.0" prefWidth="490.0">
                <children>
-                  <JFXButton fx:id="createCustomGatheringButton" onAction="#handleCreateGathering" prefHeight="61.0" prefWidth="138.0" style="-fx-background-color: #41FF31;" text="Create Gathering" />
+                  <JFXButton fx:id="createGatheringButton" onAction="#handleCustomCreation" prefHeight="61.0" prefWidth="138.0" style="-fx-background-color: #41FF31;" text="Create Gathering" />
                </children>
             </HBox>
          </children>
@@ -126,7 +126,7 @@
             <Insets />
          </opaqueInsets>
       </VBox>
-      <Label alignment="CENTER" layoutX="375.0" layoutY="50.0" prefHeight="61.0" prefWidth="200.0" text="Create Gathering">
+      <Label fx:id="createGatheringTitleLabel" alignment="CENTER" layoutX="375.0" layoutY="50.0" prefHeight="61.0" prefWidth="200.0" text="Create Gathering">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>

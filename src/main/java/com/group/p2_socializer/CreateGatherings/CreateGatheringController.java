@@ -54,7 +54,10 @@ public class CreateGatheringController  extends ChooseGatheringTabController imp
         eventDatePicker.setValue(event.getLocalDateTime().toLocalDate());
     }
 
-    public void handleCreateGathering(ActionEvent actionEvent) throws SQLException, IOException {
+
+
+
+    public void handleCustomCreation() throws SQLException, IOException {
         LocalTime eventTime = LocalTime.parse(eventTimeTextField.getText());
         LocalDateTime localDateTime = LocalDateTime.of(eventDatePicker.getValue(), eventTime);
 
@@ -72,6 +75,15 @@ public class CreateGatheringController  extends ChooseGatheringTabController imp
                 .build();
 
         GatheringDB.storeGathering(newGathering);
+        handleCreateGathering(newGathering);
+
+    }
+
+
+
+
+    public void handleCreateGathering(Gathering newGathering) throws SQLException, IOException {
+
 
         String createdMessage = "Gathering Created!";
         PopUpMessage popUpMessage = new PopUpMessage();
