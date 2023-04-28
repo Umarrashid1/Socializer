@@ -29,7 +29,8 @@ public class GatheringItemController implements Initializable {
 
     @FXML
     private Label organiserLabel;
-
+    @FXML
+    private Label locationLabel;
     @FXML
     private Label attendingLabel;
 
@@ -62,7 +63,7 @@ public class GatheringItemController implements Initializable {
         timeLabel.setText(String.valueOf(gathering.getLocalDateTime().format(timeFormatter)));
         organiserLabel.setText(gathering.getActivityOrganiser());
         attendingLabel.setText("x" + "/" + String.valueOf(gathering.getActivityMaximumParticipants()));
-
+        locationLabel.setText(gathering.getActivityCity() + ", " + gathering.getActivityCountry());
     }
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
     public void setMainTabPane(TabPane mainTabPane){

@@ -23,7 +23,7 @@
          <children>
             <VBox prefHeight="104.0" prefWidth="589.0">
                <children>
-                  <Label fx:id="titleLabel" prefHeight="41.0" prefWidth="583.0" text="THE BEST PARTY">
+                  <Label fx:id="titleLabel" prefHeight="27.0" prefWidth="569.0" text="THE BEST PARTY">
                      <font>
                         <Font size="23.0" />
                      </font>
@@ -31,7 +31,12 @@
                         <Insets left="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="organiserLabel" prefHeight="32.0" prefWidth="309.0" text="by Patchy">
+                  <Label fx:id="locationLabel" style="-fx-text-fill: #797878;" text="Copenhagen, Denmark">
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="organiserLabel" prefHeight="21.0" prefWidth="309.0" text="by Patchy">
                      <font>
                         <Font size="13.0" />
                      </font>
