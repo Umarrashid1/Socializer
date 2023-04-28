@@ -57,6 +57,7 @@ public class Activity {
     public String getActivityOrganiser() {
         return activityOrganiser;
     }
+
     public int getActivityMinimumParticipants() {
         return activityMinimumParticipants;
     }

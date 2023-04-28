@@ -50,8 +50,8 @@ public class CreateGatheringController  extends ChooseGatheringTabController imp
         gatheringCityTextField.setText(event.getActivityCity());
         gatheringCountryTextField.setText(event.getActivityCountry());
         gatheringOrganiserTextField.setText(event.getActivityOrganiser());
-        //eventTimeTextField.setText();
-        //eventDatePicker.setChronology();
+        eventTimeTextField.setText(event.getLocalDateTime().toLocalTime().toString());
+        eventDatePicker.setValue(event.getLocalDateTime().toLocalDate());
     }
 
     public void handleCreateGathering(ActionEvent actionEvent) throws SQLException, IOException {
