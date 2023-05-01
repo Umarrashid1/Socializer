@@ -5,6 +5,7 @@ import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.group.p2_socializer.activities.Tag;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTabPane;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -52,10 +53,10 @@ public class EventPageController {
     public JFXButton attendEventButton;
     public Map<Tab, Boolean> tabUpdateMap;
 
-    private TabPane mainTabPane;
+    private JFXTabPane mainTabPane;
 
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
-    public void setMainTabPane(TabPane mainTabPane){
+    public void setMainTabPane(JFXTabPane mainTabPane){
         this.mainTabPane = mainTabPane;
     }
 

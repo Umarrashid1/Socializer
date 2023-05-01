@@ -2,6 +2,7 @@ package com.group.p2_socializer.Tabs;
 
 import com.group.p2_socializer.CreateGatherings.CreateGatheringController;
 import com.group.p2_socializer.UserLogIn.User;
+import com.jfoenix.controls.JFXTabPane;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +25,7 @@ public class TabController implements Initializable  {
     ZonedDateTime dateFocus;
     ZonedDateTime today;
     @FXML
-    public TabPane mainTabPane;
+    public JFXTabPane mainTabPane;
     @FXML
     private Tab homeTab;
     @FXML
@@ -112,7 +113,7 @@ public class TabController implements Initializable  {
             }
         }
     }
-    public void setMainTabPane(TabPane mainTabPane){
+    public void setMainTabPane(JFXTabPane mainTabPane){
         this.mainTabPane = mainTabPane;
     }
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}

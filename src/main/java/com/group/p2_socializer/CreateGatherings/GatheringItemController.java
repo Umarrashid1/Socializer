@@ -1,6 +1,7 @@
 package com.group.p2_socializer.CreateGatherings;
 import com.group.p2_socializer.Pages.GatheringPageController;
 import com.group.p2_socializer.activities.Gathering;
+import com.jfoenix.controls.JFXTabPane;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -44,7 +45,7 @@ public class GatheringItemController implements Initializable {
     private Label timeLabel;
 
     public Map<Tab, Boolean> tabUpdateMap;
-    private TabPane mainTabPane;
+    private JFXTabPane mainTabPane;
 
     public void setGatheringItemAnchorPane(AnchorPane gatheringItemAnchorPane) {
         this.gatheringItemAnchorPane = gatheringItemAnchorPane;
@@ -66,7 +67,7 @@ public class GatheringItemController implements Initializable {
         locationLabel.setText(gathering.getActivityCity() + ", " + gathering.getActivityCountry());
     }
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
-    public void setMainTabPane(TabPane mainTabPane){
+    public void setMainTabPane(JFXTabPane mainTabPane){
         this.mainTabPane = mainTabPane;
     }
 

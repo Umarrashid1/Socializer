@@ -5,6 +5,7 @@ import com.group.p2_socializer.Database.GatheringDB;
 import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.activities.Gathering;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -39,10 +40,10 @@ public class ManagerBarController implements Initializable {
     private Gathering newGathering;
     public Map<Tab, Boolean> tabUpdateMap;
 
-    private TabPane mainTabPane;
+    private JFXTabPane mainTabPane;
 
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
-    public void setMainTabPane(TabPane mainTabPane){this.mainTabPane = mainTabPane;}
+    public void setMainTabPane(JFXTabPane mainTabPane){this.mainTabPane = mainTabPane;}
 
     public void setCancelButton(boolean isGathering) throws SQLException {
 

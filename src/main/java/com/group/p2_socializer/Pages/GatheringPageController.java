@@ -3,6 +3,7 @@ package com.group.p2_socializer.Pages;
 import com.group.p2_socializer.Utils.ManagerBarController;
 import com.group.p2_socializer.activities.Gathering;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTabPane;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -50,7 +51,7 @@ public class GatheringPageController {
     @FXML
     private VBox postList;
     public Map<Tab, Boolean> tabUpdateMap;
-    private TabPane mainTabPane;
+    private JFXTabPane mainTabPane;
     @FXML
     private VBox participantsVBox;
 
@@ -59,7 +60,7 @@ public class GatheringPageController {
         this.tabUpdateMap = tabUpdateMap;
     }
 
-    public void setMainTabPane(TabPane mainTabPane) {
+    public void setMainTabPane(JFXTabPane mainTabPane) {
         this.mainTabPane = mainTabPane;
     }
 
