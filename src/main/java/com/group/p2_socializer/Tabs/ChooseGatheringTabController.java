@@ -77,6 +77,8 @@ public class ChooseGatheringTabController extends TabController {
         gridPane.setVgap(10);
 
         container.getChildren().add(gridPane);
+        ChooseGatheringAnchorPane.getChildren().setAll(scrollPane);
+
     }
 
 
