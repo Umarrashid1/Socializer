@@ -39,17 +39,14 @@ public class ManagerBarController implements Initializable {
     private Event newEvent;
     private Gathering newGathering;
     public Map<Tab, Boolean> tabUpdateMap;
-
     private JFXTabPane mainTabPane;
 
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
     public void setMainTabPane(JFXTabPane mainTabPane){this.mainTabPane = mainTabPane;}
 
     public void setCancelButton(boolean isGathering) throws SQLException {
-
         if (!isGathering){
             cancelEventButton.setOnMouseClicked((MouseEvent event) -> {
-
                 try {
                     handleCancelEventButton(event, newEvent);
                 } catch (SQLException e) {

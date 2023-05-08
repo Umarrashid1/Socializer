@@ -126,7 +126,6 @@ public class EventPageController {
             descriptionVBox.getChildren().add(line);
 
             //-----------------------------------------------------------------------
-            newEvent.getTags();
             List<Tag> taglist = newEvent.getTags();
 
             //-------------------------------------------------------------------------------
@@ -167,7 +166,6 @@ public class EventPageController {
             if (rowOfTagsHBox.getChildren().size() > 0) {
                 tagsVBox.getChildren().add(rowOfTagsHBox);
             }
-
             descriptionVBox.getChildren().add(tagsVBox);
 
 
@@ -175,12 +173,10 @@ public class EventPageController {
             // Load the manager_bar.fxml file
             FXMLLoader manageBarFxmlLoader = new FXMLLoader(EventPageController.class.getResource("/com/group/p2_socializer/manager_bar.fxml"));
             Parent managerBarRoot = manageBarFxmlLoader.load();
-
             ManagerBarController managerBarController = manageBarFxmlLoader.getController(); // Get reference to actual instance of ManagerBarController
             managerBarController.setMainTabPane(mainTabPane);
             managerBarController.setTabUpdateMap(tabUpdateMap);
             managerBarController.setNewEvent(newEvent);
-
             boolean isGathering;
             isGathering = false;
             managerBarController.setCancelButton(isGathering);

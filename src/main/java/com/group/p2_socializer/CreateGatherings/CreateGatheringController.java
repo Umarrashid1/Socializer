@@ -82,8 +82,9 @@ public class CreateGatheringController  implements Initializable {
         PopUpMessage popUpMessage = new PopUpMessage();
         popUpMessage.showCreatedPopUp(createdMessage);
         GatheringPageController gatheringPageController = new GatheringPageController();
+        gatheringPageController.setMainTabPane(mainTabPane);
+        gatheringPageController.setCurrentUser(currentUser);
         gatheringPageController.loadGatheringPage(newGathering);
-
         Tab newTab = mainTabPane.getTabs().get(2);
         this.tabUpdateMap.put(newTab, true);
         mainTabPane.getSelectionModel().select(1);
@@ -94,9 +95,10 @@ public class CreateGatheringController  implements Initializable {
 
     }
 
+    public void setCurrentUser(User currentUser){this.currentUser = currentUser;}
 
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
-    public void setMainTabPane(TabPane mainTabPane){
+    public void setMainTabPane(JFXTabPane mainTabPane){
         this.mainTabPane = mainTabPane;
     }
 

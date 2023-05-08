@@ -1,7 +1,10 @@
 package com.group.p2_socializer.Pages;
 
+import com.group.p2_socializer.Database.UserDB;
+import com.group.p2_socializer.UserLogIn.User;
 import com.group.p2_socializer.Utils.ManagerBarController;
 import com.group.p2_socializer.activities.Gathering;
+import com.group.p2_socializer.activities.Tag;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.fxml.FXML;
@@ -53,6 +56,7 @@ public class GatheringPageController {
     private JFXTabPane mainTabPane;
     @FXML
     private VBox participantsVBox;
+    private User currentUser;
 
 
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap) {
@@ -193,19 +197,14 @@ public class GatheringPageController {
 
         // Load the manager_bar.fxml file
         FXMLLoader fxmlLoader1 = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/manager_bar.fxml"));
-
-
         Parent managerBarRoot = fxmlLoader1.load();
 
         ManagerBarController managerBarController = fxmlLoader1.getController(); // Get reference to actual instance of ManagerBarController
         managerBarController.setMainTabPane(mainTabPane);
         managerBarController.setTabUpdateMap(tabUpdateMap);
         managerBarController.setNewGathering(newGathering);
-
-
         boolean isGathering;
         isGathering = true;
-
         managerBarController.setCancelButton(isGathering);
 
         centerPane.getChildren().add(managerBarRoot);

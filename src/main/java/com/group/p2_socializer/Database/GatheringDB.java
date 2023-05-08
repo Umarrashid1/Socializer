@@ -2,6 +2,7 @@ package com.group.p2_socializer.Database;
 
 import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.activities.Gathering;
+import com.group.p2_socializer.activities.Tag;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -14,7 +15,7 @@ public class GatheringDB {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
-        String sql = "INSERT INTO gathering(eventname, eventdescription, eventcity, eventcountry, eventorganiser, localdatetime, timezone, activitytype) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO gathering(eventname, eventdescription, eventcity, eventcountry, eventorganiser, localdatetime, timezone, activitytype, activitymin, activitymax) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         // connect to database
         Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -26,6 +27,8 @@ public class GatheringDB {
         statement.setObject(6, newGathering.getLocalDateTime());
         statement.setString(7, newGathering.getTimeZone().toString());
         statement.setString(8, newGathering.getActivityType().toString());
+        statement.setInt(9, newGathering.getActivityMinimumParticipants());
+        statement.setInt(10, newGathering.getActivityMaximumParticipants());
 
         //Convert timezone to string for storage in sql database
         statement.executeUpdate();
@@ -73,6 +76,23 @@ public class GatheringDB {
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, gatheringID);
         statement.executeUpdate();
+        connection.close();
+    }
+    public static void setGatheringTags(List<Tag> tagList, int activityID) throws SQLException {
+        String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
+        String dbUser = "root";
+        String dbPassword = "password";
+        String sql = "I";
+        Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO activitytagmap (activityID, tagID) VALUES (?, ?)");
+
+        for (Tag tag : tagList) {
+            statement.setInt(1, activityID);
+            statement.setInt(2, tag.getTagID());
+            statement.executeUpdate();
+        }
+
+        statement.close();
         connection.close();
     }
 }

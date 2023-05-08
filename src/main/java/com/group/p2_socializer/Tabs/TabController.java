@@ -63,9 +63,17 @@ public class TabController implements Initializable  {
                 //temporary fix
             }
 
+            if(name == "choose_gathering"){
+                ChooseGatheringTabController ChooseGatheringTabController = loader.getController();
+                ChooseGatheringTabController.setUser(currentUser);
+                //temporary fix
+            }
+
             if(name == "discover_tab"){
                 DiscoverTabController discoverTabController = loader.getController();
+                discoverTabController.setCurrentUser(currentUser);
                 discoverTabController.loadGatheringItems();
+
                 //temporary fix
             }
 

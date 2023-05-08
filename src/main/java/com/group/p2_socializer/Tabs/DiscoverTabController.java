@@ -39,6 +39,7 @@ public class DiscoverTabController extends TabController implements Initializabl
                     gatheringItemController.setGathering(gathering);
                     gatheringItemController.setTabUpdateMap(tabUpdateMap);
                     gatheringItemController.setMainTabPane(mainTabPane);
+                    gatheringItemController.setCurrentUser(currentUser);
                     gatheringItemVBox.getChildren().add(gatheringItem);
                 } catch (IOException e) {
                     throw new RuntimeException(e);

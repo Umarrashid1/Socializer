@@ -48,6 +48,8 @@ public class GatheringItemController implements Initializable {
     public Map<Tab, Boolean> tabUpdateMap;
     private JFXTabPane mainTabPane;
 
+    public User currentUser;
+
     public void setGatheringItemAnchorPane(AnchorPane gatheringItemAnchorPane) {
         this.gatheringItemAnchorPane = gatheringItemAnchorPane;
     }
@@ -77,8 +79,10 @@ public class GatheringItemController implements Initializable {
     GatheringPageController gatheringPageController = new GatheringPageController();
         try {
             gatheringPageController.setTabUpdateMap(tabUpdateMap);
-            gatheringPageController.loadGatheringPage(currentGathering);
             gatheringPageController.setMainTabPane(mainTabPane);
+            gatheringPageController.loadGatheringPage(currentGathering);
+            gatheringPageController.setCurrentUser(currentUser);
+
         } catch (SQLException | IOException e) {
             throw new RuntimeException(e);
         }
@@ -90,6 +94,8 @@ public class GatheringItemController implements Initializable {
     public void setTimeLabel(String timeLabel) {
         this.timeLabel.setText(timeLabel);
     }
+
+    public void setCurrentUser(User currentUser){this.currentUser = currentUser;}
 
 
 

@@ -35,6 +35,7 @@ public class ChooseGatheringTabController extends TabController {
             CreateGatheringController createGatheringController = loader.getController();
             createGatheringController.setTabUpdateMap(tabUpdateMap);
             createGatheringController.setMainTabPane(mainTabPane);
+            createGatheringController.setCurrentUser(currentUser);
             super.mainTabPane.getSelectionModel().getSelectedItem().setContent(newPane);
 
         } catch (IOException iex) {
