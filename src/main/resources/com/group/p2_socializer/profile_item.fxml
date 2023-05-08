@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="profileVBox" prefHeight="0.0" prefWidth="68.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox maxWidth="0.0" prefHeight="73.0" prefWidth="72.0">
+         <children>
+            <ImageView fx:id="profilePic" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" >
+               <image>
+                  <Image url="@pictures/Poster-sized_portrait_of_Barack_Obama-modified.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="profileNameLabel" alignment="CENTER" prefHeight="17.0" prefWidth="67.0" text="B.O" />
+         </children>
+         <padding>
+            <Insets left="10.0" right="10.0" />
+         </padding>
+      </VBox>
+   </children>
+</VBox>

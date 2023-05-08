@@ -83,7 +83,6 @@ public class GatheringPageController {
         VBox gatheringInfoVBox = (VBox) centerPane.lookup("#gatheringInfoVBox");
         HBox organiserHBox = (HBox) gatheringInfoVBox.lookup("#organiserHBox");
         VBox participantsVBox = (VBox) centerPane.lookup("#participantsVBox");
-
         organiserHBox.setMaxWidth(250);
 
 
@@ -195,14 +194,74 @@ public class GatheringPageController {
         descriptionVBox.getChildren().add(tagsVBox);
 
 
-        // Load the manager_bar.fxml file
-        FXMLLoader fxmlLoader1 = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/manager_bar.fxml"));
-        Parent managerBarRoot = fxmlLoader1.load();
+        //-------------------------------------------------------------------------
 
-        ManagerBarController managerBarController = fxmlLoader1.getController(); // Get reference to actual instance of ManagerBarController
+        HBox outerHBox = new HBox();
+        outerHBox.setPrefHeight(84.0);
+        outerHBox.setPrefWidth(300.0);
+
+        JFXButton leftButton = new JFXButton("<");
+        leftButton.setPrefHeight(84.0);
+        leftButton.setPrefWidth(44.0);
+
+        JFXButton rightButton = new JFXButton(">");
+        rightButton.setPrefHeight(84.0);
+        rightButton.setPrefWidth(44.0);
+
+        ScrollPane profileScrollPane = new ScrollPane();
+        profileScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        profileScrollPane.setMinHeight(50.0);
+        profileScrollPane.setMinWidth(70.0);
+        profileScrollPane.setPrefWidth(251.0);
+        profileScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+
+        AnchorPane profileAnchorPane = new AnchorPane();
+        profileAnchorPane.setPrefWidth(378.0);
+
+        HBox innerHbox = new HBox();
+        innerHbox.setPrefHeight(0.0);
+        innerHbox.setPrefWidth(0.0);
+
+        profileAnchorPane.getChildren().add(innerHbox);
+        profileScrollPane.setContent(profileAnchorPane);
+
+
+        for (int i = 0; i <= 10;i++) {
+            FXMLLoader profileItemFxmlLoader = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/profile_item.fxml"));
+            VBox profileItemVBox = profileItemFxmlLoader.load();
+            innerHbox.getChildren().add(profileItemVBox);
+        }
+
+        outerHBox.getChildren().addAll(leftButton, profileScrollPane, rightButton);
+
+        Line line1 = line;
+        descriptionVBox.getChildren().add(line1);
+
+        // Add profilesVBox
+        descriptionVBox.getChildren().add(outerHBox);
+
+        rightButton.setOnMouseClicked((MouseEvent event) -> {
+            scrollPaneLeft(profileScrollPane);
+        });
+
+        leftButton.setOnMouseClicked((MouseEvent event) -> {
+            scrollPaneRight(profileScrollPane);
+        });
+
+
+        //--------------------------------------------------------------------------
+
+
+
+        // Load the manager_bar.fxml file
+        FXMLLoader managerBarFxmlLoader = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/manager_bar.fxml"));
+        Parent managerBarRoot = managerBarFxmlLoader.load();
+
+        ManagerBarController managerBarController = managerBarFxmlLoader.getController(); // Get reference to actual instance of ManagerBarController
         managerBarController.setMainTabPane(mainTabPane);
         managerBarController.setTabUpdateMap(tabUpdateMap);
         managerBarController.setNewGathering(newGathering);
+
         boolean isGathering;
         isGathering = true;
         managerBarController.setCancelButton(isGathering);
@@ -223,6 +282,14 @@ public class GatheringPageController {
 
         newStage.show();
 
+    }
+
+    private void scrollPaneRight(ScrollPane profileScrollPane) {
+        profileScrollPane.setHvalue(profileScrollPane.getHvalue() + 0.2);
+    }
+
+    private void scrollPaneLeft(ScrollPane profileScrollPane) {
+        profileScrollPane.setHvalue(profileScrollPane.getHvalue() - 0.2);
     }
 
     private void attendGatheringButton(MouseEvent event, Gathering newGathering) throws SQLException {
