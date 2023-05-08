@@ -1,5 +1,6 @@
 package com.group.p2_socializer.CreateGatherings;
 import com.group.p2_socializer.Pages.GatheringPageController;
+import com.group.p2_socializer.UserLogIn.User;
 import com.group.p2_socializer.activities.Gathering;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.fxml.FXML;

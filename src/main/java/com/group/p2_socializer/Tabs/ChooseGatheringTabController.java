@@ -1,6 +1,7 @@
 package com.group.p2_socializer.Tabs;
 
 import com.group.p2_socializer.CreateGatherings.CreateGatheringController;
+import com.group.p2_socializer.UserLogIn.User;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -93,4 +94,8 @@ public class ChooseGatheringTabController extends TabController {
         PopUpMessage popUpMessage = new PopUpMessage();
         popUpMessage.showCreatedPopUp(clickEventMessage);
     }
+
+    public void setUser(User currentUser) {
+        this.currentUser = currentUser;
+        }
 }

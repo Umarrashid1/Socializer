@@ -1,9 +1,11 @@
 package com.group.p2_socializer.CreateGatherings;
 import com.group.p2_socializer.Database.GatheringDB;
 import com.group.p2_socializer.Pages.GatheringPageController;
+import com.group.p2_socializer.UserLogIn.User;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.activities.Gathering;
+import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -39,7 +41,8 @@ public class CreateGatheringController  implements Initializable {
     @FXML
     public JFXTextField maximumParticipantsTextField;
     public Map<Tab, Boolean> tabUpdateMap;
-    private TabPane mainTabPane;
+    private JFXTabPane mainTabPane;
+    private User currentUser;
 
     public void setEventData(Event event){
         gatheringNameTextField.setText(event.getActivityName());

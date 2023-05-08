@@ -10,6 +10,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -44,8 +45,6 @@ public class GatheringPageController {
     public Label gatheringParticipationLabel;
     @FXML
     public JFXButton interestedButton;
-    @FXML
-    public JFXButton attendGatheringButton;
     @FXML
     private VBox vBoxPostNews;
     @FXML
@@ -132,61 +131,64 @@ public class GatheringPageController {
         // Add the Line to the VBox
         descriptionVBox.getChildren().add(line);
 
+        // IF USER IS ATTENDING THEN CHANGE BUTTON TO LEAVE
+        JFXButton attendGatheringButton = new JFXButton();
+        attendGatheringButton.setText("Attend Gathering");
+        attendGatheringButton.setPrefSize(116.0, 29.0);
+        attendGatheringButton.setLayoutX(162.0);
+        attendGatheringButton.setLayoutY(412.0);
+        attendGatheringButton.setStyle("-fx-background-color: #71FF60;");
+        attendGatheringButton.setRipplerFill(javafx.scene.paint.Color.valueOf("#7bce3c"));
+
+
+        attendGatheringButton.setOnMouseClicked((MouseEvent event) -> {
+            try {
+                attendGatheringButton(event, newGathering);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
         //-----------------------------------------------------------------------
+        List<Tag> taglist = newGathering.getTags();
 
-        List<String> words = new ArrayList<>();
-        words.add("Apple");
-        words.add("Banana");
-        words.add("Cherry");
-        words.add("Date");
-        words.add("Fig");
-        words.add("Grape");
-        words.add("Lemon");
-        words.add("Mango");
-        words.add("Orange");
-        words.add("Peach");
-        words.add("Quince");
-        words.add("Raspberry");
-        words.add("Strawberry");
-        words.add("Tangerine");
-        words.add("Watermelon");
-        Collections.shuffle(words);
 
-        //-------------------------------------------------------------------------------
-
-        // Create a GridPane to hold the labels for the words
-        GridPane wordsGridPane = new GridPane();
-        wordsGridPane.setHgap(10);
-        wordsGridPane.setVgap(10);
-        wordsGridPane.setPadding(new Insets(10));
-
-        // Create a CornerRadii object to specify the corner radii of the rounded box
-        CornerRadii cornerRadii = new CornerRadii(10);
-
-        // Create a BackgroundFill object to specify the background fill of the rounded box
-        BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTGRAY, cornerRadii, null);
-
-        // Create a Background object with the BackgroundFill
+        CornerRadii cornerRadii = new CornerRadii(30);
+        BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTBLUE, cornerRadii, null);
         Background background = new Background(backgroundFill);
 
-        int column = 0;
-        int row = 0;
-        for (String word : words) {
-            Label tagLabel = new Label(word);
-            tagLabel.setBackground(background); // Set the background of the label to the rounded box
-            wordsGridPane.add(tagLabel, column, row); // Add each label to the GridPane
+        VBox tagsVBox = new VBox();
+        tagsVBox.setSpacing(10);
+        tagsVBox.setPadding(new Insets(10,10,10,0));
 
-            // Increment column and row counters
-            column++;
-            if (column == 3) {
-                // Max 3 labels per row, move to next row
-                column = 0;
-                row++;
+        int count = 0;
+        HBox rowOfTagsHBox = new HBox(); // Create a new HBox for the labels
+        rowOfTagsHBox.setSpacing(10);
+
+        for (Tag tag : taglist) {
+            Label tagLabel = new Label(tag.getTag());
+            tagLabel.setBackground(background);
+            tagLabel.setPadding(new Insets(3,5,3,5));
+            tagLabel.setMaxWidth(Double.MAX_VALUE);
+            VBox.setVgrow(tagLabel, Priority.ALWAYS);
+
+            rowOfTagsHBox.getChildren().add(tagLabel);
+            count++;
+
+            if (count == 3) {
+                // Max 3 labels per HBox, add the current HBox to the VBox and create a new HBox
+                count = 0;
+                tagsVBox.getChildren().add(rowOfTagsHBox);
+                rowOfTagsHBox = new HBox();
+                rowOfTagsHBox.setSpacing(10);
             }
         }
 
-        // Add the GridPane with the labels to the descriptionHBox
-        descriptionVBox.getChildren().add(wordsGridPane);
+        // Add the last row of HBoxes to the VBox, if it contains any labels
+        if (rowOfTagsHBox.getChildren().size() > 0) {
+            tagsVBox.getChildren().add(rowOfTagsHBox);
+        }
+        descriptionVBox.getChildren().add(tagsVBox);
 
 
         // Load the manager_bar.fxml file
@@ -208,6 +210,8 @@ public class GatheringPageController {
 
         centerPane.getChildren().add(managerBarRoot);
         centerPane.getChildren().add(descriptionVBox);
+        centerPane.getChildren().add(attendGatheringButton);
+
 
         // Create a new stage and set the new scene
         Stage newStage = new Stage();
@@ -220,6 +224,14 @@ public class GatheringPageController {
 
         newStage.show();
 
+    }
+
+    private void attendGatheringButton(MouseEvent event, Gathering newGathering) throws SQLException {
+        currentUser.joinGathering(newGathering.getGatheringID());
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
     }
 }
 

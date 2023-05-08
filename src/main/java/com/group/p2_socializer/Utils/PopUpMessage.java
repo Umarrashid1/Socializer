@@ -30,7 +30,7 @@ public class PopUpMessage {
         root.getChildren().add(message);
         root.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        Scene scene = new Scene(root, 200, 50);
+        Scene scene = new Scene(root, -1, 50);
         scene.setFill(Color.TRANSPARENT);
         stage.setScene(scene);
         stage.setAlwaysOnTop(true);
