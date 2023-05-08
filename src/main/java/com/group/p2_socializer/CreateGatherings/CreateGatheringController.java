@@ -1,13 +1,10 @@
 package com.group.p2_socializer.CreateGatherings;
-
 import com.group.p2_socializer.Database.GatheringDB;
 import com.group.p2_socializer.Pages.GatheringPageController;
-import com.group.p2_socializer.Tabs.ChooseGatheringTabController;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.activities.Gathering;
 import com.jfoenix.controls.JFXTextField;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -20,7 +17,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 
-public class CreateGatheringController  extends ChooseGatheringTabController implements Initializable {
+public class CreateGatheringController  implements Initializable {
 
 
     @FXML
@@ -41,7 +38,7 @@ public class CreateGatheringController  extends ChooseGatheringTabController imp
     public JFXTextField minimumParticipantsTextField;
     @FXML
     public JFXTextField maximumParticipantsTextField;
-    public Map<Tab, Boolean> actualtabUpdateMap;
+    public Map<Tab, Boolean> tabUpdateMap;
     private TabPane mainTabPane;
 
     public void setEventData(Event event){
@@ -53,9 +50,6 @@ public class CreateGatheringController  extends ChooseGatheringTabController imp
         eventTimeTextField.setText(event.getLocalDateTime().toLocalTime().toString());
         eventDatePicker.setValue(event.getLocalDateTime().toLocalDate());
     }
-
-
-
 
     public void handleCustomCreation() throws SQLException, IOException {
         LocalTime eventTime = LocalTime.parse(eventTimeTextField.getText());
@@ -73,22 +67,17 @@ public class CreateGatheringController  extends ChooseGatheringTabController imp
                 .localDateTime(localDateTime)
                 .timeZone(ZoneId.systemDefault())
                 .build();
-
         GatheringDB.storeGathering(newGathering);
         handleCreateGathering(newGathering);
-
     }
 
 
 
 
     public void handleCreateGathering(Gathering newGathering) throws SQLException, IOException {
-
-
         String createdMessage = "Gathering Created!";
         PopUpMessage popUpMessage = new PopUpMessage();
         popUpMessage.showCreatedPopUp(createdMessage);
-
         GatheringPageController gatheringPageController = new GatheringPageController();
         gatheringPageController.loadGatheringPage(newGathering);
 
@@ -99,7 +88,6 @@ public class CreateGatheringController  extends ChooseGatheringTabController imp
     }
 
     public void handleAddTagsButton(){
-
 
     }
 

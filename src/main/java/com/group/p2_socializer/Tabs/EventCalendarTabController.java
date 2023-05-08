@@ -54,8 +54,6 @@ public class EventCalendarTabController extends TabController implements Initial
     private AnchorPane createEventAnchorPane;
 
 
-
-
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Map<Integer, List<Event>> calendarData = null;
 

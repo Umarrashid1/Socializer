@@ -1,5 +1,6 @@
 package com.group.p2_socializer.Tabs;
 
+import com.group.p2_socializer.CreateGatherings.CreateGatheringController;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,12 +28,13 @@ public class ChooseGatheringTabController extends TabController {
 
 
         public void handleCustomGatheringCreation() {
-
-
-        FXMLLoader loader = new FXMLLoader();
         try {
-            AnchorPane createGatheringAnchorPane = loader.load(getClass().getResource("/com/group/p2_socializer/create_gathering.fxml"));
-            ChooseGatheringAnchorPane.getChildren().setAll(createGatheringAnchorPane);
+            super.loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/create_gathering.fxml"));
+            AnchorPane newPane = loader.load();
+            CreateGatheringController createGatheringController = loader.getController();
+            createGatheringController.setTabUpdateMap(tabUpdateMap);
+            createGatheringController.setMainTabPane(mainTabPane);
+            super.mainTabPane.getSelectionModel().getSelectedItem().setContent(newPane);
 
         } catch (IOException iex) {
             System.out.println("file not found");
@@ -41,7 +43,7 @@ public class ChooseGatheringTabController extends TabController {
         }
 
 
-        //TODO: Not finished
+
     public void handlePremadeGatheringCreation() throws IOException {
         VBox container = new VBox(); // Use VBox as the container for the GridPane
         container.setSpacing(10); // Set spacing between items in the container

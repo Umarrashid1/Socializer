@@ -28,7 +28,6 @@ public class DiscoverTabController extends TabController implements Initializabl
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
-
     public void loadGatheringItems() {
         try {
             List<Gathering> gatheringList = GatheringDB.getGatheringsDate(2023);
