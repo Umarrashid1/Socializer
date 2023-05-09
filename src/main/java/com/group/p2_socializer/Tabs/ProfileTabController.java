@@ -71,7 +71,7 @@ public class ProfileTabController extends TabController implements Initializable
 
     public void setUser(User user) throws SQLException {
      profileUsername.setText(user.getUsername());
-     tagList =  user.getTags(user.getUserID());
+     tagList =  user.getTags();
      String tagListAsString =tagList.toString();
      tagListText.setText(tagListAsString);
      // Temporary solution

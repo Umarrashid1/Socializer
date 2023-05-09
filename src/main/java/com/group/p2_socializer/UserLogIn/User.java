@@ -8,6 +8,25 @@ import java.util.List;
 
 public class User {
     private int userID;
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    private String firstname = "Fo";
+    private String lastname = "Lo";
     private String username;
     private String password;
     private String userType;
@@ -55,7 +74,7 @@ public class User {
     public void leaveGathering(int gatheringID) throws SQLException{
         UserDB.leaveGathering(userID, gatheringID);
     }
-    public ArrayList getTags(int userID) throws SQLException {
+    public ArrayList getTags() throws SQLException {
         ArrayList tagList = UserDB.getTags(userID);
         return tagList;
     }

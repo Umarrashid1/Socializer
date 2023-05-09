@@ -1,5 +1,6 @@
 package com.group.p2_socializer.Database;
 
+import com.group.p2_socializer.UserLogIn.User;
 import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.activities.Gathering;
 import com.group.p2_socializer.activities.Tag;
@@ -77,6 +78,29 @@ public class GatheringDB {
         statement.setInt(1, gatheringID);
         statement.executeUpdate();
         connection.close();
+    }
+    public static List<User> getGatheringParticipants(int gatheringID) throws SQLException {
+        String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
+        String dbUser = "root";
+        String dbPassword = "password";
+        String sql = "SELECT * FROM Participations WHERE gatheringID = ? ";
+        Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1, gatheringID);
+        ResultSet result = statement.executeQuery();
+        List<User> userList = new ArrayList<>();
+        while (result.next()) {
+            User user = new User();
+            user.setUserID(result.getInt("userid"));
+            user.setUsername(result.getString("username"));
+            user.setUserType(result.getString("usertype"));
+            user.setFirstname(result.getString("firstname"));
+            user.setLastname(result.getString("lastname"));
+            userList.add(user);
+        }
+        connection.close();
+        return userList;
+
     }
     public static void setGatheringTags(List<Tag> tagList, int activityID) throws SQLException {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";

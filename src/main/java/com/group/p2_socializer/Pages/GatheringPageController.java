@@ -3,6 +3,7 @@ package com.group.p2_socializer.Pages;
 import com.group.p2_socializer.Database.UserDB;
 import com.group.p2_socializer.UserLogIn.User;
 import com.group.p2_socializer.Utils.ManagerBarController;
+import com.group.p2_socializer.Utils.ProfileItemController;
 import com.group.p2_socializer.activities.Gathering;
 import com.group.p2_socializer.activities.Tag;
 import com.jfoenix.controls.JFXButton;
@@ -225,9 +226,13 @@ public class GatheringPageController {
         profileAnchorPane.getChildren().add(innerHbox);
         profileScrollPane.setContent(profileAnchorPane);
 
-
-        for (int i = 0; i <= 10;i++) {
+        List<User> userList = newGathering.getGatheringParticipants();
+        for (User user : userList) {
             FXMLLoader profileItemFxmlLoader = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/profile_item.fxml"));
+            ProfileItemController profileItemController = profileItemFxmlLoader.getController();
+            if(profileItemController != null)
+            profileItemController.setProfileUser(user);
+
             VBox profileItemVBox = profileItemFxmlLoader.load();
             innerHbox.getChildren().add(profileItemVBox);
         }
@@ -298,5 +303,7 @@ public class GatheringPageController {
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
     }
+
 }
+
 
