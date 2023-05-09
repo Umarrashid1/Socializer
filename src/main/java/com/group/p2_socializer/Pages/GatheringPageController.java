@@ -234,12 +234,11 @@ public class GatheringPageController {
 
         outerHBox.getChildren().addAll(leftButton, profileScrollPane, rightButton);
 
-        Line line1 = line;
-        descriptionVBox.getChildren().add(line1);
-
         // Add profilesVBox
         descriptionVBox.getChildren().add(outerHBox);
 
+
+        //SOMETHING WRONG WITH BUTTONS
         rightButton.setOnMouseClicked((MouseEvent event) -> {
             scrollPaneLeft(profileScrollPane);
         });
@@ -285,11 +284,11 @@ public class GatheringPageController {
     }
 
     private void scrollPaneRight(ScrollPane profileScrollPane) {
-        profileScrollPane.setHvalue(profileScrollPane.getHvalue() + 0.2);
+        profileScrollPane.setHvalue(profileScrollPane.getHvalue() + 0.1);
     }
 
     private void scrollPaneLeft(ScrollPane profileScrollPane) {
-        profileScrollPane.setHvalue(profileScrollPane.getHvalue() - 0.2);
+        profileScrollPane.setHvalue(profileScrollPane.getHvalue() - 0.1);
     }
 
     private void attendGatheringButton(MouseEvent event, Gathering newGathering) throws SQLException {
