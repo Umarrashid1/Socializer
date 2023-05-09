@@ -9,6 +9,7 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class GatheringDB {
@@ -79,7 +80,7 @@ public class GatheringDB {
         statement.executeUpdate();
         connection.close();
     }
-    public static List<User> getGatheringParticipants(int gatheringID) throws SQLException {
+    public static List<Integer> getGatheringParticipantsID(int gatheringID) throws SQLException {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
@@ -87,6 +88,25 @@ public class GatheringDB {
         Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, gatheringID);
+        ResultSet result = statement.executeQuery();
+        List<Integer> userList = new ArrayList<>();
+        while (result.next()) {
+            userList.add(result.getInt("userid"));
+        }
+        connection.close();
+        return userList;
+    }
+    public static List<User> getGatheringParticipants(int gatheringID) throws SQLException {
+        List <Integer> idList = getGatheringParticipantsID(gatheringID);
+        String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
+        String dbUser = "root";
+        String dbPassword = "password";
+        String sql = "SELECT * FROM users WHERE userid IN (" + String.join(",", Collections.nCopies(idList.size(), "?")) + ")";
+        Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        for (int i = 0; i < idList.size(); i++) {
+            statement.setInt(i + 1, idList.get(i));
+        }
         ResultSet result = statement.executeQuery();
         List<User> userList = new ArrayList<>();
         while (result.next()) {
@@ -102,6 +122,7 @@ public class GatheringDB {
         return userList;
 
     }
+
     public static void setGatheringTags(List<Tag> tagList, int activityID) throws SQLException {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";

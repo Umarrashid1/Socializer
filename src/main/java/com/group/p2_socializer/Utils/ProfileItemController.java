@@ -7,17 +7,14 @@ import javafx.scene.control.Label;
 
 public class ProfileItemController {
     @FXML
-    Label ProfileNameLabel;
-    User profileUser;
+    Label profileNameLabel;
 
 
-    public void setProfileNameLabel(){
-        int first = profileUser.getFirstname().charAt(0);
-        int last = profileUser.getLastname().charAt(0);
-        ProfileNameLabel.setText(String.valueOf(first+last));
-    }
-    public void setProfileUser(User profileUser){
-        this.profileUser = profileUser;
+    public void setProfileNameLabel(User profileUser){
+        String initials = profileUser.getFirstname().charAt(0) + "" + profileUser.getLastname().charAt(0);
+        profileNameLabel.setText(initials);
+
+
     }
 
 }

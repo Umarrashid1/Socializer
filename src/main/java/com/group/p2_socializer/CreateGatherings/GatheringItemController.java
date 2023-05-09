@@ -80,8 +80,8 @@ public class GatheringItemController implements Initializable {
         try {
             gatheringPageController.setTabUpdateMap(tabUpdateMap);
             gatheringPageController.setMainTabPane(mainTabPane);
-            gatheringPageController.loadGatheringPage(currentGathering);
             gatheringPageController.setCurrentUser(currentUser);
+            gatheringPageController.loadGatheringPage(currentGathering);
 
         } catch (SQLException | IOException e) {
             throw new RuntimeException(e);

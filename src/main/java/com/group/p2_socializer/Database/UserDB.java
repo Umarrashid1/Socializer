@@ -45,6 +45,9 @@ public class UserDB {
                 user.setUserID(result.getInt("userid"));
                 user.setUsername(result.getString("username"));
                 user.setUserType(result.getString("usertype"));
+                user.setFirstname(result.getString("firstname"));
+                user.setLastname(result.getString("lastname"));
+
                 return user;
             }else{
                 return null;
