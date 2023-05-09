@@ -221,6 +221,8 @@ public class GatheringPageController {
 
         List<User> userList = newGathering.getGatheringParticipants();
         //
+        int picture = 1;
+
         for (User user : userList) {
             FXMLLoader profileItemFxmlLoader = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/profile_item.fxml"));
             VBox profileItemVBox = profileItemFxmlLoader.load();

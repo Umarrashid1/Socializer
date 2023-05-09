@@ -3,9 +3,13 @@ package com.group.p2_socializer.Utils;
 import com.group.p2_socializer.UserLogIn.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 
 
 public class ProfileItemController {
+
+    @FXML
+    public Image image;
     @FXML
     Label profileNameLabel;
 

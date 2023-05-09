@@ -12,7 +12,7 @@
          <children>
             <ImageView fx:id="profilePic" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" >
                <image>
-                  <Image url="@pictures/Poster-sized_portrait_of_Barack_Obama-modified.png" />
+                  <Image fx:id="image" url="@pictures/Poster-sized_portrait_of_Barack_Obama-modified.png" />
                </image>
             </ImageView>
             <Label fx:id="profileNameLabel" alignment="CENTER" prefHeight="17.0" prefWidth="67.0" text="B.O" />
