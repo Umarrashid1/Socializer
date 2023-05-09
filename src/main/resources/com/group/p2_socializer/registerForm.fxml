@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Users.RegisterFormController">
+   <children>
+      <Label alignment="CENTER" prefHeight="58.0" prefWidth="444.0" text="Welcome To Socializer!" textFill="#0077ff">
+         <VBox.margin>
+            <Insets bottom="40.0" left="100.0" top="40.0" />
+         </VBox.margin>
+         <font>
+            <Font name="System Bold Italic" size="40.0" />
+         </font>
+      </Label>
+      <Label prefHeight="39.0" prefWidth="104.0" text="Sign Up" textFill="#0077ff">
+         <font>
+            <Font size="27.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="40.0" />
+         </VBox.margin>
+      </Label>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <TextField fx:id="firstNameTextField" prefHeight="25.0" prefWidth="250.0" promptText="First name">
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin>
+            </TextField>
+            <TextField fx:id="lastNameTextField" prefHeight="25.0" prefWidth="250.0" promptText="Last name">
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+         <VBox.margin>
+            <Insets bottom="-30.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <TextField fx:id="usernameTextField" prefHeight="25.0" prefWidth="250.0" promptText="Username">
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin>
+            </TextField>
+            <TextField fx:id="emailTextField" prefHeight="25.0" prefWidth="250.0" promptText="Email">
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+         <VBox.margin>
+            <Insets bottom="-30.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <PasswordField fx:id="passwordTextField" prefHeight="25.0" prefWidth="250.0" promptText="Password">
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin>
+            </PasswordField>
+            <PasswordField fx:id="rePasswordTextField" prefHeight="25.0" prefWidth="250.0" promptText="Re-enter Password">
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin>
+            </PasswordField>
+         </children>
+         <VBox.margin>
+            <Insets bottom="-30.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <TextField fx:id="countryTextField" prefHeight="25.0" prefWidth="250.0" promptText="Country">
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin>
+            </TextField>
+            <TextField fx:id="cityTextField" prefHeight="25.0" prefWidth="250.0" promptText="City">
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+         <VBox.margin>
+            <Insets bottom="-30.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <DatePicker fx:id="dateOfBirthTextField" prefHeight="25.0" prefWidth="250.0" promptText="Date of birth (xx/xx/xxxx)">
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin></DatePicker>
+         </children>
+         <VBox.margin>
+            <Insets bottom="30.0" />
+         </VBox.margin>
+      </HBox>
+      <VBox alignment="CENTER" prefHeight="72.0" prefWidth="660.0">
+         <children>
+            <JFXButton prefHeight="55.0" prefWidth="142.0" text="Register">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </VBox>
+   </children>
+</VBox>

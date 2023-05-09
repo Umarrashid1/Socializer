@@ -198,26 +198,19 @@ public class GatheringPageController {
         //-------------------------------------------------------------------------
 
         HBox outerHBox = new HBox();
-        outerHBox.setPrefHeight(84.0);
+        outerHBox.setPrefHeight(90.0);
         outerHBox.setPrefWidth(300.0);
 
-        JFXButton leftButton = new JFXButton("<");
-        leftButton.setPrefHeight(84.0);
-        leftButton.setPrefWidth(44.0);
-
-        JFXButton rightButton = new JFXButton(">");
-        rightButton.setPrefHeight(84.0);
-        rightButton.setPrefWidth(44.0);
 
         ScrollPane profileScrollPane = new ScrollPane();
-        profileScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        //profileScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         profileScrollPane.setMinHeight(50.0);
-        profileScrollPane.setMinWidth(70.0);
-        profileScrollPane.setPrefWidth(251.0);
+        //profileScrollPane.setMinWidth(.0);
+        profileScrollPane.setPrefWidth(300);
         profileScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
         AnchorPane profileAnchorPane = new AnchorPane();
-        profileAnchorPane.setPrefWidth(378.0);
+        //profileAnchorPane.setPrefWidth(378.0);
 
         HBox innerHbox = new HBox();
         innerHbox.setPrefHeight(0.0);
@@ -236,20 +229,11 @@ public class GatheringPageController {
             innerHbox.getChildren().add(profileItemVBox);
         }
 
-        outerHBox.getChildren().addAll(leftButton, profileScrollPane, rightButton);
+        outerHBox.getChildren().addAll(profileScrollPane);
 
         // Add profilesVBox
         descriptionVBox.getChildren().add(outerHBox);
 
-
-        //SOMETHING WRONG WITH BUTTONS
-        rightButton.setOnMouseClicked((MouseEvent event) -> {
-            scrollPaneLeft(profileScrollPane);
-        });
-
-        leftButton.setOnMouseClicked((MouseEvent event) -> {
-            scrollPaneRight(profileScrollPane);
-        });
 
 
         //--------------------------------------------------------------------------
@@ -287,13 +271,6 @@ public class GatheringPageController {
 
     }
 
-    private void scrollPaneRight(ScrollPane profileScrollPane) {
-        profileScrollPane.setHvalue(profileScrollPane.getHvalue() + 0.1);
-    }
-
-    private void scrollPaneLeft(ScrollPane profileScrollPane) {
-        profileScrollPane.setHvalue(profileScrollPane.getHvalue() - 0.1);
-    }
 
     private void attendGatheringButton(MouseEvent event, Gathering newGathering) throws SQLException {
         currentUser.joinGathering(newGathering.getGatheringID());
