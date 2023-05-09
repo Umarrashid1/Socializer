@@ -90,7 +90,7 @@ public class ActivityDB {
     }
     //activitytags.tag
     public static List getActivityTags(int activityID) throws SQLException {
-        //Get tags for specific activity
+        //Get tags.csv for specific activity
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
@@ -113,7 +113,7 @@ public class ActivityDB {
         return tagList;
     }
     public static List getTags() throws SQLException {
-        // get all activity tags
+        // get all activity tags.csv
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
