@@ -104,13 +104,13 @@ public class TabController implements Initializable  {
         if (tabUpdateMap.getOrDefault(newTab, true)) {
             tabUpdateMap.put(newTab, false);
             if(newTab == homeTab){
-                loadPage("choose_gathering");
-                tabUpdateMap.put(discoverTab, true);
+                //loadPage("under_construction");
+                //tabUpdateMap.put(discoverTab, true);
             } else if(newTab == calendarTab) {
                 loadPage("calendar_tab");
-                tabUpdateMap.put(calendarTab, true);
+                //tabUpdateMap.put(calendarTab, true);
             } else if (newTab == trendingTab) {
-                loadPage("choose_gathering");
+                //loadPage("");
             } else if (newTab == discoverTab){
                 loadPage("discover_tab");
             } else if (newTab == myProfileTab){

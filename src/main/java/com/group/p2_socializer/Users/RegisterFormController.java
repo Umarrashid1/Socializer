@@ -45,6 +45,7 @@ public class RegisterFormController {
 
     @FXML
     private JFXButton registerButton;
+
     @FXML
     private Label registerMessageLabel;
 

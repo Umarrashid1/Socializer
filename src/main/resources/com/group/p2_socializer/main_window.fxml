@@ -14,7 +14,14 @@
          <tabs>
             <Tab fx:id="homeTab" onSelectionChanged="#detectTab">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="244.0" fitWidth="427.0" layoutX="265.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@pictures/Underconstruction.jpg" />
+                           </image>
+                        </ImageView>
+                     </children></AnchorPane>
               </content>
                <graphic>
                    <ImageView accessibleRole="BUTTON" fitHeight="57.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
@@ -26,7 +33,14 @@
             </Tab>
             <Tab fx:id="trendingTab" onSelectionChanged="#detectTab" text="Trending">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="244.0" fitWidth="427.0" layoutX="265.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@pictures/Underconstruction.jpg" />
+                           </image>
+                        </ImageView>
+                     </children></AnchorPane>
                </content>
                <graphic>
                    <FontAwesomeIconView glyphName="STAR" size="20" />
