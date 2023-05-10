@@ -62,7 +62,7 @@ public class RegisterFormController {
         String email = emailTextField.getText();
         //dateOfBirthTextField.get
 
-        //check if
+        //Check if password contains at least 8 characters and 1 digit
         if (currentPass.equals(rePassword) && currentPass.length() >= 8 && currentPass.matches(".*\\d.*")) {
 
             if (UserDB.registerUser(currentUser, currentPass)) {
