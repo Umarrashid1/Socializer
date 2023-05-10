@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class Gathering extends Activity {
-    private int gatheringID;
+    public int gatheringID;
 
     public List<User> getGatheringParticipants() throws SQLException {
         List<User> userList = GatheringDB.getGatheringParticipants(gatheringID);
@@ -21,6 +21,10 @@ public class Gathering extends Activity {
     private Gathering(Builder builder) {
         super(builder);
         this.gatheringID = builder.gatheringID;
+    }
+
+    public void setGatheringTags(List<Tag> selectedTagList) throws SQLException {
+        GatheringDB.setGatheringTags(selectedTagList, gatheringID);
     }
 
     public static class Builder extends Activity.Builder<Builder> {

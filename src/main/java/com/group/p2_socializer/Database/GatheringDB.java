@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class GatheringDB {
-    public static void storeGathering(Gathering newGathering) throws SQLException {
+    public static int storeGathering(Gathering newGathering) throws SQLException {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
@@ -34,7 +34,15 @@ public class GatheringDB {
 
         //Convert timezone to string for storage in sql database
         statement.executeUpdate();
-        connection.close();
+        ResultSet generatedKeys = statement.getGeneratedKeys();
+        if (generatedKeys.next()) {
+            int activityID = generatedKeys.getInt(1);
+            connection.close();
+            return activityID;
+        } else {
+            connection.close();
+            throw new SQLException("Insertion failed, no activity ID obtained.");
+        }
     }
 
     public static List<Gathering> getGatheringsDate(int year) throws SQLException {
@@ -66,6 +74,7 @@ public class GatheringDB {
             gatheringList.add(newGathering);
         }
         connection.close();
+
         return gatheringList;
 
     }
@@ -139,6 +148,25 @@ public class GatheringDB {
 
         statement.close();
         connection.close();
+    }
+    public static List getTags() throws SQLException {
+        // get all activity tags
+        String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
+        String dbUser = "root";
+        String dbPassword = "password";
+        String sql = "SELECT * FROM activitytags";
+        Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet result = statement.executeQuery();
+        List<Tag> tagList = new ArrayList<>();
+        while (result.next()) {
+            Tag tag = new Tag();
+            tag.setTagID(result.getInt("tagID"));
+            tag.setTag(result.getString("tag"));
+            tagList.add(tag);
+        }
+        connection.close();
+        return tagList;
     }
 }
 
