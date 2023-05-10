@@ -62,7 +62,7 @@ public class RegisterFormController {
         String email = emailTextField.getText();
         //dateOfBirthTextField.get
 
-
+        //check if
         if (currentPass.equals(rePassword) && currentPass.length() >= 8 && currentPass.matches(".*\\d.*")) {
 
             if (UserDB.registerUser(currentUser, currentPass)) {
