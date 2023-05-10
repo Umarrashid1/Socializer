@@ -118,7 +118,7 @@
                   <Insets left="5.0" />
                </VBox.margin>
             </Text>
-            <ScrollPane hbarPolicy="NEVER" minHeight="90.0" minWidth="594.0" prefHeight="195.0" prefWidth="594.0">
+            <ScrollPane hbarPolicy="NEVER" minHeight="90.0" minWidth="594.0" prefHeight="297.0" prefWidth="594.0">
                <content>
                   <VBox spacing="10.0">
                      <children>

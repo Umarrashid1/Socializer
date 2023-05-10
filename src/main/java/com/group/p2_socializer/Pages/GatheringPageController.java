@@ -203,7 +203,9 @@ public class GatheringPageController {
 
 
         ScrollPane profileScrollPane = new ScrollPane();
-        //profileScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        profileScrollPane.setBackground(
+                new Background(new BackgroundFill(Color.TRANSPARENT, null, null))
+        );
         profileScrollPane.setMinHeight(50.0);
         //profileScrollPane.setMinWidth(.0);
         profileScrollPane.setPrefWidth(300);
