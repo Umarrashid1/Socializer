@@ -1,6 +1,7 @@
 package com.group.p2_socializer.Users;
 
 import com.group.p2_socializer.Database.UserDB;
+import com.group.p2_socializer.Utils.PopUpMessage;
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
@@ -65,7 +66,9 @@ public class RegisterFormController {
         if (currentPass.equals(rePassword) && currentPass.length() >= 8 && currentPass.matches(".*\\d.*")) {
 
             if (UserDB.registerUser(currentUser, currentPass)) {
-                registerMessageLabel.setText("User registered");
+                String message = "User registered";
+                PopUpMessage popUpMessage = new PopUpMessage();
+                popUpMessage.showCreatedPopUp(message);
 
                 Stage stage = (Stage) registerButton.getScene().getWindow();
                 stage.close();
