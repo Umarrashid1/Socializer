@@ -3,9 +3,11 @@ package com.group.p2_socializer.UserLogIn;
 import com.group.p2_socializer.Database.UserDB;
 import com.group.p2_socializer.Socializer;
 import com.group.p2_socializer.Tabs.TabController;
+import com.group.p2_socializer.Users.RegisterFormController;
 import com.group.p2_socializer.Utils.ScreenUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -14,10 +16,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.sql.SQLException;
 
 public class LoginController {
@@ -59,18 +58,17 @@ public class LoginController {
             loginMessage.setText("Wrong username or password");
         }
     }
+
     @FXML
-    protected void onRegisterButtonClick() throws SQLException, NoSuchAlgorithmException {
-        String currentUser = username.getText();
-        String currentPass = password.getText();
+    protected void onRegisterButtonClick() throws IOException {
 
-        if( UserDB.registerUser(currentUser,currentPass)){
-            loginMessage.setText("User registered");
-        }else{
-            loginMessage.setText("Username already taken");
-        }
-        // Call registerUser method, returns null if username taken
+        FXMLLoader registerFormFxmlLoader = new FXMLLoader(RegisterFormController.class.getResource("/com/group/p2_socializer/register_form.fxml"));
+        Parent registerFormRoot = registerFormFxmlLoader.load();
 
+        Stage stage = new Stage();
+        stage.setTitle("Register");
+        stage.setScene(new Scene(registerFormRoot));
+        stage.show();
 
     }
 }

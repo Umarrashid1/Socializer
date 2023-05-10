@@ -1,9 +1,17 @@
 package com.group.p2_socializer.Users;
 
+import com.group.p2_socializer.Database.UserDB;
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
+
 
 public class RegisterFormController {
 
@@ -33,5 +41,43 @@ public class RegisterFormController {
 
     @FXML
     private DatePicker dateOfBirthTextField;
+
+    @FXML
+    private JFXButton registerButton;
+    @FXML
+    private Label registerMessageLabel;
+
+    @FXML
+    void registerButtonHandler() throws SQLException, NoSuchAlgorithmException {
+
+        String currentUser = usernameTextField.getText();
+        String currentPass = passwordTextField.getText();
+
+        String rePassword = rePasswordTextField.getText();
+        String firstName = firstNameTextField.getText();
+        String lastName =  lastNameTextField.getText();
+        String country = countryTextField.getText();
+        String city = cityTextField.getText();
+        String email = emailTextField.getText();
+        //dateOfBirthTextField.get
+
+
+        if (currentPass.equals(rePassword) && currentPass.length() >= 8 && currentPass.matches(".*\\d.*")) {
+
+            if (UserDB.registerUser(currentUser, currentPass)) {
+                registerMessageLabel.setText("User registered");
+
+                Stage stage = (Stage) registerButton.getScene().getWindow();
+                stage.close();
+
+            } else {
+                registerMessageLabel.setText("Username already taken");
+
+            }
+        } else {
+            registerMessageLabel.setText("Password needs to contain at least 8 characters and 1 number");
+        }
+    }
+
 
 }
