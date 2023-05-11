@@ -9,9 +9,9 @@
 
 <VBox fx:id="gatheringItemVBox" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="320.0" prefWidth="306.0" style="; -fx-border-width: 2; -fx-border-color: #00bcd4;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.CreateGatherings.PremadeGatheringItemController">
    <children>
-      <ImageView fitHeight="190.0" fitWidth="288.0">
+      <ImageView fitHeight="190.0" fitWidth="288.0" preserveRatio="true">
          <image>
-            <Image url="@pictures/chess.jpg" />
+            <Image url="@pictures/roundtover.jpg" />
          </image>
          <VBox.margin>
             <Insets top="8.0" />
@@ -19,7 +19,7 @@
       </ImageView>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Label fx:id="premadeGatheringItemTitle" prefHeight="32.0" prefWidth="62.0" text="Chess">
+            <Label fx:id="premadeGatheringItemTitle" prefHeight="32.0" text="The Round Tover">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -27,7 +27,7 @@
                   <Insets />
                </VBox.margin>
             </Label>
-            <Label fx:id="premadeGatheringItemDescription" prefHeight="90.0" prefWidth="293.0" text="Calling all chess aficionados! Are you ready to test your skills and engage in strategic battles on the chessboard? A small group for an exhilarating game of chess. Experience the thrill of outsmarting your opponents in a friendly environment." wrapText="true" />
+            <Label fx:id="premadeGatheringItemDescription" prefHeight="90.0" prefWidth="293.0" text="The Rundetaarn attached to the Trinitatis Kirke in Copenhagen gives some of the finest aerial views of the city, harbor, and surrounding seas. Visitors walk up the gentle slopes of a wide spiral ramp with just a few stairs right at the top leading to the big spectator’s platform and Europe’s oldest functioning astronomy observatory. " wrapText="true" />
          </children>
          <VBox.margin>
             <Insets left="8.0" top="4.0" />

@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXTabPane;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -16,6 +17,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -144,6 +146,9 @@ public class EventPageController {
 
             for (Tag tag : taglist) {
                 Label tagLabel = new Label(tag.getTag());
+                tagLabel.setTextAlignment(TextAlignment.LEFT);
+                tagLabel.setAlignment(Pos.CENTER); // ????
+
                 tagLabel.setBackground(background);
                 tagLabel.setPadding(new Insets(3,5,3,5));
                 tagLabel.setMaxWidth(Double.MAX_VALUE);
