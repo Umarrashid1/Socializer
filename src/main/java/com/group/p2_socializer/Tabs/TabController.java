@@ -73,7 +73,6 @@ public class TabController implements Initializable  {
                 DiscoverTabController discoverTabController = loader.getController();
                 discoverTabController.setCurrentUser(currentUser);
                 discoverTabController.loadGatheringItems();
-
                 //temporary fix
             }
 
