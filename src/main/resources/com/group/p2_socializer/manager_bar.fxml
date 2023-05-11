@@ -5,7 +5,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox fx:id="manageEventBar" prefHeight="30.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Utils.ManagerBarController">
+<HBox fx:id="manageEventBar" prefHeight="30.0" prefWidth="463.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Utils.ManagerBarController">
    <children>
       <FontAwesomeIconView glyphName="WRENCH" size="20">
          <HBox.margin>
@@ -14,7 +14,8 @@
       </FontAwesomeIconView>
       <JFXButton fx:id="editEventButton" prefHeight="29.0" prefWidth="78.0" text="Edit event" />
       <JFXButton fx:id="postNewsButton" prefHeight="29.0" prefWidth="78.0" text="Post news" />
-      <JFXButton fx:id="cancelEventButton" prefHeight="15.0" prefWidth="91.0" ripplerFill="#f83030" style="-fx-background-color: RED;" text="Cancel">
+      <JFXButton fx:id="cancelGatheringButton" prefHeight="29.0" prefWidth="108.0" text="Cancel Gathering" />
+      <JFXButton fx:id="deleteButton" prefHeight="25.0" prefWidth="114.0" ripplerFill="RED" text="Delete Gathering" textFill="RED">
          <HBox.margin>
             <Insets top="2.0" />
          </HBox.margin></JFXButton>

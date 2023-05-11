@@ -15,7 +15,6 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -33,7 +32,7 @@ public class ManagerBarController implements Initializable {
     @FXML
     private JFXButton postNewsButton;
     @FXML
-    private JFXButton cancelEventButton;
+    private JFXButton deleteButton;
     @FXML
     private HBox manageEventBar;
     private Event newEvent;
@@ -44,20 +43,20 @@ public class ManagerBarController implements Initializable {
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
     public void setMainTabPane(JFXTabPane mainTabPane){this.mainTabPane = mainTabPane;}
 
-    public void setCancelButton(boolean isGathering) throws SQLException {
+    public void setDeleteButton(boolean isGathering) throws SQLException {
         if (!isGathering){
-            cancelEventButton.setOnMouseClicked((MouseEvent event) -> {
+            deleteButton.setOnMouseClicked((MouseEvent event) -> {
                 try {
-                    handleCancelEventButton(event, newEvent);
+                    handleDeleteEventButton(event, newEvent);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
             });
         }
         else {
-            cancelEventButton.setOnMouseClicked((MouseEvent event) -> {
+            deleteButton.setOnMouseClicked((MouseEvent event) -> {
                 try {
-                    handleCancelGatheringButton(event, newGathering);
+                    handleDeleteGatheringButton(event, newGathering);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
@@ -73,7 +72,7 @@ public class ManagerBarController implements Initializable {
         this.newGathering = newGathering;
     }
 
-    public void handleCancelEventButton(MouseEvent event, Event newEvent) throws SQLException {
+    public void handleDeleteEventButton(MouseEvent event, Event newEvent) throws SQLException {
         ActivityDB.deleteEvent(newEvent.getActivityID());
         Node node = (Node) event.getSource();
         Scene scene = node.getScene();
@@ -84,7 +83,7 @@ public class ManagerBarController implements Initializable {
         mainTabPane.getSelectionModel().select(1);
         mainTabPane.getSelectionModel().select(3);
     }
-    public void handleCancelGatheringButton(MouseEvent event, Gathering newGathering) throws SQLException {
+    public void handleDeleteGatheringButton(MouseEvent event, Gathering newGathering) throws SQLException {
         GatheringDB.deleteGathering(newGathering.getGatheringID());
         Node node = (Node) event.getSource();
         Scene scene = node.getScene();

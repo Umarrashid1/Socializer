@@ -56,7 +56,7 @@
                               <Font name="System Bold" size="21.0" />
                            </font>
                         </Label>
-                        <JFXButton fx:id="attendEventButton" layoutX="190.0" layoutY="412.0" prefHeight="29.0" prefWidth="116.0" ripplerFill="#7bce3c" style="-fx-background-color: #71FF60;" text="Attend Event" wrapText="true" />
+                        <JFXButton fx:id="attendEventButton" layoutX="190.0" layoutY="412.0" prefHeight="29.0" prefWidth="116.0" ripplerFill="#7bce3c" style="-fx-background-color: #71FF60;" text="Find Gatherings" wrapText="true" />
                         <JFXButton fx:id="interestedButton" layoutX="66.0" layoutY="412.0" prefHeight="29.0" prefWidth="116.0" ripplerFill="#7bce3c" style="-fx-background-color: #E2FF71;" text="Interested" wrapText="true" />
                      </children>
                   </AnchorPane>

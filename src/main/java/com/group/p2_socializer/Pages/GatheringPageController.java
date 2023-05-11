@@ -1,6 +1,5 @@
 package com.group.p2_socializer.Pages;
 
-import com.group.p2_socializer.Database.UserDB;
 import com.group.p2_socializer.UserLogIn.User;
 import com.group.p2_socializer.Utils.ManagerBarController;
 import com.group.p2_socializer.Utils.ProfileItemController;
@@ -255,7 +254,7 @@ public class GatheringPageController {
 
         boolean isGathering;
         isGathering = true;
-        managerBarController.setCancelButton(isGathering);
+        managerBarController.setDeleteButton(isGathering);
 
         centerPane.getChildren().add(managerBarRoot);
         centerPane.getChildren().add(descriptionVBox);

@@ -2,7 +2,6 @@ package com.group.p2_socializer.Pages;
 
 import com.group.p2_socializer.Utils.ManagerBarController;
 import com.group.p2_socializer.activities.Event;
-import com.group.p2_socializer.Utils.PopUpMessage;
 import com.group.p2_socializer.activities.Tag;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTabPane;
@@ -184,7 +183,7 @@ public class EventPageController {
             managerBarController.setNewEvent(newEvent);
             boolean isGathering;
             isGathering = false;
-            managerBarController.setCancelButton(isGathering);
+            managerBarController.setDeleteButton(isGathering);
 
             centerPane.getChildren().add(managerBarRoot);
             centerPane.getChildren().add(descriptionVBox);

@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXListView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -76,14 +74,40 @@
                   </VBox>
                </children>
             </VBox>
-            <Label alignment="CENTER" layoutX="16.0" layoutY="720.0" prefHeight="17.0" prefWidth="214.0" text="SocializerApp" textFill="#f8f8f8">
-               <font>
-                  <Font name="Verdana Bold Italic" size="24.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Label>
+            <VBox layoutX="42.0" layoutY="391.0" prefHeight="46.0" prefWidth="164.0">
+               <children>
+                  <HBox prefHeight="26.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Tags" />
+                        <Label text="Tags" />
+                        <Label text="Tags" />
+                        <Label text="Tags" />
+                        <Label text="Tags" />
+                        <Label text="Tags" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="164.0">
+                     <children>
+                        <Label text="Tags" />
+                        <Label text="Tags" />
+                        <Label text="Tags" />
+                        <Label text="Tags" />
+                        <Label text="Tags" />
+                        <Label text="Tags" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="26.0" prefWidth="164.0">
+                     <children>
+                        <Label text="Tags" />
+                        <Label text="Tags" />
+                        <Label text="Tags" />
+                        <Label text="Tags" />
+                        <Label text="Tags" />
+                        <Label text="Tags" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
          <effect>
             <DropShadow />
@@ -91,29 +115,89 @@
       </AnchorPane>
       <VBox layoutX="351.0" layoutY="21.0" prefHeight="744.0" prefWidth="594.0" style="-fx-spacing: 8;">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="594.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tags, som AH er interesseret i: " textAlignment="JUSTIFY" wrappingWidth="128.9999999999999">
-                     <font>
-                        <Font name="Arial Italic" size="16.0" />
-                     </font>
-                     <effect>
-                        <Glow />
-                     </effect>
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin>
-                  </Text>
-                  <Text fx:id="tagListText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="350.0" />
-               </children>
-            </HBox>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gatherings this user is interested in:" wrappingWidth="305.642578125">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Interested in:" wrappingWidth="305.642578125">
                <VBox.margin>
                   <Insets left="5.0" />
                </VBox.margin>
             </Text>
-            <JFXListView fx:id="listGatheringInterest" prefHeight="195.0" prefWidth="594.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gatherings this user has attended:" wrappingWidth="255.533203125">
+            <ScrollPane hbarPolicy="NEVER" minHeight="90.0" minWidth="594.0" prefHeight="297.0" prefWidth="594.0">
+               <content>
+                  <VBox spacing="10.0">
+                     <children>
+                        <VBox fx:id="profileGatheringVBox1" maxWidth="578.0" prefHeight="83.0" prefWidth="560.0" style="-fx-border-color: BLACK;">
+                           <children>
+                              <HBox alignment="CENTER" style="-fx-background-color: WHITE;">
+                                 <children>
+                                    <VBox>
+                                       <children>
+                                          <Label fx:id="profileGatheringTitleLabel1" prefHeight="48.0" prefWidth="329.0" text="Gantering title">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="profileGatheringDateLabel1" prefHeight="36.0" prefWidth="343.0" text="21/07/2023" />
+                                       </children>
+                                    </VBox>
+                                    <ImageView fitHeight="60.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@pictures/festivalpic.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="profileGatheringVBox11" prefHeight="83.0" prefWidth="590.0" style="-fx-border-color: BLACK;">
+                           <children>
+                              <HBox alignment="CENTER" style="-fx-background-color: WHITE;">
+                                 <children>
+                                    <VBox>
+                                       <children>
+                                          <Label fx:id="profileGatheringTitleLabel11" prefHeight="48.0" prefWidth="329.0" text="Gantering title">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="profileGatheringDateLabel11" prefHeight="36.0" prefWidth="343.0" text="21/07/2023" />
+                                       </children>
+                                    </VBox>
+                                    <ImageView fitHeight="60.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@pictures/festivalpic.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="profileGatheringVBox21" prefHeight="83.0" prefWidth="590.0" style="-fx-border-color: BLACK;">
+                           <children>
+                              <HBox alignment="CENTER" style="-fx-background-color: WHITE;">
+                                 <children>
+                                    <VBox>
+                                       <children>
+                                          <Label fx:id="profileGatheringTitleLabel21" prefHeight="48.0" prefWidth="329.0" text="Gantering title">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="profileGatheringDateLabel21" prefHeight="36.0" prefWidth="343.0" text="21/07/2023" />
+                                       </children>
+                                    </VBox>
+                                    <ImageView fitHeight="60.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@pictures/festivalpic.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gatherings attended:" wrappingWidth="255.533203125">
                <VBox.margin>
                   <Insets left="5.0" />
                </VBox.margin>
@@ -195,12 +279,88 @@
                   </VBox>
                </content>
             </ScrollPane>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gatherings this user has organized:">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gatherings organized:">
                <VBox.margin>
                   <Insets left="5.0" />
                </VBox.margin>
             </Text>
-            <JFXListView fx:id="listGatheringOrganized" prefHeight="262.0" prefWidth="594.0" />
+            <ScrollPane hbarPolicy="NEVER" minHeight="90.0" minWidth="594.0" prefHeight="297.0" prefWidth="594.0">
+               <content>
+                  <VBox spacing="10.0">
+                     <children>
+                        <VBox fx:id="profileGatheringVBox1" maxWidth="578.0" prefHeight="83.0" prefWidth="560.0" style="-fx-border-color: BLACK;">
+                           <children>
+                              <HBox alignment="CENTER" style="-fx-background-color: WHITE;">
+                                 <children>
+                                    <VBox>
+                                       <children>
+                                          <Label fx:id="profileGatheringTitleLabel1" prefHeight="48.0" prefWidth="329.0" text="Gantering title">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="profileGatheringDateLabel1" prefHeight="36.0" prefWidth="343.0" text="21/07/2023" />
+                                       </children>
+                                    </VBox>
+                                    <ImageView fitHeight="60.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@pictures/festivalpic.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="profileGatheringVBox12" prefHeight="83.0" prefWidth="590.0" style="-fx-border-color: BLACK;">
+                           <children>
+                              <HBox alignment="CENTER" style="-fx-background-color: WHITE;">
+                                 <children>
+                                    <VBox>
+                                       <children>
+                                          <Label fx:id="profileGatheringTitleLabel12" prefHeight="48.0" prefWidth="329.0" text="Gantering title">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="profileGatheringDateLabel12" prefHeight="36.0" prefWidth="343.0" text="21/07/2023" />
+                                       </children>
+                                    </VBox>
+                                    <ImageView fitHeight="60.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@pictures/festivalpic.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="profileGatheringVBox22" prefHeight="83.0" prefWidth="590.0" style="-fx-border-color: BLACK;">
+                           <children>
+                              <HBox alignment="CENTER" style="-fx-background-color: WHITE;">
+                                 <children>
+                                    <VBox>
+                                       <children>
+                                          <Label fx:id="profileGatheringTitleLabel22" prefHeight="48.0" prefWidth="329.0" text="Gantering title">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="profileGatheringDateLabel22" prefHeight="36.0" prefWidth="343.0" text="21/07/2023" />
+                                       </children>
+                                    </VBox>
+                                    <ImageView fitHeight="60.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@pictures/festivalpic.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
          </children>
       </VBox>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
