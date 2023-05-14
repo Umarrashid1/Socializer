@@ -12,6 +12,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.UserLogIn.LoginController">
    <left>
       <AnchorPane prefHeight="407.0" prefWidth="228.0" style="-fx-background-color: #00bcd4;" BorderPane.alignment="CENTER">
@@ -49,18 +52,18 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="username" layoutX="116.0" layoutY="121.0" promptText="Username" />
-            <PasswordField fx:id="password" layoutX="117.0" layoutY="164.0" onAction="#onLoginButtonClick" promptText="Password" />
-            <Button fx:id="loginButton" layoutX="40.0" layoutY="232.0" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="31.0" prefWidth="228.0" style="-fx-background-color: #00bcd4;" text="Login" textFill="WHITE">
+            <JFXTextField fx:id="username" layoutX="116.0" layoutY="121.0" promptText="Username" />
+            <JFXPasswordField fx:id="password" layoutX="117.0" layoutY="164.0" onAction="#onLoginButtonClick" promptText="Password" />
+            <JFXButton fx:id="loginButton" layoutX="40.0" layoutY="232.0" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="31.0" prefWidth="228.0" style="-fx-background-color: #00bcd4;" text="Login" textFill="WHITE">
                <effect>
                   <DropShadow />
                </effect>
-            </Button>
-            <Button fx:id="quitButton" layoutX="40.0" layoutY="326.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="228.0" style="-fx-background-color: #00bcd4;" text="Quit" textFill="WHITE">
+            </JFXButton>
+            <JFXButton fx:id="quitButton" layoutX="40.0" layoutY="326.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="228.0" style="-fx-background-color: #00bcd4;" text="Quit" textFill="WHITE">
                <effect>
                   <DropShadow />
                </effect>
-            </Button>
+            </JFXButton>
             <Label layoutX="39.0" layoutY="167.0" text="Password">
                <font>
                   <Font name="System Bold" size="14.0" />
@@ -71,11 +74,20 @@
                   <Font name="Arial" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="loginButton1" layoutX="40.0" layoutY="278.0" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="31.0" prefWidth="228.0" style="-fx-background-color: #00bcd4;" text="New User? (Create Account)" textFill="WHITE">
+            <JFXButton fx:id="registerButton"
+                    layoutX="40.0"
+                    layoutY="278.0"
+                    mnemonicParsing="false"
+                    onAction="#onRegisterButtonClick"
+                    prefHeight="31.0"
+                    prefWidth="228.0"
+                    style="-fx-background-color: #00bcd4;"
+                    text="New User? (Create Account)"
+                    textFill="WHITE">
                <effect>
-                  <DropShadow />
+                  <DropShadow/>
                </effect>
-            </Button>
+            </JFXButton>
             <Label fx:id="loginMessage" alignment="CENTER" layoutX="43.0" layoutY="93.0" prefHeight="18.0" prefWidth="225.0" textFill="#ff3131" />
          </children>
       </AnchorPane>
