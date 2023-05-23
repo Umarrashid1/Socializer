@@ -57,20 +57,19 @@ public class GatheringDB {
         ResultSet result = statement.executeQuery();
         List<Gathering> gatheringList = new ArrayList<>();
         while (result.next()) {
-            Gathering newGathering = (Gathering) new Gathering.Builder()
-                    .activityID(result.getInt("activityID"))
-                    .activityType("activitytype")
-                    .activityName(result.getString("eventname"))
-                    .activityDescription(result.getString("eventdescription"))
-                    .activityCity(result.getString("eventcity"))
-                    .activityCountry(result.getString("eventcountry"))
-                    .activityOrganiser(result.getString("eventorganiser"))
-                    .activityMinimumParticipants(result.getInt("activitymin"))
-                    .activityMaximumParticipants(result.getInt("activitymax"))
-                    .localDateTime((LocalDateTime) result.getObject("localdatetime"))
-                    .timeZone(ZoneId.systemDefault())
-                    .gatheringID(result.getInt("gatheringID"))
-                    .build();
+            Gathering newGathering = new Gathering();
+            newGathering.setActivityID(result.getInt("activityID"));
+            newGathering.setActivityType("activitytype");
+            newGathering.setActivityName(result.getString("eventname"));
+            newGathering.setActivityDescription(result.getString("eventdescription"));
+            newGathering.setActivityCity(result.getString("eventcity"));
+            newGathering.setActivityCountry(result.getString("eventcountry"));
+            newGathering.setActivityOrganiser(result.getString("eventorganiser"));
+            newGathering.setActivityMinimumParticipants(result.getInt("activitymin"));
+            newGathering.setActivityMaximumParticipants(result.getInt("activitymax"));
+            newGathering.setLocalDateTime((LocalDateTime) result.getObject("localdatetime"));
+            newGathering.setTimeZone(ZoneId.systemDefault());
+            newGathering.setGatheringID(result.getInt("gatheringID"));
             gatheringList.add(newGathering);
         }
         connection.close();

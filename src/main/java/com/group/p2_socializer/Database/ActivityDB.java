@@ -2,7 +2,6 @@ package com.group.p2_socializer.Database;
 
 import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.activities.Tag;
-import javafx.collections.ObservableList;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -58,18 +57,16 @@ public class ActivityDB {
         ResultSet result = statement.executeQuery();
         List<Event> eventList = new ArrayList<>();
         while (result.next()) {
-            Event newEvent = (Event) new Event.Builder()
-                    .activityID(result.getInt("activityID"))
-                    .activityType("activitytype")
-                    .activityName(result.getString("activityname"))
-                    .activityDescription(result.getString("activitydescription"))
-                    .activityCity(result.getString("activitycity"))
-                    .activityCountry(result.getString("activitycountry"))
-                    .activityOrganiser(result.getString("activityorganiser"))
-                    .activityMinimumParticipants(result.getInt("activitymin"))
-                    .localDateTime((LocalDateTime) result.getObject("activitydatetime"))
-                    .timeZone(ZoneId.systemDefault()) //FIX
-                    .build();
+            Event newEvent =  new Event();
+            newEvent.setActivityID(result.getInt("activityID"));
+            newEvent.setActivityType("activitytype");
+            newEvent.setActivityName(result.getString("activityname"));
+            newEvent.setActivityDescription(result.getString("activitydescription"));
+            newEvent.setActivityCity(result.getString("activitycity"));
+            newEvent.setActivityCountry(result.getString("activitycountry"));
+            newEvent.setActivityOrganiser(result.getString("activityorganiser"));
+            newEvent.setLocalDateTime((LocalDateTime) result.getObject("activitydatetime"));
+            newEvent.setTimeZone(ZoneId.systemDefault());
             eventList.add(newEvent);
         }
         connection.close();

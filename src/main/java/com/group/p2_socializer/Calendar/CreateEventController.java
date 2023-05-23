@@ -6,18 +6,15 @@ import com.group.p2_socializer.Utils.PopUpMessage;
 import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.activities.Tag;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -79,20 +76,19 @@ public class CreateEventController {
         LocalDateTime localDateTime = LocalDateTime.of(eventDatePicker.getValue(), eventTime);
         // combine localDate and localTime into localDateTime
 
-        Event event = new Event.Builder()
-                .activityType("EventActivity")
-                .activityName(eventNameTextField.getText())
-                .activityDescription(eventDescriptionTextArea.getText())
-                .activityCity(eventCityTextField.getText())
-                .activityCountry(eventCountryTextField.getText())
-                .activityOrganiser(eventOrganiserTextField.getText())
-                .localDateTime(localDateTime)
-                .timeZone(ZoneId.systemDefault())
-                .activityType("Event")
-                .build();
+        // Create the Event using the Builder pattern
+        Event event = new Event();
+        event.setActivityType("EventActivity");
+        event.setActivityName(eventNameTextField.getText());
+        event.setActivityDescription(eventDescriptionTextArea.getText());
+        event.setActivityCity(eventCityTextField.getText());
+        event.setActivityCountry(eventCountryTextField.getText());
+        event.setActivityOrganiser(eventOrganiserTextField.getText());
+        event.setLocalDateTime(localDateTime);
+        event.setTimeZone(ZoneId.systemDefault());
+        event.setActivityID(ActivityDB.storeEvent(event));
 
-        event.activityID = ActivityDB.storeEvent(event);
-        ActivityDB.setTags(selectedTagList, event.activityID);
+        ActivityDB.setTags(selectedTagList, event.getActivityID());
 
         //Switch to Calendar tab
         Tab newTab = mainTabPane.getTabs().get(3);

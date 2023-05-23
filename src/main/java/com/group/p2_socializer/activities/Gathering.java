@@ -6,38 +6,40 @@ import com.group.p2_socializer.UserLogIn.User;
 import java.sql.SQLException;
 import java.util.List;
 
-public class Gathering extends Activity {
-    public int gatheringID;
-
-    public List<User> getGatheringParticipants() throws SQLException {
-        List<User> userList = GatheringDB.getGatheringParticipants(gatheringID);
-        return userList;
-    }
-
+public class Gathering extends Event {
+    protected int gatheringID;
+    protected int activityMinimumParticipants;
+    protected int activityMaximumParticipants;
     public int getGatheringID() {
         return gatheringID;
     }
 
-    private Gathering(Builder builder) {
-        super(builder);
-        this.gatheringID = builder.gatheringID;
+    public void setGatheringID(int gatheringID) {
+        this.gatheringID = gatheringID;
     }
 
+    public int getActivityMinimumParticipants() {
+        return activityMinimumParticipants;
+    }
+
+    public void setActivityMinimumParticipants(int activityMinimumParticipants) {
+        this.activityMinimumParticipants = activityMinimumParticipants;
+    }
+
+    public int getActivityMaximumParticipants() {
+        return activityMaximumParticipants;
+    }
+
+    public void setActivityMaximumParticipants(int activityMaximumParticipants) {
+        this.activityMaximumParticipants = activityMaximumParticipants;
+    }
     public void setGatheringTags(List<Tag> selectedTagList) throws SQLException {
         GatheringDB.setGatheringTags(selectedTagList, gatheringID);
     }
 
-    public static class Builder extends Activity.Builder<Builder> {
-        private int gatheringID;
 
-        public Builder gatheringID(int gatheringID) {
-            this.gatheringID = gatheringID;
-            return this;
-        }
-
-        public Gathering build() {
-            return new Gathering(this);
-        }
+    public List<User> getGatheringParticipants() throws SQLException {
+        List<User> userList= GatheringDB.getGatheringParticipants(gatheringID);
+        return userList;
     }
 }
-

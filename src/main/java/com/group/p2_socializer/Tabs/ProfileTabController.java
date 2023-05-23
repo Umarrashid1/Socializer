@@ -2,7 +2,7 @@ package com.group.p2_socializer.Tabs;
 
 import com.group.p2_socializer.Database.UserDB;
 import com.group.p2_socializer.UserLogIn.User;
-import com.group.p2_socializer.activities.Activity;
+import com.group.p2_socializer.activities.Gathering;
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -89,7 +89,7 @@ public class ProfileTabController extends TabController implements Initializable
 
 
 
-    private void loadData(ObservableList<Activity> list) {
+    private void loadData(ObservableList<Gathering> list) {
        list.removeAll(list);
        //TODO: add functionality to load all gatherings from user object.'
         /*

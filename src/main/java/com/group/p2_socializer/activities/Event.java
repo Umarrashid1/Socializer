@@ -1,14 +1,28 @@
 package com.group.p2_socializer.activities;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
-public class Event extends Activity{
-    public static class Builder extends Activity.Builder<Builder>{
-        public Event build(){
-            return new Event(this);
-        }
+public class Event extends Activity {
+    protected LocalDateTime localDateTime;
+    protected ZoneId timeZone;
+
+
+    public LocalDateTime getLocalDateTime() {
+        return localDateTime;
     }
-    public Event(Builder builder) {
-        super(builder);
+
+    public void setLocalDateTime(LocalDateTime localDateTime) {
+        this.localDateTime = localDateTime;
     }
+
+    public ZoneId getTimeZone() {
+        return timeZone;
+    }
+
+    public void setTimeZone(ZoneId timeZone) {
+        this.timeZone = timeZone;
+    }
+
+
 }
