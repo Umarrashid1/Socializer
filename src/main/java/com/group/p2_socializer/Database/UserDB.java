@@ -1,4 +1,6 @@
 package com.group.p2_socializer.Database;
+import com.group.p2_socializer.UserLogIn.AdminUser;
+import com.group.p2_socializer.UserLogIn.SuperUser;
 import com.group.p2_socializer.UserLogIn.User;
 import com.group.p2_socializer.Utils.PasswordUtils;
 import com.group.p2_socializer.activities.Event;
@@ -7,6 +9,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class UserDB {
     public static boolean checkUser(String username) throws SQLException {
@@ -41,14 +44,30 @@ public class UserDB {
         if(result.next()){
             String hashedPassword = result.getString("password");
             if(PasswordUtils.verifyPassword(password, hashedPassword)){
-                User user = new User();
-                user.setUserID(result.getInt("userid"));
-                user.setUsername(result.getString("username"));
-                user.setUserType(result.getString("usertype"));
-                user.setFirstname(result.getString("firstname"));
-                user.setLastname(result.getString("lastname"));
+                if(Objects.equals(result.getString("usertype"), "user")){
+                    User user = new User();
+                    user.setUserID(result.getInt("userid"));
+                    user.setUsername(result.getString("username"));
+                    user.setFirstname(result.getString("firstname"));
+                    user.setLastname(result.getString("lastname"));
+                    return user;
 
-                return user;
+                }else if(Objects.equals(result.getString("usertype"), "superuser")){
+                    SuperUser superUser = new SuperUser();
+                    superUser.setUserID(result.getInt("userid"));
+                    superUser.setUsername(result.getString("username"));
+                    superUser.setFirstname(result.getString("firstname"));
+                    superUser.setLastname(result.getString("lastname"));
+                    return superUser;
+                }else if(Objects.equals(result.getString("usertype"), "moderator")){
+                    AdminUser AdminUser = new AdminUser();
+                    AdminUser.setUserID(result.getInt("userid"));
+                    AdminUser.setUsername(result.getString("username"));
+                    AdminUser.setFirstname(result.getString("firstname"));
+                    AdminUser.setLastname(result.getString("lastname"));
+                    return AdminUser;
+                }
+
             }else{
                 return null;
                 // Wrong password

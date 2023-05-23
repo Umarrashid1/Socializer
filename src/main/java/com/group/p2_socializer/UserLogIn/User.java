@@ -25,11 +25,11 @@ public class User {
         this.lastname = lastname;
     }
 
-    private String firstname = "Fo";
-    private String lastname = "Lo";
+    private String firstname;
+    private String lastname;
     private String username;
     private String password;
-    private String userType;
+    String userType = "user";
     private List<String> userTagList = new ArrayList<>();
 
     public int getUserID() {
@@ -63,10 +63,6 @@ public class User {
     public void setUserType(String userType) {
         this.userType = userType;
     }
-
-
-
-
 
     public void joinGathering(int gatheringID) throws SQLException {
         UserDB.joinGathering(userID, gatheringID);
