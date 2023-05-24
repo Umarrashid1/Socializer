@@ -94,6 +94,7 @@ public class CreateGatheringController  implements Initializable {
     public void handleCreateGathering(Gathering newGathering) throws SQLException, IOException {
         String createdMessage = "Gathering Created!";
         PopUpMessage popUpMessage = new PopUpMessage();
+        currentUser.joinGathering(newGathering.getGatheringID());
         popUpMessage.showCreatedPopUp(createdMessage);
         GatheringPageController gatheringPageController = new GatheringPageController();
         gatheringPageController.setMainTabPane(mainTabPane);
