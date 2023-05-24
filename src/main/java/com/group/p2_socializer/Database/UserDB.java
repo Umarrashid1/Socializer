@@ -3,7 +3,6 @@ import com.group.p2_socializer.UserLogIn.AdminUser;
 import com.group.p2_socializer.UserLogIn.SuperUser;
 import com.group.p2_socializer.UserLogIn.User;
 import com.group.p2_socializer.Utils.PasswordUtils;
-import com.group.p2_socializer.activities.Event;
 
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
@@ -78,12 +77,12 @@ public class UserDB {
     }
 
 
-    public static boolean registerUser(String username, String password) throws SQLException, NoSuchAlgorithmException {
+    public static boolean registerUser(String username, String password, String firstName, String lastName, String country, String city, String email) throws SQLException, NoSuchAlgorithmException {
 
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
-        String sql = "INSERT INTO users(username, password) VALUES (?, ?)";
+        String sql = "INSERT INTO users(username, password, firstname, lastname) VALUES (?, ?, ?, ?)";
         // connect to database
 
         if (checkUser(username)){
@@ -95,6 +94,8 @@ public class UserDB {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, username);
             statement.setString(2, hashedPassword);
+            statement.setString(3, firstName);
+            statement.setString(4, lastName);
             statement.executeUpdate();
             connection.close();
             return true;

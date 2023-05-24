@@ -66,7 +66,7 @@ public class RegisterFormController {
         //Check if password contains at least 8 characters and 1 digit
         if (currentPass.equals(rePassword) && currentPass.length() >= 8 && currentPass.matches(".*\\d.*")) {
 
-            if (UserDB.registerUser(currentUser, currentPass)) {
+            if (UserDB.registerUser(currentUser, currentPass, firstName, lastName, country, city, email)) {
                 String message = "User registered";
                 PopUpMessage popUpMessage = new PopUpMessage();
                 popUpMessage.showCreatedPopUp(message);
