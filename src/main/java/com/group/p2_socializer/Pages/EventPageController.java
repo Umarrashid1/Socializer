@@ -42,8 +42,7 @@ public class EventPageController {
     public Label eventLocationLabel;
     @FXML
     public HBox manageEventBar;
-    @FXML
-    public JFXButton createGatheringButton;
+
 
     @FXML HBox organiserHBox;
     @FXML
@@ -90,8 +89,7 @@ public class EventPageController {
             // Load the FXML file
             FXMLLoader fxmlLoader = new FXMLLoader(EventPageController.class.getResource("/com/group/p2_socializer/event_page.fxml"));
             Parent root = fxmlLoader.load();
-            JFXButton createEventGatheringButton = new JFXButton("Create Event Gathering");
-            createEventGatheringButton.setStyle("-fx-font-family: 'Arial'; -fx-font-size: 11; -fx-text-fill: #797878;");
+
 
 
 
@@ -100,6 +98,7 @@ public class EventPageController {
             AnchorPane centerPane = (AnchorPane) scrollPane.getContent();
             VBox eventInfoVBox = (VBox) centerPane.lookup("#eventInfoVBox");
             HBox organiserHBox = (HBox) eventInfoVBox.lookup("#organiserHBox");
+            JFXButton createGatheringButton = (JFXButton) centerPane.lookup("#createGatheringButton");
             organiserHBox.setMaxWidth(250);
 
             Label eventDateLabel = (Label) eventInfoVBox.lookup("#eventDateLabel");
@@ -145,13 +144,7 @@ public class EventPageController {
             line.endYProperty().bind(line.startYProperty());
             descriptionVBox.getChildren().add(line);
 
-            createGatheringButton.setOnMouseClicked((MouseEvent event) -> {
-                try {
-                    createEventGatheringButtonHandler(scrollPane, newEvent );
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            });
+
 
             //-----------------------------------------------------------------------
             List<Tag> taglist = newEvent.getTags();
@@ -221,6 +214,13 @@ public class EventPageController {
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
             newStage.setTitle(newEvent.getActivityName());
+            createGatheringButton.setOnMouseClicked((MouseEvent event) -> {
+                try {
+                    createEventGatheringButtonHandler(scrollPane, newEvent );
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
 
             //VBox postList = (VBox) root.lookup("#postList");
             //postList.setMaxWidth(Double.MAX_VALUE);
@@ -228,6 +228,7 @@ public class EventPageController {
 
 
             newStage.show();
+
 
         } catch (IOException e) {
             e.printStackTrace();
