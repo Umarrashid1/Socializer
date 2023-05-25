@@ -72,19 +72,7 @@ public class EventCalendarTabController extends TabController implements Initial
         createEventController.setMainTabPane(mainTabPane);
         super.mainTabPane.getSelectionModel().getSelectedItem().setContent(newPane);
     }
-    public void createEventGatheringButtonHandler(Label eventLocationLabel, Event event) throws IOException {
-        super.mainTabPane.getSelectionModel().select(4);
-        //Select choosegathering tab
-        Stage stage = (Stage) eventLocationLabel.getScene().getWindow();
-        stage.close();
-        super.loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/create_gathering.fxml"));
-        AnchorPane newPane = loader.load();
-        CreateGatheringController createGatheringController = loader.getController();
-        createGatheringController.setEventData(event);
-        createGatheringController.setTabUpdateMap(tabUpdateMap);
-        createGatheringController.setMainTabPane(mainTabPane);
-        super.mainTabPane.getSelectionModel().getSelectedItem().setContent(newPane);
-    }
+
 
     public void updateCalendar(){
         Tab newTab = mainTabPane.getTabs().get(3);
@@ -266,16 +254,7 @@ public class EventCalendarTabController extends TabController implements Initial
                     Label eventOrganiserTitle = new Label("Organiser:");
                     Label eventOrganiserLabel = new Label(item.getActivityOrganiser());
 
-                    JFXButton createEventGatheringButton = new JFXButton("Create Event Gathering");
-                    createEventGatheringButton.setStyle("-fx-font-family: 'Arial'; -fx-font-size: 11; -fx-text-fill: #797878;");
 
-                    createEventGatheringButton.setOnMouseClicked((MouseEvent event) -> {
-                        try {
-                            createEventGatheringButtonHandler(eventLocationLabel, item);
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    });
 
                     Label[] labels = {eventNameTitle, eventNameLabel, eventDateTitle, eventDateLabel,
                             eventDescriptionTitle, eventDescriptionLabel, eventLocationTitle,
