@@ -1,5 +1,6 @@
 package com.group.p2_socializer.Pages;
 
+import com.group.p2_socializer.CreateGatherings.CreateGatheringController;
 import com.group.p2_socializer.Utils.ManagerBarController;
 import com.group.p2_socializer.activities.Event;
 import com.group.p2_socializer.activities.Tag;
@@ -12,6 +13,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -62,7 +64,19 @@ public class EventPageController {
     }
 
 
-
+    public void createEventGatheringButtonHandler(ScrollPane scrollPane, Event event) throws IOException {
+        mainTabPane.getSelectionModel().select(4);
+        //Select choosegathering tab
+        Stage stage = (Stage) scrollPane.getScene().getWindow();
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/create_gathering.fxml"));
+        AnchorPane newPane = fxmlLoader.load();
+        CreateGatheringController createGatheringController = fxmlLoader.getController();
+        createGatheringController.setEventData(event);
+        createGatheringController.setTabUpdateMap(tabUpdateMap);
+        createGatheringController.setMainTabPane(mainTabPane);
+        mainTabPane.getSelectionModel().getSelectedItem().setContent(newPane);
+    }
 
     //TODO: Split into additional methods
     public void loadEventPage(Event newEvent) {
@@ -74,6 +88,10 @@ public class EventPageController {
             // Load the FXML file
             FXMLLoader fxmlLoader = new FXMLLoader(EventPageController.class.getResource("/com/group/p2_socializer/event_page.fxml"));
             Parent root = fxmlLoader.load();
+            JFXButton createEventGatheringButton = new JFXButton("Create Event Gathering");
+            createEventGatheringButton.setStyle("-fx-font-family: 'Arial'; -fx-font-size: 11; -fx-text-fill: #797878;");
+
+
 
             // Get reference to centerPane FXML file
             ScrollPane scrollPane = (ScrollPane) root.lookup("#scrollPane");
@@ -124,6 +142,14 @@ public class EventPageController {
             line.endXProperty().bind(line.startXProperty().add(lineLength));
             line.endYProperty().bind(line.startYProperty());
             descriptionVBox.getChildren().add(line);
+
+            createEventGatheringButton.setOnMouseClicked((MouseEvent event) -> {
+                try {
+                    createEventGatheringButtonHandler(scrollPane, newEvent );
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
 
             //-----------------------------------------------------------------------
             List<Tag> taglist = newEvent.getTags();
