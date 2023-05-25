@@ -273,7 +273,7 @@ public class EventCalendarTabController extends TabController implements Initial
                     // Add the text boxes to the VBox
                     textBoxVBox.getChildren().addAll(windowTitleLabel, eventNameTitle, eventNameLabel, eventDateTitle, eventDateLabel,
                             eventDescriptionTitle, eventDescriptionLabel, eventLocationTitle,
-                            eventLocationLabel, eventOrganiserTitle, eventOrganiserLabel, createEventGatheringButton);
+                            eventLocationLabel, eventOrganiserTitle, eventOrganiserLabel);
 
                     BorderPane borderPane = new BorderPane();
 

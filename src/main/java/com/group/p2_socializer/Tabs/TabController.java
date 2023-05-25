@@ -97,9 +97,6 @@ public class TabController implements Initializable  {
 
     public void detectTab(Event event) {
         Tab newTab = mainTabPane.getSelectionModel().getSelectedItem();
-        if(newTab == homeTab) {
-            tabUpdateMap.put(discoverTab, true);
-        }
         if (tabUpdateMap.getOrDefault(newTab, true)) {
             tabUpdateMap.put(newTab, false);
             if(newTab == homeTab){

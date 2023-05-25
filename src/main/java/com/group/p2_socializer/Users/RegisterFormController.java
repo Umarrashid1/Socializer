@@ -64,8 +64,7 @@ public class RegisterFormController {
         //dateOfBirthTextField.get
 
         //Check if password contains at least 8 characters and 1 digit
-        if (currentPass.equals(rePassword) && currentPass.length() >= 8 && currentPass.matches(".*\\d.*")) {
-
+        if (currentPass.equals(rePassword) && currentPass.length() >= 9 && currentPass.matches(".*\\d.*") && currentPass.matches(".*[A-Z].*") && currentPass.matches(".*[a-z].*") && currentPass.matches(".*[!@#$%^&*()].*")) {
             if (UserDB.registerUser(currentUser, currentPass, firstName, lastName, country, city, email)) {
                 String message = "User registered";
                 PopUpMessage popUpMessage = new PopUpMessage();
@@ -79,8 +78,7 @@ public class RegisterFormController {
 
             }
         } else {
-            registerMessageLabel.setText("Password needs to contain at least 8 characters and 1 number");
-        }
+            registerMessageLabel.setText("Password needs to contain a minimum of 9 characters, at least 1 number, and a combination of capital and non-capital letters, numbers, and special characters");        }
     }
 
 

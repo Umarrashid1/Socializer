@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -65,7 +66,7 @@ public class CreateEventController {
 
     @FXML
     public void handleBackButton(){
-        //TODO: make button load calendarTab somehow
+      tabUpdateMap.put(calendarTab, false);
 
     }
 
