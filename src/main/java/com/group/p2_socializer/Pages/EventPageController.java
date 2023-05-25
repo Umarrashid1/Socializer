@@ -42,6 +42,8 @@ public class EventPageController {
     public Label eventLocationLabel;
     @FXML
     public HBox manageEventBar;
+    @FXML
+    public JFXButton createGatheringButton;
 
     @FXML HBox organiserHBox;
     @FXML
@@ -143,7 +145,7 @@ public class EventPageController {
             line.endYProperty().bind(line.startYProperty());
             descriptionVBox.getChildren().add(line);
 
-            createEventGatheringButton.setOnMouseClicked((MouseEvent event) -> {
+            createGatheringButton.setOnMouseClicked((MouseEvent event) -> {
                 try {
                     createEventGatheringButtonHandler(scrollPane, newEvent );
                 } catch (IOException e) {

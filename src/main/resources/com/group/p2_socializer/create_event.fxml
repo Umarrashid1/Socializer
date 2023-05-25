@@ -18,7 +18,7 @@
       <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="780.0" prefWidth="950.0">
          <children>
             <Rectangle arcHeight="50" arcWidth="50.0" fill="TRANSPARENT" height="697.0" layoutX="209.0" layoutY="42.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: #00bcd4;" width="533.0" />
-            <JFXButton fx:id="backButton" onAction="#handleBackButton" layoutX="787.0" layoutY="56.0" prefHeight="33.0" prefWidth="113.0" style="-fx-background-color: RED;" text="Back to calendar" />
+            <JFXButton fx:id="backButton" layoutX="787.0" layoutY="56.0" onAction="#handleBackButton" prefHeight="33.0" prefWidth="113.0" text="Back to calendar" />
             <Label alignment="CENTER" layoutX="375.0" layoutY="50.0" prefHeight="61.0" prefWidth="200.0" text="Create Event">
                <font>
                   <Font name="System Bold" size="22.0" />
@@ -86,27 +86,6 @@
                </VBox.margin>
             </Label>
             <JFXTextArea fx:id="eventDescriptionTextArea" prefHeight="101.0" prefWidth="490.0" promptText="eg. lots of text in here." />
-            <VBox>
-               <children>
-                  <HBox prefHeight="14.0" prefWidth="490.0">
-                     <children>
-                        <Label text="Minimum participants:" />
-                        <VBox prefHeight="27.0" prefWidth="125.0" />
-                        <Label text="Maximum participant:s:" />
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="55.0" prefWidth="490.0">
-                     <children>
-                        <JFXTextField fx:id="minimumParticipantsTextField" prefHeight="25.0" prefWidth="140.0" promptText="eg. 4" />
-                        <VBox prefHeight="31.0" prefWidth="105.0" />
-                        <JFXTextField fx:id="maximumParticipantsTextField" prefHeight="25.0" prefWidth="139.0" promptText="eg. 10" />
-                     </children>
-                  </HBox>
-               </children>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </VBox>
             <HBox prefHeight="47.0" prefWidth="409.0">
                <children>
                   <JFXCheckBox prefHeight="44.0" prefWidth="104.0" text="I am the organiser of this event" />

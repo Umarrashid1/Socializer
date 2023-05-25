@@ -208,7 +208,6 @@ public class EventCalendarTabController extends TabController implements Initial
             text.setUnderline(true);
             calendarActivityBox.getChildren().add(textFlow);
         }
-        //TODO: Fix isWindowOpen
 
         if (!isWindowOpen) {
             rectangle.setOnMouseClicked((MouseEvent event) -> {
@@ -326,7 +325,7 @@ public class EventCalendarTabController extends TabController implements Initial
                 }
             }
         });
-//TODO: IF OPEN DONT OPEN
+
         Scene scene = new Scene(listView, 600, 700);
         Stage stage = new Stage();
         stage.setScene(scene);
