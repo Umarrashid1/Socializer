@@ -245,11 +245,8 @@ public class EventCalendarTabController extends TabController implements Initial
                     // Create a text box for each property of the CalendarActivity
                     Label eventNameTitle = new Label("Event:");
                     Label eventNameLabel = new Label(item.getActivityName());
-
                     Label eventDateTitle = new Label("Date:");
-
                     Label eventDateLabel = new Label(item.getLocalDateTime().toString()); // to do fix to zone
-
                     Label eventDescriptionTitle = new Label("Description:");
                     Label eventDescriptionLabel = new Label(item.getActivityDescription());
                     eventDescriptionLabel.setWrapText(true);
@@ -257,10 +254,8 @@ public class EventCalendarTabController extends TabController implements Initial
 
                     Label eventLocationTitle = new Label("Location:");
                     Label eventLocationLabel = new Label(item.getActivityCountry() + ", " + item.getActivityCity());
-
                     Label eventOrganiserTitle = new Label("Organiser:");
                     Label eventOrganiserLabel = new Label(item.getActivityOrganiser());
-
 
 
                     Label[] labels = {eventNameTitle, eventNameLabel, eventDateTitle, eventDateLabel,
@@ -312,13 +307,11 @@ public class EventCalendarTabController extends TabController implements Initial
                 }
             }
         });
-
         Scene scene = new Scene(listView, 600, 700);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setAlwaysOnTop(true);
         stage.show();
-
     }
     public void showCreateEventButton(){
         if(currentUser.getUserType().equals("admin")) {

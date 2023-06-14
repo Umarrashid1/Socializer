@@ -243,16 +243,4 @@ public class EventPageController {
     }
 
 
-    private static class LabelListCell extends ListCell<Label> {
-        @Override
-        protected void updateItem(Label item, boolean empty) {
-            super.updateItem(item, empty);
-            if (empty || item == null) {
-                setGraphic(null);
-            } else {
-                setGraphic(item);
-            }
-        }
-    }
-
 }
