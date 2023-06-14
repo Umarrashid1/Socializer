@@ -76,6 +76,12 @@ public class TabController implements Initializable  {
                 //temporary fix
             }
 
+            if(name == "calendar_tab"){
+                EventCalendarTabController eventCalendarTabController = loader.getController();
+                eventCalendarTabController.setUser(currentUser);
+                eventCalendarTabController.showCreateEventButton();
+            }
+
             // Get the content of the current tab
             Node content = mainTabPane.getSelectionModel().getSelectedItem().getContent();
             if (content != null) {

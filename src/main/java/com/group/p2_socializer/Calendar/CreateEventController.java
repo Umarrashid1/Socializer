@@ -2,6 +2,7 @@ package com.group.p2_socializer.Calendar;
 
 import com.group.p2_socializer.Database.ActivityDB;
 import com.group.p2_socializer.Pages.EventPageController;
+import com.group.p2_socializer.UserLogIn.User;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.group.p2_socializer.Activities.Event;
 import com.group.p2_socializer.Activities.Tag;
@@ -62,11 +63,11 @@ public class CreateEventController {
     public JFXButton goBack;
 
     public List<Tag> selectedTagList;
+    private User currentUser;
 
     @FXML
     public void handleBackButton(){
       tabUpdateMap.put(calendarTab, false);
-
     }
 
     @FXML
@@ -97,6 +98,8 @@ public class CreateEventController {
         mainTabPane.getSelectionModel().select(3);
 
         EventPageController controller = new EventPageController();
+
+        controller.setUser(currentUser);
         controller.loadEventPage(event);
 
         String createdMessage = "Event Created!";
@@ -192,5 +195,8 @@ public class CreateEventController {
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
     public void setMainTabPane(TabPane mainTabPane){
         this.mainTabPane = mainTabPane;
+    }
+    public void setUser(User currentUser){
+        this.currentUser = currentUser;
     }
 }

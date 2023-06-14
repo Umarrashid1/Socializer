@@ -36,7 +36,6 @@ public class LoginController {
         // Call database to authenticate login, returns null value if auth fails.
 
         User user = UserDB.authLogin(currentUser,currentPass);
-
         if(user != null){
             Scene scene = username.getScene();
             Window window = scene.getWindow();
@@ -54,7 +53,6 @@ public class LoginController {
             double centerY = ScreenUtils.getScreenCenterY() - stage.getHeight() / 2;
             stage.setX(centerX);
             stage.setY(centerY);
-
             //change scene if method returns non-null value
         }else{
             loginMessage.setText("Wrong username or password");

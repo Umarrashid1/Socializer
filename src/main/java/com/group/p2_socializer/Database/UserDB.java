@@ -43,22 +43,13 @@ public class UserDB {
         if(result.next()){
             String hashedPassword = result.getString("password");
             if(PasswordUtils.verifyPassword(password, hashedPassword)){
-                if(Objects.equals(result.getString("usertype"), "user")){
-                    User user = new User();
-                    user.setUserID(result.getInt("userid"));
-                    user.setUsername(result.getString("username"));
-                    user.setFirstname(result.getString("firstname"));
-                    user.setLastname(result.getString("lastname"));
-                    return user;
-                }else if(Objects.equals(result.getString("usertype"), "admin")){
-                    AdminUser AdminUser = new AdminUser();
-                    AdminUser.setUserID(result.getInt("userid"));
-                    AdminUser.setUsername(result.getString("username"));
-                    AdminUser.setFirstname(result.getString("firstname"));
-                    AdminUser.setLastname(result.getString("lastname"));
-                    return AdminUser;
-                }
-
+                User user = new User();
+                user.setUserID(result.getInt("userid"));
+                user.setUsername(result.getString("username"));
+                user.setFirstname(result.getString("firstname"));
+                user.setLastname(result.getString("lastname"));
+                user.setUserType(result.getString("usertype"));
+                return user;
             }else{
                 return null;
                 // Wrong password

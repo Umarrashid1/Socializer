@@ -1,8 +1,8 @@
 package com.group.p2_socializer.Tabs;
 
 import com.group.p2_socializer.Calendar.CreateEventController;
-import com.group.p2_socializer.CreateGatherings.CreateGatheringController;
-import com.group.p2_socializer.activities.Event;
+import com.group.p2_socializer.UserLogIn.User;
+import com.group.p2_socializer.Activities.Event;
 import com.group.p2_socializer.Calendar.CalendarManager;
 import com.group.p2_socializer.Pages.EventPageController;
 import com.jfoenix.controls.JFXButton;
@@ -52,6 +52,11 @@ public class EventCalendarTabController extends TabController implements Initial
     private Text month;
     @FXML
     private AnchorPane createEventAnchorPane;
+    private User currentUser;
+
+    public void setUser(User currentUser){
+        this.currentUser = currentUser;
+    }
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -68,8 +73,10 @@ public class EventCalendarTabController extends TabController implements Initial
         super.loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/create_event.fxml"));
         AnchorPane newPane = loader.load();
         CreateEventController createEventController = loader.getController();
+        createEventController.setUser(currentUser);
         createEventController.setTabUpdateMap(tabUpdateMap);
         createEventController.setMainTabPane(mainTabPane);
+        createEventController.setUser(currentUser);
         super.mainTabPane.getSelectionModel().getSelectedItem().setContent(newPane);
     }
 
@@ -115,8 +122,8 @@ public class EventCalendarTabController extends TabController implements Initial
 
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
-                StackPane stackPane = new StackPane();
 
+                StackPane stackPane = new StackPane();
                 Rectangle rectangle = new Rectangle();
                 rectangle.setFill(Color.TRANSPARENT);
                 rectangle.setStroke(Color.GREY);
@@ -252,6 +259,7 @@ public class EventCalendarTabController extends TabController implements Initial
 
                     Label eventLocationTitle = new Label("Location:");
                     Label eventLocationLabel = new Label(item.getActivityCountry() + ", " + item.getActivityCity());
+
                     Label eventOrganiserTitle = new Label("Organiser:");
                     Label eventOrganiserLabel = new Label(item.getActivityOrganiser());
 
@@ -291,6 +299,7 @@ public class EventCalendarTabController extends TabController implements Initial
                         EventPageController eventPageController = new EventPageController();
                         eventPageController.setMainTabPane(mainTabPane);
                         eventPageController.setTabUpdateMap(tabUpdateMap);
+                        eventPageController.setUser(currentUser);
                         Event newEvent = item;
                         // Open the event page of the created event
                         eventPageController.loadEventPage(newEvent);
@@ -311,8 +320,24 @@ public class EventCalendarTabController extends TabController implements Initial
         stage.setScene(scene);
         stage.setAlwaysOnTop(true);
         stage.show();
-        isWindowOpen = true;
 
+    }
+
+    public void showCreateEventButton(){
+        if(currentUser.getUserType().equals("admin")) {
+            JFXButton createEventButton = new JFXButton("Create Event");
+            createEventButton.setLayoutX(83.0);
+            createEventButton.setLayoutY(54.0);
+            calendar.getChildren().add(createEventButton);
+
+            createEventButton.setOnAction(actionEvent -> {
+                try {
+                    handleCreateEventButton();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+        }
     }
 
 }

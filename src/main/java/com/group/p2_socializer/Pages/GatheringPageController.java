@@ -247,22 +247,21 @@ public class GatheringPageController {
 
 
         // Load the manager_bar.fxml file
-        FXMLLoader managerBarFxmlLoader = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/manager_bar.fxml"));
-        Parent managerBarRoot = managerBarFxmlLoader.load();
+        if(currentUser.getUserType().equals("currentUser") || (currentUser.getUsername().equals(newGathering.getActivityOrganiser()))){
+            FXMLLoader managerBarFxmlLoader = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/manager_bar.fxml"));
+            Parent managerBarRoot = managerBarFxmlLoader.load();
+            ManagerBarController managerBarController = managerBarFxmlLoader.getController(); // Get reference to actual instance of ManagerBarController
+            managerBarController.setMainTabPane(mainTabPane);
+            managerBarController.setTabUpdateMap(tabUpdateMap);
+            managerBarController.setNewGathering(newGathering);
+            boolean isGathering;
+            isGathering = true;
+            managerBarController.setDeleteButton(isGathering);
+            centerPane.getChildren().add(managerBarRoot);
+            centerPane.getChildren().add(descriptionVBox);
+            centerPane.getChildren().add(attendGatheringButton);
+        }
 
-        ManagerBarController managerBarController = managerBarFxmlLoader.getController(); // Get reference to actual instance of ManagerBarController
-        managerBarController.setMainTabPane(mainTabPane);
-        managerBarController.setTabUpdateMap(tabUpdateMap);
-        managerBarController.setNewGathering(newGathering);
-
-        boolean isGathering;
-        isGathering = true;
-
-        managerBarController.setDeleteButton(isGathering);
-
-        centerPane.getChildren().add(managerBarRoot);
-        centerPane.getChildren().add(descriptionVBox);
-        centerPane.getChildren().add(attendGatheringButton);
 
 
         // Create a new stage and set the new scene

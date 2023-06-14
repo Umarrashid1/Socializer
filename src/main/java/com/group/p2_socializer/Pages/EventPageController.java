@@ -1,6 +1,7 @@
 package com.group.p2_socializer.Pages;
 
 import com.group.p2_socializer.CreateGatherings.CreateGatheringController;
+import com.group.p2_socializer.UserLogIn.User;
 import com.group.p2_socializer.Utils.ManagerBarController;
 import com.group.p2_socializer.Activities.Event;
 import com.group.p2_socializer.Activities.Tag;
@@ -56,6 +57,7 @@ public class EventPageController {
     @FXML
     public JFXButton attendEventButton;
     public Map<Tab, Boolean> tabUpdateMap;
+    public User currentUser;
 
     private JFXTabPane mainTabPane;
 
@@ -64,6 +66,9 @@ public class EventPageController {
         this.mainTabPane = mainTabPane;
     }
 
+    public void setUser(User currentUser){
+        this.currentUser = currentUser;
+    }
 
     public void createEventGatheringButtonHandler(ScrollPane scrollPane, Event event) throws IOException {
         mainTabPane.getSelectionModel().select(4);
@@ -193,21 +198,21 @@ public class EventPageController {
             descriptionVBox.getChildren().add(tagsVBox);
 
 
-
-
             // Load the manager_bar.fxml file
-            FXMLLoader manageBarFxmlLoader = new FXMLLoader(EventPageController.class.getResource("/com/group/p2_socializer/manager_bar.fxml"));
-            Parent managerBarRoot = manageBarFxmlLoader.load();
-            ManagerBarController managerBarController = manageBarFxmlLoader.getController(); // Get reference to actual instance of ManagerBarController
-            managerBarController.setMainTabPane(mainTabPane);
-            managerBarController.setTabUpdateMap(tabUpdateMap);
-            managerBarController.setNewEvent(newEvent);
-            boolean isGathering;
-            isGathering = false;
-            managerBarController.setDeleteButton(isGathering);
+           if(currentUser.getUserType().equals("admin")){
+                FXMLLoader manageBarFxmlLoader = new FXMLLoader(EventPageController.class.getResource("/com/group/p2_socializer/manager_bar.fxml"));
+                Parent managerBarRoot = manageBarFxmlLoader.load();
+                ManagerBarController managerBarController = manageBarFxmlLoader.getController(); // Get reference to actual instance of ManagerBarController
+                managerBarController.setMainTabPane(mainTabPane);
+                managerBarController.setTabUpdateMap(tabUpdateMap);
+                managerBarController.setNewEvent(newEvent);
+                boolean isGathering;
+                isGathering = false;
+                managerBarController.setDeleteButton(isGathering);
+                centerPane.getChildren().add(managerBarRoot);
+                centerPane.getChildren().add(descriptionVBox);
+           }
 
-            centerPane.getChildren().add(managerBarRoot);
-            centerPane.getChildren().add(descriptionVBox);
 
 
             // Create a new stage and set the new scene
