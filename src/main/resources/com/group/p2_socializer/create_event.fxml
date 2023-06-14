@@ -107,7 +107,7 @@
             </JFXButton>
             <HBox alignment="CENTER" prefHeight="95.0" prefWidth="490.0">
                <children>
-                  <JFXButton fx:id="createNewEventButton" onAction="#handleCreateEvent" prefHeight="61.0" prefWidth="138.0" style="-fx-background-color: #41FF31;" text="Create Gathering" />
+                  <JFXButton fx:id="createNewEventButton" onAction="#handleCreateEvent" prefHeight="61.0" prefWidth="138.0" style="-fx-background-color: #41FF31;" text="Create Event" />
                </children>
             </HBox>
          </children>

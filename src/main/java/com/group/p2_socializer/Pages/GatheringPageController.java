@@ -47,7 +47,9 @@ public class GatheringPageController {
     @FXML
     public Label gatheringParticipationLabel;
     @FXML
-    public JFXButton interestedButton;
+    public JFXButton attendButton;
+    @FXML
+    public JFXButton notGoingButton;
     @FXML
     private VBox vBoxPostNews;
     @FXML
@@ -135,7 +137,7 @@ public class GatheringPageController {
         // Add the Line to the VBox
         descriptionVBox.getChildren().add(line);
 
-        // IF USER IS ATTENDING THEN CHANGE BUTTON TO LEAVE
+
         JFXButton attendGatheringButton = new JFXButton();
         attendGatheringButton.setText("Attend Gathering");
         attendGatheringButton.setPrefSize(116.0, 29.0);
@@ -144,10 +146,30 @@ public class GatheringPageController {
         attendGatheringButton.setStyle("-fx-background-color: #71FF60;");
         attendGatheringButton.setRipplerFill(javafx.scene.paint.Color.valueOf("#7bce3c"));
 
+        JFXButton notGoingButton = new JFXButton();
+        notGoingButton.setText("Not going");
+        notGoingButton.setPrefSize(116.0,29.0);
+        notGoingButton.setLayoutX(164.0);
+        notGoingButton.setLayoutY(412.0);
+        notGoingButton.setStyle("-fx-background-color: FFA3A3FF;");
+        notGoingButton.setRipplerFill(javafx.scene.paint.Color.valueOf("#e80027"));
+
+
+
+
+
 
         attendGatheringButton.setOnMouseClicked((MouseEvent event) -> {
             try {
                 attendGatheringButton(event, newGathering);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        notGoingButton.setOnMouseClicked((MouseEvent event) -> {
+            try {
+                leaveGatheringButton(event, newGathering);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -225,7 +247,7 @@ public class GatheringPageController {
 
         List<User> userList = newGathering.getGatheringParticipants();
         //
-        int picture = 1;
+
 
         for (User user : userList) {
             FXMLLoader profileItemFxmlLoader = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/profile_item.fxml"));
@@ -247,7 +269,7 @@ public class GatheringPageController {
 
 
         // Load the manager_bar.fxml file
-        if(currentUser.getUserType().equals("currentUser") || (currentUser.getUsername().equals(newGathering.getActivityOrganiser()))){
+        if(currentUser.getUserType().equals("admin") || (currentUser.getUsername().equals(newGathering.getActivityOrganiser()))){
             FXMLLoader managerBarFxmlLoader = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/manager_bar.fxml"));
             Parent managerBarRoot = managerBarFxmlLoader.load();
             ManagerBarController managerBarController = managerBarFxmlLoader.getController(); // Get reference to actual instance of ManagerBarController
@@ -258,10 +280,11 @@ public class GatheringPageController {
             isGathering = true;
             managerBarController.setDeleteButton(isGathering);
             centerPane.getChildren().add(managerBarRoot);
-            centerPane.getChildren().add(descriptionVBox);
-            centerPane.getChildren().add(attendGatheringButton);
         }
 
+        centerPane.getChildren().add(descriptionVBox);
+        centerPane.getChildren().add(attendGatheringButton);
+        centerPane.getChildren().add(notGoingButton);
 
 
         // Create a new stage and set the new scene
@@ -277,6 +300,10 @@ public class GatheringPageController {
 
     private void attendGatheringButton(MouseEvent event, Gathering newGathering) throws SQLException {
         currentUser.joinGathering(newGathering.getGatheringID());
+    }
+
+    private void leaveGatheringButton(MouseEvent event, Gathering newGathering) throws SQLException {
+        currentUser.leaveGathering(newGathering.getGatheringID());
     }
 
     public void setCurrentUser(User currentUser) {

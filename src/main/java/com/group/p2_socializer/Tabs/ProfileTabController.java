@@ -90,8 +90,8 @@ public class ProfileTabController extends TabController {
      Stage currentStage = (Stage) node.getScene().getWindow();
      currentStage.close();
 
-     FXMLLoader fxmlLoader = new FXMLLoader(Socializer.class.getResource("login_page.fxml"));
-     Scene scene = new Scene(fxmlLoader.load());
+     FXMLLoader loginFxmlLoader = new FXMLLoader(Socializer.class.getResource("login_page.fxml"));
+     Scene scene = new Scene(loginFxmlLoader.load());
 
      Stage mainStage = new Stage();
      mainStage.setTitle("Socializer");
