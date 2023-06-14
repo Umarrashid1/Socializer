@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -74,6 +75,18 @@
                </content>
                <graphic>
                    <FontAwesomeIconView glyphName="USER" size="20" />
+               </graphic>
+            </Tab>
+            <Tab fx:id="signOutTab" onSelectionChanged="#signOut">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </AnchorPane>
+               </content>
+               <graphic>
+                  <FontAwesomeIconView glyphName="SIGN_OUT" size="20" textAlignment="RIGHT" wrappingWidth="56.571428298950195" />
                </graphic>
             </Tab>
          </tabs>

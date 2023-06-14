@@ -140,14 +140,16 @@ public class GatheringPageController {
 
         JFXButton attendGatheringButton = new JFXButton();
         attendGatheringButton.setText("Attend Gathering");
+        attendGatheringButton.setId("attendGatheringButton");
         attendGatheringButton.setPrefSize(116.0, 29.0);
-        attendGatheringButton.setLayoutX(162.0);
+        attendGatheringButton.setLayoutX(37.0);
         attendGatheringButton.setLayoutY(412.0);
         attendGatheringButton.setStyle("-fx-background-color: #71FF60;");
         attendGatheringButton.setRipplerFill(javafx.scene.paint.Color.valueOf("#7bce3c"));
 
         JFXButton notGoingButton = new JFXButton();
         notGoingButton.setText("Not going");
+        notGoingButton.setId("notGoingButton");
         notGoingButton.setPrefSize(116.0,29.0);
         notGoingButton.setLayoutX(164.0);
         notGoingButton.setLayoutY(412.0);
@@ -156,23 +158,38 @@ public class GatheringPageController {
 
 
 
+        attendGatheringButton.setOnAction((actionEvent ) -> {
 
-
-
-        attendGatheringButton.setOnMouseClicked((MouseEvent event) -> {
             try {
-                attendGatheringButton(event, newGathering);
+                attendGatheringButton(newGathering);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+
+            //Refresh profile items
+            try {
+                addProfileItems(newGathering, descriptionVBox);
+            } catch (IOException | SQLException e) {
+                throw new RuntimeException(e);
+            }
+
         });
 
         notGoingButton.setOnMouseClicked((MouseEvent event) -> {
+
             try {
                 leaveGatheringButton(event, newGathering);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+
+            //Refresh profile items
+            try {
+                addProfileItems(newGathering, descriptionVBox);
+            } catch (IOException | SQLException e) {
+                throw new RuntimeException(e);
+            }
+
         });
 
         //-----------------------------------------------------------------------
@@ -221,49 +238,7 @@ public class GatheringPageController {
 
         //-------------------------------------------------------------------------
 
-        HBox outerHBox = new HBox();
-        outerHBox.setPrefHeight(90.0);
-        outerHBox.setPrefWidth(300.0);
-
-
-        ScrollPane profileScrollPane = new ScrollPane();
-        profileScrollPane.setBackground(
-                new Background(new BackgroundFill(Color.TRANSPARENT, null, null))
-        );
-        profileScrollPane.setMinHeight(50.0);
-        //profileScrollPane.setMinWidth(.0);
-        profileScrollPane.setPrefWidth(300);
-        profileScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-
-        AnchorPane profileAnchorPane = new AnchorPane();
-        //profileAnchorPane.setPrefWidth(378.0);
-
-        HBox innerHbox = new HBox();
-        innerHbox.setPrefHeight(0.0);
-        innerHbox.setPrefWidth(0.0);
-
-        profileAnchorPane.getChildren().add(innerHbox);
-        profileScrollPane.setContent(profileAnchorPane);
-
-        List<User> userList = newGathering.getGatheringParticipants();
-        //
-
-
-        for (User user : userList) {
-            FXMLLoader profileItemFxmlLoader = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/profile_item.fxml"));
-            VBox profileItemVBox = profileItemFxmlLoader.load();
-            ProfileItemController profileItemController = profileItemFxmlLoader.getController();
-            profileItemController.setProfileNameLabel(user);
-            innerHbox.getChildren().add(profileItemVBox);
-        }
-
-        outerHBox.getChildren().addAll(profileScrollPane);
-
-        // Add profilesVBox
-        descriptionVBox.getChildren().add(outerHBox);
-
-
-
+        addProfileItems(newGathering, descriptionVBox);
         //--------------------------------------------------------------------------
 
 
@@ -297,8 +272,51 @@ public class GatheringPageController {
 
     }
 
+    public void addProfileItems(Gathering newGathering, VBox descriptionVBox) throws IOException, SQLException {
+        HBox outerHBox = new HBox();
+        outerHBox.getChildren().clear(); //test
+        outerHBox.setPrefHeight(90.0);
+        outerHBox.setPrefWidth(300.0);
 
-    private void attendGatheringButton(MouseEvent event, Gathering newGathering) throws SQLException {
+
+        ScrollPane profileScrollPane = new ScrollPane();
+        profileScrollPane.setBackground(
+                new Background(new BackgroundFill(Color.TRANSPARENT, null, null))
+        );
+        profileScrollPane.setMinHeight(50.0);
+        //profileScrollPane.setMinWidth(.0);
+        profileScrollPane.setPrefWidth(300);
+        profileScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+
+        AnchorPane profileAnchorPane = new AnchorPane();
+        //profileAnchorPane.setPrefWidth(378.0);
+
+        HBox innerHbox = new HBox();
+        innerHbox.setPrefHeight(0.0);
+        innerHbox.setPrefWidth(0.0);
+
+        profileAnchorPane.getChildren().add(innerHbox);
+        profileScrollPane.setContent(profileAnchorPane);
+
+        List<User> userList = newGathering.getGatheringParticipants();
+
+        for (User user : userList) {
+            FXMLLoader profileItemFxmlLoader = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/profile_item.fxml"));
+            VBox profileItemVBox = profileItemFxmlLoader.load();
+            ProfileItemController profileItemController = profileItemFxmlLoader.getController();
+            profileItemController.setProfileNameLabel(user);
+            innerHbox.getChildren().add(profileItemVBox);
+        }
+
+        outerHBox.getChildren().addAll(profileScrollPane);
+
+        // Add profilesVBox
+        descriptionVBox.getChildren().add(outerHBox);
+
+    }
+
+
+    private void attendGatheringButton(Gathering newGathering) throws SQLException {
         currentUser.joinGathering(newGathering.getGatheringID());
     }
 

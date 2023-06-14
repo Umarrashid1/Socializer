@@ -46,7 +46,6 @@
                               <Font name="System Bold" size="21.0" />
                            </font>
                         </Label>
-                        <JFXButton fx:id="attendButton" layoutX="37.0" layoutY="412.0" prefHeight="29.0" prefWidth="116.0" ripplerFill="#7bce3c" style="-fx-background-color: #E2FF71;" text="Attend" wrapText="true" />
                         <ImageView fitHeight="279.0" fitWidth="564.0" layoutX="34.0" layoutY="29.0">
                            <image>
                               <Image url="@pictures/festivalpic.png" />

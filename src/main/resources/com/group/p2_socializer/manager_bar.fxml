@@ -14,8 +14,8 @@
       </FontAwesomeIconView>
       <JFXButton fx:id="editEventButton" prefHeight="29.0" prefWidth="78.0" text="Edit event" />
       <JFXButton fx:id="postNewsButton" prefHeight="29.0" prefWidth="78.0" text="Post news" />
-      <JFXButton fx:id="cancelGatheringButton" prefHeight="29.0" prefWidth="108.0" text="Cancel Gathering" />
-      <JFXButton fx:id="deleteButton" prefHeight="25.0" prefWidth="114.0" ripplerFill="RED" text="Delete Gathering" textFill="RED">
+      <JFXButton fx:id="cancelButton" prefHeight="29.0" prefWidth="73.0" text="Cancel" />
+      <JFXButton fx:id="deleteButton" prefHeight="25.0" prefWidth="74.0" ripplerFill="RED" text="Delete" textFill="RED">
          <HBox.margin>
             <Insets top="2.0" />
          </HBox.margin></JFXButton>
