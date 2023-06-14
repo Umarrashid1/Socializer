@@ -50,15 +50,7 @@ public class UserDB {
                     user.setFirstname(result.getString("firstname"));
                     user.setLastname(result.getString("lastname"));
                     return user;
-
-                }else if(Objects.equals(result.getString("usertype"), "superuser")){
-                    SuperUser superUser = new SuperUser();
-                    superUser.setUserID(result.getInt("userid"));
-                    superUser.setUsername(result.getString("username"));
-                    superUser.setFirstname(result.getString("firstname"));
-                    superUser.setLastname(result.getString("lastname"));
-                    return superUser;
-                }else if(Objects.equals(result.getString("usertype"), "moderator")){
+                }else if(Objects.equals(result.getString("usertype"), "admin")){
                     AdminUser AdminUser = new AdminUser();
                     AdminUser.setUserID(result.getInt("userid"));
                     AdminUser.setUsername(result.getString("username"));
