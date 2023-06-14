@@ -131,6 +131,7 @@ public class GatheringPageController {
         line.startYProperty().bind(descriptionVBox.layoutYProperty().add(descriptionVBox.heightProperty().divide(2)));
         line.endXProperty().bind(line.startXProperty().add(lineLength));
         line.endYProperty().bind(line.startYProperty());
+
         // Add the Line to the VBox
         descriptionVBox.getChildren().add(line);
 
@@ -164,8 +165,9 @@ public class GatheringPageController {
         tagsVBox.setSpacing(10);
         tagsVBox.setPadding(new Insets(10,10,10,0));
 
+        // Create a new HBox for the labels
         int count = 0;
-        HBox rowOfTagsHBox = new HBox(); // Create a new HBox for the labels
+        HBox rowOfTagsHBox = new HBox();
         rowOfTagsHBox.setSpacing(10);
 
         for (Tag tag : taglist) {
@@ -178,8 +180,9 @@ public class GatheringPageController {
             rowOfTagsHBox.getChildren().add(tagLabel);
             count++;
 
+            // Max 3 labels per HBox, add the current HBox to the VBox and create a new HBox
             if (count == 3) {
-                // Max 3 labels per HBox, add the current HBox to the VBox and create a new HBox
+
                 count = 0;
                 tagsVBox.getChildren().add(rowOfTagsHBox);
                 rowOfTagsHBox = new HBox();
@@ -254,6 +257,7 @@ public class GatheringPageController {
 
         boolean isGathering;
         isGathering = true;
+
         managerBarController.setDeleteButton(isGathering);
 
         centerPane.getChildren().add(managerBarRoot);
@@ -266,9 +270,6 @@ public class GatheringPageController {
         newStage.setScene(new Scene(root));
         newStage.setTitle(newGathering.getActivityName());
 
-        //VBox postList = (VBox) root.lookup("#postList");
-        //postList.setMaxWidth(Double.MAX_VALUE);
-        //postList.setMaxHeight(Double.MAX_VALUE);
 
         newStage.show();
 

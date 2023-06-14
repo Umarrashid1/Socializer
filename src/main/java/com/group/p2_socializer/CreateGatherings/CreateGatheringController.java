@@ -196,8 +196,6 @@ public class CreateGatheringController  implements Initializable {
         this.mainTabPane = mainTabPane;
     }
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
