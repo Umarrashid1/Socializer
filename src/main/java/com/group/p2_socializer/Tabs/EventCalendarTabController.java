@@ -62,7 +62,7 @@ public class EventCalendarTabController extends TabController implements Initial
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        drawCalendar (calendarData);
+        drawCalendar(calendarData);
     }
     public void handleCreateEventButton() throws IOException {
         super.loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/create_event.fxml"));
@@ -165,15 +165,16 @@ public class EventCalendarTabController extends TabController implements Initial
                         rectangle.setStroke(Color.RED);
                     }
                 }
+
+
+
+
                 calendar.getChildren().add(stackPane);
             }
         }
     }
 
-
-    //TODO: Too intricate, split into methods
-    boolean isWindowOpen = false;
-    void createCalendarActivity(List<Event> calendarActivities, double rectangleHeight, double rectangleWidth, StackPane stackPane, Rectangle rectangle) {
+    public void createCalendarActivity(List<Event> calendarActivities, double rectangleHeight, double rectangleWidth, StackPane stackPane, Rectangle rectangle) {
         VBox calendarActivityBox = new VBox();
         boolean isWindowOpen = false;
 
@@ -298,7 +299,7 @@ public class EventCalendarTabController extends TabController implements Initial
                         Scene scene = textBoxVBox.getScene();
                         Window window = scene.getWindow();
                         window.hide();
-                        isWindowOpen = false;
+
                     });
 
                 }
@@ -313,6 +314,5 @@ public class EventCalendarTabController extends TabController implements Initial
         isWindowOpen = true;
 
     }
-
 
 }

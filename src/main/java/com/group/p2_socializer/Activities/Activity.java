@@ -1,13 +1,8 @@
-package com.group.p2_socializer.activities;
+package com.group.p2_socializer.Activities;
 
 import com.group.p2_socializer.Database.ActivityDB;
-import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Activity {

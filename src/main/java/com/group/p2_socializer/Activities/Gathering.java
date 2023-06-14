@@ -1,4 +1,4 @@
-package com.group.p2_socializer.activities;
+package com.group.p2_socializer.Activities;
 
 import com.group.p2_socializer.Database.GatheringDB;
 import com.group.p2_socializer.UserLogIn.User;

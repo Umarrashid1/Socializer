@@ -2,8 +2,8 @@ package com.group.p2_socializer.Pages;
 
 import com.group.p2_socializer.CreateGatherings.CreateGatheringController;
 import com.group.p2_socializer.Utils.ManagerBarController;
-import com.group.p2_socializer.activities.Event;
-import com.group.p2_socializer.activities.Tag;
+import com.group.p2_socializer.Activities.Event;
+import com.group.p2_socializer.Activities.Tag;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.fxml.FXML;

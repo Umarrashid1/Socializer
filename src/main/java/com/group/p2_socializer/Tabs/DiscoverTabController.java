@@ -2,12 +2,11 @@ package com.group.p2_socializer.Tabs;
 
 import com.group.p2_socializer.CreateGatherings.GatheringItemController;
 import com.group.p2_socializer.Database.GatheringDB;
-import com.group.p2_socializer.activities.Gathering;
+import com.group.p2_socializer.Activities.Gathering;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 

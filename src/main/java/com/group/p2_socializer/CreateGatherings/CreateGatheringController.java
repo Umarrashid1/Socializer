@@ -1,18 +1,16 @@
 package com.group.p2_socializer.CreateGatherings;
-import com.group.p2_socializer.Database.ActivityDB;
 import com.group.p2_socializer.Database.GatheringDB;
 import com.group.p2_socializer.Pages.GatheringPageController;
 import com.group.p2_socializer.UserLogIn.User;
 import com.group.p2_socializer.Utils.PopUpMessage;
-import com.group.p2_socializer.activities.Event;
-import com.group.p2_socializer.activities.Gathering;
-import com.group.p2_socializer.activities.Tag;
+import com.group.p2_socializer.Activities.Event;
+import com.group.p2_socializer.Activities.Gathering;
+import com.group.p2_socializer.Activities.Tag;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -25,13 +23,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.time.*;
 import java.util.*;
 
 
-public class CreateGatheringController  implements Initializable {
+public class CreateGatheringController {
 
     public List<Tag> selectedTagList;
     @FXML
@@ -196,8 +193,5 @@ public class CreateGatheringController  implements Initializable {
         this.mainTabPane = mainTabPane;
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    }
 }

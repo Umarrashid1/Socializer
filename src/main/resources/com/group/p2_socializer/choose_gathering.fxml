@@ -70,7 +70,7 @@
                   </VBox>
                   <VBox fx:id="preDefinedGatheringVBox" maxHeight="501.0" maxWidth="252.0" minHeight="501.0" minWidth="252.0" onMouseClicked="#handlePremadeGatheringCreation" prefHeight="501.0" prefWidth="553.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;" stylesheets="@style.css">
                      <children>
-                        <Label alignment="CENTER" prefHeight="70.0" prefWidth="270.0" text="Pre-defined Gathering">
+                        <Label alignment="CENTER" prefHeight="70.0" prefWidth="270.0" text="Activity Library">
                            <font>
                               <Font name="System Bold" size="21.0" />
                            </font></Label>

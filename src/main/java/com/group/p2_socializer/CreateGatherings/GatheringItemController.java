@@ -1,20 +1,18 @@
 package com.group.p2_socializer.CreateGatherings;
 import com.group.p2_socializer.Pages.GatheringPageController;
 import com.group.p2_socializer.UserLogIn.User;
-import com.group.p2_socializer.activities.Gathering;
+import com.group.p2_socializer.Activities.Gathering;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Map;

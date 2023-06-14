@@ -1,7 +1,7 @@
 package com.group.p2_socializer.Database;
 
-import com.group.p2_socializer.activities.Event;
-import com.group.p2_socializer.activities.Tag;
+import com.group.p2_socializer.Activities.Event;
+import com.group.p2_socializer.Activities.Tag;
 
 import java.sql.*;
 import java.time.LocalDateTime;

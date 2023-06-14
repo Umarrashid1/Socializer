@@ -25,8 +25,8 @@ module com.group.p2_socializer {
     exports com.group.p2_socializer.Users;
 
     opens com.group.p2_socializer.Database to javafx.fxml;
-    exports com.group.p2_socializer.activities;
-    opens com.group.p2_socializer.activities to javafx.fxml;
+    exports com.group.p2_socializer.Activities;
+    opens com.group.p2_socializer.Activities to javafx.fxml;
     exports com.group.p2_socializer.Utils;
     opens com.group.p2_socializer.Tabs;
 

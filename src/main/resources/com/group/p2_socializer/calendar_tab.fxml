@@ -92,6 +92,5 @@
          </graphic>
       </JFXButton>
       <FontAwesomeIconView glyphName="WRENCH" layoutX="724.0" layoutY="661.0" />
-      <JFXButton fx:id="createEventButton" layoutX="83.0" layoutY="54.0" onAction="#handleCreateEventButton" text="Create Event" />
    </children>
 </AnchorPane>

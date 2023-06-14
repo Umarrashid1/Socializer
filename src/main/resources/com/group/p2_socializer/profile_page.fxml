@@ -85,7 +85,7 @@
                   </HBox>
                </children>
             </VBox>
-            <JFXButton fx:id="deleteAccountButton" layoutX="63.0" layoutY="730.0" prefHeight="25.0" prefWidth="123.0" text="Delete account" textFill="RED" />
+            <JFXButton fx:id="deleteAccountButton" onAction="#deleteAccount" layoutX="63.0" layoutY="730.0" prefHeight="25.0" prefWidth="123.0" text="Delete account" textFill="RED" />
          </children>
          <effect>
             <DropShadow />
@@ -93,7 +93,7 @@
       </AnchorPane>
       <VBox layoutX="351.0" layoutY="21.0" prefHeight="744.0" prefWidth="594.0" style="-fx-spacing: 8;">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Interested in:" wrappingWidth="305.642578125">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gatherings attending:" wrappingWidth="305.642578125">
                <VBox.margin>
                   <Insets left="5.0" />
                </VBox.margin>
@@ -323,7 +323,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="profileGatheringDateLabel22" prefHeight="36.0" prefWidth="343.0" text="21/07/2023" />
+                                          <Label fx:id="profileGatheringDateLabel" prefHeight="36.0" prefWidth="343.0" text="21/07/2023" />
                                        </children>
                                     </VBox>
                                     <ImageView fitHeight="60.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">

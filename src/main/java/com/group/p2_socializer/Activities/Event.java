@@ -1,4 +1,4 @@
-package com.group.p2_socializer.activities;
+package com.group.p2_socializer.Activities;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;

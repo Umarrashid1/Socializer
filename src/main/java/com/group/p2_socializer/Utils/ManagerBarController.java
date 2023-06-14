@@ -2,8 +2,8 @@ package com.group.p2_socializer.Utils;
 
 import com.group.p2_socializer.Database.ActivityDB;
 import com.group.p2_socializer.Database.GatheringDB;
-import com.group.p2_socializer.activities.Event;
-import com.group.p2_socializer.activities.Gathering;
+import com.group.p2_socializer.Activities.Event;
+import com.group.p2_socializer.Activities.Gathering;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextArea;

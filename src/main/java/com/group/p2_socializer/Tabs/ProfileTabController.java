@@ -1,30 +1,33 @@
 package com.group.p2_socializer.Tabs;
 
-import com.group.p2_socializer.Database.UserDB;
+import com.group.p2_socializer.Socializer;
 import com.group.p2_socializer.UserLogIn.User;
-import com.group.p2_socializer.activities.Gathering;
+import com.group.p2_socializer.Activities.Gathering;
+import com.group.p2_socializer.Utils.ScreenUtils;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
-public class ProfileTabController extends TabController implements Initializable{
-   // ObservableList<Activity> listGatheringsPrior = FXCollections.observableArrayList();
-    // ObservableList<Activity> listGatheringInterest = FXCollections.observableArrayList();
-    //ObservableList<Activity> listGatheringOrganized = FXCollections.observableArrayList();
-   ArrayList<String> tagList = new ArrayList<>();
+public class ProfileTabController extends TabController {
+ public JFXButton deleteAccountButton;
+ ArrayList<String> tagList = new ArrayList<>();
 
     @FXML
     private AnchorPane ChooseGatheringAnchorPane;
@@ -82,6 +85,24 @@ public class ProfileTabController extends TabController implements Initializable
 
     }
 
+    public void deleteAccount() throws IOException {
+     Node node = deleteAccountButton;
+     Stage currentStage = (Stage) node.getScene().getWindow();
+     currentStage.close();
+
+     FXMLLoader fxmlLoader = new FXMLLoader(Socializer.class.getResource("login_page.fxml"));
+     Scene scene = new Scene(fxmlLoader.load());
+
+     Stage mainStage = new Stage();
+     mainStage.setTitle("Socializer");
+     mainStage.setScene(scene);
+     mainStage.show();
+     double centerX = ScreenUtils.getScreenCenterX() - mainStage.getWidth() / 2;
+     double centerY = ScreenUtils.getScreenCenterY() - mainStage.getHeight() / 2;
+     mainStage.setX(centerX);
+     mainStage.setY(centerY);
+    }
+
     @FXML
     void hoverOverProfilePic(MouseDragEvent event) {
         //TODO: make distinction and tooltip for edit
@@ -89,18 +110,8 @@ public class ProfileTabController extends TabController implements Initializable
 
 
 
-    private void loadData(ObservableList<Gathering> list) {
-       list.removeAll(list);
-       //TODO: add functionality to load all gatherings from user object.'
-        /*
-        for(String i: gatheringAttendingList) {
-            list.add(userOfProfile.getGatheringAttending(i));
-         */
-    }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-    }
+
 
 
 
