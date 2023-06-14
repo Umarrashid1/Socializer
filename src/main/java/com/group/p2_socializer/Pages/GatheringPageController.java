@@ -157,6 +157,7 @@ public class GatheringPageController {
         notGoingButton.setRipplerFill(javafx.scene.paint.Color.valueOf("#e80027"));
 
 
+        HBox outerHBox = new HBox();
 
         attendGatheringButton.setOnAction((actionEvent ) -> {
 
@@ -165,10 +166,10 @@ public class GatheringPageController {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-
+            outerHBox.getChildren().clear();
             //Refresh profile items
             try {
-                addProfileItems(newGathering, descriptionVBox);
+                addProfileItems(newGathering, descriptionVBox, outerHBox);
             } catch (IOException | SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -185,7 +186,7 @@ public class GatheringPageController {
 
             //Refresh profile items
             try {
-                addProfileItems(newGathering, descriptionVBox);
+                addProfileItems(newGathering, descriptionVBox, outerHBox);
             } catch (IOException | SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -238,7 +239,7 @@ public class GatheringPageController {
 
         //-------------------------------------------------------------------------
 
-        addProfileItems(newGathering, descriptionVBox);
+        addProfileItems(newGathering, descriptionVBox, outerHBox);
         //--------------------------------------------------------------------------
 
 
@@ -272,12 +273,11 @@ public class GatheringPageController {
 
     }
 
-    public void addProfileItems(Gathering newGathering, VBox descriptionVBox) throws IOException, SQLException {
-        HBox outerHBox = new HBox();
-        outerHBox.getChildren().clear(); //test
+    public void addProfileItems(Gathering newGathering, VBox descriptionVBox, HBox outerHBox) throws IOException, SQLException {
+        outerHBox.getChildren().clear();
+
         outerHBox.setPrefHeight(90.0);
         outerHBox.setPrefWidth(300.0);
-
 
         ScrollPane profileScrollPane = new ScrollPane();
         profileScrollPane.setBackground(

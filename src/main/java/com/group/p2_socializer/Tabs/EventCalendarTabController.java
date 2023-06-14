@@ -174,8 +174,6 @@ public class EventCalendarTabController extends TabController implements Initial
                 }
 
 
-
-
                 calendar.getChildren().add(stackPane);
             }
         }
@@ -322,7 +320,6 @@ public class EventCalendarTabController extends TabController implements Initial
         stage.show();
 
     }
-
     public void showCreateEventButton(){
         if(currentUser.getUserType().equals("admin")) {
             JFXButton createEventButton = new JFXButton("Create Event");
