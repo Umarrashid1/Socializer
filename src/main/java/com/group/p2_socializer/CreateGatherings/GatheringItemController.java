@@ -79,6 +79,9 @@ public class GatheringItemController implements Initializable {
             gatheringPageController.setTabUpdateMap(tabUpdateMap);
             gatheringPageController.setMainTabPane(mainTabPane);
             gatheringPageController.setCurrentUser(currentUser);
+            if (currentUser.isAttending(currentGathering.getGatheringID())){
+                gatheringPageController.setAttending(true);
+            }
             gatheringPageController.loadGatheringPage(currentGathering);
 
         } catch (SQLException | IOException e) {

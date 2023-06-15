@@ -60,6 +60,7 @@ public class GatheringPageController {
     private VBox participantsVBox;
     private User currentUser;
 
+    private boolean attending;
 
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap) {
         this.tabUpdateMap = tabUpdateMap;
@@ -68,6 +69,11 @@ public class GatheringPageController {
     public void setMainTabPane(JFXTabPane mainTabPane) {
         this.mainTabPane = mainTabPane;
     }
+
+    public void setAttending(boolean value){
+        attending = value;
+    }
+
 
 
     public void loadGatheringPage(Gathering newGathering) throws SQLException, IOException {

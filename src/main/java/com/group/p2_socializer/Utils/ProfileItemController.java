@@ -17,7 +17,6 @@ public class ProfileItemController {
     public void setProfileNameLabel(User profileUser){
         String initials = profileUser.getFirstname().charAt(0) + "" + profileUser.getLastname().charAt(0);
         profileNameLabel.setText(initials);
-
     }
 
 }

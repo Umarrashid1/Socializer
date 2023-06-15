@@ -109,6 +109,25 @@ public class UserDB {
 
     }
 
+    public static boolean isAttending(int userID, int gatheringID) throws SQLException {
+        String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
+        String dbUser = "root";
+        String dbPassword = "password";
+        String sql = "SELECT * FROM Participations where gatheringID = ? and userID = ?";
+        Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1, userID);
+        statement.setInt(2, gatheringID);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            connection.close();
+            return true;
+        } else {
+            connection.close();
+            return false;
+        }
+    }
+
     public void deleteUser(int userID) throws SQLException {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";

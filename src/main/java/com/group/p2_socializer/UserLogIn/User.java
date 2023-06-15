@@ -1,5 +1,6 @@
 package com.group.p2_socializer.UserLogIn;
 
+import com.group.p2_socializer.Activities.Gathering;
 import com.group.p2_socializer.Database.UserDB;
 
 import java.sql.SQLException;
@@ -73,6 +74,9 @@ public class User {
     public ArrayList getTags() throws SQLException {
         ArrayList tagList = UserDB.getTags(userID);
         return tagList;
+    }
+    public boolean  isAttending(int gatheringID) throws SQLException {
+        return UserDB.isAttending(userID, gatheringID);
     }
     public void setTags(List tagList){
         UserDB.setTags(tagList, userID);
