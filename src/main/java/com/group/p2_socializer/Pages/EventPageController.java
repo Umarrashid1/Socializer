@@ -210,8 +210,8 @@ public class EventPageController {
                 isGathering = false;
                 managerBarController.setDeleteButton(isGathering);
                 centerPane.getChildren().add(managerBarRoot);
-                centerPane.getChildren().add(descriptionVBox);
            }
+           centerPane.getChildren().add(descriptionVBox);
 
 
 
