@@ -289,6 +289,12 @@ public class GatheringPageController {
         }
 
         centerPane.getChildren().add(descriptionVBox);
+        VBox postList = new VBox();
+        postList.setId("postList");
+        postList.setLayoutX(9.0);
+        postList.setLayoutY(845.0);
+        postList.setMinWidth(558);
+        centerPane.getChildren().add(postList);
 
 
 
@@ -345,16 +351,6 @@ public class GatheringPageController {
         // Add profilesVBox
 
         descriptionVBox.getChildren().add(outerHBox);
-
-        VBox postList = new VBox();
-        postList.setId("postList");
-        postList.setLayoutX(9.0);
-        postList.setLayoutY(845.0);
-        postList.setMinWidth(558);
-        centerPane.getChildren().add(postList);
-
-
-
 
 
     }
