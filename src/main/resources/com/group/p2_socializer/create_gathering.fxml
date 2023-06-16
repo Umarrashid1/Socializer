@@ -99,13 +99,7 @@
             </VBox>
             <HBox prefHeight="47.0" prefWidth="409.0">
                <children>
-                  <JFXCheckBox prefHeight="44.0" prefWidth="104.0" text="I am the organiser of this event" />
                   <VBox prefHeight="33.0" prefWidth="56.0" />
-                  <JFXTextField fx:id="gatheringOrganiserTextField" prefHeight="21.0" prefWidth="135.0" promptText="Organiser">
-                     <HBox.margin>
-                        <Insets top="8.0" />
-                     </HBox.margin>
-                  </JFXTextField>
                </children>
                <VBox.margin>
                   <Insets top="20.0" />

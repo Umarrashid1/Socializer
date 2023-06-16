@@ -111,7 +111,7 @@
       </HBox>
       <VBox alignment="CENTER" prefHeight="75.0" prefWidth="660.0">
          <children>
-            <Label fx:id="registerMessageLabel" alignment="CENTER" textFill="#ff3131" />
+            <Label fx:id="registerMessageLabel" alignment="CENTER" textFill="#ff3131" wrapText="true" maxWidth="500" maxHeight="50" />
             <JFXButton fx:id="registerButton" onAction="#registerButtonHandler" prefHeight="50.0" prefWidth="142.0" text="Register">
                <font>
                   <Font size="18.0" />
