@@ -19,7 +19,7 @@ public class GatheringDB {
         String sql = "INSERT INTO gathering(eventname, eventdescription, eventcity, eventcountry, eventorganiser, localdatetime, timezone, activitytype, activitymin, activitymax) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         // connect to database
         Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
-        PreparedStatement statement = connection.prepareStatement(sql);
+        PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         statement.setString(1, newGathering.getActivityName());
         statement.setString(2, newGathering.getActivityDescription());
         statement.setString(3, newGathering.getActivityCity());
@@ -27,7 +27,7 @@ public class GatheringDB {
         statement.setString(5, newGathering.getActivityOrganiser());
         statement.setObject(6, newGathering.getLocalDateTime());
         statement.setString(7, newGathering.getTimeZone().toString());
-        statement.setString(8, newGathering.getActivityType().toString());
+        statement.setString(8, newGathering.getActivityType());
         statement.setInt(9, newGathering.getActivityMinimumParticipants());
         statement.setInt(10, newGathering.getActivityMaximumParticipants());
 
@@ -149,12 +149,14 @@ public class GatheringDB {
         String sql = "I";
         Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         PreparedStatement statement = connection.prepareStatement("INSERT INTO activitytagmap (activityID, tagID) VALUES (?, ?)");
-
-        for (Tag tag : tagList) {
-            statement.setInt(1, activityID);
-            statement.setInt(2, tag.getTagID());
-            statement.executeUpdate();
+        if(tagList != null){
+            for (Tag tag : tagList) {
+                statement.setInt(1, activityID);
+                statement.setInt(2, tag.getTagID());
+                statement.executeUpdate();
+            }
         }
+
 
         statement.close();
         connection.close();
