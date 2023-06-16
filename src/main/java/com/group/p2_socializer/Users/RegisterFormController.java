@@ -54,7 +54,6 @@ public class RegisterFormController {
 
         String currentUser = usernameTextField.getText();
         String currentPass = passwordTextField.getText();
-
         String rePassword = rePasswordTextField.getText();
         String firstName = firstNameTextField.getText();
         String lastName =  lastNameTextField.getText();
@@ -62,6 +61,9 @@ public class RegisterFormController {
         String city = cityTextField.getText();
         String email = emailTextField.getText();
         //dateOfBirthTextField.get
+
+
+        registerMessageLabel.setWrapText(true);
 
         //Check if password contains at least 8 characters and 1 digit
         if (currentPass.equals(rePassword) && currentPass.length() >= 9 && currentPass.matches(".*\\d.*") && currentPass.matches(".*[A-Z].*") && currentPass.matches(".*[a-z].*") && currentPass.matches(".*[!@#$%^&*()].*")) {
@@ -78,7 +80,8 @@ public class RegisterFormController {
 
             }
         } else {
-            registerMessageLabel.setText("Password needs to contain a minimum of 9 characters, at least 1 number, and a combination of capital and non-capital letters, numbers, and special characters");        }
+            registerMessageLabel.setText("Password needs to contain a minimum of 9 characters, and be a combination of capital and non-capital letters, numbers, and special characters");
+        }
     }
 
 
