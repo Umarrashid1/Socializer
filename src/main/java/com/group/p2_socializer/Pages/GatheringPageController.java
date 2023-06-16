@@ -279,10 +279,12 @@ public class GatheringPageController {
             ManagerBarController managerBarController = managerBarFxmlLoader.getController(); // Get reference to actual instance of ManagerBarController
             managerBarController.setMainTabPane(mainTabPane);
             managerBarController.setTabUpdateMap(tabUpdateMap);
+            managerBarController.setPostList(postList);
             managerBarController.setNewGathering(newGathering);
             boolean isGathering;
             isGathering = true;
             managerBarController.setDeleteButton(isGathering);
+            managerBarController.setPostNewsButtonButton();
             centerPane.getChildren().add(managerBarRoot);
         }
 

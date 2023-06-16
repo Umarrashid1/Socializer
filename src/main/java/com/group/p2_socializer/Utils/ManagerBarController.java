@@ -40,10 +40,11 @@ public class ManagerBarController {
     private Gathering newGathering;
     public Map<Tab, Boolean> tabUpdateMap;
     private JFXTabPane mainTabPane;
+    private VBox postList;
 
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
     public void setMainTabPane(JFXTabPane mainTabPane){this.mainTabPane = mainTabPane;}
-
+    public void setPostList(VBox postList){this.postList = postList;}
     public void setDeleteButton(boolean isGathering) throws SQLException {
         if (!isGathering){
             deleteButton.setOnMouseClicked((MouseEvent event) -> {
@@ -63,6 +64,13 @@ public class ManagerBarController {
                 }
             });
         }
+    }
+    public void setPostNewsButtonButton() throws SQLException {
+
+        postNewsButton.setOnMouseClicked((MouseEvent event) -> {
+                handlePostNewsButton();
+        });
+
     }
 
 
@@ -96,7 +104,7 @@ public class ManagerBarController {
         mainTabPane.getSelectionModel().select(2);
     }
 
-    public void handlePostNewsButton(VBox postList) {
+    public void handlePostNewsButton() {
         //if (!isWindowOpen) {
             Stage newWindow = new Stage();
             newWindow.setTitle("New Post");
@@ -131,7 +139,6 @@ public class ManagerBarController {
                     VBox.setVgrow(postLabel, Priority.ALWAYS);
                     postList.setPadding(new Insets(5, 0, 5, 36));
                     postList.setSpacing(30);
-
                     postList.getChildren().add(postLabel);
 
                 }

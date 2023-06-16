@@ -215,10 +215,12 @@ public class EventPageController {
                 ManagerBarController managerBarController = manageBarFxmlLoader.getController(); // Get reference to actual instance of ManagerBarController
                 managerBarController.setMainTabPane(mainTabPane);
                 managerBarController.setTabUpdateMap(tabUpdateMap);
+                managerBarController.setPostList(postList);
                 managerBarController.setNewEvent(newEvent);
                 boolean isGathering;
                 isGathering = false;
                 managerBarController.setDeleteButton(isGathering);
+               managerBarController.setPostNewsButtonButton();
                 centerPane.getChildren().add(managerBarRoot);
            }
            centerPane.getChildren().add(descriptionVBox);
