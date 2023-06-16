@@ -14,6 +14,7 @@ public class Gathering extends Event {
         return gatheringID;
     }
 
+
     public void setGatheringID(int gatheringID) {
         this.gatheringID = gatheringID;
     }
@@ -41,5 +42,13 @@ public class Gathering extends Event {
     public List<User> getGatheringParticipants() throws SQLException {
         List<User> userList= GatheringDB.getGatheringParticipants(gatheringID);
         return userList;
+    }
+    public int getGatheringParticipantAmount() throws SQLException {
+        List<Integer> userList = GatheringDB.getGatheringParticipantsID(gatheringID);
+        int size = 0;
+        if (userList != null) {
+            size = userList.size();
+        }
+        return size;
     }
 }

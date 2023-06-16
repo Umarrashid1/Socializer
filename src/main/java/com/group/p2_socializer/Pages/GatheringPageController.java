@@ -122,7 +122,7 @@ public class GatheringPageController {
         gatheringOrganiserLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 12; -fx-text-fill: #000000;");
 
         Label gatheringParticipationLabel = (Label) participantsVBox.lookup("#gatheringParticipationLabel");
-        gatheringParticipationLabel.setText("x" + "/" + newGathering.getActivityMaximumParticipants());
+        gatheringParticipationLabel.setText(newGathering.getGatheringParticipantAmount() + "/" + newGathering.getActivityMaximumParticipants());
 
 
         Label gatheringDescriptionLabel = new Label(newGathering.getActivityDescription());

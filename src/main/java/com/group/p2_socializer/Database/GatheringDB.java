@@ -73,6 +73,7 @@ public class GatheringDB {
         }
         connection.close();
 
+
         return gatheringList;
 
     }

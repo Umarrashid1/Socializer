@@ -43,18 +43,17 @@ public class GatheringItemController implements Initializable {
         this.gatheringItemAnchorPane = gatheringItemAnchorPane;
     }
 
-    public void setGathering(Gathering gathering){
+    public void setGathering(Gathering gathering) throws SQLException {
         currentGathering = gathering;
         titleLabel.setText(gathering.getActivityName());
         dayOfMonthLabel.setText(String.valueOf(gathering.getLocalDateTime().getDayOfMonth()));
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MMM", Locale.ENGLISH);
         String monthString = gathering.getLocalDateTime().format(dateFormatter).toUpperCase();
         monthLabel.setText(monthString);
-
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
         timeLabel.setText(String.valueOf(gathering.getLocalDateTime().format(timeFormatter)));
         organiserLabel.setText(gathering.getActivityOrganiser());
-        attendingLabel.setText("x" + "/" + String.valueOf(gathering.getActivityMaximumParticipants()));
+        attendingLabel.setText(String.valueOf(gathering.getGatheringParticipantAmount() + "/" + gathering.getActivityMaximumParticipants()));
         locationLabel.setText(gathering.getActivityCity() + ", " + gathering.getActivityCountry());
     }
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
