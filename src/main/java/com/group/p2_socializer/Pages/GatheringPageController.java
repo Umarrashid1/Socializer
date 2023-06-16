@@ -2,6 +2,7 @@ package com.group.p2_socializer.Pages;
 
 import com.group.p2_socializer.UserLogIn.User;
 import com.group.p2_socializer.Utils.ManagerBarController;
+import com.group.p2_socializer.Utils.PopUpMessage;
 import com.group.p2_socializer.Utils.ProfileItemController;
 import com.group.p2_socializer.Activities.Gathering;
 import com.group.p2_socializer.Activities.Tag;
@@ -77,6 +78,11 @@ public class GatheringPageController {
 
 
     public void loadGatheringPage(Gathering newGathering) throws SQLException, IOException {
+        String attendingGatheringPopUp = new String("  Attending Gathering  ");
+        String leavingGatheringPopUp = new String("  Left Gathering  ");
+        PopUpMessage popUpMessage = new PopUpMessage();
+
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy 'AT' HH:mm", Locale.ENGLISH);
         ZonedDateTime zonedDateTime = newGathering.getLocalDateTime().atZone(newGathering.getTimeZone());
         String dateString = zonedDateTime.format(formatter).toUpperCase();
@@ -143,7 +149,6 @@ public class GatheringPageController {
         // Add the Line to the VBox
         descriptionVBox.getChildren().add(line);
 
-
         JFXButton attendGatheringButton = new JFXButton();
         attendGatheringButton.setText("Attend Gathering");
         attendGatheringButton.setId("attendGatheringButton");
@@ -152,16 +157,25 @@ public class GatheringPageController {
         attendGatheringButton.setLayoutY(412.0);
         attendGatheringButton.setStyle("-fx-background-color: #71FF60;");
         attendGatheringButton.setRipplerFill(javafx.scene.paint.Color.valueOf("#7bce3c"));
+        attendGatheringButton.setVisible(false);
 
-        JFXButton notGoingButton = new JFXButton();
-        notGoingButton.setText("Not going");
-        notGoingButton.setId("notGoingButton");
-        notGoingButton.setPrefSize(116.0,29.0);
-        notGoingButton.setLayoutX(164.0);
-        notGoingButton.setLayoutY(412.0);
-        notGoingButton.setStyle("-fx-background-color: FFA3A3FF;");
-        notGoingButton.setRipplerFill(javafx.scene.paint.Color.valueOf("#e80027"));
+        JFXButton leaveGatheringButton = new JFXButton();
+        leaveGatheringButton.setText("Not going");
+        leaveGatheringButton.setId("notGoingButton");
+        leaveGatheringButton.setPrefSize(116.0, 29.0);
+        leaveGatheringButton.setLayoutX(164.0);
+        leaveGatheringButton.setLayoutY(412.0);
+        leaveGatheringButton.setStyle("-fx-background-color: FFA3A3FF;");
+        leaveGatheringButton.setRipplerFill(javafx.scene.paint.Color.valueOf("#e80027"));
+        leaveGatheringButton.setVisible(false);
 
+        centerPane.getChildren().add(attendGatheringButton);
+        centerPane.getChildren().add(leaveGatheringButton);
+
+        if(!attending){
+            leaveGatheringButton.setVisible(true);
+        }
+        else{ attendGatheringButton.setVisible(true);}
 
         HBox outerHBox = new HBox();
 
@@ -172,17 +186,22 @@ public class GatheringPageController {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-            outerHBox.getChildren().clear();
+
             //Refresh profile items
             try {
                 addProfileItems(newGathering, descriptionVBox, outerHBox);
             } catch (IOException | SQLException e) {
                 throw new RuntimeException(e);
             }
+            attendGatheringButton.setVisible(false);
+            leaveGatheringButton.setVisible(true);
+
+            popUpMessage.showCreatedPopUp(attendingGatheringPopUp);
+
 
         });
 
-        notGoingButton.setOnMouseClicked((MouseEvent event) -> {
+        leaveGatheringButton.setOnMouseClicked((MouseEvent event) -> {
 
             try {
                 leaveGatheringButton(event, newGathering);
@@ -196,6 +215,10 @@ public class GatheringPageController {
             } catch (IOException | SQLException e) {
                 throw new RuntimeException(e);
             }
+            leaveGatheringButton.setVisible(false);
+            attendGatheringButton.setVisible(true);
+            popUpMessage.showCreatedPopUp(leavingGatheringPopUp);
+
 
         });
 
@@ -244,7 +267,6 @@ public class GatheringPageController {
 
 
         //-------------------------------------------------------------------------
-
         addProfileItems(newGathering, descriptionVBox, outerHBox);
         //--------------------------------------------------------------------------
 
@@ -265,8 +287,7 @@ public class GatheringPageController {
         }
 
         centerPane.getChildren().add(descriptionVBox);
-        centerPane.getChildren().add(attendGatheringButton);
-        centerPane.getChildren().add(notGoingButton);
+
 
 
         // Create a new stage and set the new scene
@@ -280,6 +301,7 @@ public class GatheringPageController {
     }
 
     public void addProfileItems(Gathering newGathering, VBox descriptionVBox, HBox outerHBox) throws IOException, SQLException {
+        descriptionVBox.getChildren().remove(outerHBox);
         outerHBox.getChildren().clear();
 
         outerHBox.setPrefHeight(90.0);
@@ -317,9 +339,11 @@ public class GatheringPageController {
         outerHBox.getChildren().addAll(profileScrollPane);
 
         // Add profilesVBox
+
         descriptionVBox.getChildren().add(outerHBox);
 
     }
+
 
 
     private void attendGatheringButton(Gathering newGathering) throws SQLException {

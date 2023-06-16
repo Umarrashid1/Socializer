@@ -7,6 +7,7 @@ import com.group.p2_socializer.Activities.Gathering;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextArea;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -26,7 +27,7 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class ManagerBarController implements Initializable {
+public class ManagerBarController {
     @FXML
     private JFXButton editEventButton;
     @FXML
@@ -158,8 +159,5 @@ public class ManagerBarController implements Initializable {
     }
 
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    }
 }
