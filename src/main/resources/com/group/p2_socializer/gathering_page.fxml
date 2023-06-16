@@ -28,7 +28,7 @@
                         <VBox fx:id="gatheringInfoVBox" layoutX="36.0" layoutY="312.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="26.0">
                            <children>
                               <Label fx:id="gatheringDateLabel" text="Label" />
-                              <Label fx:id="gatheringTitleLabel" maxWidth="558" text="Label" />
+                              <Label fx:id="gatheringTitleLabel" maxWidth="558" text="Label"/>
                               <Label fx:id="gatheringLocationLabel" text="Label" />
                               <HBox fx:id="organiserHBox" prefWidth="534.0">
                                  <children>

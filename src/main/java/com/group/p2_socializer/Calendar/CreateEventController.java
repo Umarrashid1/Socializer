@@ -110,7 +110,7 @@ public class CreateEventController {
 
     public void handleAddTagsButton() {
         Stage stage = new Stage();
-        stage.setTitle("Add tags.csv!");
+        stage.setTitle("Add tags");
 
         try {
             List<Tag> tagList = ActivityDB.getTags();
@@ -122,7 +122,7 @@ public class CreateEventController {
                 labelTagMap.put(label, tag);            }
             listView.setPrefHeight(Region.USE_COMPUTED_SIZE);
 
-            JFXButton addTagsButton = new JFXButton("Add tags.csv");
+            JFXButton addTagsButton = new JFXButton("Add tags");
             addTagsButton.setStyle("-fx-background-color: #7FFF5B;");
 
 
