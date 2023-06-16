@@ -19,39 +19,29 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 public class GatheringItemController implements Initializable {
-
     private Gathering currentGathering;
-
     @FXML
     private AnchorPane gatheringItemAnchorPane;
     @FXML
     private Label titleLabel;
-
     @FXML
     private Label organiserLabel;
     @FXML
     private Label locationLabel;
     @FXML
     private Label attendingLabel;
-
     @FXML
     private Label dayOfMonthLabel;
-
     @FXML
     private Label monthLabel;
-
     @FXML
     private Label timeLabel;
-
     public Map<Tab, Boolean> tabUpdateMap;
     private JFXTabPane mainTabPane;
-
     public User currentUser;
-
     public void setGatheringItemAnchorPane(AnchorPane gatheringItemAnchorPane) {
         this.gatheringItemAnchorPane = gatheringItemAnchorPane;
     }
-
 
     public void setGathering(Gathering gathering){
         currentGathering = gathering;
