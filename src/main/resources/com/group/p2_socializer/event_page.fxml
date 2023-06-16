@@ -43,7 +43,6 @@
                         </HBox>
                         <Line endX="464.0" layoutX="130.0" layoutY="405.0" startX="-92.5" />
                         <Line endX="200.0" layoutX="138.0" layoutY="447.0" startX="-100.0" />
-                        <VBox fx:id="postList" layoutX="9.0" layoutY="845.0" minWidth="558" />
                         <Label layoutX="37.0" layoutY="805.0" minWidth="558.0" text="Posts:">
                            <font>
                               <Font name="System Bold" size="21.0" />

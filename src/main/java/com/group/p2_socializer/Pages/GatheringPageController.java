@@ -121,6 +121,7 @@ public class GatheringPageController {
         gatheringOrganiserLabel.setStyle("-fx-font-family: 'Arial'; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 12; -fx-text-fill: #000000;");
 
         Label gatheringParticipationLabel = (Label) participantsVBox.lookup("#gatheringParticipationLabel");
+
         gatheringParticipationLabel.setText(newGathering.getGatheringParticipantAmount() + "/" + newGathering.getActivityMaximumParticipants());
 
 
@@ -171,10 +172,10 @@ public class GatheringPageController {
         centerPane.getChildren().add(attendGatheringButton);
         centerPane.getChildren().add(leaveGatheringButton);
 
-        if(attending){
+        if(!attending){
             leaveGatheringButton.setVisible(true);
         }
-        else{ attendGatheringButton.setVisible(true);}
+        else{attendGatheringButton.setVisible(true);}
 
         HBox outerHBox = new HBox();
 
@@ -194,6 +195,14 @@ public class GatheringPageController {
             }
             attendGatheringButton.setVisible(false);
             leaveGatheringButton.setVisible(true);
+
+
+            try {
+                gatheringParticipationLabel.setText(newGathering.getGatheringParticipantAmount() + "/" + newGathering.getActivityMaximumParticipants());
+            } catch (SQLException e) {
+                System.out.println("RERERER");
+                throw new RuntimeException(e);
+            }
 
             popUpMessage.showCreatedPopUp(attendingGatheringPopUp);
 
@@ -216,6 +225,14 @@ public class GatheringPageController {
             }
             leaveGatheringButton.setVisible(false);
             attendGatheringButton.setVisible(true);
+
+            try {
+                gatheringParticipationLabel.setText(newGathering.getGatheringParticipantAmount() + "/" + newGathering.getActivityMaximumParticipants());
+            } catch (SQLException e) {
+                System.out.println("RERERER");
+                throw new RuntimeException(e);
+            }
+
             popUpMessage.showCreatedPopUp(leavingGatheringPopUp);
 
 
@@ -273,6 +290,7 @@ public class GatheringPageController {
 
         // Load the manager_bar.fxml file
         centerPane.getChildren().add(descriptionVBox);
+
         VBox postList = new VBox();
         postList.setId("postList");
         postList.setLayoutX(9.0);
