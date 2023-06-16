@@ -54,7 +54,6 @@ public class GatheringPageController {
     @FXML
     private VBox vBoxPostNews;
     @FXML
-    private VBox postList;
     public Map<Tab, Boolean> tabUpdateMap;
     private JFXTabPane mainTabPane;
     @FXML
@@ -273,6 +272,14 @@ public class GatheringPageController {
 
 
         // Load the manager_bar.fxml file
+        centerPane.getChildren().add(descriptionVBox);
+        VBox postList = new VBox();
+        postList.setId("postList");
+        postList.setLayoutX(9.0);
+        postList.setLayoutY(845.0);
+        postList.setMinWidth(558);
+        centerPane.getChildren().add(postList);
+
         if(currentUser.getUserType().equals("admin") || (currentUser.getUsername().equals(newGathering.getActivityOrganiser()))){
             FXMLLoader managerBarFxmlLoader = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/manager_bar.fxml"));
             Parent managerBarRoot = managerBarFxmlLoader.load();
@@ -288,13 +295,7 @@ public class GatheringPageController {
             centerPane.getChildren().add(managerBarRoot);
         }
 
-        centerPane.getChildren().add(descriptionVBox);
-        VBox postList = new VBox();
-        postList.setId("postList");
-        postList.setLayoutX(9.0);
-        postList.setLayoutY(845.0);
-        postList.setMinWidth(558);
-        centerPane.getChildren().add(postList);
+
 
 
 
