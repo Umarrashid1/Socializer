@@ -75,7 +75,7 @@ public class GatheringItemController implements Initializable {
             gatheringPageController.loadGatheringPage(currentGathering);
 
         } catch (SQLException | IOException e) {
-            throw new RuntimeException(e);
+3            throw new RuntimeException(e);
         }
     }
     public void setMonthLabel(String monthLabel) {

@@ -73,7 +73,7 @@ public class CreateGatheringController {
         newGathering.setActivityDescription(gatheringDescriptionTextArea.getText());
         newGathering.setActivityCity(gatheringCityTextField.getText());
         newGathering.setActivityCountry(gatheringCountryTextField.getText());
-        newGathering.setActivityOrganiser(gatheringOrganiserTextField.getText());
+        newGathering.setActivityOrganiser(currentUser.getUsername());
         newGathering.setActivityMinimumParticipants(Integer.parseInt(minimumParticipantsTextField.getText()));
         newGathering.setActivityMaximumParticipants(Integer.parseInt(maximumParticipantsTextField.getText()));
         newGathering.setLocalDateTime(localDateTime);

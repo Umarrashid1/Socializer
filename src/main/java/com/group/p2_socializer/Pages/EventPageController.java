@@ -80,6 +80,8 @@ public class EventPageController {
         createGatheringController.setEventData(event);
         createGatheringController.setTabUpdateMap(tabUpdateMap);
         createGatheringController.setMainTabPane(mainTabPane);
+        createGatheringController.setCurrentUser(currentUser);
+
         mainTabPane.getSelectionModel().getSelectedItem().setContent(newPane);
     }
     public void findGatheringsButtonhandler(ScrollPane scrollPane, Event event) throws IOException {
