@@ -55,7 +55,6 @@ public class EventPageController {
     @FXML
     public JFXButton interestedButton;
     @FXML
-    public JFXButton attendEventButton;
     public Map<Tab, Boolean> tabUpdateMap;
     public User currentUser;
 
@@ -83,6 +82,12 @@ public class EventPageController {
         createGatheringController.setMainTabPane(mainTabPane);
         mainTabPane.getSelectionModel().getSelectedItem().setContent(newPane);
     }
+    public void findGatheringsButtonhandler(ScrollPane scrollPane, Event event) throws IOException {
+        mainTabPane.getSelectionModel().select(2);
+        //Select discover tab
+        Stage stage = (Stage) scrollPane.getScene().getWindow();
+        stage.close();
+    }
 
     //TODO: Split into additional methods
     public void loadEventPage(Event newEvent) {
@@ -103,7 +108,10 @@ public class EventPageController {
             AnchorPane centerPane = (AnchorPane) scrollPane.getContent();
             VBox eventInfoVBox = (VBox) centerPane.lookup("#eventInfoVBox");
             HBox organiserHBox = (HBox) eventInfoVBox.lookup("#organiserHBox");
+            JFXButton findGatheringsButton = (JFXButton) centerPane.lookup("#findGatheringsButton");
             JFXButton createGatheringButton = (JFXButton) centerPane.lookup("#createGatheringButton");
+            // Assign buttons to handlers
+
             organiserHBox.setMaxWidth(250);
 
             Label eventDateLabel = (Label) eventInfoVBox.lookup("#eventDateLabel");
@@ -219,6 +227,8 @@ public class EventPageController {
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
             newStage.setTitle(newEvent.getActivityName());
+
+            // Assign buttons to handlers
             createGatheringButton.setOnMouseClicked((MouseEvent event) -> {
                 try {
                     createEventGatheringButtonHandler(scrollPane, newEvent );
@@ -226,6 +236,14 @@ public class EventPageController {
                     throw new RuntimeException(e);
                 }
             });
+            findGatheringsButton.setOnMouseClicked((MouseEvent event) -> {
+                try {
+                    findGatheringsButtonhandler(scrollPane, newEvent );
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+
 
             //VBox postList = (VBox) root.lookup("#postList");
             //postList.setMaxWidth(Double.MAX_VALUE);

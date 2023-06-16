@@ -97,38 +97,50 @@ public class GatheringDB {
         statement.setInt(1, gatheringID);
         ResultSet result = statement.executeQuery();
         List<Integer> userList = new ArrayList<>();
-        while (result.next()) {
-            userList.add(result.getInt("userid"));
+        if (result.next()) {
+            do {
+                userList.add(result.getInt("userid"));
+            } while (result.next());
+        } else {
+            userList = null;
         }
+
         connection.close();
         return userList;
     }
     public static List<User> getGatheringParticipants(int gatheringID) throws SQLException {
-        List <Integer> idList = getGatheringParticipantsID(gatheringID);
-        String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
-        String dbUser = "root";
-        String dbPassword = "password";
-        String sql = "SELECT * FROM users WHERE userid IN (" + String.join(",", Collections.nCopies(idList.size(), "?")) + ")";
-        Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
-        PreparedStatement statement = connection.prepareStatement(sql);
-        for (int i = 0; i < idList.size(); i++) {
-            statement.setInt(i + 1, idList.get(i));
+        List<Integer> idList = getGatheringParticipantsID(gatheringID);
+        if(idList != null){
+            String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
+            String dbUser = "root";
+            String dbPassword = "password";
+            String sql = "SELECT * FROM users WHERE userid IN (" + String.join(",", Collections.nCopies(idList.size(), "?")) + ")";
+            List<User> userList = new ArrayList<>();
+            Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+            PreparedStatement statement = connection.prepareStatement(sql);
+            for (int i = 0; i < idList.size(); i++) {
+                statement.setInt(i + 1, idList.get(i));
+            }
+
+            ResultSet result = statement.executeQuery();
+                while (result.next()) {
+                    User user = new User();
+                    user.setUserID(result.getInt("userid"));
+                    user.setUsername(result.getString("username"));
+                    user.setUserType(result.getString("usertype"));
+                    user.setFirstname(result.getString("firstname"));
+                    user.setLastname(result.getString("lastname"));
+                    userList.add(user);
+                }
+                return userList;
+
+            }else{
+            return null;
         }
-        ResultSet result = statement.executeQuery();
-        List<User> userList = new ArrayList<>();
-        while (result.next()) {
-            User user = new User();
-            user.setUserID(result.getInt("userid"));
-            user.setUsername(result.getString("username"));
-            user.setUserType(result.getString("usertype"));
-            user.setFirstname(result.getString("firstname"));
-            user.setLastname(result.getString("lastname"));
-            userList.add(user);
-        }
-        connection.close();
-        return userList;
+
 
     }
+
 
     public static void setGatheringTags(List<Tag> tagList, int activityID) throws SQLException {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";

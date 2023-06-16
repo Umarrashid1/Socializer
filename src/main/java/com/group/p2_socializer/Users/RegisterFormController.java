@@ -78,7 +78,7 @@ public class RegisterFormController {
 
             }
         } else {
-            registerMessageLabel.setText("Password needs to contain a minimum of 9 characters, at least 1 number, and a combination of capital and non-capital letters, numbers, and special characters");        }
+            registerMessageLabel.setText("Password needs to contain a minimum of 9 characters, and contain a combination of capital and non-capital letters, numbers, and special characters");        }
     }
 
 

@@ -325,16 +325,18 @@ public class GatheringPageController {
 
         profileAnchorPane.getChildren().add(innerHbox);
         profileScrollPane.setContent(profileAnchorPane);
-
         List<User> userList = newGathering.getGatheringParticipants();
+        if(userList != null){
+            for (User user : userList) {
+                FXMLLoader profileItemFxmlLoader = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/profile_item.fxml"));
+                VBox profileItemVBox = profileItemFxmlLoader.load();
+                ProfileItemController profileItemController = profileItemFxmlLoader.getController();
+                profileItemController.setProfileNameLabel(user);
+                innerHbox.getChildren().add(profileItemVBox);
+            }
 
-        for (User user : userList) {
-            FXMLLoader profileItemFxmlLoader = new FXMLLoader(GatheringPageController.class.getResource("/com/group/p2_socializer/profile_item.fxml"));
-            VBox profileItemVBox = profileItemFxmlLoader.load();
-            ProfileItemController profileItemController = profileItemFxmlLoader.getController();
-            profileItemController.setProfileNameLabel(user);
-            innerHbox.getChildren().add(profileItemVBox);
         }
+
 
         outerHBox.getChildren().addAll(profileScrollPane);
 

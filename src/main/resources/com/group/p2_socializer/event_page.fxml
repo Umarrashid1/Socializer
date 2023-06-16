@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextArea?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefWidth="631.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Pages.EventPageController">
+<ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefWidth="631.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.p2_socializer.Pages.EventPageController">
    <content>
       <AnchorPane prefHeight="770.0">
          <children>
@@ -56,7 +49,7 @@
                               <Font name="System Bold" size="21.0" />
                            </font>
                         </Label>
-                        <JFXButton fx:id="attendEventButton" layoutX="190.0" layoutY="412.0" prefHeight="29.0" prefWidth="116.0" ripplerFill="#7bce3c" style="-fx-background-color: #71FF60;" text="Find Gatherings" wrapText="true" />
+                        <JFXButton fx:id="findGatheringsButton" layoutX="190.0" layoutY="412.0" prefHeight="29.0" prefWidth="116.0" ripplerFill="#7bce3c" style="-fx-background-color: #71FF60;" text="Find Gatherings" wrapText="true" />
                         <JFXButton fx:id="createGatheringButton" layoutX="66.0" layoutY="412.0" prefHeight="29.0" prefWidth="116.0" ripplerFill="#7bce3c" style="-fx-background-color: #E2FF71;" text="Create Gathering" wrapText="true" />
                      </children>
                   </AnchorPane>
