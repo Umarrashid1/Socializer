@@ -107,8 +107,7 @@ public class TabController  {
         if (tabUpdateMap.getOrDefault(newTab, true)) {
             tabUpdateMap.put(newTab, false);
             if(newTab == homeTab){
-                //loadPage("under_construction");
-                //tabUpdateMap.put(discoverTab, true);
+
             } else if(newTab == calendarTab) {
                 loadPage("calendar_tab");
                 //tabUpdateMap.put(calendarTab, true);
