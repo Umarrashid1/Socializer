@@ -28,7 +28,7 @@ public class PopUpMessage {
 
         StackPane root = new StackPane();
         root.getChildren().add(message);
-        root.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
+        root.setBackground(new Background(new BackgroundFill(Color.web("#69FF75"), new CornerRadii(10), Insets.EMPTY)));
 
         Scene scene = new Scene(root, -1, 50);
         scene.setFill(Color.TRANSPARENT);
