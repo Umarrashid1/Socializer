@@ -318,7 +318,7 @@ public class EventCalendarTabController extends TabController implements Initial
             JFXButton createEventButton = new JFXButton("Create Event");
             createEventButton.setLayoutX(83.0);
             createEventButton.setLayoutY(54.0);
-            calendar.getChildren().add(createEventButton);
+            eventCalendarAnchorPane.getChildren().add(createEventButton);
 
             createEventButton.setOnAction(actionEvent -> {
                 try {

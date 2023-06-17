@@ -35,9 +35,9 @@ public class CreateEventController {
     @FXML
     public JFXButton addTagsButton;
     @FXML
-    public JFXTextField minimumParticipantsTextField; //---------newly added
+    public JFXTextField minimumParticipantsTextField;
     @FXML
-    public JFXTextField maximumParticipantsTextField; //---------newly added
+    public JFXTextField maximumParticipantsTextField;
     @FXML
     private TextField eventNameTextField;
     @FXML

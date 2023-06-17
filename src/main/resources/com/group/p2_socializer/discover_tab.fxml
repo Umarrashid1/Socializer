@@ -42,7 +42,7 @@
                   <JFXCheckBox prefHeight="47.0" prefWidth="200.0" />
                   <VBox alignment="BOTTOM_LEFT" prefHeight="347.0" prefWidth="201.0">
                      <children>
-                        <JFXButton fx:id="syncPageButton" text="Sync. page">
+                        <JFXButton fx:id="syncPageButton" onAction="#loadGatheringItems" text="Sync. page">
                            <graphic>
                               <MaterialIconView glyphName="SYNC" size="25" />
                            </graphic>

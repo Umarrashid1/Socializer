@@ -3,6 +3,7 @@ package com.group.p2_socializer.Tabs;
 import com.group.p2_socializer.CreateGatherings.GatheringItemController;
 import com.group.p2_socializer.Database.GatheringDB;
 import com.group.p2_socializer.Activities.Gathering;
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,7 +17,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class DiscoverTabController extends TabController implements Initializable {
+public class DiscoverTabController extends TabController {
+    @FXML
+    public JFXButton syncPageButton;
     @FXML
     private AnchorPane discoverAnchorPane;
     @FXML
@@ -24,10 +27,9 @@ public class DiscoverTabController extends TabController implements Initializabl
     @FXML
     private VBox gatheringItemVBox;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-    }
+
     public void loadGatheringItems() {
+        //gatheringItemVBox.getChildren().clear();
         try {
             List<Gathering> gatheringList = GatheringDB.getGatheringsDate(2023);
             for (Gathering gathering : gatheringList) {

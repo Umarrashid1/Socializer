@@ -58,7 +58,7 @@ public class CreateGatheringController {
         gatheringDescriptionTextArea.setText(event.getActivityDescription());
         gatheringCityTextField.setText(event.getActivityCity());
         gatheringCountryTextField.setText(event.getActivityCountry());
-        gatheringOrganiserTextField.setText(event.getActivityOrganiser());
+        //gatheringOrganiserTextField.setText(event.getActivityOrganiser());
         eventTimeTextField.setText(event.getLocalDateTime().toLocalTime().toString());
         eventDatePicker.setValue(event.getLocalDateTime().toLocalDate());
     }

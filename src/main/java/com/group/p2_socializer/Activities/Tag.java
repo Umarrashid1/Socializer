@@ -1,4 +1,5 @@
-package com.group.p2_socializer.Activities;public class Tag {
+package com.group.p2_socializer.Activities;
+public class Tag {
     private int tagID;
     private String tag;
 
