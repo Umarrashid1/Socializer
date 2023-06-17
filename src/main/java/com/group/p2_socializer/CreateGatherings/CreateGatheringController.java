@@ -131,7 +131,8 @@ public class CreateGatheringController {
             for (Tag tag : tagList) {
                 Label label = new Label(tag.getTag());
                 listView.getItems().add(label);
-                labelTagMap.put(label, tag);            }
+                labelTagMap.put(label, tag);
+            }
             listView.setPrefHeight(Region.USE_COMPUTED_SIZE);
 
             JFXButton addTagsButton = new JFXButton("Add tags");

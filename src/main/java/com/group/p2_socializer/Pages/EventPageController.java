@@ -122,7 +122,7 @@ public class EventPageController {
 
             Label eventTitleLabel = (Label) eventInfoVBox.lookup("#eventTitleLabel" );
             eventTitleLabel.setText(newEvent.getActivityName());
-            eventTitleLabel.setFont(Font.font("Eras Bold ITC", 25));
+            eventTitleLabel.setFont(Font.font("Eras Bold ITC", 20));
 
             Label eventLocation =  (Label) eventInfoVBox.lookup("#eventLocationLabel");
             eventLocation.setText(newEvent.getActivityCity() + ", " + newEvent.getActivityCountry());
