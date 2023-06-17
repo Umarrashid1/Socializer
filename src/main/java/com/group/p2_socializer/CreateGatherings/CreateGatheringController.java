@@ -109,6 +109,7 @@ public class CreateGatheringController {
         GatheringPageController gatheringPageController = new GatheringPageController();
         gatheringPageController.setMainTabPane(mainTabPane);
         gatheringPageController.setCurrentUser(currentUser);
+        gatheringPageController.setTabUpdateMap(tabUpdateMap);
         gatheringPageController.loadGatheringPage(newGathering);
         Tab newTab = mainTabPane.getTabs().get(2);
         this.tabUpdateMap.put(newTab, true);
