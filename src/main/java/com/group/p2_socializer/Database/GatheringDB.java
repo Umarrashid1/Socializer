@@ -143,16 +143,16 @@ public class GatheringDB {
     }
 
 
-    public static void setGatheringTags(List<Tag> tagList, int activityID) throws SQLException {
+    public static void setGatheringTags(List<Tag> tagList, int gatheringID) throws SQLException {
         String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
         String dbUser = "root";
         String dbPassword = "password";
-        String sql = "I";
+        String sql = "INSERT INTO gatheringtagmap (gatheringID, tagID) VALUES (?, ?)";
         Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO activitytagmap (activityID, tagID) VALUES (?, ?)");
+        PreparedStatement statement = connection.prepareStatement(sql);
         if(tagList != null){
             for (Tag tag : tagList) {
-                statement.setInt(1, activityID);
+                statement.setInt(1, gatheringID);
                 statement.setInt(2, tag.getTagID());
                 statement.executeUpdate();
             }
@@ -170,6 +170,30 @@ public class GatheringDB {
         String sql = "SELECT * FROM activitytags";
         Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet result = statement.executeQuery();
+        List<Tag> tagList = new ArrayList<>();
+        while (result.next()) {
+            Tag tag = new Tag();
+            tag.setTagID(result.getInt("tagID"));
+            tag.setTag(result.getString("tag"));
+            tagList.add(tag);
+        }
+        connection.close();
+        return tagList;
+    }
+
+    public static List getGatheringTags(int gatheringID) throws SQLException {
+        // get all activity tags
+        String dbUrl = "jdbc:mysql://130.225.39.187:3336/socializer?autoReconnect=true&useSSL=false";
+        String dbUser = "root";
+        String dbPassword = "password";
+        String sql = "SELECT * FROM gathering " +
+                "JOIN gatheringtagmap ON gathering.gatheringID = gatheringtagmap.gatheringID " +
+                "JOIN gatheringtag On gatheringtag.tagID = gatheringtagmap.TagID " +
+                "WHERE gathering.gatheringID = ?";
+        Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1, gatheringID);
         ResultSet result = statement.executeQuery();
         List<Tag> tagList = new ArrayList<>();
         while (result.next()) {

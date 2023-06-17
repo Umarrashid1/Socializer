@@ -1,5 +1,6 @@
 package com.group.p2_socializer.Pages;
 
+import com.group.p2_socializer.Database.GatheringDB;
 import com.group.p2_socializer.UserLogIn.User;
 import com.group.p2_socializer.Utils.ManagerBarController;
 import com.group.p2_socializer.Utils.PopUpMessage;
@@ -239,7 +240,7 @@ public class GatheringPageController {
         });
 
         //-----------------------------------------------------------------------
-        List<Tag> taglist = newGathering.getTags();
+        List<Tag> taglist = GatheringDB.getGatheringTags(newGathering.getGatheringID());
 
 
         CornerRadii cornerRadii = new CornerRadii(30);

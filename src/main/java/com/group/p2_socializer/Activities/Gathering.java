@@ -1,5 +1,6 @@
 package com.group.p2_socializer.Activities;
 
+import com.group.p2_socializer.Database.ActivityDB;
 import com.group.p2_socializer.Database.GatheringDB;
 import com.group.p2_socializer.UserLogIn.User;
 
@@ -50,5 +51,11 @@ public class Gathering extends Event {
             size = userList.size();
         }
         return size;
+    }
+
+    public List getTags() throws SQLException {
+        List tagList = ActivityDB.getActivityTags(activityID);
+
+        return tagList;
     }
 }
