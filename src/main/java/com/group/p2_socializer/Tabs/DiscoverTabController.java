@@ -29,7 +29,7 @@ public class DiscoverTabController extends TabController {
 
 
     public void loadGatheringItems() {
-        //gatheringItemVBox.getChildren().clear();
+
         try {
             List<Gathering> gatheringList = GatheringDB.getGatheringsDate(2023);
             for (Gathering gathering : gatheringList) {

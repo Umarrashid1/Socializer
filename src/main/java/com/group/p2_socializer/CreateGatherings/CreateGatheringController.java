@@ -31,6 +31,7 @@ import java.util.*;
 public class CreateGatheringController {
 
     public List<Tag> selectedTagList;
+    public HBox createGatheringButtonHBox;
     @FXML
     private TextField gatheringNameTextField;
     @FXML
@@ -52,16 +53,22 @@ public class CreateGatheringController {
     public Map<Tab, Boolean> tabUpdateMap;
     private JFXTabPane mainTabPane;
     private User currentUser;
+    private  String eventName;
+    boolean isEventGathering;
 
     public void setEventData(Event event){
-        gatheringNameTextField.setText(event.getActivityName());
+        //gatheringNameTextField.setText(event.getActivityName());
         gatheringDescriptionTextArea.setText(event.getActivityDescription());
         gatheringCityTextField.setText(event.getActivityCity());
         gatheringCountryTextField.setText(event.getActivityCountry());
         //gatheringOrganiserTextField.setText(event.getActivityOrganiser());
         eventTimeTextField.setText(event.getLocalDateTime().toLocalTime().toString());
         eventDatePicker.setValue(event.getLocalDateTime().toLocalDate());
+
+        eventName = event.getActivityName();
+
     }
+
 
     public void handleCustomCreation() throws SQLException, IOException {
         LocalTime eventTime = LocalTime.parse(eventTimeTextField.getText());
@@ -69,7 +76,14 @@ public class CreateGatheringController {
 
         Gathering newGathering = new Gathering();
         newGathering.setActivityType("EventActivity");
-        newGathering.setActivityName(gatheringNameTextField.getText());
+
+
+        if(eventName == null){
+            newGathering.setActivityName(gatheringNameTextField.getText());
+        }
+        else { newGathering.setActivityName(eventName + "//" + gatheringNameTextField.getText());}
+
+
         newGathering.setActivityDescription(gatheringDescriptionTextArea.getText());
         newGathering.setActivityCity(gatheringCityTextField.getText());
         newGathering.setActivityCountry(gatheringCountryTextField.getText());
@@ -89,6 +103,7 @@ public class CreateGatheringController {
 
 
     public void handleCreateGathering(Gathering newGathering) throws SQLException, IOException {
+
         String createdMessage = "Gathering Created!";
         PopUpMessage popUpMessage = new PopUpMessage();
         popUpMessage.showCreatedPopUp(createdMessage);
@@ -100,9 +115,11 @@ public class CreateGatheringController {
         this.tabUpdateMap.put(newTab, true);
         mainTabPane.getSelectionModel().select(1);
         mainTabPane.getSelectionModel().select(2);
+        eventName = null;
     }
 
     public void handleAddTagsButton() {
+
         Stage stage = new Stage();
         stage.setTitle("Add tags!");
 
