@@ -103,6 +103,7 @@ public class CreateGatheringController {
 
 
     public void handleCreateGathering(Gathering newGathering) throws SQLException, IOException {
+        currentUser.joinGathering(newGathering.getGatheringID());
         String createdMessage = "Gathering Created!";
         PopUpMessage popUpMessage = new PopUpMessage();
         popUpMessage.showCreatedPopUp(createdMessage);
