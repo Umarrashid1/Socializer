@@ -173,7 +173,7 @@ public class GatheringPageController {
         centerPane.getChildren().add(attendGatheringButton);
         centerPane.getChildren().add(leaveGatheringButton);
 
-        if(!attending){
+        if(attending){
             leaveGatheringButton.setVisible(true);
         }
         else{attendGatheringButton.setVisible(true);}
