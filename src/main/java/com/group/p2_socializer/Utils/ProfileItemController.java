@@ -30,7 +30,7 @@ public class ProfileItemController {
                 image = new Image(getClass().getResource("/com/group/p2_socializer/pictures/blondgal.png").toExternalForm());
                 break;
             case "Melissa":
-                image = new Image(getClass().getResource("/com/group/p2_socializer/pictures/yas.png").toExternalForm());
+                image = new Image(getClass().getResource("/com/group/p2_socializer/pictures/yas.jpg").toExternalForm());
                 break;
             case "James":
                 image = new Image(getClass().getResource("/com/group/p2_socializer/pictures/lad.png").toExternalForm());
