@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 
@@ -70,14 +71,37 @@ public class ProfileTabController extends TabController {
 
     @FXML
     private JFXListView<String> listGatheringOrganized;
-    @FXML
 
     public void setUser(User user) throws SQLException {
      profileUsername.setText(user.getUsername());
      tagList =  user.getTags();
-     String tagListAsString =tagList.toString();
-     //tagListText.setText(tagListAsString);
-     // Temporary solution
+        String username = user.getUsername();
+        Image image;
+
+        switch (username) {
+            case "r":
+                image = new Image(getClass().getResource("/com/group/p2_socializer/pictures/Benedict-Cumberbatch.png").toExternalForm());
+                break;
+            case "Emma":
+                image = new Image(getClass().getResource("/com/group/p2_socializer/pictures/blondgal.png").toExternalForm());
+                break;
+            case "Melissa":
+                image = new Image(getClass().getResource("/com/group/p2_socializer/pictures/yas.png").toExternalForm());
+                break;
+            case "James":
+                image = new Image(getClass().getResource("/com/group/p2_socializer/pictures/lad.png").toExternalForm());
+                break;
+            case "Emily":
+                image = new Image(getClass().getResource("/com/group/p2_socializer/pictures/ladya.png").toExternalForm());
+                break;
+            default:
+                image = new Image(getClass().getResource("/com/group/p2_socializer/pictures/Poster-sized_portrait_of_Barack_Obama-modified.png").toExternalForm());
+                break;
+        }
+
+        profilePic.setImage(image);
+
+
     }
 
     void goToSelectedGathering(MouseEvent event) {
