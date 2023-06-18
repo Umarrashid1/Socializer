@@ -2,6 +2,7 @@ package com.group.p2_socializer.Calendar;
 
 import com.group.p2_socializer.Database.ActivityDB;
 import com.group.p2_socializer.Pages.EventPageController;
+import com.group.p2_socializer.Tabs.TabController;
 import com.group.p2_socializer.UserLogIn.User;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.group.p2_socializer.Activities.Event;
@@ -10,8 +11,10 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -66,8 +69,19 @@ public class CreateEventController {
     private User currentUser;
 
     @FXML
-    public void handleBackButton(){
-      tabUpdateMap.put(calendarTab, false);
+    public void handleBackButton() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/" + "calendar_tab" + ".fxml"));
+        AnchorPane newPane = loader.load();
+        Node content = mainTabPane.getSelectionModel().getSelectedItem().getContent();
+        if (content != null) {
+            // Remove the content of the previous tab
+            ((AnchorPane) content).getChildren().clear();
+            // Release the controller instance
+            loader.setController(null);
+        }
+        // Set the content of the current tab
+        mainTabPane.getSelectionModel().getSelectedItem().setContent(newPane);
+
     }
 
     @FXML
