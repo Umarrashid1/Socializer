@@ -52,5 +52,4 @@ public class DiscoverTabController extends TabController {
         discoverScrollPane.setContent(gatheringItemVBox);
         gatheringItemVBox = null;
     }
-
 }

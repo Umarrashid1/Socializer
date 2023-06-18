@@ -54,7 +54,6 @@ public class CreateGatheringController {
     private JFXTabPane mainTabPane;
     private User currentUser;
     private  String eventName;
-    boolean isEventGathering;
 
     public void setEventData(Event event){
         //gatheringNameTextField.setText(event.getActivityName());
@@ -82,7 +81,6 @@ public class CreateGatheringController {
             newGathering.setActivityName(gatheringNameTextField.getText());
         }
         else { newGathering.setActivityName(eventName + "//" + gatheringNameTextField.getText());}
-
 
         newGathering.setActivityDescription(gatheringDescriptionTextArea.getText());
         newGathering.setActivityCity(gatheringCityTextField.getText());
@@ -204,9 +202,7 @@ public class CreateGatheringController {
         }
 
     }
-
     public void setCurrentUser(User currentUser){this.currentUser = currentUser;}
-
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
     public void setMainTabPane(JFXTabPane mainTabPane){
         this.mainTabPane = mainTabPane;
