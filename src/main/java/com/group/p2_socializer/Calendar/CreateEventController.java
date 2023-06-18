@@ -2,12 +2,14 @@ package com.group.p2_socializer.Calendar;
 
 import com.group.p2_socializer.Database.ActivityDB;
 import com.group.p2_socializer.Pages.EventPageController;
+import com.group.p2_socializer.Tabs.EventCalendarTabController;
 import com.group.p2_socializer.Tabs.TabController;
 import com.group.p2_socializer.UserLogIn.User;
 import com.group.p2_socializer.Utils.PopUpMessage;
 import com.group.p2_socializer.Activities.Event;
 import com.group.p2_socializer.Activities.Tag;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -56,7 +58,7 @@ public class CreateEventController {
     @FXML
     private TextArea eventDescriptionTextArea;
 
-    private TabPane mainTabPane;
+    private JFXTabPane mainTabPane;
 
     public Map<Tab, Boolean> tabUpdateMap;
 
@@ -72,6 +74,14 @@ public class CreateEventController {
     public void handleBackButton() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/group/p2_socializer/" + "calendar_tab" + ".fxml"));
         AnchorPane newPane = loader.load();
+        EventCalendarTabController controller;
+        controller = loader.getController();
+        controller.setUser(currentUser);
+        controller.setMainTabPane(mainTabPane);
+        controller.setTabUpdateMap(tabUpdateMap);
+        controller.showCreateEventButton();
+
+
         Node content = mainTabPane.getSelectionModel().getSelectedItem().getContent();
         if (content != null) {
             // Remove the content of the previous tab
@@ -207,7 +217,7 @@ public class CreateEventController {
     }
 
     public void setTabUpdateMap(Map<Tab, Boolean> tabUpdateMap){this.tabUpdateMap = tabUpdateMap;}
-    public void setMainTabPane(TabPane mainTabPane){
+    public void setMainTabPane(JFXTabPane mainTabPane){
         this.mainTabPane = mainTabPane;
     }
     public void setUser(User currentUser){
